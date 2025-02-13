@@ -1,0 +1,116 @@
+/* {
+  font-family:Times-new-roman;
+  background-color:white;	
+}*/
+.navbar {
+  margin:0;
+  width:100%;
+  height:40px;	
+  position:fixed;
+  font-family:Tahoma;
+  font-size:20px;
+  color:#f6F7f8;
+  top:0;
+  background-color:#f00010;			
+}
+ul {
+  margin:0;
+  display:flex;
+  flex:direction:row;
+  justify-content:space-around;
+  color:#cc00cc;	
+}
+.page-wrapper {
+  position:relative;	
+  background-color:white;
+}
+.div-main {
+  margin:auto;	
+  margin-top:40px;
+  background-color:green;
+}
+.div-send-info {
+  margin:0;	
+  width:100%;
+  height:100%;		
+  background-color:green;
+  color:white;
+  text-align:center;				
+}
+
+.div-form {
+  text-align:center;
+}
+h5 {
+  text-align:center;
+  font-family:sans-serif;
+  font:size:14px;
+  color:white;		
+}
+.div-resume {
+  margin:0;	
+  width:100%;
+  height:100%;		
+  display:flex;
+  flex-direction:rows;
+  background-color:green;			
+}
+
+.div-personal-data {
+  margin:0;	
+  margin-left:17%;
+  width:165px;
+  height:550px;		
+  border:2px solid black;
+  border-radius:10px 10px 10px 10px;
+  display:flex;
+  flex-direction:column;
+  background-color:white;		
+}
+.div-resume-data {
+  margin-top:0;
+  width:700px;
+  height:550px;			
+  border:2px solid black;
+  border-radius:10px 10px 10px 10px;
+  display:flex;
+  flex-direction:column;
+  background-color:white;		
+}
+.div-foto {
+  margin:10px;	
+}
+.personal-info {
+  text-align:left;
+  margin:0;
+  margin-left:10px;
+}
+.send-info {
+  text-align:center;	
+}
+.div-sertificates {
+  text-align:center;	
+  margin:0 25% 0 25%;	
+  width:700px;
+  height:1200px;			
+  border:2px solid black;
+  border-radius:10px 10px 10px 10px;
+  display:flex;
+  flex-direction:column;
+  background-color:white;		
+}
+h4 {
+color:black;
+text-align:center;
+}
+h1 {
+margin:0;
+margin-left:10px;
+margin-bottom:0;
+font-family:sans-serif;
+font-size:34px;
+color:black;
+}
+p {
+font-size:12px;
+}

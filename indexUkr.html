@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Моя власна веб-сторiнка</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+    function showpreview(e) {
+        var reader = new FileReader(); 
+        reader.onload = function (e) {	
+            $('#previewImage').attr("src", e.target.result);
+        }
+        //Imagepath.files[0] is blob type
+        reader.readAsDataURL(e.files[0]);
+    }
+    </script>	
+  </head>
+  <body>
+  <div id="page-wrapper" class="page-wrapper">
+    <header id="header">	
+      <nav id="navbar" class="navbar">
+        <ul class="nav-ul">
+          <li class="nav-li"><a href="#Resume" class="nav-link">Резюме</a></li>
+          <li class="nav-li"><a href="#Sertificates" class="nav-link">Сертифiкати</a></li>
+          <li class="nav-li"><a href="index.html" class="nav-link">Eng</a></li>
+	  <li class="nav-li"><a href="indexDeu.html" class="nav-link">Deu</a></li>
+	  <li class="nav-li"><a href="indexRus.html" class="nav-link">Rus</a></li>
+	  <li class="nav-li"><a href="indexUkr.html" class="nav-link">Ukr</a></li>
+      </nav></span>
+    </header>
+    <main>
+      <div id="div-main" class="div-main">
+      <section id="Resume">
+	<h5>Резюме</h5>
+          <div id="div-resume" class="div-resume">
+	   <div id="div-personal-data" class="div-personal-data">
+	    <div id="div-foto" class="div-foto">	
+             <img src="file:///C:/Images/n.png" width="145px" height="172px" id="previewImage">
+	    </div>
+	    <p class="personal-info">Персональна iнформацiя:</p></br>
+	    <p class="personal-info">Адреса:</p>
+	    <p class="personal-info"></p>	
+	    <p class="personal-info">Штальгруберрiнг 28</p>
+	    <p class="personal-info">Мюнхен</p>	
+	    <p class="personal-info">81829</p></br>
+	    
+            <p class="personal-info">Дата народження</p>
+	    <p class="personal-info">07.06.1981</p>	
+	    <p class="personal-info">Мiсце народження:</p>
+	    <p class="personal-info">Краматорськ, UA</p></br>
+
+            <p class="personal-info">Телефон:</p>
+	    <p class="personal-info">(0160)2465539</p></br>	
+
+	    <p class="personal-info">Email:</p>
+	    <p class="personal-info">comprw@gmail.com</p></br>		    
+	    
+	    <p class="personal-info">Веб-сторiнка:</p>
+	    <p class="personal-info">https://pcvoronov.de</p></br>
+          </div>
+	  <div id="div-resume-data" class="div-resume-data">
+	   <H1>ВОЛОДИМИР</H1>
+	   <H1>ВОРОНОВ</H1>
+	   <p class="personal-info">Навчання:</p></br>
+
+	   <p class="personal-info">Responsive Web Design Certificate FreeCodeCamp</p>
+	   <p class="personal-info">11.02.2025</p>
+	   <p class="personal-info">Foundation c# with Microsoft Certificate FreeCodeCamp</p>
+	   <p class="personal-info">02.02.2025</p></br>
+
+	   <p class="personal-info">Deutsch B2 Certificate BFZ Poccicstrabe,3 Muenchen</p>
+	   <p class="personal-info">02.2024 – 08.2024</p>
+	   <p class="personal-info">Deutsch B1 Certificate BFZ Poccicstrabe,3 Muenchen</p>
+	   <p class="personal-info">08.2022 – 04.2023</p></br>
+
+	   <p class="personal-info">ДIТМ МНТУ, Кiев (UA)</p>
+	   <p class="personal-info">09.2001 – 06.2006</p>
+	   <p class="personal-info">Mайстер: Менеджмент</p>
+	   <p class="personal-info">ДГМА, Краматорськ (UA)</p>
+	   <p class="personal-info">09.1998 – 06.2003</p>
+	   <p class="personal-info">Mайстер:IT</p></br>
+	
+	   <p class="personal-info">Практичнi завдання:</p></br>
+	   <p class="personal-info">Мiст Краматорськ, UA System Administrator</p>
+	   <p class="personal-info">11.04.2016-current time</p></br> 
+	   <p class="personal-info">NKMZ Краматорськ, UA System Administrator</p>
+	   <p class="personal-info">16.06.2010 – 03.11.2011</p></br>
+	   <p class="personal-info">I далi....Я пропрацював у IT 20 рокiв.</p>
+	   	
+				
+	  </div>
+	</div>
+      </section>
+      <section id="Sertificates">
+	 <h5>Сертiфiкати</h5>
+          <div id="div-sertificates" class="div-sertificates">
+	   <img src="responsive_web_design.png" width="100%" height="100%" id="previewImageSertifikat1">
+	   </br>
+	   <img src="foundational_csharp_with_Microsoft.png" width="100%" height="100%" id="previewImageSertifikat2">	
+          </div>
+      </section>
+    </div>
+   </main> 	
+ </div>
+ </body>
+ <footer>
+   <h4>(c)Воронов Володимир 2025 (PCVoronov.de)</h4>
+ </footer>
+</html> 	   
