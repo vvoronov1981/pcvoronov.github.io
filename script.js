@@ -8,8 +8,8 @@ const cartSubTotal = document.getElementById("subtotal");
 const cartTaxes = document.getElementById("taxes");
 const cartTotal = document.getElementById("total");
 const showHideCartSpan = document.getElementById("show-hide-cart");
-const itemName = document.getElementById("item_name");
-const itemAmount = document.getElementById("amount");
+//const itemName = document.getElementById("item_name");
+//const itemAmount = document.getElementById("amount");
 let isCartShowing = false;
 
 const products = [];
@@ -182,8 +182,8 @@ class ShoppingCart {
     cartSubTotal.textContent = "$"+ `${subTotal.toFixed(2)}`;
     cartTaxes.textContent = "$"+`${tax.toFixed(2)}`;
     cartTotal.textContent = "$"+`${this.total.toFixed(2)}`;
-    itemName.value = 'Products';
-    itemAmount.value = `${parseFloat(this.total.toFixed(2))}`;		
+  //  itemName.value = "Products";
+  //  itemAmount.value = `${parseFloat(this.total.toFixed(2))}`;		
     return this.total;
   }
 };
