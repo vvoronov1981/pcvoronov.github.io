@@ -107,7 +107,7 @@ input.addEventListener('change', async (event) => {
     const owner = 'PC-Voronov'; // Ваше имя пользователя/организации на GitHub
     const repo = 'Images'; // Имя вашего приватного репозитория
     const filePath = `images/${textName.value+'_'+textPrice.value+'_'+textCategory.value+'_'+file.name}`; // Путь и имя файла внутри репозитория
-    const token = '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'; // Токен GitHub
+    const token = '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'; // Токен GitHub
 
     await uploadImageToGitHub(owner, repo, filePath, file, token);
 

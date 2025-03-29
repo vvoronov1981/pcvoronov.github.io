@@ -35,7 +35,7 @@ async function getRepoContents(user, repo, token, path = '') {
 
 const user = 'PC-Voronov';  // Замените на имя пользователя или организацию
 const repo = 'Images';  // Замените на имя репозитория
-const token = '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';  // Ваш личный токен доступа
+const token = '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';  // Ваш личный токен доступа
 const path = 'images';  // Укажите путь внутри репозитория (оставьте пустым для корневой директории)
 
 let imagesFiles=[];
@@ -67,7 +67,7 @@ function parseString(input) {
 }
 async function fetchAndDisplayImage(fname) {
 const url = "https://api.github.com/repos/PC-Voronov/Images/contents/images/"+fname;
-        const token = "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"; // Ваш токен для аутентификации;
+        const token = "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"; // Ваш токен для аутентификации;
 
         try {
           const response = await fetch(url, {
