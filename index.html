@@ -1,111 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>My web site</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
-    <script type="text/javascript">
-    function showpreview(e) {
-        var reader = new FileReader(); 
-        reader.onload = function (e) {	
-            $('#previewImage').attr("src", e.target.result);
-        }
-        //Imagepath.files[0] is blob type
-        reader.readAsDataURL(e.files[0]);
-    }
-    </script>	
+    	
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="./styles.css" />	 
   </head>
   <body>
-  <div id="page-wrapper" class="page-wrapper">
-    <header id="header">	
-      <nav id="navbar" class="navbar">
-        <ul class="nav-ul">
-          <li class="nav-li"><a href="#Resume" class="nav-link">Resume</a></li>
-          <li class="nav-li"><a href="#Sertificates" class="nav-link">Sertificates</a></li>
-          <li class="nav-li"><a href="index.html" class="nav-link">Eng</a></li>
-	  <li class="nav-li"><a href="indexDeu.html" class="nav-link">Deu</a></li>
-	  <li class="nav-li"><a href="indexRus.html" class="nav-link">Rus</a></li>
-	  <li class="nav-li"><a href="indexUkr.html" class="nav-link">Ukr</a></li>
-      </nav></span>
+    <header>
+      <h1 class="title">Products</h1>
     </header>
     <main>
-      <div id="div-main" class="div-main">
-      <section id="Resume">
-	<h5>Resume</h5>
-          <div id="div-resume" class="div-resume">
-	   <div id="div-personal-data" class="div-personal-data">
-	    <div id="div-foto" class="div-foto">	
-             <img src="n.png" width="145px" height="172px" id="previewImage">
-	    </div>
-	    <p class="personal-info">Personal info:</p></br>
-	    <p class="personal-info">Address:</p>
-	    <p class="personal-info"></p>	
-	    <p class="personal-info">Stahlgruberring 28</p>
-	    <p class="personal-info">Muenchen</p>	
-	    <p class="personal-info">81829</p></br>
-	    
-            <p class="personal-info">Birthday</p>
-	    <p class="personal-info">07.06.1981</p>	
-	    <p class="personal-info">Town of born:</p>
-	    <p class="personal-info">Kramatorsk, UA</p></br>
-
-            <p class="personal-info">Telefon:</p>
-	    <p class="personal-info">(0160)2465539</p></br>	
-
-	    <p class="personal-info">Email:</p>
-	    <p class="personal-info">comprw@gmail.com</p></br>		    
-	    
-	    <p class="personal-info">Site:</p>
-	    <p class="personal-info">https://pcvoronov.de</p></br>
-          </div>
-	  <div id="div-resume-data" class="div-resume-data">
-	   <H1>VLADIMIR</H1>
-	   <H1>VORONOV</H1>
-	   <p class="personal-info">Study:</p></br>
-
-	   <p class="personal-info">Responsive Web Design Certificate FreeCodeCamp</p>
-	   <p class="personal-info">11.02.2025</p>
-	   <p class="personal-info">Foundation c# with Microsoft Certificate FreeCodeCamp</p>
-	   <p class="personal-info">02.02.2025</p></br>
-
-	   <p class="personal-info">Deutsch B2 Certificate BFZ Poccicstrabe,3 Muenchen</p>
-	   <p class="personal-info">02.2024 – 08.2024</p>
-	   <p class="personal-info">Deutsch B1 Certificate BFZ Poccicstrabe,3 Muenchen</p>
-	   <p class="personal-info">08.2022 – 04.2023</p></br>
-
-	   <p class="personal-info">DITM MNTU, Kiev (UA)</p>
-	   <p class="personal-info">09.2001 – 06.2006</p>
-	   <p class="personal-info">MASTER:Manager</p>
-	   <p class="personal-info">DGMA, Kramatorsk (UA)</p>
-	   <p class="personal-info">09.1998 – 06.2003</p>
-	   <p class="personal-info">MASTER:IT</p></br>
+      <button id="cart-btn" type="button" class="btn">
+        <span id="show-hide-cart">Show</span> Cart
+      </button>
+      <button id="add-btn" type="button" class="btn" onclick="location.href='./nz.html'">
+        <span>Add</span> product</button>
+      <div id="cart-container">
+        <button class="btn" id="clear-cart-btn">Clear Cart</button>
+        <div id="products-container"></div>
+        <p>Total number of items: <span id="total-items">0</span></p>
+        <p>Subtotal: <span id="subtotal">$0</span></p>
+        <p>Taxes: <span id="taxes">$0</span></p>
+        <p>Total: <span id="total">$0</span></p>
 	
-	   <p class="personal-info">Work:</p></br>
-	   <p class="personal-info">Mist Kramatorsk, UA System Administrator</p>
-	   <p class="personal-info">11.04.2016-current time</p></br> 
-	   <p class="personal-info">NKMZ Kramatorsk, UA System Administrator</p>
-	   <p class="personal-info">16.06.2010 – 03.11.2011</p></br>
-	   <p class="personal-info">And weiter....I work in IT 20 years.</p>
-	   	
-				
-	  </div>
-	</div>
-      </section>
-      <section id="Sertificates">
-	 <h5>Sertificates</h5>
-          <div id="div-sertificates" class="div-sertificates">
-	   <img src="responsive_web_design.png" width="100%" height="100%" id="previewImageSertifikat1">
-	   </br>
-	   <img src="foundational_csharp_with_Microsoft.png" width="100%" height="100%" id="previewImageSertifikat2">	
-          </div>
-      </section>
-    </div>
-   </main> 	
- </div>
- </body>
- <footer>
-   <h4>(c)Voronov Vladimir 2025 (PCVoronov.de)</h4>
- </footer>
-</html> 	   
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="comprw@gmail.com">
+    <input type="hidden" name="item_name" id="item_name" value="Название товара">
+    <input type="hidden" name="amount" id="amount" value="5.95">
+    <input type="hidden" name="currency_code" value="USD">
+    <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" alt="Buy Now">
+</form>
+	
+      </div>
+      <div id="painting-card-container"></div>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

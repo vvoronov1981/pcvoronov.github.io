@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>My web site</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    	
+  </head>
+  <body>
+	<div width="50%" height="50%" align="center" border-top="25px" margin-top="40px">
+	    <p style="color:white">For receiving password to your account send please your email on comprw@gmail.com. And than you will have a password. When you not send your email on comprw@gmail.com you not receive money for your products. Please note this.</p>	
+	    <div>
+              <p style="color:white">Input email:</p>
+    	      <input type="mail" name="mail" value="example@g.com" id="mail"'>
+            </div>
+
+		&nbsp;
+
+	    <div>
+    	      <p style="color:white">Input password:</p>
+	      <input type="text" name="text" id="text"'>
+            </div>
+		&nbsp;
+	    <div>
+    	      <p style="color:white">Input product caption:</p>
+	      <input type="text" name="textName" id="textName"'>
+            </div>
+	    &nbsp;
+	    <div>
+    	      <p style="color:white">Input price:</p>
+	      <input type="text" name="textPrice" id="textPrice"'>
+            </div>
+	    &nbsp;
+
+	    <div>
+    	      <p style="color:white">Input category:</p>
+	      <input type="text" name="textCategory" id="textCategory"'>
+            </div>
+
+	</div>
+	      &nbsp;
+ 	<div width=50% height=50% align="center" border-top="25px" margin-top="40px">
+            <div>
+              <p style="color:white">Please choice image of product:</p>
+    	      <input type="file" name="fileupload" value="fileupload" id="fileupload" style="color:white"'>
+            </div>
+            
+              &nbsp;
+            
+            <div>
+              <img id="previewImage"/>
+            </div>
+		
+        </div>
+       
+</body>
+<script type="text/javascript">
+async function uploadImageToGitHub(owner, repo, filePath, imageBlob, token) {
+    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+
+    // Преобразуем Blob в Base64
+    const base64Data = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result.split(',')[1]); // Убираем префикс
+        reader.onerror = reject;
+        reader.readAsDataURL(imageBlob);
+    });
+
+    // Получаем текущее время как commit message
+    const commitMessage = `Добавлено изображение: ${new Date().toISOString()}`;
+
+    try {
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: commitMessage, // Сообщение для коммита
+                content: base64Data // Содержимое файла в формате Base64
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`Ошибка загрузки файла: ${response.statusText}`);
+        }
+
+        console.log('Изображение успешно сохранено на GitHub!');
+    } catch (error) {
+        console.error('Ошибка:', error.message);
+    }
+}
+
+const mail=document.getElementById('mail');
+const text=document.getElementById('text');
+const textName=document.getElementById('textName');
+const textPrice=document.getElementById('textPrice');
+const textCategory=document.getElementById('textCategory');
+
+// Использование:
+const input = document.getElementById('fileupload'); // Ваш input с изображением
+input.addEventListener('change', async (event) => {
+    const file = event.target.files[0];
+    const owner = 'PC-Voronov'; // Ваше имя пользователя/организации на GitHub
+    const repo = 'Images'; // Имя вашего приватного репозитория
+    const filePath = `images/${textName.value+'_'+textPrice.value+'_'+textCategory.value+'_'+file.name}`; // Путь и имя файла внутри репозитория
+    const token = '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'; // Токен GitHub
+
+    await uploadImageToGitHub(owner, repo, filePath, file, token);
+
+//const crypto = require('crypto');
+
+// Функция для шифрования
+
+
+// Использование
+const password = `${text.value}`;
+const plaintext = `${mail.value}`+'|'+filePath;
+
+// Функция для создания криптографического ключа из пароля
+        async function getKey(password) {
+            const enc = new TextEncoder();
+            const keyMaterial = await window.crypto.subtle.importKey(
+                "raw",
+                enc.encode(password),
+                { name: "PBKDF2" },
+                false,
+                ["deriveKey"]
+            );
+
+            return await window.crypto.subtle.deriveKey(
+                {
+                    name: "PBKDF2",
+                    salt: enc.encode("salt"), // Используйте безопасный случайный salt
+                    iterations: 100000,
+                    hash: "SHA-256"
+                },
+                keyMaterial,
+                { name: "AES-GCM", length: 256 },
+                false,
+                ["encrypt", "decrypt"]
+            );
+        }
+
+        // Функция для шифрования
+        async function encrypt(text, password) {
+            const key = await getKey(password);
+            const enc = new TextEncoder();
+            const iv = window.crypto.getRandomValues(new Uint8Array(12)); // Генерируем случайный вектор инициализации
+            const encrypted = await window.crypto.subtle.encrypt(
+                { name: "AES-GCM", iv: iv },
+                key,
+                enc.encode(text)
+            );
+
+            return {
+                iv: Array.from(iv), // Преобразуем вектор в массив для передачи
+                encryptedData: Array.from(new Uint8Array(encrypted)) // Преобразуем зашифрованные данные
+            };
+        }
+
+        // Функция для расшифрования
+        async function decrypt(encryptedData, password, iv) {
+            const key = await getKey(password);
+            const dec = new TextDecoder();
+            const decrypted = await window.crypto.subtle.decrypt(
+                { name: "AES-GCM", iv: new Uint8Array(iv) },
+                key,
+                new Uint8Array(encryptedData)
+            );
+
+            return dec.decode(decrypted);
+        }
+
+        // Пример использования
+        //document.addEventListener("DOMContentLoaded", async () => {
+          //  const password = "mypassword";
+          //  const plaintext = "Hello, world!";
+
+            console.log("Оригинальный текст:", plaintext);
+
+            // Шифрование
+            const encrypted = await encrypt(plaintext, password);
+            console.log("Зашифрованные данные:", encrypted);
+
+            // Расшифрование
+            const decrypted = await decrypt(encrypted.encryptedData, password, encrypted.iv);
+            console.log("Расшифрованный текст:", decrypted);
+        //});
+
+async function uploadFileToGitHub(owner, repo, filePath, base64Data, token) {
+    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+
+    // Преобразуем Blob в Base64
+    //const base64Data = await new Promise((resolve, reject) => {
+     //   const reader = new FileReader();
+    //    reader.onload = () => resolve(reader.result.split(',')[1]); // Убираем префикс
+    //    reader.onerror = reject;
+    //    reader.readAsDataURL(imageBlob);
+    //});
+
+    // Получаем текущее время как commit message
+    const commitMessage = `Добавлен файл: ${new Date().toISOString()}`;
+
+    try {
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: commitMessage, // Сообщение для коммита
+                content: btoa(base64Data) // Содержимое файла в формате Base64
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`Ошибка загрузки файла: ${response.statusText}`);
+        }
+
+        console.log('Файл успешно сохранен на GitHub!');
+    } catch (error) {
+        console.error('Ошибка:', error.message);
+    }
+}
+await uploadFileToGitHub(owner, repo, 'log.crt', encrypted, token);
+});
+
+	    
+    </script>
+</html>
