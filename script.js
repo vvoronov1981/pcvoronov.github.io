@@ -11,6 +11,25 @@ const showHideCartSpan = document.getElementById("show-hide-cart");
 //const itemName = document.getElementById("item_name");
 //const itemAmount = document.getElementById("amount");
 let isCartShowing = false;
+// Загружаем файл .env с токеном
+function loadEnv(filePath) {
+  const fs = require('fs');
+  const envData = fs.readFileSync(filePath, 'utf8');
+  const envVars = {};
+  
+  envData.split('\n').forEach(line => {
+    const [key, value] = line.split('=');
+    if (key && value) {
+      envVars[key.trim()] = value.trim();
+    }
+  });
+  return envVars;
+}
+
+// Используем переменную из .env файла
+const envVars = loadEnv('.env');
+const apiToken = envVars['GITHUB_API_TOKEN'];
+//console.log(apiToken);
 
 const products = [];
 
@@ -35,7 +54,7 @@ async function getRepoContents(user, repo, token, path = '') {
 
 const user = 'PC-Voronov';  // Замените на имя пользователя или организацию
 const repo = 'Images';  // Замените на имя репозитория
-const token = process.env.GITHUB_API_TOKEN;  // Ваш личный токен доступа
+const token = apiToken;  // Ваш личный токен доступа
 const path = 'images';  // Укажите путь внутри репозитория (оставьте пустым для корневой директории)
 
 let imagesFiles=[];
@@ -67,7 +86,7 @@ function parseString(input) {
 }
 async function fetchAndDisplayImage(fname) {
 const url = "https://api.github.com/repos/PC-Voronov/Images/contents/images/"+fname;
-        const token = process.env.GITHUB_API_TOKEN; // Ваш токен для аутентификации;
+        const token = apiToken; // Ваш токен для аутентификации;
 
         try {
           const response = await fetch(url, {
