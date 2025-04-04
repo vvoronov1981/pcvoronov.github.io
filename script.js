@@ -13,14 +13,10 @@ const showHideCartSpan = document.getElementById("show-hide-cart");
 let isCartShowing = false;
 
 const products = [];
-//require('dotenv').config();
 
-const apiToken = process.env.API_TOKEN;
-if (apiToken) {
-    console.log(`Моя секретная переменная: ${apiToken}`);
-} else {
-    console.log("Секретная переменная не найдена!");
-}
+const savedValue = localStorage.getItem('savedValue');
+console.log(savedValue); // Используйте это значение на странице
+
 //const fetch = require('node-fetch');
 
 async function getRepoContents(user, repo, token, path = '') {
@@ -42,7 +38,7 @@ async function getRepoContents(user, repo, token, path = '') {
 
 const user = 'PC-Voronov';  // Замените на имя пользователя или организацию
 const repo = 'Images';  // Замените на имя репозитория
-const token = apiToken;  // Ваш личный токен доступа
+const token = savedValue;//process.env.GITHUB_API_TOKEN;  // Ваш личный токен доступа
 const path = 'images';  // Укажите путь внутри репозитория (оставьте пустым для корневой директории)
 
 let imagesFiles=[];
@@ -74,7 +70,7 @@ function parseString(input) {
 }
 async function fetchAndDisplayImage(fname) {
 const url = "https://api.github.com/repos/PC-Voronov/Images/contents/images/"+fname;
-        const token = apiToken; // Ваш токен для аутентификации;
+        const token = savedValue;//process.env.GITHUB_API_TOKEN; // Ваш токен для аутентификации;
 
         try {
           const response = await fetch(url, {
