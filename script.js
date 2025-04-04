@@ -13,7 +13,7 @@ const showHideCartSpan = document.getElementById("show-hide-cart");
 let isCartShowing = false;
 
 const products = [];
-require('dotenv').config();
+//require('dotenv').config();
 
 const apiToken = process.env.API_TOKEN;
 if (apiToken) {
