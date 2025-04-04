@@ -11,27 +11,10 @@ const showHideCartSpan = document.getElementById("show-hide-cart");
 //const itemName = document.getElementById("item_name");
 //const itemAmount = document.getElementById("amount");
 let isCartShowing = false;
-// Загружаем файл .env с токеном
-function loadEnv(filePath) {
-  const fs = require('fs');
-  const envData = fs.readFileSync(filePath, 'utf8');
-  const envVars = {};
-  
-  envData.split('\n').forEach(line => {
-    const [key, value] = line.split('=');
-    if (key && value) {
-      envVars[key.trim()] = value.trim();
-    }
-  });
-  return envVars;
-}
-
-// Используем переменную из .env файла
-const envVars = loadEnv('.env');
-const apiToken = envVars['GITHUB_API_TOKEN'];
-//console.log(apiToken);
 
 const products = [];
+// Получение переменной окружения
+const apiToken = process.env.API_TOKEN;
 
 //const fetch = require('node-fetch');
 
