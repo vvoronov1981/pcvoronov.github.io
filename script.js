@@ -13,7 +13,8 @@ const showHideCartSpan = document.getElementById("show-hide-cart");
 let isCartShowing = false;
 
 const products = [];
-// Получение переменной окружения
+require('dotenv').config();
+
 const apiToken = process.env.API_TOKEN;
 if (apiToken) {
     console.log(`Моя секретная переменная: ${apiToken}`);
