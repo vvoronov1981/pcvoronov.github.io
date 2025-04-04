@@ -15,7 +15,11 @@ let isCartShowing = false;
 const products = [];
 // Получение переменной окружения
 const apiToken = process.env.API_TOKEN;
-
+if (apiToken) {
+    console.log(`Моя секретная переменная: ${apiToken}`);
+} else {
+    console.log("Секретная переменная не найдена!");
+}
 //const fetch = require('node-fetch');
 
 async function getRepoContents(user, repo, token, path = '') {
