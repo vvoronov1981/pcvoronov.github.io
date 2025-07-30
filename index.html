@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vladimir Voronov - Personal Website</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
+    .container { max-width: 900px; margin: 20px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .lang-buttons { margin-bottom: 20px; }
+    .lang-buttons button { margin-right: 8px; padding: 6px 18px; cursor: pointer; }
+    h1, h2, h3 { color: #234; }
+    .section { margin-bottom: 30px; }
+    .certificates img, .diplomas img { max-width: 240px; margin: 8px; border: 1px solid #ddd; border-radius: 4px; }
+    .photo { float: right; margin-left: 20px; max-width: 160px; }
+    ul { padding-left: 18px; }
+  </style>
+  <script>
+    function showLang(lang) {
+      var blocks = document.querySelectorAll('.lang');
+      blocks.forEach(function(block) { block.style.display = 'none'; });
+      document.getElementById(lang).style.display = 'block';
+    }
+    window.onload = function() { showLang('en'); }
+  </script>
+</head>
+<body>
+<div class="container">
+  <div class="lang-buttons">
+    <button onclick="showLang('en')">English</button>
+    <button onclick="showLang('de')">Deutsch</button>
+    <button onclick="showLang('ru')">Русский</button>
+    <button onclick="showLang('uk')">Українська</button>
+  </div>
+
+  <!-- English -->
+  <div class="lang" id="en" style="display:none;">
+    <h1>Vladimir Voronov</h1>
+    <img src="Foto.jpg" alt="Vladimir Voronov" class="photo">
+    <div class="section">
+      <h2>Personal Information</h2>
+      <ul>
+        <li>Address: Schyburgring 28, 81829 München, Germany</li>
+        <li>Mobile: +49 (0) 180 - 268593</li>
+        <li>Email: volodymyrvoronov@gmail.com</li>
+        <li>Date of birth: 07.06.1981, Kramatorsk, Ukraine</li>
+        <li>Marital status: Divorced, one child</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Professional Experience</h2>
+      <ul>
+        <li><b>Since 04/2025</b> – Professional Coaching and Consulting, IPB München</li>
+        <li><b>03/2022 – 03/2025</b> – Integration courses / German language up to B2 level</li>
+        <li><b>04/2016 – 12/2022</b> – IT System Administrator, KMIKE, Kramatorsk, Ukraine</li>
+        <li><b>03/2012 – 11/2013</b> – Sales Manager, Barniys, Kramatorsk, Ukraine</li>
+        <li><b>12/2009 – 02/2012</b> – Sales Manager, KTS, Kramatorsk, Ukraine</li>
+        <li><b>05/2001 – 05/2009</b> – IT System Administrator, KMIKE, Kramatorsk, Ukraine</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Education</h2>
+      <ul>
+        <li>Master's in Management, DTM MNTU, Kyiv, Ukraine (2006)</li>
+        <li>Master's in IT, DGMA, Kramatorsk, Ukraine (2003)</li>
+        <li>Bachelor's in Management, MNTU, Ukraine (2005)</li>
+        <li>Bachelor's in Computer Science, DGMA, Ukraine (2002)</li>
+        <li>Certified: Deutsch B2 (BFZ München, 2024), Deutsch B1 (BFZ München, 2023)</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Skills</h2>
+      <ul>
+        <li>Microsoft Office 2016 (good)</li>
+        <li>Photoshop (basic)</li>
+        <li>Languages: German (B2), English (basic), Russian (fluent), Ukrainian (fluent)</li>
+        <li>Driver's license: B</li>
+      </ul>
+    </div>
+    <div class="section certificates">
+      <h2>Certificates</h2>
+      <ul>
+        <li>Foundational C# with Microsoft (freeCodeCamp, 2025)</li>
+        <li>Responsive Web Design (freeCodeCamp, 2025)</li>
+        <li>JavaScript Algorithms and Data Structures (freeCodeCamp, 2025)</li>
+        <li>Front End Development Libraries (freeCodeCamp, 2025)</li>
+        <li>Data Visualization (freeCodeCamp, 2025)</li>
+        <li>Deutsch Konversation Niveau C1 (München, 2025)</li>
+        <li>Deutsch-Test für den Beruf B2 (telc, 2024)</li>
+      </ul>
+    </div>
+    <div class="section diplomas">
+      <h2>Diplomas</h2>
+      <ul>
+        <li>Bachelor's in Computer Science (DGMA, 2002)</li>
+        <li>Specialist in Information Technology (DGMA, 2003)</li>
+        <li>Bachelor's in Management (MNTU, 2005)</li>
+        <li>Master's in Management of Organizations (MNTU, 2006)</li>
+        <li>Master's in IT (DGMA, 2003)</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Hobbies</h2>
+      <ul>
+        <li>Tennis, walking, football, computer games</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Deutsch -->
+  <div class="lang" id="de" style="display:none;">
+    <h1>Vladimir Voronov</h1>
+    <img src="Foto.jpg" alt="Vladimir Voronov" class="photo">
+    <div class="section">
+      <h2>Persönliche Daten</h2>
+      <ul>
+        <li>Adresse: Schyburgring 28, 81829 München</li>
+        <li>Mobil: +49 (0) 180 - 268593</li>
+        <li>Email: volodymyrvoronov@gmail.com</li>
+        <li>Geburtsdatum/-ort: 07.06.1981, Kramatorsk, UA</li>
+        <li>Familienstand: Geschieden, ein Kind</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Berufserfahrungen</h2>
+      <ul>
+        <li><b>Seit 04/2025</b> – Coaching und Beratung, IPB München</li>
+        <li><b>03/2022 – 03/2025</b> – Integrationskurse / Deutsch bis Niveau B2</li>
+        <li><b>04/2016 – 12/2022</b> – IT Systemadministrator, KMIKE, Kramatorsk</li>
+        <li><b>03/2012 – 11/2013</b> – Vertriebsleiter, Barniys, Kramatorsk</li>
+        <li><b>12/2009 – 02/2012</b> – Vertriebsleiter, KTS, Kramatorsk</li>
+        <li><b>05/2001 – 05/2009</b> – IT Systemadministrator, KMIKE, Kramatorsk</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Ausbildung</h2>
+      <ul>
+        <li>Master Management, DTM MNTU, Kiew (2006)</li>
+        <li>Master IT, DGMA, Kramatorsk (2003)</li>
+        <li>Bachelor Management, MNTU (2005)</li>
+        <li>Bachelor Informatik, DGMA (2002)</li>
+        <li>Deutsch B2 Zertifikat (BFZ München, 2024), Deutsch B1 Zertifikat (BFZ München, 2023)</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Kenntnisse</h2>
+      <ul>
+        <li>Microsoft Office 2016 (gut)</li>
+        <li>Photoshop (Grundkenntnisse)</li>
+        <li>Sprachen: Deutsch (B2), Englisch (Grundkenntnisse), Russisch (fließend), Ukrainisch (fließend)</li>
+        <li>Führerschein: Klasse B</li>
+      </ul>
+    </div>
+    <div class="section certificates">
+      <h2>Zertifikate</h2>
+      <ul>
+        <li>Foundational C# with Microsoft (freeCodeCamp, 2025)</li>
+        <li>Responsive Web Design (freeCodeCamp, 2025)</li>
+        <li>JavaScript Algorithmen und Datenstrukturen (freeCodeCamp, 2025)</li>
+        <li>Front End Development Libraries (freeCodeCamp, 2025)</li>
+        <li>Data Visualization (freeCodeCamp, 2025)</li>
+        <li>Deutsch Konversation Niveau C1 (München, 2025)</li>
+        <li>Deutsch-Test für den Beruf B2 (telc, 2024)</li>
+      </ul>
+    </div>
+    <div class="section diplomas">
+      <h2>Diplome</h2>
+      <ul>
+        <li>Bachelor Informatik (DGMA, 2002)</li>
+        <li>Fachrichtung Informationstechnologie (DGMA, 2003)</li>
+        <li>Bachelor Management (MNTU, 2005)</li>
+        <li>Master Management von Organisationen (MNTU, 2006)</li>
+        <li>Master IT (DGMA, 2003)</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Hobbys</h2>
+      <ul>
+        <li>Tennis, Spaziergänge, Fußball, Computerspiele</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Русский -->
+  <div class="lang" id="ru" style="display:none;">
+    <h1>Владимир Воронов</h1>
+    <img src="Foto.jpg" alt="Владимир Воронов" class="photo">
+    <div class="section">
+      <h2>Личные данные</h2>
+      <ul>
+        <li>Адрес: Schyburgring 28, 81829 Мюнхен, Германия</li>
+        <li>Мобильный: +49 (0) 180 - 268593</li>
+        <li>Email: volodymyrvoronov@gmail.com</li>
+        <li>Дата рождения: 07.06.1981, Краматорск, Украина</li>
+        <li>Семейное положение: разведен, один ребенок</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Опыт работы</h2>
+      <ul>
+        <li><b>С 04/2025</b> — Профессиональный коучинг и консалтинг, IPB Мюнхен</li>
+        <li><b>03/2022 – 03/2025</b> — Интеграционные курсы / немецкий до B2</li>
+        <li><b>04/2016 – 12/2022</b> — Системный администратор, KMIKE, Краматорск</li>
+        <li><b>03/2012 – 11/2013</b> — Менеджер по продажам, Barniys, Краматорск</li>
+        <li><b>12/2009 – 02/2012</b> — Менеджер по продажам, KTS, Краматорск</li>
+        <li><b>05/2001 – 05/2009</b> — Системный администратор, KMIKE, Краматорск</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Образование</h2>
+      <ul>
+        <li>Магистр менеджмента, DTM MNTU, Киев (2006)</li>
+        <li>Магистр IT, DGMA, Краматорск (2003)</li>
+        <li>Бакалавр менеджмента, MNTU (2005)</li>
+        <li>Бакалавр информатики, DGMA (2002)</li>
+        <li>Сертификаты: Deutsch B2 (BFZ Мюнхен, 2024), Deutsch B1 (BFZ Мюнхен, 2023)</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Навыки</h2>
+      <ul>
+        <li>Microsoft Office 2016 (хорошо)</li>
+        <li>Photoshop (базовые знания)</li>
+        <li>Языки: немецкий (B2), английский (базовый), русский (свободно), украинский (свободно)</li>
+        <li>Водительские права: категория B</li>
+      </ul>
+    </div>
+    <div class="section certificates">
+      <h2>Сертификаты</h2>
+      <ul>
+        <li>Foundational C# with Microsoft (freeCodeCamp, 2025)</li>
+        <li>Responsive Web Design (freeCodeCamp, 2025)</li>
+        <li>JavaScript Algorithms and Data Structures (freeCodeCamp, 2025)</li>
+        <li>Front End Development Libraries (freeCodeCamp, 2025)</li>
+        <li>Data Visualization (freeCodeCamp, 2025)</li>
+        <li>Deutsch Konversation Niveau C1 (Мюнхен, 2025)</li>
+        <li>Deutsch-Test für den Beruf B2 (telc, 2024)</li>
+      </ul>
+    </div>
+    <div class="section diplomas">
+      <h2>Дипломы</h2>
+      <ul>
+        <li>Бакалавр информатики (DGMA, 2002)</li>
+        <li>Специалист по информационным технологиям (DGMA, 2003)</li>
+        <li>Бакалавр менеджмента (MNTU, 2005)</li>
+        <li>Магистр менеджмента организаций (MNTU, 2006)</li>
+        <li>Магистр IT (DGMA, 2003)</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Увлечения</h2>
+      <ul>
+        <li>Теннис, прогулки, футбол, компьютерные игры</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Українська -->
+  <div class="lang" id="uk" style="display:none;">
+    <h1>Володимир Воронов</h1>
+    <img src="Foto.jpg" alt="Володимир Воронов" class="photo">
+    <div class="section">
+      <h2>Особисті дані</h2>
+      <ul>
+        <li>Адреса: Schyburgring 28, 81829 Мюнхен, Німеччина</li>
+        <li>Мобільний: +49 (0) 180 - 268593</li>
+        <li>Email: volodymyrvoronov@gmail.com</li>
+        <li>Дата народження: 07.06.1981, Краматорськ, Україна</li>
+        <li>Сімейний стан: розлучений, одна дитина</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Досвід роботи</h2>
+      <ul>
+        <li><b>З 04/2025</b> — Професійний коучинг та консалтинг, IPB Мюнхен</li>
+        <li><b>03/2022 – 03/2025</b> — Інтеграційні курси / німецька до B2</li>
+        <li><b>04/2016 – 12/2022</b> — Системний адміністратор, KMIKE, Краматорськ</li>
+        <li><b>03/2012 – 11/2013</b> — Менеджер з продажу, Barniys, Краматорськ</li>
+        <li><b>12/2009 – 02/2012</b> — Менеджер з продажу, KTS, Краматорськ</li>
+        <li><b>05/2001 – 05/2009</b> — Системний адміністратор, KMIKE, Краматорськ</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Освіта</h2>
+      <ul>
+        <li>Магістр менеджменту, DTM MNTU, Київ (2006)</li>
+        <li>Магістр IT, DGMA, Краматорськ (2003)</li>
+        <li>Бакалавр менеджменту, MNTU (2005)</li>
+        <li>Бакалавр інформатики, DGMA (2002)</li>
+        <li>Сертифікати: Deutsch B2 (BFZ Мюнхен, 2024), Deutsch B1 (BFZ Мюнхен, 2023)</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Навички</h2>
+      <ul>
+        <li>Microsoft Office 2016 (добре)</li>
+        <li>Photoshop (базові знання)</li>
+        <li>Мови: німецька (B2), англійська (базова), російська (вільно), українська (вільно)</li>
+        <li>Водійське посвідчення: категорія B</li>
+      </ul>
+    </div>
+    <div class="section certificates">
+      <h2>Сертифікати</h2>
+      <ul>
+        <li>Foundational C# with Microsoft (freeCodeCamp, 2025)</li>
+        <li>Responsive Web Design (freeCodeCamp, 2025)</li>
+        <li>JavaScript Algorithms and Data Structures (freeCodeCamp, 2025)</li>
+        <li>Front End Development Libraries (freeCodeCamp, 2025)</li>
+        <li>Data Visualization (freeCodeCamp, 2025)</li>
+        <li>Deutsch Konversation Niveau C1 (Мюнхен, 2025)</li>
+        <li>Deutsch-Test für den Beruf B2 (telc, 2024)</li>
+      </ul>
+    </div>
+    <div class="section diplomas">
+      <h2>Дипломи</h2>
+      <ul>
+        <li>Бакалавр інформатики (DGMA, 2002)</li>
+        <li>Спеціаліст з інформаційних технологій (DGMA, 2003)</li>
+        <li>Бакалавр менеджменту (MNTU, 2005)</li>
+        <li>Магістр менеджменту організацій (MNTU, 2006)</li>
+        <li>Магістр IT (DGMA, 2003)</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Захоплення</h2>
+      <ul>
+        <li>Теніс, прогулянки, футбол, комп’ютерні ігри</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>
