@@ -4,21 +4,169 @@
   <meta charset="UTF-8">
   <title>Vladimir Voronov - Personal Website</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
-    .container { max-width: 900px; margin: 20px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
-    .lang-buttons { margin-bottom: 20px; }
-    .lang-buttons button { margin-right: 8px; padding: 6px 18px; cursor: pointer; }
-    h1, h2, h3 { color: #234; }
-    .section { margin-bottom: 30px; }
-    .certificates img, .diplomas img { max-width: 240px; margin: 8px; border: 1px solid #ddd; border-radius: 4px; }
-    .photo { float: right; margin-left: 20px; max-width: 160px; }
-    ul { padding-left: 18px; }
+    /* Basic Setup */
+    body {
+        font-family: 'Arial', sans-serif;
+        background: #000;
+        margin: 0;
+        padding: 20px;
+        color: #000;
+        height: 100vh;
+        box-sizing: border-box;
+    }
+
+    /* Main container for the content */
+    .container {
+        background: #fff;
+        padding: 10px;
+        border: 5px solid #000;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: 10px;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Language Buttons */
+    .lang-buttons {
+        padding: 10px;
+        background: #FFFF00; /* Yellow */
+        border: 5px solid #000;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+    .lang-buttons button {
+        padding: 5px 15px;
+        cursor: pointer;
+        border: 3px solid #000;
+        font-weight: bold;
+        background: #fff;
+    }
+    .lang-buttons button:hover {
+        background: #dd0000;
+        color: #fff;
+    }
+
+    .content-wrapper {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* The actual language blocks */
+    .lang {
+        display: none; /* JS controls this */
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(5, minmax(0, auto));
+        gap: 10px;
+        box-sizing: border-box;
+    }
+
+    /* General Section Styling */
+    .section {
+        padding: 15px;
+        border: 5px solid #000;
+        overflow-y: auto;
+    }
+    .section h2 {
+        margin: -15px -15px 15px -15px;
+        padding: 10px 15px;
+        background: #000;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 1.2em;
+    }
+    ul { list-style: none; padding-left: 0px; margin: 0; }
+    li { margin-bottom: 8px; }
+
+    /* Specific Grid Item Placement and Coloring */
+    .lang > h1 {
+        grid-column: 1 / 3;
+        grid-row: 1;
+        padding: 15px;
+        margin: 0;
+        font-size: 2.5vw;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 5px solid #000;
+        background-color: #dd0000; /* Red */
+        color: #fff;
+    }
+
+    .photo {
+        grid-column: 3 / 5;
+        grid-row: 1 / 3; /* Span two rows */
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border: 5px solid #000;
+        box-sizing: border-box;
+        float: none;
+        margin: 0;
+    }
+
+    .lang > .section:nth-of-type(1) { /* Personal Info */
+        grid-column: 1 / 3;
+        grid-row: 2;
+        background: #0000dd; /* Blue */
+        color: #fff;
+    }
+    .lang > .section:nth-of-type(1) h2 { background: #fff; color: #000; }
+
+    .lang > .section:nth-of-type(2) { /* Experience */
+        grid-column: 1 / 3;
+        grid-row: 3 / 6;
+        background: #fff;
+    }
+
+    .lang > .section:nth-of-type(3) { /* Education */
+        grid-column: 3 / 5;
+        grid-row: 3;
+        background: #fff;
+    }
+    .lang > .section:nth-of-type(4) { /* Skills */
+        grid-column: 3 / 4;
+        grid-row: 4;
+        background: #FFFF00; /* Yellow */
+    }
+    .lang > .section:nth-of-type(5) { /* Certificates */
+        grid-column: 1 / 3;
+        grid-row: 6;
+        background: #fff;
+    }
+    .lang > .section:nth-of-type(6) { /* Diplomas */
+        grid-column: 3 / 5;
+        grid-row: 5;
+        background: #fff;
+    }
+    .lang > .section:nth-of-type(7) { /* Hobbies */
+        grid-column: 4 / 5;
+        grid-row: 4;
+        background: #dd0000; /* Red */
+        color: #fff;
+    }
+    .lang > .section:nth-of-type(7) h2 { background: #fff; color: #000; }
+    .lang > .section:nth-of-type(7) ul { list-style: none; padding: 0; }
   </style>
   <script>
     function showLang(lang) {
       var blocks = document.querySelectorAll('.lang');
-      blocks.forEach(function(block) { block.style.display = 'none'; });
-      document.getElementById(lang).style.display = 'block';
+      blocks.forEach(function(block) {
+        block.style.display = 'none';
+      });
+      var activeBlock = document.getElementById(lang);
+      if (activeBlock) {
+        activeBlock.style.display = 'grid';
+      }
     }
     window.onload = function() { showLang('en'); }
   </script>
@@ -330,6 +478,7 @@
         <li>Теніс, прогулянки, футбол, комп’ютерні ігри</li>
       </ul>
     </div>
+  </div>
   </div>
 </div>
 </body>
