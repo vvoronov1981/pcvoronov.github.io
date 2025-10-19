@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PC Voronov — Управление сетями и разработка ПО (Краматорск)</title>
+  <meta name="description" content="PC Voronov — услуги по управлению компьютерными сетями, оборудованием и разработке программного обеспечения. ИП Воронов Владимир Геннадиевич, Краматорск." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="n.png" alt="PC Voronov" class="logo" />
+        <div>
+          <h1>PC Voronov</h1>
+          <p class="tagline">Управление сетями, обслуживание оборудования и разработка ПО — Краматорск</p>
+        </div>
+      </div>
+      <nav class="main-nav" aria-label="Главное меню">
+        <a href="#services">Услуги</a>
+        <a href="#about">О компании</a>
+        <a href="#contacts">Контакты</a>
+        <a href="bank-details.html">Реквизиты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h2>Надёжное управление сетями и профессиональная разработка ПО</h2>
+        <p>Мы проектируем, внедряем и поддерживаем компьютерные сети, обслуживаем оборудование и создаём кастомное программное обеспечение для бизнеса.</p>
+        <p class="cta-row">
+          <a class="btn" href="#contacts">Связаться с нами</a>
+          <a class="btn btn-outline" href="#services">Подробнее об услугах</a>
+        </p>
+      </div>
+    </section>
+
+    <section id="services" class="container services">
+      <h3>Наши услуги</h3>
+      <div class="cards">
+        <article class="card">
+          <h4>Управление и мониторинг сетей</h4>
+          <p>Проектирование LAN/WAN, настройка маршрутизации, VLAN, мониторинг состояния сети, SLA-поддержка.</p>
+        </article>
+
+        <article class="card">
+          <h4>Поддержка и обслуживание оборудования</h4>
+          <p>Установка и настройка серверов, коммутаторов, маршрутизаторов, резервирование и обновления ПО на оборудовании.</p>
+        </article>
+
+        <article class="card">
+          <h4>Разработка программного обеспечения</h4>
+          <p>Создание корпоративных приложений, сервисов для автоматизации, интеграция с существующей инфраструктурой.</p>
+        </article>
+
+        <article class="card">
+          <h4>Аудит и консультации</h4>
+          <p>Аудит безопасности сети, рекомендации по оптимизации, подготовка спецификаций и смет.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="container about">
+      <h3>О компании</h3>
+      <p><strong>PC Voronov</strong> — частная компания (ИП). Руководитель: ИП Воронов Владимир Геннадиевич. Штаб-квартира — Краматорск. Мы работаем с малыми и средними предприятиями, предлагаем индивидуальные решения и долгосрочную поддержку.</p>
+      <ul>
+        <li>Опыт в сетевых решениях: проектирование, развертывание и сопровождение;</li>
+        <li>Сопровождение серверного и сетевого оборудования;</li>
+        <li>Разработка ПО под конкретные бизнес-процессы;</li>
+        <li>Гарантия конфиденциальности и соблюдение корпоративных политик.</li>
+      </ul>
+    </section>
+
+    <section id="contacts" class="container contacts">
+      <h3>Контакты</h3>
+      <div class="contact-grid">
+        <div>
+          <h4>Связаться с нами</h4>
+          <p>Телефон: <a href="tel:+380505235040">+380 (50) 523-5040</a></p>
+          <p>Email: <a href="mailto:comprw@gmail.com">comprw@gmail.com</a></p>
+          <p>Адрес: Краматорск</p>
+          <p>Руководитель: ИП Воронов Владимир Геннадиевич</p>
+          <p><a class="btn" href="bank-details.html">Посмотреть реквизиты</a></p>
+        </div>
+
+        <div>
+          <h4>Форма обратной связи</h4>
+          <!-- Простая форма: на продакшене замените action на серверный обработчик -->
+          <form class="contact-form" action="mailto:comprw@gmail.com" method="post" enctype="text/plain">
+            <label>Имя
+              <input type="text" name="name" required />
+            </label>
+            <label>Компания
+              <input type="text" name="company" />
+            </label>
+            <label>Телефон или email
+              <input type="text" name="contact" required />
+            </label>
+            <label>Сообщение
+              <textarea name="message" rows="4" required></textarea>
+            </label>
+            <div class="form-actions">
+              <button type="submit" class="btn">Отправить</button>
+              <button type="reset" class="btn btn-outline">Очистить</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="container footer-cta">
+      <p>Нужна консультация или выезд инженера? Оставьте заявку — мы свяжемся в течение рабочего дня.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p>&copy; PC Voronov — ИП Воронов Владимир Геннадиевич</p>
+        <p>Краматорск</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="#services">Услуги</a>
+        <a href="#about">О компании</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- По желанию подключите иконки и скрипты -->
+</body>
+</html>
