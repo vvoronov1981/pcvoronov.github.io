@@ -22,6 +22,27 @@ npm run dev
 
 The server will start on `http://localhost:5001`
 
+## Testing
+
+To run the automated test suite:
+
+1. Start the server in one terminal:
+   ```bash
+   npm start
+   ```
+
+2. In another terminal, run the tests:
+   ```bash
+   npm test
+   ```
+
+The test suite will verify:
+- API key authentication (valid, missing, invalid)
+- GET /controls endpoint
+- GET /controls/:id endpoint
+- POST /controls/:id/action endpoint
+- Health check endpoint
+
 ## API Documentation
 
 ### Authentication
