@@ -8,6 +8,20 @@ const API_KEY = 'shark';
 // Middleware to parse JSON
 app.use(express.json());
 
+// Enable CORS for browser clients
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, X-Api-Key');
+  
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  
+  next();
+});
+
 // Middleware for API key authentication
 const authenticateApiKey = (req, res, next) => {
   const apiKey = req.header('X-Api-Key');
