@@ -285,6 +285,7 @@ class TradingController {
 
   /**
    * Get bars (candlestick data) for a symbol
+   * Note: For large datasets, consider implementing pagination or streaming
    */
   async getBars(req, res) {
     try {

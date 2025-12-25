@@ -9,7 +9,7 @@ module.exports = {
     apiKey: process.env.ALPACA_API_KEY,
     apiSecret: process.env.ALPACA_API_SECRET,
     baseUrl: process.env.ALPACA_BASE_URL || 'https://paper-api.alpaca.markets',
-    paper: process.env.ALPACA_BASE_URL?.includes('paper') !== false
+    paper: !process.env.ALPACA_BASE_URL || process.env.ALPACA_BASE_URL.includes('paper')
   },
   auth: {
     username: process.env.API_USERNAME || 'admin',
