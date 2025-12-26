@@ -62,6 +62,9 @@ async function init() {
         // Populate certifications
         populateCertifications();
 
+        // Update copyright year
+        updateCopyrightYear();
+
         // Hide loading screen
         hideLoadingScreen();
     } catch (error) {
@@ -446,6 +449,16 @@ function hideLoadingScreen() {
                 loader.style.display = 'none';
             }, 300);
         }, 500);
+    }
+}
+
+/**
+ * Update copyright year dynamically
+ */
+function updateCopyrightYear() {
+    const yearElement = document.getElementById('copyright-year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
     }
 }
 
