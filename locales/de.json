@@ -1,0 +1,86 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "about": "Über mich",
+    "skills": "Fähigkeiten",
+    "projects": "Projekte",
+    "experience": "Erfahrung",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "greeting": "Hallo, ich bin",
+    "role": "Frontend-Entwickler",
+    "description": "Ich erstelle moderne, responsive Webanwendungen mit sauberem Code und schönem Design",
+    "cta_primary": "Projekte ansehen",
+    "cta_secondary": "Kontaktieren",
+    "scroll_down": "Nach unten scrollen"
+  },
+  "about": {
+    "title": "Über mich",
+    "subtitle": "Lernen Sie mich besser kennen",
+    "description": "Ich bin ein leidenschaftlicher Frontend-Entwickler mit über 10 Jahren Erfahrung in der Entwicklung von Webanwendungen. Ich spezialisiere mich auf React, TypeScript und moderne JavaScript-Frameworks. Ich liebe es, intuitive, dynamische Benutzererlebnisse zu schaffen, die das Leben der Menschen einfacher machen.",
+    "more_info": "Ich lebe derzeit in Deutschland und arbeite remote mit Kunden aus der ganzen Welt. Ich freue mich immer über neue Herausforderungen und die Zusammenarbeit an interessanten Projekten.",
+    "stats": {
+      "years": "Jahre Erfahrung",
+      "projects": "Abgeschlossene Projekte",
+      "clients": "Zufriedene Kunden"
+    }
+  },
+  "skills": {
+    "title": "Fähigkeiten & Technologien",
+    "subtitle": "Womit ich arbeite",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "tools": "Tools & Design",
+    "certifications": "Zertifikate"
+  },
+  "projects": {
+    "title": "Projekte",
+    "subtitle": "Meine neuesten Arbeiten",
+    "filter_all": "Alle",
+    "filter_react": "React",
+    "filter_typescript": "TypeScript",
+    "filter_fullstack": "Full Stack",
+    "view_code": "Code ansehen",
+    "view_demo": "Live Demo",
+    "loading": "Projekte werden von GitHub geladen..."
+  },
+  "experience": {
+    "title": "Erfahrung",
+    "subtitle": "Meine berufliche Laufbahn",
+    "present": "Heute"
+  },
+  "contact": {
+    "title": "Kontakt aufnehmen",
+    "subtitle": "Lassen Sie uns zusammenarbeiten",
+    "info": {
+      "title": "Kontaktinformationen",
+      "email": "E-Mail",
+      "location": "Standort",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    },
+    "form": {
+      "title": "Senden Sie mir eine Nachricht",
+      "name": "Ihr Name",
+      "name_placeholder": "Max Mustermann",
+      "email": "Ihre E-Mail",
+      "email_placeholder": "max@beispiel.de",
+      "message": "Ihre Nachricht",
+      "message_placeholder": "Erzählen Sie mir von Ihrem Projekt...",
+      "submit": "Nachricht senden",
+      "sending": "Wird gesendet...",
+      "success": "Nachricht erfolgreich gesendet!",
+      "error": "Fehler beim Senden der Nachricht. Bitte versuchen Sie es erneut."
+    }
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten",
+    "made_with": "Erstellt mit",
+    "by": "von"
+  },
+  "common": {
+    "loading": "Wird geladen...",
+    "back_to_top": "Nach oben"
+  }
+}
