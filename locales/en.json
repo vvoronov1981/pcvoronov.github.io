@@ -1,0 +1,86 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "role": "Frontend Developer",
+    "description": "I create modern, responsive web applications with clean code and beautiful design",
+    "cta_primary": "View Projects",
+    "cta_secondary": "Contact Me",
+    "scroll_down": "Scroll Down"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Get to know me better",
+    "description": "I'm a passionate Frontend Developer with over 10 years of experience in building web applications. I specialize in React, TypeScript, and modern JavaScript frameworks. I love creating intuitive, dynamic user experiences that make people's lives easier.",
+    "more_info": "I'm currently based in Germany and work remotely with clients from around the world. I'm always excited to take on new challenges and collaborate on interesting projects.",
+    "stats": {
+      "years": "Years Experience",
+      "projects": "Projects Completed",
+      "clients": "Happy Clients"
+    }
+  },
+  "skills": {
+    "title": "Skills & Technologies",
+    "subtitle": "What I work with",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "tools": "Tools & Design",
+    "certifications": "Certifications"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "My recent work",
+    "filter_all": "All",
+    "filter_react": "React",
+    "filter_typescript": "TypeScript",
+    "filter_fullstack": "Full Stack",
+    "view_code": "View Code",
+    "view_demo": "Live Demo",
+    "loading": "Loading projects from GitHub..."
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "My professional journey",
+    "present": "Present"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Let's work together",
+    "info": {
+      "title": "Contact Information",
+      "email": "Email",
+      "location": "Location",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    },
+    "form": {
+      "title": "Send me a message",
+      "name": "Your Name",
+      "name_placeholder": "John Doe",
+      "email": "Your Email",
+      "email_placeholder": "john@example.com",
+      "message": "Your Message",
+      "message_placeholder": "Tell me about your project...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Failed to send message. Please try again."
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "made_with": "Made with",
+    "by": "by"
+  },
+  "common": {
+    "loading": "Loading...",
+    "back_to_top": "Back to Top"
+  }
+}
