@@ -460,7 +460,7 @@ function populateServices() {
 
     // Re-translate the newly added elements
     if (i18n) {
-        i18n.translatePage();
+        i18n.updatePageContent();
     }
 }
 
