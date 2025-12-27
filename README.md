@@ -44,10 +44,12 @@ Modern personal website for Frontend Developer, built with Vanilla JavaScript, H
 ├── assets/
 │   ├── images/           # Image assets
 │   └── favicon.svg       # Site favicon
-└── locales/
-    ├── en.json           # English translations
-    ├── de.json           # German translations
-    └── ru.json           # Russian translations
+├── locales/
+│   ├── en.json           # English translations
+│   ├── de.json           # German translations
+│   └── ru.json           # Russian translations
+└── StockTradingBot/      # Stock Trading Bot (Delphi 12)
+    └── README.md          # See project documentation
 ```
 
 ## 🎨 Design Features
@@ -162,6 +164,18 @@ Update CSS custom properties in `css/styles.css`:
 ## 📄 License
 
 This project is open source and available under the MIT License.
+
+## 💼 Additional Projects
+
+### Stock Trading Bot (Delphi 12)
+Automated stock trading console application with Alpaca API integration. Features:
+- Algorithmic trading based on historical data analysis
+- JWT authentication with REST API
+- Multi-threaded architecture for monitoring multiple stocks
+- Risk management with Take Profit and Stop Loss
+- Comprehensive logging and monitoring
+
+📖 [View Documentation](./StockTradingBot/README.md) | 🚀 [Quick Start Guide](./StockTradingBot/QUICKSTART.md)
 
 ## 👤 Contact
 
