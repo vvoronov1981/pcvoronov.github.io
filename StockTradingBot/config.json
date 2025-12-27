@@ -1,0 +1,17 @@
+{
+  "api": {
+    "base_url": "https://your-github-api-server.com/api",
+    "jwt_token": "your_jwt_token_here"
+  },
+  "trading": {
+    "symbols": ["AAPL", "MSFT", "GOOGL", "TSLA"],
+    "analysis_period_hours": 30,
+    "leverage": 2.0,
+    "stop_loss_percent": 70,
+    "update_interval_seconds": 60
+  },
+  "logging": {
+    "log_file": "trading_bot.log",
+    "log_level": "INFO"
+  }
+}

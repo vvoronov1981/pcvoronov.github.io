@@ -1,0 +1,65 @@
+# Игнорируем скомпилированные файлы Delphi/FreePascal
+*.dcu
+*.exe
+*.dll
+*.bpl
+*.bpi
+*.dcp
+*.so
+*.apk
+*.drc
+*.map
+*.dres
+*.rsm
+*.tds
+*.o
+*.obj
+*.ppu
+*.compiled
+*.local
+
+# Игнорируем файлы проекта Delphi
+*.identcache
+*.projdata
+*.tvsconfig
+*.dsk
+*.cbproj.local
+*.dproj.local
+*.groupproj.local
+*.stat
+
+# Игнорируем временные файлы
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Игнорируем директории с бинарными файлами
+__history/
+__recovery/
+Win32/
+Win64/
+Linux64/
+OSX64/
+Debug/
+Release/
+lib/
+
+# Игнорируем файлы логов
+*.log
+trading_bot.log
+
+# Игнорируем конфигурацию с секретами
+# Раскомментируйте следующую строку, если не хотите коммитить config.json
+# config.json
+
+# Игнорируем IDE файлы
+.vscode/
+.idea/
+*.sublime-*
+
+# Игнорируем системные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
