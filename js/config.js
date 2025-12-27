@@ -104,6 +104,76 @@ const CONFIG = {
             issuer: 'Microsoft',
             image: 'foundational_csharp_with_Microsoft.png'
         }
+    ],
+    
+    // Financial Services
+    financialServices: [
+        {
+            icon: 'fa-chart-line',
+            titleKey: 'services.investment.title',
+            descriptionKey: 'services.investment.description',
+            features: [
+                'services.investment.feature1',
+                'services.investment.feature2',
+                'services.investment.feature3',
+                'services.investment.feature4'
+            ]
+        },
+        {
+            icon: 'fa-piggy-bank',
+            titleKey: 'services.savings.title',
+            descriptionKey: 'services.savings.description',
+            features: [
+                'services.savings.feature1',
+                'services.savings.feature2',
+                'services.savings.feature3',
+                'services.savings.feature4'
+            ]
+        },
+        {
+            icon: 'fa-shield-alt',
+            titleKey: 'services.insurance.title',
+            descriptionKey: 'services.insurance.description',
+            features: [
+                'services.insurance.feature1',
+                'services.insurance.feature2',
+                'services.insurance.feature3',
+                'services.insurance.feature4'
+            ]
+        },
+        {
+            icon: 'fa-home',
+            titleKey: 'services.realestate.title',
+            descriptionKey: 'services.realestate.description',
+            features: [
+                'services.realestate.feature1',
+                'services.realestate.feature2',
+                'services.realestate.feature3',
+                'services.realestate.feature4'
+            ]
+        },
+        {
+            icon: 'fa-graduation-cap',
+            titleKey: 'services.retirement.title',
+            descriptionKey: 'services.retirement.description',
+            features: [
+                'services.retirement.feature1',
+                'services.retirement.feature2',
+                'services.retirement.feature3',
+                'services.retirement.feature4'
+            ]
+        },
+        {
+            icon: 'fa-balance-scale',
+            titleKey: 'services.tax.title',
+            descriptionKey: 'services.tax.description',
+            features: [
+                'services.tax.feature1',
+                'services.tax.feature2',
+                'services.tax.feature3',
+                'services.tax.feature4'
+            ]
+        }
     ]
 };
 
