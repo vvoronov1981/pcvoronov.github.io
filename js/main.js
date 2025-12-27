@@ -62,6 +62,9 @@ async function init() {
         // Populate certifications
         populateCertifications();
 
+        // Populate services
+        populateServices();
+
         // Update copyright year
         updateCopyrightYear();
 
@@ -425,6 +428,55 @@ function populateCertifications() {
     `).join('');
 
     container.innerHTML = certificationsHTML;
+}
+
+/**
+ * Populate financial services section
+ */
+function populateServices() {
+    const container = document.getElementById('services-grid');
+    if (!container) return;
+
+    const servicesHTML = CONFIG.financialServices.map((service, index) => `
+        <div class="service-card animate-on-scroll" style="animation-delay: ${index * 0.1}s">
+            <div class="service-icon">
+                <i class="fas ${service.icon}"></i>
+            </div>
+            <h3 class="service-title" data-i18n="${service.titleKey}"></h3>
+            <p class="service-description" data-i18n="${service.descriptionKey}"></p>
+            <ul class="service-features">
+                ${service.features.map(feature => `
+                    <li class="service-feature" data-i18n="${feature}"></li>
+                `).join('')}
+            </ul>
+            <button class="service-cta" onclick="scrollToContact()">
+                <i class="fas fa-calendar-check"></i>
+                <span data-i18n="services.cta">Get Consultation</span>
+            </button>
+        </div>
+    `).join('');
+
+    container.innerHTML = servicesHTML;
+
+    // Re-translate the newly added elements
+    if (i18n) {
+        i18n.translatePage();
+    }
+}
+
+/**
+ * Scroll to contact section
+ */
+function scrollToContact() {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+        const offset = 80;
+        const targetPosition = contactSection.offsetTop - offset;
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    }
 }
 
 /**

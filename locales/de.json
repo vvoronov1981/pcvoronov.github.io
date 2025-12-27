@@ -3,6 +3,7 @@
     "home": "Startseite",
     "about": "Über mich",
     "skills": "Fähigkeiten",
+    "services": "Dienstleistungen",
     "projects": "Projekte",
     "experience": "Erfahrung",
     "contact": "Kontakt"
@@ -82,5 +83,58 @@
   "common": {
     "loading": "Wird geladen...",
     "back_to_top": "Nach oben"
+  },
+  "services": {
+    "title": "Finanzberatungsdienste",
+    "subtitle": "Professionelle finanzielle Beratung für Ihre Zukunft",
+    "cta": "Beratung erhalten",
+    "investment": {
+      "title": "Investitionsplanung",
+      "description": "Strategische Investitionsberatung, die auf Ihre finanziellen Ziele und Risikobereitschaft zugeschnitten ist.",
+      "feature1": "Portfoliodiversifizierungsstrategien",
+      "feature2": "Risikobewertung und -management",
+      "feature3": "Langfristige Vermögensaufbaupläne",
+      "feature4": "Marktanalyse und Einblicke"
+    },
+    "savings": {
+      "title": "Sparen & Budgetierung",
+      "description": "Expertenberatung zum Aufbau von Ersparnissen und effektiver Budgetverwaltung.",
+      "feature1": "Persönliche Budgetplanung",
+      "feature2": "Notfallfondstrategien",
+      "feature3": "Ausgabenverfolgungssysteme",
+      "feature4": "Optimierung von Sparzielen"
+    },
+    "insurance": {
+      "title": "Versicherungsplanung",
+      "description": "Umfassende Versicherungslösungen zum Schutz von Ihnen und Ihrer Familie.",
+      "feature1": "Lebensversicherungsberatung",
+      "feature2": "Optimierung der Krankenversicherung",
+      "feature3": "Eigentums- und Vermögensschutz",
+      "feature4": "Risikodeckungsanalyse"
+    },
+    "realestate": {
+      "title": "Immobilieninvestitionen",
+      "description": "Beratung zu Immobilieninvestitionen und Immobilienfinanzierung.",
+      "feature1": "Immobilieninvestitionsanalyse",
+      "feature2": "Hypothekenberatung",
+      "feature3": "Immobilienmarkteinblicke",
+      "feature4": "Mieteinkommensstrategien"
+    },
+    "retirement": {
+      "title": "Ruhestandsplanung",
+      "description": "Sichern Sie Ihre Zukunft mit umfassenden Ruhestandsplanungsstrategien.",
+      "feature1": "Pensionsplanoptimierung",
+      "feature2": "Ruhestandseinkommensplanung",
+      "feature3": "Langzeitpflegeplanung",
+      "feature4": "Maximierung der Sozialversicherung"
+    },
+    "tax": {
+      "title": "Steueroptimierung",
+      "description": "Legale Steuerreduzierungsstrategien und Finanzplanung.",
+      "feature1": "Steuereffiziente Anlagestrategien",
+      "feature2": "Abzugsoptimierung",
+      "feature3": "Steuerplanung für Unternehmen",
+      "feature4": "Compliance- und Einreichungshilfe"
+    }
   }
 }

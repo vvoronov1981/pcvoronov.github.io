@@ -3,6 +3,7 @@
     "home": "Home",
     "about": "About",
     "skills": "Skills",
+    "services": "Services",
     "projects": "Projects",
     "experience": "Experience",
     "contact": "Contact"
@@ -82,5 +83,58 @@
   "common": {
     "loading": "Loading...",
     "back_to_top": "Back to Top"
+  },
+  "services": {
+    "title": "Financial Consulting Services",
+    "subtitle": "Professional financial guidance for your future",
+    "cta": "Get Consultation",
+    "investment": {
+      "title": "Investment Planning",
+      "description": "Strategic investment advice tailored to your financial goals and risk tolerance.",
+      "feature1": "Portfolio diversification strategies",
+      "feature2": "Risk assessment and management",
+      "feature3": "Long-term wealth building plans",
+      "feature4": "Market analysis and insights"
+    },
+    "savings": {
+      "title": "Savings & Budgeting",
+      "description": "Expert guidance on building savings and managing your budget effectively.",
+      "feature1": "Personal budget planning",
+      "feature2": "Emergency fund strategies",
+      "feature3": "Expense tracking systems",
+      "feature4": "Savings goal optimization"
+    },
+    "insurance": {
+      "title": "Insurance Planning",
+      "description": "Comprehensive insurance solutions to protect you and your family.",
+      "feature1": "Life insurance consultation",
+      "feature2": "Health coverage optimization",
+      "feature3": "Property and asset protection",
+      "feature4": "Risk coverage analysis"
+    },
+    "realestate": {
+      "title": "Real Estate Investment",
+      "description": "Guidance on real estate investments and property financing.",
+      "feature1": "Property investment analysis",
+      "feature2": "Mortgage consultation",
+      "feature3": "Real estate market insights",
+      "feature4": "Rental income strategies"
+    },
+    "retirement": {
+      "title": "Retirement Planning",
+      "description": "Secure your future with comprehensive retirement planning strategies.",
+      "feature1": "Pension plan optimization",
+      "feature2": "Retirement income planning",
+      "feature3": "Long-term care planning",
+      "feature4": "Social security maximization"
+    },
+    "tax": {
+      "title": "Tax Optimization",
+      "description": "Legal tax reduction strategies and financial planning.",
+      "feature1": "Tax-efficient investment strategies",
+      "feature2": "Deduction optimization",
+      "feature3": "Tax planning for businesses",
+      "feature4": "Compliance and filing assistance"
+    }
   }
 }
