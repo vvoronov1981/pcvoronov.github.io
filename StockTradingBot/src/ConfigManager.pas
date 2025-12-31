@@ -30,7 +30,7 @@ type
 implementation
 
 uses
-  Logger;
+  Logger, CredentialsProvider;
 
 { TConfigManager }
 
@@ -87,12 +87,17 @@ end;
 procedure TConfigManager.ParseAPIConfig(AJSON: TJSONObject);
 var
   APIObj: TJSONObject;
+  BaseURL, JWTToken: string;
 begin
   APIObj := AJSON.Objects['api'];
   if Assigned(APIObj) then
   begin
-    FConfig.API.BaseURL := APIObj.Get('base_url', '');
-    FConfig.API.JWTToken := APIObj.Get('jwt_token', '');
+    BaseURL := APIObj.Get('base_url', '');
+    JWTToken := APIObj.Get('jwt_token', '');
+    
+    // Use CredentialsProvider to resolve values from environment variables
+    FConfig.API.BaseURL := TCredentialsProvider.GetAPIBaseURL(BaseURL);
+    FConfig.API.JWTToken := TCredentialsProvider.GetJWTToken(JWTToken);
   end;
 end;
 
@@ -109,6 +114,10 @@ begin
     FConfig.Trading.Leverage := TradingObj.Get('leverage', 2.0);
     FConfig.Trading.StopLossPercent := TradingObj.Get('stop_loss_percent', 70.0);
     FConfig.Trading.UpdateIntervalSeconds := TradingObj.Get('update_interval_seconds', 60);
+    FConfig.Trading.EnableRandomTickerManagement := TradingObj.Get('enable_random_ticker_management', True);
+    FConfig.Trading.TickerOperationIntervalMinutes := TradingObj.Get('ticker_operation_interval_minutes', 30);
+    FConfig.Trading.MaxActiveTickers := TradingObj.Get('max_active_tickers', 10);
+    FConfig.Trading.MinActiveTickers := TradingObj.Get('min_active_tickers', 3);
     
     SymbolsArray := TradingObj.Arrays['symbols'];
     if Assigned(SymbolsArray) then
@@ -188,6 +197,10 @@ begin
     TradingObj.Add('leverage', FConfig.Trading.Leverage);
     TradingObj.Add('stop_loss_percent', FConfig.Trading.StopLossPercent);
     TradingObj.Add('update_interval_seconds', FConfig.Trading.UpdateIntervalSeconds);
+    TradingObj.Add('enable_random_ticker_management', FConfig.Trading.EnableRandomTickerManagement);
+    TradingObj.Add('ticker_operation_interval_minutes', FConfig.Trading.TickerOperationIntervalMinutes);
+    TradingObj.Add('max_active_tickers', FConfig.Trading.MaxActiveTickers);
+    TradingObj.Add('min_active_tickers', FConfig.Trading.MinActiveTickers);
     JSON.Add('trading', TradingObj);
 
     // Logging Configuration

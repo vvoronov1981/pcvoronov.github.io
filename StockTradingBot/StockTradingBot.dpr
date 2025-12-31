@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}
   SysUtils, Classes, Types, DateUtils,
-  ConfigManager, Logger, AlpacaAPIClient, TradingStrategy, OrderManager;
+  ConfigManager, Logger, AlpacaAPIClient, TradingStrategy, OrderManager, TickerManager;
 
 type
   TTradingBot = class
@@ -16,7 +16,9 @@ type
     FAPIClient: TAlpacaAPIClient;
     FStrategy: TTradingStrategy;
     FOrderManager: TOrderManager;
+    FTickerManager: TTickerManager;
     FRunning: Boolean;
+    FLastTickerOperation: TDateTime;
     
     procedure ProcessCommand(const ACommand: string);
     procedure ShowStatus;
@@ -28,6 +30,7 @@ type
     procedure StopTrading;
     procedure TradingLoop;
     procedure ProcessSymbol(const ASymbol: string);
+    procedure CheckTickerManagement;
   public
     constructor Create(const AConfigFile: string);
     destructor Destroy; override;
@@ -81,6 +84,14 @@ begin
     FConfigManager.Config.Trading.Leverage
   );
   
+  // Инициализируем TickerManager
+  FTickerManager := TTickerManager.Create(
+    FConfigManager.Config.Trading.Symbols,
+    FConfigManager.Config.Trading.MaxActiveTickers,
+    FConfigManager.Config.Trading.MinActiveTickers
+  );
+  FLastTickerOperation := Now;
+  
   WriteLn('Initialization complete!');
   WriteLn;
 end;
@@ -89,6 +100,7 @@ destructor TTradingBot.Destroy;
 begin
   GlobalLogger.Info('=== Stock Trading Bot Stopped ===');
   
+  FreeAndNil(FTickerManager);
   FreeAndNil(FOrderManager);
   FreeAndNil(FStrategy);
   FreeAndNil(FAPIClient);
@@ -280,6 +292,9 @@ begin
   
   while FRunning do
   begin
+    // Проверяем управление тикерами
+    CheckTickerManagement;
+    
     // Синхронизируем позиции с API
     FOrderManager.SyncPositionsWithAPI;
     
@@ -382,6 +397,31 @@ begin
       WriteLn('Unknown command: ', Cmd, '. Type "help" for available commands.');
   finally
     Parts.Free;
+  end;
+end;
+
+procedure TTradingBot.CheckTickerManagement;
+var
+  MinutesSinceLastOp: Integer;
+begin
+  // Check if random ticker management is enabled
+  if not FConfigManager.Config.Trading.EnableRandomTickerManagement then
+    Exit;
+    
+  // Calculate minutes since last operation
+  MinutesSinceLastOp := MinutesBetween(Now, FLastTickerOperation);
+  
+  // Perform random operation if interval has passed
+  if MinutesSinceLastOp >= FConfigManager.Config.Trading.TickerOperationIntervalMinutes then
+  begin
+    GlobalLogger.Info(Format('Performing random ticker management (interval: %d minutes)', 
+      [FConfigManager.Config.Trading.TickerOperationIntervalMinutes]));
+    
+    FTickerManager.PerformRandomOperation;
+    FLastTickerOperation := Now;
+    
+    // Save updated configuration
+    FConfigManager.Save;
   end;
 end;
 

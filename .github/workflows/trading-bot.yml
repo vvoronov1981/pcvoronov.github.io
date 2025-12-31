@@ -1,0 +1,80 @@
+name: StockTradingBot CI/CD
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'StockTradingBot/**'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'StockTradingBot/**'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  build:
+    name: Build StockTradingBot
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Install FreePascal Compiler
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fpc libssl-dev
+      
+      - name: Build StockTradingBot
+        run: |
+          cd StockTradingBot
+          fpc -O3 -XX -CX StockTradingBot.dpr
+      
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: StockTradingBot-linux
+          path: StockTradingBot/StockTradingBot
+          retention-days: 7
+
+  # Demo trading job - disabled by default, enable for testing
+  # Uncomment and configure secrets to run automated trading
+  # trade-demo:
+  #   name: Run Trading Bot (Demo)
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   if: github.event_name == 'workflow_dispatch'  # Only run on manual trigger
+  #   
+  #   env:
+  #     ALPACA_API_URL: ${{ secrets.ALPACA_API_URL }}
+  #     JWT_TOKEN: ${{ secrets.JWT_TOKEN }}
+  #     ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+  #     ALPACA_ACCOUNT: ${{ secrets.ALPACA_ACCOUNT }}
+  #   
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #     
+  #     - name: Download build artifact
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: StockTradingBot-linux
+  #         path: StockTradingBot/
+  #     
+  #     - name: Set executable permission
+  #       run: chmod +x StockTradingBot/StockTradingBot
+  #     
+  #     - name: Run trading bot
+  #       timeout-minutes: 5
+  #       run: |
+  #         cd StockTradingBot
+  #         # Run bot in background with timeout
+  #         timeout 300 ./StockTradingBot config.json || echo "Trading session completed"
+  #     
+  #     - name: Upload trading logs
+  #       if: always()
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: trading-logs
+  #         path: StockTradingBot/*.log
+  #         retention-days: 30
