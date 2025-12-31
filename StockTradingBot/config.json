@@ -4,7 +4,7 @@
     "jwt_token": "your_jwt_token_here"
   },
   "trading": {
-    "symbols": ["AAPL", "MSFT", "GOOGL", "TSLA", "NVDA", "AAPL", "MSFT", "GOOGL", "GOOG", "AMZN", "META", "TSLA", "AVGO", "ORCL", "ADBE", "CRM", "CSCO", "INTC", "AMD", "TXN", "QCOM", "PLTR", "ASML", "INTU", "MU", "PANW", "SNOW , "KLAC", "ADI", "CDNS", "CRWD", "LRCX", "ABNB", "WDAY", "AMAT", "MCHP", "FTNT", "SNPS", "ON", "DELL", "ANET", "TEAM", "MNST", "TTWO", "ANSS", "ZS", "DDOG", "PSTG", "NXPI", "GFS", "ENPH"],
+    "symbols": ["AAPL", "MSFT", "GOOGL", "TSLA"],
     "analysis_period_hours": 30,
     "leverage": 2.0,
     "stop_loss_percent": 70,
