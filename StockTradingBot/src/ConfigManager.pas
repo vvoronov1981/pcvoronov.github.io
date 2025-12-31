@@ -87,17 +87,19 @@ end;
 procedure TConfigManager.ParseAPIConfig(AJSON: TJSONObject);
 var
   APIObj: TJSONObject;
-  BaseURL, JWTToken: string;
+  BaseURL, APIKey, APISecret: string;
 begin
   APIObj := AJSON.Objects['api'];
   if Assigned(APIObj) then
   begin
     BaseURL := APIObj.Get('base_url', '');
-    JWTToken := APIObj.Get('jwt_token', '');
+    APIKey := APIObj.Get('api_key', '');
+    APISecret := APIObj.Get('api_secret', '');
     
     // Use CredentialsProvider to resolve values from environment variables
     FConfig.API.BaseURL := TCredentialsProvider.GetAPIBaseURL(BaseURL);
-    FConfig.API.JWTToken := TCredentialsProvider.GetJWTToken(JWTToken);
+    FConfig.API.APIKey := TCredentialsProvider.GetAPIKey(APIKey);
+    FConfig.API.APISecret := TCredentialsProvider.GetAPISecret(APISecret);
   end;
 end;
 
@@ -184,7 +186,8 @@ begin
     // API Configuration
     APIObj := TJSONObject.Create;
     APIObj.Add('base_url', FConfig.API.BaseURL);
-    APIObj.Add('jwt_token', FConfig.API.JWTToken);
+    APIObj.Add('api_key', FConfig.API.APIKey);
+    APIObj.Add('api_secret', FConfig.API.APISecret);
     JSON.Add('api', APIObj);
 
     // Trading Configuration
@@ -237,9 +240,14 @@ begin
     Result := False;
   end;
   
-  if FConfig.API.JWTToken = '' then
+  if FConfig.API.APIKey = '' then
   begin
-    WriteLn('Warning: JWT Token is not set');
+    WriteLn('Warning: API Key is not set');
+  end;
+  
+  if FConfig.API.APISecret = '' then
+  begin
+    WriteLn('Warning: API Secret is not set');
   end;
   
   if FConfig.Trading.Symbols.Count = 0 then

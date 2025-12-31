@@ -1,7 +1,8 @@
 {
   "api": {
     "base_url": "${ALPACA_API_URL}",
-    "jwt_token": "${JWT_TOKEN}"
+    "api_key": "${ALPACA_API_KEY}",
+    "api_secret": "${ALPACA_API_SECRET}"
   },
   "trading": {
     "symbols": ["AAPL", "MSFT", "GOOGL", "TSLA"],

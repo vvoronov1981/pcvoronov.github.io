@@ -70,7 +70,8 @@ begin
   // Инициализируем компоненты
   FAPIClient := TAlpacaAPIClient.Create(
     FConfigManager.Config.API.BaseURL,
-    FConfigManager.Config.API.JWTToken
+    FConfigManager.Config.API.APIKey,
+    FConfigManager.Config.API.APISecret
   );
   
   FStrategy := TTradingStrategy.Create(

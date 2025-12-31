@@ -1,7 +1,8 @@
 {
   "api": {
-    "base_url": "${ALPACA_API_URL}",
-    "jwt_token": "${JWT_TOKEN}"
+    "base_url": "https://paper-api.alpaca.markets",
+    "api_key": "PKU36NWBUW5V7OPXKR4NVLTIV7",
+    "api_secret": "B8pxSELPypBnD4DcQQw4PPNHFZ1Gu7pPhk4DeAJNJjom"
   },
   "trading": {
     "symbols": ["AAPL", "MSFT", "GOOGL", "TSLA"],
