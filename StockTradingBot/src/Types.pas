@@ -15,7 +15,8 @@ type
   // Конфигурация API
   TAPIConfig = record
     BaseURL: string;
-    JWTToken: string;
+    APIKey: string;
+    APISecret: string;
   end;
 
   // Конфигурация торговли

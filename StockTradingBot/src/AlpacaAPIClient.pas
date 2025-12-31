@@ -11,13 +11,14 @@ type
   TAlpacaAPIClient = class
   private
     FBaseURL: string;
-    FJWTToken: string;
+    FAPIKey: string;
+    FAPISecret: string;
     FHTTPClient: TFPHTTPClient;
     
     function GetAuthHeaders: TStringList;
     function MakeRequest(const AMethod, AEndpoint: string; AData: TJSONObject = nil): TJSONObject;
   public
-    constructor Create(const ABaseURL, AJWTToken: string);
+    constructor Create(const ABaseURL, AAPIKey, AAPISecret: string);
     destructor Destroy; override;
     
     // API методы
@@ -38,11 +39,12 @@ uses
 
 { TAlpacaAPIClient }
 
-constructor TAlpacaAPIClient.Create(const ABaseURL, AJWTToken: string);
+constructor TAlpacaAPIClient.Create(const ABaseURL, AAPIKey, AAPISecret: string);
 begin
   inherited Create;
   FBaseURL := ABaseURL;
-  FJWTToken := AJWTToken;
+  FAPIKey := AAPIKey;
+  FAPISecret := AAPISecret;
   FHTTPClient := TFPHTTPClient.Create(nil);
   FHTTPClient.AllowRedirect := True;
 end;
@@ -56,7 +58,8 @@ end;
 function TAlpacaAPIClient.GetAuthHeaders: TStringList;
 begin
   Result := TStringList.Create;
-  Result.Add('Authorization: Bearer ' + FJWTToken);
+  Result.Add('APCA-API-KEY-ID: ' + FAPIKey);
+  Result.Add('APCA-API-SECRET-KEY: ' + FAPISecret);
   Result.Add('Content-Type: application/json');
 end;
 
@@ -257,7 +260,8 @@ begin
   // Для списка позиций API возвращает массив напрямую
   try
     FHTTPClient.RequestHeaders.Clear;
-    FHTTPClient.RequestHeaders.Add('Authorization: Bearer ' + FJWTToken);
+    FHTTPClient.RequestHeaders.Add('APCA-API-KEY-ID: ' + FAPIKey);
+    FHTTPClient.RequestHeaders.Add('APCA-API-SECRET-KEY: ' + FAPISecret);
     FHTTPClient.RequestHeaders.Add('Content-Type: application/json');
     
     JSONData := GetJSON(FHTTPClient.Get(FBaseURL + Endpoint));

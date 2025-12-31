@@ -22,6 +22,9 @@ type
     { Get API Key from environment or config }
     class function GetAPIKey(const ConfigValue: string): string;
     
+    { Get API Secret from environment or config }
+    class function GetAPISecret(const ConfigValue: string): string;
+    
     { Get Account ID from environment or config }
     class function GetAccountID(const ConfigValue: string): string;
     
@@ -72,6 +75,15 @@ begin
   // If still a placeholder or empty, try environment variables
   if IsPlaceholder(Result) or (Result = '') then
     Result := GetEnvVarOrDefault('ALPACA_API_KEY', Result);
+end;
+
+class function TCredentialsProvider.GetAPISecret(const ConfigValue: string): string;
+begin
+  Result := ResolveValue(ConfigValue);
+  
+  // If still a placeholder or empty, try environment variables
+  if IsPlaceholder(Result) or (Result = '') then
+    Result := GetEnvVarOrDefault('ALPACA_API_SECRET', Result);
 end;
 
 class function TCredentialsProvider.GetAccountID(const ConfigValue: string): string;

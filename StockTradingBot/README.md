@@ -1,6 +1,6 @@
 # Stock Trading Bot (Delphi 12)
 
-Консольное приложение для автоматической торговли акциями на платформе Alpaca через REST API с JWT аутентификацией.
+Консольное приложение для автоматической торговли акциями на платформе Alpaca через REST API с API Key/Secret аутентификацией.
 
 ## 🔒 ВАЖНО: Безопасность
 
@@ -14,7 +14,7 @@
 
 ## Возможности
 
-- ✅ Подключение к REST API сервера Alpaca через JWT аутентификацию
+- ✅ Подключение к REST API сервера Alpaca через API Key/Secret аутентификацию
 - ✅ **Безопасное хранение credentials через переменные окружения**
 - ✅ **Автоматическое управление тикерами (добавление/удаление)**
 - ✅ **Поддержка GitHub Actions и CI/CD автоматизации**
@@ -35,7 +35,7 @@ StockTradingBot/
 │   ├── Types.pas                # Общие типы и структуры данных
 │   ├── Logger.pas               # Модуль логирования
 │   ├── ConfigManager.pas        # Управление конфигурацией
-│   ├── AlpacaAPIClient.pas      # REST API клиент с JWT
+│   ├── AlpacaAPIClient.pas      # REST API клиент с API Key/Secret
 │   ├── TradingStrategy.pas      # Торговая стратегия и анализ
 │   ├── OrderManager.pas         # Управление ордерами и позициями
 │   ├── CredentialsProvider.pas  # Безопасная работа с credentials
@@ -83,8 +83,8 @@ brew install openssl
 #### Поддерживаемые переменные окружения:
 
 - `ALPACA_API_URL` - URL API сервера Alpaca
-- `JWT_TOKEN` или `ALPACA_JWT_TOKEN` - JWT токен для аутентификации
-- `ALPACA_API_KEY` - API ключ Alpaca (альтернатива JWT)
+- `ALPACA_API_KEY` - API ключ Alpaca для аутентификации
+- `ALPACA_API_SECRET` - API Secret Alpaca для аутентификации
 - `ALPACA_ACCOUNT` - ID аккаунта Alpaca
 
 #### Установка переменных окружения:
@@ -92,24 +92,24 @@ brew install openssl
 **Linux/macOS:**
 ```bash
 export ALPACA_API_URL="https://paper-api.alpaca.markets"
-export JWT_TOKEN="your_jwt_token_here"
 export ALPACA_API_KEY="your_api_key_here"
+export ALPACA_API_SECRET="your_api_secret_here"
 export ALPACA_ACCOUNT="your_account_id"
 ```
 
 **Windows (PowerShell):**
 ```powershell
 $env:ALPACA_API_URL="https://paper-api.alpaca.markets"
-$env:JWT_TOKEN="your_jwt_token_here"
 $env:ALPACA_API_KEY="your_api_key_here"
+$env:ALPACA_API_SECRET="your_api_secret_here"
 $env:ALPACA_ACCOUNT="your_account_id"
 ```
 
 **Windows (CMD):**
 ```cmd
 set ALPACA_API_URL=https://paper-api.alpaca.markets
-set JWT_TOKEN=your_jwt_token_here
 set ALPACA_API_KEY=your_api_key_here
+set ALPACA_API_SECRET=your_api_secret_here
 set ALPACA_ACCOUNT=your_account_id
 ```
 
@@ -121,7 +121,8 @@ set ALPACA_ACCOUNT=your_account_id
 {
   "api": {
     "base_url": "${ALPACA_API_URL}",
-    "jwt_token": "${JWT_TOKEN}"
+    "api_key": "${ALPACA_API_KEY}",
+    "api_secret": "${ALPACA_API_SECRET}"
   },
   "trading": {
     "symbols": ["AAPL", "MSFT", "GOOGL", "TSLA"],
@@ -167,7 +168,8 @@ set ALPACA_ACCOUNT=your_account_id
 {
   "api": {
     "base_url": "https://your-api-server.com/api",
-    "jwt_token": "your_jwt_token_here"
+    "api_key": "your_api_key_here",
+    "api_secret": "your_api_secret_here"
   },
   "trading": {
     "symbols": ["AAPL", "MSFT", "GOOGL", "TSLA"],
@@ -187,7 +189,8 @@ set ALPACA_ACCOUNT=your_account_id
 
 **API секция:**
 - `base_url` - URL вашего REST API сервера (используйте `${ALPACA_API_URL}`)
-- `jwt_token` - JWT токен для аутентификации (используйте `${JWT_TOKEN}`)
+- `api_key` - API ключ для аутентификации (используйте `${ALPACA_API_KEY}`)
+- `api_secret` - API Secret для аутентификации (используйте `${ALPACA_API_SECRET}`)
 
 **Trading секция:**
 - `symbols` - Массив тикеров акций для торговли
@@ -245,7 +248,8 @@ fpc -O3 -XX -CX StockTradingBot.dpr
 ```bash
 # Установите переменные окружения
 export ALPACA_API_URL="https://paper-api.alpaca.markets"
-export JWT_TOKEN="your_jwt_token_here"
+export ALPACA_API_KEY="your_api_key_here"
+export ALPACA_API_SECRET="your_api_secret_here"
 
 # Запуск с конфигурацией по умолчанию (config.json)
 ./StockTradingBot
@@ -262,8 +266,8 @@ docker build -t stocktradingbot .
 
 # Run with environment variables
 docker run -e ALPACA_API_URL="https://paper-api.alpaca.markets" \
-           -e JWT_TOKEN="your_jwt_token" \
            -e ALPACA_API_KEY="your_api_key" \
+           -e ALPACA_API_SECRET="your_api_secret" \
            stocktradingbot
 ```
 
@@ -274,8 +278,8 @@ docker run -e ALPACA_API_URL="https://paper-api.alpaca.markets" \
 1. Перейдите в Settings → Secrets and variables → Actions
 2. Добавьте следующие secrets:
    - `ALPACA_API_URL` - URL API сервера
-   - `JWT_TOKEN` - JWT токен
-   - `ALPACA_API_KEY` - API ключ (опционально)
+   - `ALPACA_API_KEY` - API ключ
+   - `ALPACA_API_SECRET` - API Secret
    - `ALPACA_ACCOUNT` - ID аккаунта (опционально)
 
 ### Автоматический workflow
@@ -318,7 +322,8 @@ jobs:
   #   runs-on: ubuntu-latest
   #   env:
   #     ALPACA_API_URL: ${{ secrets.ALPACA_API_URL }}
-  #     JWT_TOKEN: ${{ secrets.JWT_TOKEN }}
+  #     ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+  #     ALPACA_API_SECRET: ${{ secrets.ALPACA_API_SECRET }}
   #   steps:
   #     - name: Run trading
   #       run: ./StockTradingBot
@@ -343,7 +348,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ALPACA_API_URL: ${{ secrets.ALPACA_API_URL }}
-      JWT_TOKEN: ${{ secrets.JWT_TOKEN }}
+      ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+      ALPACA_API_SECRET: ${{ secrets.ALPACA_API_SECRET }}
       ALPACA_ACCOUNT: ${{ secrets.ALPACA_ACCOUNT }}
     steps:
       - uses: actions/checkout@v4
@@ -374,8 +380,8 @@ if [ -f .env ]; then
 fi
 
 # Проверка наличия credentials
-if [ -z "$ALPACA_API_URL" ] || [ -z "$JWT_TOKEN" ]; then
-    echo "Error: ALPACA_API_URL and JWT_TOKEN must be set"
+if [ -z "$ALPACA_API_URL" ] || [ -z "$ALPACA_API_KEY" ] || [ -z "$ALPACA_API_SECRET" ]; then
+    echo "Error: ALPACA_API_URL, ALPACA_API_KEY and ALPACA_API_SECRET must be set"
     exit 1
 fi
 
@@ -398,8 +404,8 @@ if (Test-Path .env) {
 }
 
 # Проверка credentials
-if (-not $env:ALPACA_API_URL -or -not $env:JWT_TOKEN) {
-    Write-Error "ALPACA_API_URL and JWT_TOKEN must be set"
+if (-not $env:ALPACA_API_URL -or -not $env:ALPACA_API_KEY -or -not $env:ALPACA_API_SECRET) {
+    Write-Error "ALPACA_API_URL, ALPACA_API_KEY and ALPACA_API_SECRET must be set"
     exit 1
 }
 
@@ -413,8 +419,8 @@ cd StockTradingBot
 ```bash
 # .env - НЕ КОММИТИТЬ В GIT!
 ALPACA_API_URL=https://paper-api.alpaca.markets
-JWT_TOKEN=your_jwt_token_here
-ALPACA_API_KEY=your_api_key
+ALPACA_API_KEY=your_api_key_here
+ALPACA_API_SECRET=your_api_secret_here
 ALPACA_ACCOUNT=your_account_id
 ```
 
@@ -486,8 +492,8 @@ ALPACA_ACCOUNT=your_account_id
 
 ### Работа с API
 
-1. Храните JWT токены в безопасном месте
-2. Регулярно меняйте токены доступа
+1. Храните API ключи и секреты в безопасном месте
+2. Регулярно ротируйте API ключи
 3. Используйте demo/paper trading аккаунты для тестирования
 4. Ограничьте права API ключей минимально необходимыми
 5. Мониторьте активность API через dashboard Alpaca
@@ -499,7 +505,8 @@ ALPACA_ACCOUNT=your_account_id
 {
   "api": {
     "base_url": "${ALPACA_API_URL}",
-    "jwt_token": "${JWT_TOKEN}"
+    "api_key": "${ALPACA_API_KEY}",
+    "api_secret": "${ALPACA_API_SECRET}"
   }
 }
 ```
@@ -509,7 +516,8 @@ ALPACA_ACCOUNT=your_account_id
 {
   "api": {
     "base_url": "https://paper-api.alpaca.markets",
-    "jwt_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+    "api_key": "PKU36NWBUW5V7OPXKR4NVLTIV7",
+    "api_secret": "B8pxSELPypBnD4DcQQw4PPNHFZ1Gu7pPhk4DeAJNJjom"
   }
 }
 ```
@@ -551,7 +559,7 @@ cat .gitignore | grep -E "(config.*json|\.env)"
 
 Программа обрабатывает следующие типы ошибок:
 - ❌ Сетевые ошибки при обращении к API
-- ❌ Ошибки аутентификации JWT
+- ❌ Ошибки аутентификации с API ключами
 - ❌ Ошибки при размещении ордеров
 - ❌ Недостаточная покупательская способность
 - ❌ Невалидные данные от API
@@ -563,7 +571,7 @@ cat .gitignore | grep -E "(config.*json|\.env)"
 ### Тестирование на демо-среде
 
 1. Настройте `base_url` на тестовый API endpoint
-2. Используйте тестовый JWT токен
+2. Используйте тестовые API ключ и секрет
 3. Установите небольшой `leverage` (1.0 - 1.5)
 4. Начните с одной-двух акций в `symbols`
 

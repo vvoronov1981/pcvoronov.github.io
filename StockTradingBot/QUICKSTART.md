@@ -38,7 +38,8 @@ cd pcvoronov.github.io/StockTradingBot
 {
   "api": {
     "base_url": "https://paper-api.alpaca.markets",
-    "jwt_token": "YOUR_JWT_TOKEN_HERE"
+    "api_key": "YOUR_API_KEY_HERE",
+    "api_secret": "YOUR_API_SECRET_HERE"
   },
   "trading": {
     "symbols": ["AAPL", "MSFT"],
@@ -55,7 +56,7 @@ cd pcvoronov.github.io/StockTradingBot
 ```
 
 ⚠️ **Важно**: 
-- Замените `YOUR_JWT_TOKEN_HERE` на ваш реальный JWT токен
+- Замените `YOUR_API_KEY_HERE` и `YOUR_API_SECRET_HERE` на ваши реальные API ключи
 - Для начала используйте paper trading (тестовую среду)
 - Начните с малого количества акций (2-3)
 
@@ -141,9 +142,8 @@ Available commands:
 ### Paper Trading (рекомендуется для начала)
 
 1. Зарегистрируйтесь на [Alpaca](https://alpaca.markets/)
-2. Получите Paper Trading API ключи
+2. Получите Paper Trading API ключи (API Key и API Secret)
 3. Используйте эндпоинт: `https://paper-api.alpaca.markets`
-4. Получите JWT токен для аутентификации
 
 ### Симуляция без реального API
 
@@ -184,14 +184,14 @@ Get-Content trading_bot.log -Wait -Tail 50
 ### Q: Ошибка подключения к API
 **A:** Проверьте:
 - Правильность `base_url` в config.json
-- Валидность JWT токена
+- Валидность API ключа и секрета
 - Доступность интернета
 - Не заблокирован ли доступ файрволом
 
-### Q: Ошибка "Invalid JWT token"
+### Q: Ошибка "Invalid API credentials"
 **A:** 
-- Обновите JWT токен в config.json
-- Проверьте срок действия токена
+- Обновите API ключ и секрет в config.json
+- Проверьте правильность ключей
 - Убедитесь что нет лишних пробелов
 
 ### Q: Программа не покупает акции
