@@ -25,6 +25,10 @@ type
     Leverage: Double;
     StopLossPercent: Double;
     UpdateIntervalSeconds: Integer;
+    EnableRandomTickerManagement: Boolean;
+    TickerOperationIntervalMinutes: Integer;
+    MaxActiveTickers: Integer;
+    MinActiveTickers: Integer;
     procedure Init;
     procedure Free;
   end;
@@ -114,6 +118,10 @@ begin
   Leverage := 2.0;
   StopLossPercent := 70.0;
   UpdateIntervalSeconds := 60;
+  EnableRandomTickerManagement := True;
+  TickerOperationIntervalMinutes := 30;
+  MaxActiveTickers := 10;
+  MinActiveTickers := 3;
 end;
 
 procedure TTradingConfig.Free;

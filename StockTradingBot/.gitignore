@@ -54,6 +54,13 @@ trading_bot.log
 # Раскомментируйте следующую строку, если не хотите коммитить config.json
 # config.json
 
+# Игнорируем файлы с реальными credentials (если создаются)
+config.production.json
+config.local.json
+*.secret.json
+.env
+.env.local
+
 # Игнорируем IDE файлы
 .vscode/
 .idea/
