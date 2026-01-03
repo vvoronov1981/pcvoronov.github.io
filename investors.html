@@ -149,6 +149,11 @@
       border-radius: 8px;
       margin: 20px 0;
     }
+    .nav-active {
+      background: rgba(255,255,255,0.2);
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
     @media (max-width: 768px) {
       .investors-hero h2 {
         font-size: 24px;
@@ -180,7 +185,7 @@
         <a href="Indexp.html#services">Услуги</a>
         <a href="Indexp.html#about">О компании</a>
         <a href="Indexp.html#contacts">Контакты</a>
-        <a href="investors.html" style="background: rgba(255,255,255,0.2); padding: 8px 12px; border-radius: 6px;">Инвесторам</a>
+        <a href="investors.html" class="nav-active">Инвесторам</a>
       </nav>
     </div>
   </header>
@@ -339,7 +344,7 @@
         <input type="hidden" name="_subject" value="Новая заявка на инвестирование от PC Voronov" />
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_next" value="https://vvoronov1981.github.io/pcvoronov.github.io/investors.html?success=true" />
+        <input type="hidden" name="_next" value="investors.html?success=true" />
         
         <label class="required">
           Полное имя (ФИО)
@@ -358,7 +363,7 @@
 
         <label class="required">
           Сумма инвестиций (грн)
-          <input type="number" name="amount" required min="10000" step="1000" placeholder="50000" />
+          <input type="number" name="amount" required min="10000" max="10000000" step="1000" placeholder="50000" />
         </label>
 
         <label>
