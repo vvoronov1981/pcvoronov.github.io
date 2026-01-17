@@ -107,7 +107,7 @@ const CONFIG = {
         {
             name: 'JavaScript Algorithms and Data Structures',
             issuer: 'FreeCodeCamp',
-            image: 'certificates/JavaScript. jpg'
+            image: 'certificates/JavaScript.jpg'
         },
         {
             name: 'Front End Development Libraries',
