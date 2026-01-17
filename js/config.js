@@ -1,1 +1,32 @@
-{\n  "certifications": [\n    {\n      "name": "Certificate 1",\n      "image": "csharp.jpg"\n    },\n    {\n      "name": "Certificate 2",\n      "image": "csharp.jpg"\n    },\n    {\n      "name": "Certificate 3",\n      "image": "csharp.jpg"\n    },\n    {\n      "name": "Certificate 4",\n      "image": "csharp.jpg"\n    },\n    {\n      "name": "Certificate 5",\n      "image": "csharp.jpg"\n    },\n    {\n      "name": "Certificate 6",\n      "image": "csharp.jpg"\n    }\n  ]\n}
+certifications: [
+    {
+        name: 'Responsive Web Design',
+        issuer: 'FreeCodeCamp',
+        image: 'certificates/webDesign.jpg'
+    },
+    {
+        name: 'Foundational C# with Microsoft',
+        issuer: 'Microsoft',
+        image: 'certificates/csharp.jpg'
+    },
+    {
+        name: 'JavaScript Algorithms and Data Structures',
+        issuer: 'FreeCodeCamp',
+        image: 'certificates/JavaScript.jpg'
+    },
+    {
+        name: 'Front End Development Libraries',
+        issuer:  'FreeCodeCamp',
+        image: 'certificates/FrontEndDevelopment.jpg'
+    },
+    {
+        name: 'Data Visualization',
+        issuer: 'FreeCodeCamp',
+        image: 'certificates/DataVisualization.jpg'
+    },
+    {
+        name: 'Scientific Computing with Python',
+        issuer: 'FreeCodeCamp',
+        image: 'certificates/Python.jpg'
+    }
+],
