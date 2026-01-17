@@ -1,7 +1,1 @@
-const certifications = [
-    'certificates/csharp.jpg',
-    'other/certificate.jpg',
-    'another/cert.jpg'
-];
-
-module.exports = certifications;
+{\n  "certifications": [\n    {\n      "name": "Certificate 1",\n      "image": "csharp.jpg"\n    },\n    {\n      "name": "Certificate 2",\n      "image": "csharp.jpg"\n    },\n    {\n      "name": "Certificate 3",\n      "image": "csharp.jpg"\n    },\n    {\n      "name": "Certificate 4",\n      "image": "csharp.jpg"\n    },\n    {\n      "name": "Certificate 5",\n      "image": "csharp.jpg"\n    },\n    {\n      "name": "Certificate 6",\n      "image": "csharp.jpg"\n    }\n  ]\n}
