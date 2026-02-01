@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Простейший Интернет-магазин</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    .goods, .cart { margin-bottom: 25px; }
+    .goods-item { display: inline-block; border: 1px solid #ccc; margin: 5px; padding: 13px; width: 150px; }
+    .cart { border-top: 2px solid #888; padding-top: 10px; }
+    .cart-empty { color: #999; }
+    .btn { padding: 6px 14px; border: none; background: #3498db; color: white; cursor: pointer; }
+    .btn:hover { background: #217dbb; }
+  </style>
+</head>
+<body>
+  <h2>Интернет-магазин — Демо</h2>
+  <div class="goods" id="goods"></div>
+  <div class="cart" id="cart"></div>
+  <script>
+    // Каталог товаров
+    const goods = [
+      {id: 'p01', name: 'Чашка',   price: 150},
+      {id: 'p02', name: 'Блокнот', price: 100},
+      {id: 'p03', name: 'Футболка', price: 600},
+      {id: 'p04', name: 'Ручка',   price: 50},
+      {id: 'p05', name: 'Кружка',  price: 200},
+    ];
+    // Корзина как объект: ключ — id, значение — количество
+    let cart = {};
+
+    // Рендерим товары
+    function renderGoods() {
+      const goodsDiv = document.getElementById('goods');
+      goodsDiv.innerHTML = '<h3>Товары</h3>';
+      goods.forEach(item => {
+        goodsDiv.innerHTML += `
+          <div class="goods-item">
+            <b>${item.name}</b><br>
+            Цена: ${item.price}₽<br>
+            <button class="btn" onclick="addToCart('${item.id}')">В корзину</button>
+          </div>
+        `;
+      });
+    }
+
+    // Рендерим корзину
+    function renderCart() {
+      const cartDiv = document.getElementById('cart');
+      const cartItems = Object.keys(cart);
+      if (!cartItems.length) {
+        cartDiv.innerHTML = '<div class="cart-empty">Корзина пуста</div>';
+        return;
+      }
+      let sum = 0, count = 0;
+      let html = '<h3>Корзина</h3><ol>';
+      cartItems.forEach(id => {
+        const item = goods.find(g => g.id === id);
+        const qty = cart[id];
+        const price = item.price * qty;
+        count += qty;
+        sum += price;
+        html += `<li>${item.name} — ${qty} шт. = <b>${price}₽</b>
+                  <button onclick="removeFromCart('${id}')" class="btn" style="background:#e74c3c;margin-left:12px;">–</button>
+                </li>`;
+      });
+      html += `</ol>
+        <b>Итого: ${count} товаров на сумму ${sum}₽</b><br>
+        <button class="btn" onclick="checkout()">Оформить заказ</button>
+        <button class="btn" onclick="clearCart()" style="background:#bbb;">Очистить корзину</button>
+      `;
+      cartDiv.innerHTML = html;
+    }
+
+    // Добавление и удаление товаров
+    function addToCart(id) {
+      cart[id] = (cart[id] || 0) + 1;
+      renderCart();
+    }
+    function removeFromCart(id) {
+      if (cart[id]) cart[id]--;
+      if (cart[id] <= 0) delete cart[id];
+      renderCart();
+    }
+    function clearCart() {
+      cart = {};
+      renderCart();
+    }
+    function checkout() {
+      alert('Спасибо за заказ!\n(Здесь может быть форма оформления)');
+      clearCart();
+    }
+
+    window.addToCart = addToCart;
+    window.removeFromCart = removeFromCart;
+    window.clearCart = clearCart;
+    window.checkout = checkout;
+    renderGoods();
+    renderCart();
+  </script>
+</body>
+</html>
