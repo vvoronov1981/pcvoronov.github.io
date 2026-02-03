@@ -87,10 +87,37 @@
       renderCart();
     }
     function checkout() {
-      alert('Спасибо за заказ!\n(Здесь может быть форма оформления)');
-      clearCart();
-    }
+  const cartItems = Object.keys(cart);
+  if (!cartItems.length) {
+    alert('Корзина пуста!');
+    return;
+  }
+  let sum = 0, orderText = '';
+  cartItems.forEach(id => {
+    const item = goods.find(g => g.id === id);
+    const qty = cart[id];
+    const price = item.price * qty;
+    sum += price;
+    orderText += `${item.name} (${qty} шт.) = ${price}₽\n`;
+  });
 
+  // --- Динамическая оплата через LiqPay ---
+  // Замените ссылку ниже на свою платежную ссылку (например, https://www.liqpay.ua/ru/checkout/iXXXXXX)
+  const payLink = "https://www.liqpay.ua/ru/checkout/i123456789"; // <- Заменить на вашу!
+  
+  // Показываем уведомление с деталями и ссылкой на оплату
+  const payMsg = 
+    `Ваш заказ:\n${orderText}\nИтого к оплате: ${sum}₽\n\n` +
+    `Оплатите точно эту сумму по ссылке ниже и после оплаты напишите нам на email или через форму обратной связи, указав дату оплаты.\n\n` +
+    `Перейти к оплате: ${payLink}\n\n` +
+    `Спасибо за заказ!`;
+  
+  if (confirm("Оформить заказ?\n\n" + orderText + "\nИтого: " + sum + "₽.\n\nПосле перехода на страницу оплаты введите сумму вручную.")) {
+    window.open(payLink, "_blank");
+    alert(payMsg);
+    clearCart();
+  }
+}
     window.addToCart = addToCart;
     window.removeFromCart = removeFromCart;
     window.clearCart = clearCart;
