@@ -416,7 +416,7 @@ function populateSkillCategory(category, skills) {
 function populateCertifications() {
     const container = document.getElementById('certifications');
     if (!container) return;
-
+    console.log(CONFIG.certifications); // Выведет массив в консоль
     const certificationsHTML = CONFIG.certifications.map(cert => `
         <div class="certification-card animate-on-scroll">
             <img src="${cert.image}" alt="${cert.name}" class="certification-image">
