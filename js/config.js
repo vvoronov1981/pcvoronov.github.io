@@ -123,6 +123,11 @@ const CONFIG = {
             name: 'Scientific Computing with Python',
             issuer: 'FreeCodeCamp',
             image: 'certificates/Python.jpg'
+        },
+        {
+            name: 'Cyber security',
+            issuer: 'HISCOX',
+            image: 'certificates/Certificate_cyber_security.png'
         }
     ],
     
