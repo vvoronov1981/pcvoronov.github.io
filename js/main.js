@@ -418,7 +418,7 @@ function populateCertifications() {
     if (!container) return;
     console.log(CONFIG.certifications); // Выведет массив в консоль
     const certificationsHTML = CONFIG.certifications.map(cert => `
-        <div class="certification-card animate-on-scroll">
+        <div>
             <img src="${cert.image}" alt="${cert.name}" class="certification-image">
             <div class="certification-info">
                 <h4>${cert.name}</h4>
