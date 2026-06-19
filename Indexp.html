@@ -271,16 +271,22 @@
         </div>
 
         <div class="card contact-form-card">
-          <h3>Описать задачу</h3>
-          <p>Заполните форму — мы свяжемся с вами в течение рабочего дня.</p>
+          <h3>Оставить задачу</h3>
+          <p>Заполните форму — мы свяжемся с вами в течение рабочего дня и предложим план выполнения.</p>
           <form id="contact-form" class="request-form" action="https://formsubmit.co/comprw@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="Новая заявка с сайта PC Voronov" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="source" value="indexp-main-site" />
 
             <div class="form-group">
               <label for="req-name">Ваше имя *</label>
               <input type="text" id="req-name" name="name" required placeholder="Иван Иванов" autocomplete="name" />
+            </div>
+
+            <div class="form-group">
+              <label for="req-company">Компания</label>
+              <input type="text" id="req-company" name="company" placeholder="Название компании (если есть)" autocomplete="organization" />
             </div>
 
             <div class="form-group">
@@ -303,6 +309,24 @@
             <div class="form-group">
               <label for="req-task">Описание задачи *</label>
               <textarea id="req-task" name="task" required rows="4" placeholder="Опишите вашу задачу или проблему..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="req-deadline">Желаемый срок</label>
+              <input type="text" id="req-deadline" name="deadline" placeholder="Например: до 30.06 или в течение 2 недель" />
+            </div>
+
+            <div class="form-group">
+              <label for="req-budget">Ориентировочный бюджет</label>
+              <input type="text" id="req-budget" name="budget" placeholder="По желанию: например 500–1000 USD" />
+            </div>
+
+            <div class="form-group">
+              <label for="req-consent">Подтверждение *</label>
+              <select id="req-consent" name="consent" required>
+                <option value="">— Выберите —</option>
+                <option value="Да, согласен(а) на обработку заявки">Да, согласен(а) на обработку заявки</option>
+              </select>
             </div>
 
             <button type="submit" class="btn btn-submit">Отправить заявку</button>
