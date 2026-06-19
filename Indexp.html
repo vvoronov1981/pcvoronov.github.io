@@ -253,7 +253,7 @@
           <div class="contact-list">
             <a class="contact-item" href="tel:+380505235040">
               <span>Телефон</span>
-              <strong>+380 (50) 523‑5040</strong>
+              <strong>+380 (50) 523&#x2011;5040</strong>
             </a>
             <a class="contact-item" href="mailto:comprw@gmail.com">
               <span>Email</span>
@@ -270,16 +270,43 @@
           </div>
         </div>
 
-        <div class="card contact-card">
-          <h3>Быстрые действия</h3>
-          <p>Выберите удобный способ связи или перейдите к дополнительной информации.</p>
-          <div class="contact-actions">
-            <a class="btn" href="mailto:comprw@gmail.com">Написать на email</a>
-            <a class="btn btn-secondary" href="https://t.me/Vladimir_Voronov" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
-            <a class="btn btn-ghost" href="bank-details.html">Посмотреть реквизиты</a>
-            <a class="btn btn-ghost" href="investors.html">Информация для инвесторов</a>
-          </div>
-          <p class="contact-note">Ответим и согласуем детали в рабочее время.</p>
+        <div class="card contact-form-card">
+          <h3>Описать задачу</h3>
+          <p>Заполните форму — мы свяжемся с вами в течение рабочего дня.</p>
+          <form id="contact-form" class="request-form" action="https://formsubmit.co/comprw@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Новая заявка с сайта PC Voronov" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+
+            <div class="form-group">
+              <label for="req-name">Ваше имя *</label>
+              <input type="text" id="req-name" name="name" required placeholder="Иван Иванов" autocomplete="name" />
+            </div>
+
+            <div class="form-group">
+              <label for="req-contact">Email или телефон *</label>
+              <input type="text" id="req-contact" name="contact" required placeholder="email@example.com или +380..." />
+            </div>
+
+            <div class="form-group">
+              <label for="req-service">Направление</label>
+              <select id="req-service" name="service">
+                <option value="">— Выберите направление —</option>
+                <option value="Управление и мониторинг сетей">Управление и мониторинг сетей</option>
+                <option value="Поддержка серверов и оборудования">Поддержка серверов и оборудования</option>
+                <option value="Разработка программного обеспечения">Разработка программного обеспечения</option>
+                <option value="Аудит и IT-консалтинг">Аудит и IT-консалтинг</option>
+                <option value="Другое">Другое</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="req-task">Описание задачи *</label>
+              <textarea id="req-task" name="task" required rows="4" placeholder="Опишите вашу задачу или проблему..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-submit">Отправить заявку</button>
+          </form>
         </div>
       </div>
     </section>
@@ -313,5 +340,35 @@
 
   gtag('config', 'AW-10993663020');
 </script>
-</body>
+
+  <script>
+  (function () {
+    var form = document.getElementById('contact-form');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('.btn-submit');
+      var origText = btn.textContent;
+      btn.textContent = 'Отправка...';
+      btn.disabled = true;
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      })
+        .then(function (r) {
+          if (r.ok) {
+            form.innerHTML = '<div class="form-success"><p class="form-success-icon">&#10003;</p><p>Заявка отправлена! Мы свяжемся с вами в ближайшее время.</p></div>';
+          } else { throw new Error(); }
+        })
+        .catch(function () {
+          btn.textContent = origText;
+          btn.disabled = false;
+          alert('Ошибка при отправке. Напишите нам напрямую: comprw@gmail.com');
+        });
+    });
+  })();
+  </script></body>
 </html>
+
+
