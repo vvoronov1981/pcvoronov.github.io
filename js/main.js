@@ -47,8 +47,8 @@ async function init() {
         // Setup stats counter
         setupStatsCounter();
 
-        // Setup contact form
-        setupContactForm();
+        // Setup hosted forms
+        setupHostedForms();
 
         // Setup mobile menu
         setupMobileMenu();
@@ -271,43 +271,69 @@ function animateCounter(element) {
 }
 
 /**
- * Setup contact form
+ * Get translated text with fallback
  */
-function setupContactForm() {
-    const form = document.getElementById('contact-form');
-    if (!form) return;
+function translate(key, fallback) {
+    if (!i18n || typeof i18n.t !== 'function') {
+        return fallback;
+    }
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    const value = i18n.t(key);
+    return value && value !== key ? value : fallback;
+}
 
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
+/**
+ * Setup hosted forms
+ */
+function setupHostedForms() {
+    document.querySelectorAll('form[data-ajax-endpoint]').forEach(form => {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-        try {
-            // Show loading state
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + i18n.t('contact.form.sending');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            if (!submitBtn) return;
 
-            // Get form data
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
+            const originalContent = submitBtn.innerHTML;
+            const sendingKey = form.dataset.sendingKey || 'common.loading';
+            const successKey = form.dataset.successKey || 'contact.form.success';
+            const errorKey = form.dataset.errorKey || 'contact.form.error';
 
-            // Here you would normally send the data to a server
-            // For now, we'll simulate a successful submission
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            try {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${translate(sendingKey, 'Sending...')}`;
 
-            // Show success message
-            showNotification(i18n.t('contact.form.success'), 'success');
-            form.reset();
+                const formData = new FormData(form);
+                const replyTo = formData.get('email');
+                if (typeof replyTo === 'string' && replyTo.trim()) {
+                    formData.set('_replyto', replyTo.trim());
+                }
 
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            showNotification(i18n.t('contact.form.error'), 'error');
-        } finally {
-            // Reset button
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-        }
+                formData.set('page_url', window.location.href);
+                formData.set('language', i18n && typeof i18n.getCurrentLanguage === 'function' ? i18n.getCurrentLanguage() : 'en');
+
+                const response = await fetch(form.dataset.ajaxEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json'
+                    },
+                    body: formData
+                });
+
+                const responseData = await response.json().catch(() => null);
+                if (!response.ok || (responseData && responseData.success === 'false')) {
+                    throw new Error(responseData && responseData.message ? responseData.message : 'Form submission failed');
+                }
+
+                showNotification(translate(successKey, 'Message sent successfully!'), 'success');
+                form.reset();
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                showNotification(translate(errorKey, 'Failed to send message. Please try again.'), 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalContent;
+            }
+        });
     });
 }
 

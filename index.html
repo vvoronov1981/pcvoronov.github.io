@@ -341,9 +341,12 @@
                 </div>
                 
                 <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contact-form">
+                    <form class="contact-form" id="contact-form" action="https://formsubmit.co/voronov.voldymyr@gmail.com" method="POST" data-ajax-endpoint="https://formsubmit.co/ajax/voronov.voldymyr@gmail.com" data-success-key="contact.form.success" data-error-key="contact.form.error" data-sending-key="contact.form.sending">
                         <h3 data-i18n="contact.form.title">Send me a message</h3>
-                        
+                        <input type="hidden" name="_subject" value="New portfolio contact message">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                         
                         <div class="form-group">
                             <label for="name" class="form-label" data-i18n="contact.form.name">Your Name</label>
                             <input type="text" id="name" name="name" class="form-input" 
@@ -379,47 +382,63 @@
     <section id="tasks" class="section" style="background: var(--bg-secondary);">
         <div class="container">
             <div class="section-header">
-                <p class="section-subtitle" data-i18n="tasks.subtitle">Visitor workspace</p>
-                <h2 class="section-title" data-i18n="tasks.title">Visitor Task Board</h2>
+                <p class="section-subtitle" data-i18n="tasks.subtitle">Send me the work you need done</p>
+                <h2 class="section-title" data-i18n="tasks.title">Customer Task Request</h2>
             </div>
 
             <div class="tasks-wrapper animate-on-scroll">
-                <div class="tasks-input-bar">
-                    <input type="text" id="task-input" class="form-input task-input-field" data-i18n-placeholder="tasks.input_placeholder" placeholder="Add your task for this visit..." maxlength="200">
-                    <select id="task-priority" class="task-priority-select">
-                        <option value="low" data-i18n="tasks.priority.low">🟢 Low</option>
-                        <option value="medium" selected data-i18n="tasks.priority.medium">🟡 Medium</option>
-                        <option value="high" data-i18n="tasks.priority.high">🔴 High</option>
-                    </select>
-                    <button id="task-add-btn" class="btn btn-primary task-add-btn">
-                        <i class="fas fa-plus"></i>
-                        <span data-i18n="tasks.add_task">Add Task</span>
+                <form class="contact-form tasks-request-form" id="task-request-form" action="https://formsubmit.co/voronov.voldymyr@gmail.com" method="POST" data-ajax-endpoint="https://formsubmit.co/ajax/voronov.voldymyr@gmail.com" data-success-key="tasks.form.success" data-error-key="tasks.form.error" data-sending-key="tasks.form.sending">
+                    <h3 data-i18n="tasks.form.title">Create a task request</h3>
+                    <p class="task-form-note" data-i18n="tasks.note">
+                        This form sends your request directly to my email so I can reply with details and next steps.
+                    </p>
+                    <input type="hidden" name="_subject" value="New portfolio task request">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+
+                    <div class="task-form-grid">
+                        <div class="form-group">
+                            <label for="task-client-name" class="form-label" data-i18n="tasks.form.name">Your Name</label>
+                            <input type="text" id="task-client-name" name="name" class="form-input" data-i18n-placeholder="tasks.form.name_placeholder" placeholder="John Doe" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="task-client-email" class="form-label" data-i18n="tasks.form.email">Your Email</label>
+                            <input type="email" id="task-client-email" name="email" class="form-input" data-i18n-placeholder="tasks.form.email_placeholder" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="task-form-grid">
+                        <div class="form-group">
+                            <label for="task-company" class="form-label" data-i18n="tasks.form.company">Company or website</label>
+                            <input type="text" id="task-company" name="company" class="form-input" data-i18n-placeholder="tasks.form.company_placeholder" placeholder="Your company name or URL">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="task-priority" class="form-label" data-i18n="tasks.form.priority">Priority</label>
+                            <select id="task-priority" name="priority" class="task-priority-select">
+                                <option value="low" data-i18n="tasks.priority.low">Low</option>
+                                <option value="medium" selected data-i18n="tasks.priority.medium">Medium</option>
+                                <option value="high" data-i18n="tasks.priority.high">High</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="task-description" class="form-label" data-i18n="tasks.form.details">Task details</label>
+                        <textarea id="task-description" name="task_details" class="form-textarea" data-i18n-placeholder="tasks.form.details_placeholder" placeholder="Describe what you want me to build, fix, or improve..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="task-timeline" class="form-label" data-i18n="tasks.form.timeline">Preferred timeline</label>
+                        <input type="text" id="task-timeline" name="timeline" class="form-input" data-i18n-placeholder="tasks.form.timeline_placeholder" placeholder="For example: this week or by 15 July">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary task-add-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        <span data-i18n="tasks.form.submit">Send Task Request</span>
                     </button>
-                </div>
-
-                <div class="tasks-filters">
-                    <button class="task-filter-btn active" data-filter="all" data-i18n="tasks.filters.all">All</button>
-                    <button class="task-filter-btn" data-filter="pending" data-i18n="tasks.filters.pending">Pending</button>
-                    <button class="task-filter-btn" data-filter="done" data-i18n="tasks.filters.done">Completed</button>
-                </div>
-
-                <div class="tasks-stats">
-                    <span id="tasks-total">0 tasks</span>
-                    <span id="tasks-done">0 completed</span>
-                    <button id="tasks-clear-done" class="task-clear-btn">
-                        <i class="fas fa-trash-alt"></i> <span data-i18n="tasks.clear_completed">Clear completed</span>
-                    </button>
-                </div>
-                <p class="section-subtitle" style="margin-top: 12px; font-size: 0.95rem;" data-i18n="tasks.note">
-                    Tasks are stored only in your browser and are private to your device.
-                </p>
-
-                <ul id="task-list" class="task-list">
-                    <li class="task-empty-state">
-                        <i class="fas fa-clipboard-list"></i>
-                        <p>No tasks yet. Add your first task above!</p>
-                    </li>
-                </ul>
+                </form>
             </div>
         </div>
     </section>
@@ -468,7 +487,6 @@
     <script src="js/particles.js"></script>
     <script src="js/projects.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/tasks.js"></script>
     <!-- Tidio Chat -->
     <script src="//code.tidio.co/b11psn3qwvf4bxdsmvydlwpeklm0lx6o.js" async></script>
 </body>

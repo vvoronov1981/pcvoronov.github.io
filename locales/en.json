@@ -139,36 +139,31 @@
     }
   },
   "tasks": {
-    "title": "Visitor Task Board",
-    "subtitle": "Visitor workspace",
-    "input_placeholder": "Add your task for this visit...",
-    "add_task": "Add Task",
-    "clear_completed": "Clear completed",
-    "note": "Tasks are stored only in your browser and are private to your device.",
+    "title": "Customer Task Request",
+    "subtitle": "Send me the work you need done",
+    "note": "This form sends your request directly to my email so I can reply with details and next steps.",
+    "form": {
+      "title": "Create a task request",
+      "name": "Your Name",
+      "name_placeholder": "John Doe",
+      "email": "Your Email",
+      "email_placeholder": "john@example.com",
+      "company": "Company or website",
+      "company_placeholder": "Your company name or URL",
+      "priority": "Priority",
+      "details": "Task details",
+      "details_placeholder": "Describe what you want me to build, fix, or improve...",
+      "timeline": "Preferred timeline",
+      "timeline_placeholder": "For example: this week or by 15 July",
+      "submit": "Send Task Request",
+      "sending": "Sending request...",
+      "success": "Task request sent successfully!",
+      "error": "Failed to send the task request. Please try again."
+    },
     "priority": {
       "low": "Low",
       "medium": "Medium",
       "high": "High"
-    },
-    "filters": {
-      "all": "All",
-      "pending": "Pending",
-      "done": "Completed"
-    },
-    "stats": {
-      "task_singular": "task",
-      "task_plural": "tasks",
-      "completed": "completed"
-    },
-    "empty": {
-      "all": "No visitor tasks yet. Add your first task above!",
-      "pending": "All visitor tasks are done! 🎉",
-      "done": "No completed tasks yet."
-    },
-    "aria": {
-      "mark_complete": "Mark complete",
-      "mark_incomplete": "Mark incomplete",
-      "delete_task": "Delete task"
     }
   }
 }

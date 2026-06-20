@@ -139,36 +139,31 @@
     }
   },
   "tasks": {
-    "title": "Aufgabenboard für Besucher",
-    "subtitle": "Arbeitsbereich für Besucher",
-    "input_placeholder": "Füge eine Aufgabe für diesen Besuch hinzu...",
-    "add_task": "Aufgabe hinzufügen",
-    "clear_completed": "Erledigte löschen",
-    "note": "Aufgaben werden nur in deinem Browser gespeichert und bleiben privat auf deinem Gerät.",
+    "title": "Kundenanfrage für eine Aufgabe",
+    "subtitle": "Senden Sie mir die Arbeit, die erledigt werden soll",
+    "note": "Dieses Formular sendet Ihre Anfrage direkt an meine E-Mail, damit ich mit Details und den nächsten Schritten antworten kann.",
+    "form": {
+      "title": "Aufgabenanfrage erstellen",
+      "name": "Ihr Name",
+      "name_placeholder": "Max Mustermann",
+      "email": "Ihre E-Mail",
+      "email_placeholder": "max@beispiel.de",
+      "company": "Firma oder Website",
+      "company_placeholder": "Name Ihrer Firma oder URL",
+      "priority": "Priorität",
+      "details": "Aufgabendetails",
+      "details_placeholder": "Beschreiben Sie, was ich erstellen, reparieren oder verbessern soll...",
+      "timeline": "Gewünschter Zeitrahmen",
+      "timeline_placeholder": "Zum Beispiel: diese Woche oder bis 15. Juli",
+      "submit": "Aufgabenanfrage senden",
+      "sending": "Anfrage wird gesendet...",
+      "success": "Aufgabenanfrage erfolgreich gesendet!",
+      "error": "Die Aufgabenanfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+    },
     "priority": {
       "low": "Niedrig",
       "medium": "Mittel",
       "high": "Hoch"
-    },
-    "filters": {
-      "all": "Alle",
-      "pending": "Offen",
-      "done": "Erledigt"
-    },
-    "stats": {
-      "task_singular": "Aufgabe",
-      "task_plural": "Aufgaben",
-      "completed": "erledigt"
-    },
-    "empty": {
-      "all": "Noch keine Aufgaben. Füge oben deine erste Aufgabe hinzu!",
-      "pending": "Alle Besucher-Aufgaben sind erledigt! 🎉",
-      "done": "Noch keine erledigten Aufgaben."
-    },
-    "aria": {
-      "mark_complete": "Als erledigt markieren",
-      "mark_incomplete": "Als offen markieren",
-      "delete_task": "Aufgabe löschen"
     }
   }
 }
