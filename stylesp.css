@@ -343,6 +343,17 @@ a {
   color: var(--muted);
 }
 
+.service-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.service-actions {
+  margin-top: auto;
+  padding-top: 18px;
+}
+
 .card-icon {
   display: inline-flex;
   align-items: center;
@@ -443,6 +454,44 @@ a {
   display: grid;
   gap: 14px;
   margin-top: 24px;
+}
+
+.request-benefits {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.request-benefit {
+  padding: 18px 20px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.92));
+  border: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.request-benefit strong,
+.request-checklist-card h3 {
+  display: block;
+  color: var(--text);
+}
+
+.request-benefit strong {
+  font-size: 1.05rem;
+}
+
+.request-benefit span {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+.request-checklist-card {
+  margin-top: 18px;
+}
+
+.request-checklist {
+  margin-top: 16px;
 }
 
 .contact-item {
@@ -594,7 +643,8 @@ a {
   }
 
   .services-grid,
-  .advantage-grid {
+  .advantage-grid,
+  .request-benefits {
     grid-template-columns: 1fr;
   }
 
@@ -711,6 +761,10 @@ a {
 .btn-submit {
   width: 100%;
   margin-top: 4px;
+}
+
+.btn-service {
+  width: 100%;
 }
 
 .form-success {
