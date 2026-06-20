@@ -6,7 +6,8 @@
     "services": "Dienstleistungen",
     "projects": "Projekte",
     "experience": "Erfahrung",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "tasks": "Aufgaben"
   },
   "hero": {
     "greeting": "Hallo, ich bin",
@@ -135,6 +136,39 @@
       "feature2": "Abzugsoptimierung",
       "feature3": "Steuerplanung für Unternehmen",
       "feature4": "Compliance- und Einreichungshilfe"
+    }
+  },
+  "tasks": {
+    "title": "Aufgabenboard für Besucher",
+    "subtitle": "Arbeitsbereich für Besucher",
+    "input_placeholder": "Füge eine Aufgabe für diesen Besuch hinzu...",
+    "add_task": "Aufgabe hinzufügen",
+    "clear_completed": "Erledigte löschen",
+    "note": "Aufgaben werden nur in deinem Browser gespeichert und bleiben privat auf deinem Gerät.",
+    "priority": {
+      "low": "Niedrig",
+      "medium": "Mittel",
+      "high": "Hoch"
+    },
+    "filters": {
+      "all": "Alle",
+      "pending": "Offen",
+      "done": "Erledigt"
+    },
+    "stats": {
+      "task_singular": "Aufgabe",
+      "task_plural": "Aufgaben",
+      "completed": "erledigt"
+    },
+    "empty": {
+      "all": "Noch keine Aufgaben. Füge oben deine erste Aufgabe hinzu!",
+      "pending": "Alle Besucher-Aufgaben sind erledigt! 🎉",
+      "done": "Noch keine erledigten Aufgaben."
+    },
+    "aria": {
+      "mark_complete": "Als erledigt markieren",
+      "mark_incomplete": "Als offen markieren",
+      "delete_task": "Aufgabe löschen"
     }
   }
 }
