@@ -165,6 +165,34 @@
       "low": "Niedrig",
       "medium": "Mittel",
       "high": "Hoch"
+    },
+    "planner": {
+      "title": "Aufgabenplaner für Besucher",
+      "note": "Besucher können diesen Mini-Planer direkt im Browser nutzen. Die Aufgaben bleiben auf diesem Gerät gespeichert.",
+      "task_name": "Aufgabenname",
+      "task_name_placeholder": "Landingpage-Entwurf vorbereiten",
+      "deadline": "Fällig am",
+      "deadline_prefix": "Fällig",
+      "no_deadline": "Kein Termin",
+      "add": "Aufgabe hinzufügen",
+      "added": "Aufgabe wurde zum Planer hinzugefügt.",
+      "empty": "Noch keine Aufgaben. Fügen Sie die erste hinzu, um zu starten.",
+      "clear_completed": "Erledigte löschen",
+      "filters": {
+        "all": "Alle",
+        "open": "Offen",
+        "done": "Erledigt"
+      },
+      "summary": {
+        "total": "Gesamt",
+        "open": "Offen",
+        "done": "Erledigt"
+      },
+      "actions": {
+        "mark_open": "Als offen markieren",
+        "mark_done": "Als erledigt markieren",
+        "delete": "Aufgabe löschen"
+      }
     }
   }
 }

@@ -6,6 +6,12 @@
 // Global instances
 let i18n, themeManager, particlesAnimation, projectsManager;
 
+const TASK_STORAGE_KEY = 'visitor-task-planner-items';
+const taskPlannerState = {
+    items: [],
+    filter: 'all'
+};
+
 /**
  * Initialize the application
  */
@@ -49,6 +55,9 @@ async function init() {
 
         // Setup hosted forms
         setupHostedForms();
+
+        // Setup visitor task planner
+        setupTaskPlanner();
 
         // Setup mobile menu
         setupMobileMenu();
@@ -335,6 +344,238 @@ function setupHostedForms() {
             }
         });
     });
+}
+
+function setupTaskPlanner() {
+    const form = document.getElementById('visitor-task-form');
+    const list = document.getElementById('visitor-task-list');
+    const emptyState = document.getElementById('visitor-task-empty');
+    const clearCompletedBtn = document.getElementById('clear-completed-tasks');
+    const filterButtons = document.querySelectorAll('.task-filter-btn');
+
+    if (!form || !list || !emptyState || !clearCompletedBtn || !filterButtons.length) {
+        return;
+    }
+
+    taskPlannerState.items = loadStoredTasks();
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const titleInput = form.elements.namedItem('title');
+        const priorityInput = form.elements.namedItem('priority');
+        const deadlineInput = form.elements.namedItem('deadline');
+
+        if (!(titleInput instanceof HTMLInputElement) || !(priorityInput instanceof HTMLSelectElement) || !(deadlineInput instanceof HTMLInputElement)) {
+            return;
+        }
+
+        const title = titleInput.value.trim();
+        if (!title) {
+            titleInput.focus();
+            return;
+        }
+
+        taskPlannerState.items.unshift({
+            id: createTaskId(),
+            title,
+            priority: priorityInput.value,
+            deadline: deadlineInput.value,
+            completed: false,
+            createdAt: new Date().toISOString()
+        });
+
+        persistTasks();
+        renderTaskPlanner();
+        form.reset();
+        priorityInput.value = 'medium';
+        showNotification(translate('tasks.planner.added', 'Task added to your planner.'), 'success');
+    });
+
+    list.addEventListener('click', (event) => {
+        const target = event.target instanceof Element ? event.target.closest('[data-task-action]') : null;
+        if (!target) {
+            return;
+        }
+
+        const taskId = target.getAttribute('data-task-id');
+        const action = target.getAttribute('data-task-action');
+        if (!taskId || !action) {
+            return;
+        }
+
+        if (action === 'toggle') {
+            taskPlannerState.items = taskPlannerState.items.map((item) => (
+                item.id === taskId ? { ...item, completed: !item.completed } : item
+            ));
+        }
+
+        if (action === 'delete') {
+            taskPlannerState.items = taskPlannerState.items.filter((item) => item.id !== taskId);
+        }
+
+        persistTasks();
+        renderTaskPlanner();
+    });
+
+    clearCompletedBtn.addEventListener('click', () => {
+        taskPlannerState.items = taskPlannerState.items.filter((item) => !item.completed);
+        persistTasks();
+        renderTaskPlanner();
+    });
+
+    filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            taskPlannerState.filter = button.dataset.filter || 'all';
+            renderTaskPlanner();
+        });
+    });
+
+    document.addEventListener('languageChanged', renderTaskPlanner);
+    renderTaskPlanner();
+}
+
+function loadStoredTasks() {
+    const rawValue = window.localStorage.getItem(TASK_STORAGE_KEY);
+    if (!rawValue) {
+        return [];
+    }
+
+    try {
+        const parsed = JSON.parse(rawValue);
+        if (!Array.isArray(parsed)) {
+            throw new TypeError('Stored tasks must be an array');
+        }
+
+        return parsed.filter(isValidTaskRecord);
+    } catch (error) {
+        console.error('Error loading visitor tasks:', error);
+        window.localStorage.removeItem(TASK_STORAGE_KEY);
+        return [];
+    }
+}
+
+function isValidTaskRecord(item) {
+    return Boolean(
+        item &&
+        typeof item.id === 'string' &&
+        typeof item.title === 'string' &&
+        typeof item.priority === 'string' &&
+        typeof item.deadline === 'string' &&
+        typeof item.completed === 'boolean' &&
+        typeof item.createdAt === 'string'
+    );
+}
+
+function persistTasks() {
+    window.localStorage.setItem(TASK_STORAGE_KEY, JSON.stringify(taskPlannerState.items));
+}
+
+function renderTaskPlanner() {
+    const list = document.getElementById('visitor-task-list');
+    const emptyState = document.getElementById('visitor-task-empty');
+    const totalCount = document.getElementById('task-total-count');
+    const openCount = document.getElementById('task-open-count');
+    const doneCount = document.getElementById('task-done-count');
+    const clearCompletedBtn = document.getElementById('clear-completed-tasks');
+
+    if (!list || !emptyState || !totalCount || !openCount || !doneCount || !clearCompletedBtn) {
+        return;
+    }
+
+    const filteredItems = getFilteredTasks();
+    const completedTasks = taskPlannerState.items.filter((item) => item.completed).length;
+
+    totalCount.textContent = String(taskPlannerState.items.length);
+    openCount.textContent = String(taskPlannerState.items.length - completedTasks);
+    doneCount.textContent = String(completedTasks);
+    clearCompletedBtn.disabled = completedTasks === 0;
+
+    document.querySelectorAll('.task-filter-btn').forEach((button) => {
+        button.classList.toggle('active', button.dataset.filter === taskPlannerState.filter);
+    });
+
+    emptyState.hidden = filteredItems.length > 0;
+    list.hidden = filteredItems.length === 0;
+    list.innerHTML = filteredItems.map((item) => createTaskMarkup(item)).join('');
+}
+
+function getFilteredTasks() {
+    if (taskPlannerState.filter === 'open') {
+        return taskPlannerState.items.filter((item) => !item.completed);
+    }
+
+    if (taskPlannerState.filter === 'done') {
+        return taskPlannerState.items.filter((item) => item.completed);
+    }
+
+    return taskPlannerState.items;
+}
+
+function createTaskMarkup(task) {
+    const completedClass = task.completed ? ' is-completed' : '';
+    const priorityLabel = translate(`tasks.priority.${task.priority}`, task.priority);
+    const toggleLabel = task.completed
+        ? translate('tasks.planner.actions.mark_open', 'Mark as open')
+        : translate('tasks.planner.actions.mark_done', 'Mark as done');
+    const deleteLabel = translate('tasks.planner.actions.delete', 'Delete task');
+    const deadlineMarkup = task.deadline
+        ? `<span class="visitor-task-deadline"><i class="fas fa-calendar-alt"></i> ${escapeHtml(translate('tasks.planner.deadline_prefix', 'Due'))}: ${escapeHtml(formatTaskDate(task.deadline))}</span>`
+        : `<span class="visitor-task-deadline visitor-task-deadline-empty">${escapeHtml(translate('tasks.planner.no_deadline', 'No deadline'))}</span>`;
+
+    return `
+        <li class="visitor-task-item${completedClass}">
+            <button type="button" class="visitor-task-toggle" data-task-action="toggle" data-task-id="${escapeHtml(task.id)}" aria-label="${escapeHtml(toggleLabel)}">
+                <i class="fas ${task.completed ? 'fa-check-circle' : 'fa-circle'}"></i>
+            </button>
+            <div class="visitor-task-content">
+                <div class="visitor-task-header">
+                    <h4 class="visitor-task-title">${escapeHtml(task.title)}</h4>
+                    <span class="visitor-task-priority priority-${escapeHtml(task.priority)}">${escapeHtml(priorityLabel)}</span>
+                </div>
+                <div class="visitor-task-meta">
+                    ${deadlineMarkup}
+                </div>
+            </div>
+            <button type="button" class="visitor-task-delete" data-task-action="delete" data-task-id="${escapeHtml(task.id)}" aria-label="${escapeHtml(deleteLabel)}">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+        </li>
+    `;
+}
+
+function formatTaskDate(value) {
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) {
+        return value;
+    }
+
+    const locale = i18n && typeof i18n.getCurrentLanguage === 'function'
+        ? i18n.getCurrentLanguage()
+        : 'en';
+
+    return new Intl.DateTimeFormat(locale, {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+    }).format(date);
+}
+
+function createTaskId() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+        return window.crypto.randomUUID();
+    }
+
+    return `task-${Date.now()}-${Math.floor(Math.random() * 100000)}`;
+}
+
+function escapeHtml(value) {
+    return String(value)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
 }
 
 /**

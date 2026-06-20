@@ -10,6 +10,7 @@ Modern personal website for Frontend Developer, built with Vanilla JavaScript, H
 - **Responsive**: Mobile-first design, fully responsive across all devices
 - **Animated Particles**: Interactive canvas background with particle effects
 - **GitHub Integration**: Automatically loads projects from GitHub API
+- **Visitor Task Planner**: Visitors can create, filter, complete, and clear tasks with browser-side persistence
 - **Smooth Animations**: Intersection Observer API for scroll animations
 - **SEO Optimized**: Meta tags, Open Graph, and semantic HTML
 - **Accessible**: ARIA labels and keyboard navigation support
@@ -74,6 +75,7 @@ Modern personal website for Frontend Developer, built with Vanilla JavaScript, H
 4. **Projects Section** - Dynamic project cards loaded from GitHub
 5. **Experience Section** - Timeline of professional experience
 6. **Contact Section** - Contact information and form
+7. **Tasks Section** - Client request form plus a visitor task planner saved in localStorage
 
 ## 🛠️ Setup & Development
 

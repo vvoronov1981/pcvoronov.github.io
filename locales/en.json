@@ -165,6 +165,34 @@
       "low": "Low",
       "medium": "Medium",
       "high": "High"
+    },
+    "planner": {
+      "title": "Visitor Task Planner",
+      "note": "Visitors can use this mini planner directly in the browser. Tasks stay saved on this device.",
+      "task_name": "Task name",
+      "task_name_placeholder": "Prepare a landing page draft",
+      "deadline": "Deadline",
+      "deadline_prefix": "Due",
+      "no_deadline": "No deadline",
+      "add": "Add task",
+      "added": "Task added to your planner.",
+      "empty": "No tasks yet. Add the first one to start planning.",
+      "clear_completed": "Clear completed",
+      "filters": {
+        "all": "All",
+        "open": "Open",
+        "done": "Done"
+      },
+      "summary": {
+        "total": "Total",
+        "open": "Open",
+        "done": "Done"
+      },
+      "actions": {
+        "mark_open": "Mark as open",
+        "mark_done": "Mark as done",
+        "delete": "Delete task"
+      }
     }
   }
 }

@@ -391,58 +391,125 @@
             </div>
 
             <div class="tasks-wrapper animate-on-scroll">
-                <form class="contact-form tasks-request-form" id="task-request-form" action="https://formsubmit.co/voronov.voldymyr@gmail.com" method="POST" data-ajax-endpoint="https://formsubmit.co/ajax/voronov.voldymyr@gmail.com" data-success-key="tasks.form.success" data-error-key="tasks.form.error" data-sending-key="tasks.form.sending">
-                    <h3 data-i18n="tasks.form.title">Create a task request</h3>
-                    <p class="task-form-note" data-i18n="tasks.note">
-                        This form sends your request directly to my email so I can reply with details and next steps.
-                    </p>
-                    <input type="hidden" name="_subject" value="New portfolio task request">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
+                <div class="tasks-layout">
+                    <form class="contact-form tasks-request-form" id="task-request-form" action="https://formsubmit.co/voronov.voldymyr@gmail.com" method="POST" data-ajax-endpoint="https://formsubmit.co/ajax/voronov.voldymyr@gmail.com" data-success-key="tasks.form.success" data-error-key="tasks.form.error" data-sending-key="tasks.form.sending">
+                        <h3 data-i18n="tasks.form.title">Create a task request</h3>
+                        <p class="task-form-note" data-i18n="tasks.note">
+                            This form sends your request directly to my email so I can reply with details and next steps.
+                        </p>
+                        <input type="hidden" name="_subject" value="New portfolio task request">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
 
-                    <div class="task-form-grid">
-                        <div class="form-group">
-                            <label for="task-client-name" class="form-label" data-i18n="tasks.form.name">Your Name</label>
-                            <input type="text" id="task-client-name" name="name" class="form-input" data-i18n-placeholder="tasks.form.name_placeholder" placeholder="John Doe" required>
+                        <div class="task-form-grid">
+                            <div class="form-group">
+                                <label for="task-client-name" class="form-label" data-i18n="tasks.form.name">Your Name</label>
+                                <input type="text" id="task-client-name" name="name" class="form-input" data-i18n-placeholder="tasks.form.name_placeholder" placeholder="John Doe" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="task-client-email" class="form-label" data-i18n="tasks.form.email">Your Email</label>
+                                <input type="email" id="task-client-email" name="email" class="form-input" data-i18n-placeholder="tasks.form.email_placeholder" placeholder="john@example.com" required>
+                            </div>
+                        </div>
+
+                        <div class="task-form-grid">
+                            <div class="form-group">
+                                <label for="task-company" class="form-label" data-i18n="tasks.form.company">Company or website</label>
+                                <input type="text" id="task-company" name="company" class="form-input" data-i18n-placeholder="tasks.form.company_placeholder" placeholder="Your company name or URL">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="task-priority" class="form-label" data-i18n="tasks.form.priority">Priority</label>
+                                <select id="task-priority" name="priority" class="task-priority-select">
+                                    <option value="low" data-i18n="tasks.priority.low">Low</option>
+                                    <option value="medium" selected data-i18n="tasks.priority.medium">Medium</option>
+                                    <option value="high" data-i18n="tasks.priority.high">High</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="task-client-email" class="form-label" data-i18n="tasks.form.email">Your Email</label>
-                            <input type="email" id="task-client-email" name="email" class="form-input" data-i18n-placeholder="tasks.form.email_placeholder" placeholder="john@example.com" required>
-                        </div>
-                    </div>
-
-                    <div class="task-form-grid">
-                        <div class="form-group">
-                            <label for="task-company" class="form-label" data-i18n="tasks.form.company">Company or website</label>
-                            <input type="text" id="task-company" name="company" class="form-input" data-i18n-placeholder="tasks.form.company_placeholder" placeholder="Your company name or URL">
+                            <label for="task-description" class="form-label" data-i18n="tasks.form.details">Task details</label>
+                            <textarea id="task-description" name="task_details" class="form-textarea" data-i18n-placeholder="tasks.form.details_placeholder" placeholder="Describe what you want me to build, fix, or improve..." required></textarea>
                         </div>
 
                         <div class="form-group">
-                            <label for="task-priority" class="form-label" data-i18n="tasks.form.priority">Priority</label>
-                            <select id="task-priority" name="priority" class="task-priority-select">
-                                <option value="low" data-i18n="tasks.priority.low">Low</option>
-                                <option value="medium" selected data-i18n="tasks.priority.medium">Medium</option>
-                                <option value="high" data-i18n="tasks.priority.high">High</option>
-                            </select>
+                            <label for="task-timeline" class="form-label" data-i18n="tasks.form.timeline">Preferred timeline</label>
+                            <input type="text" id="task-timeline" name="timeline" class="form-input" data-i18n-placeholder="tasks.form.timeline_placeholder" placeholder="For example: this week or by 15 July">
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="task-description" class="form-label" data-i18n="tasks.form.details">Task details</label>
-                        <textarea id="task-description" name="task_details" class="form-textarea" data-i18n-placeholder="tasks.form.details_placeholder" placeholder="Describe what you want me to build, fix, or improve..." required></textarea>
-                    </div>
+                        <button type="submit" class="btn btn-primary task-add-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span data-i18n="tasks.form.submit">Send Task Request</span>
+                        </button>
+                    </form>
 
-                    <div class="form-group">
-                        <label for="task-timeline" class="form-label" data-i18n="tasks.form.timeline">Preferred timeline</label>
-                        <input type="text" id="task-timeline" name="timeline" class="form-input" data-i18n-placeholder="tasks.form.timeline_placeholder" placeholder="For example: this week or by 15 July">
-                    </div>
+                    <div class="task-planner-panel">
+                        <div class="task-planner-header">
+                            <h3 data-i18n="tasks.planner.title">Visitor Task Planner</h3>
+                            <p data-i18n="tasks.planner.note">Visitors can use this mini planner directly in the browser. Tasks stay saved on this device.</p>
+                        </div>
 
-                    <button type="submit" class="btn btn-primary task-add-btn">
-                        <i class="fas fa-paper-plane"></i>
-                        <span data-i18n="tasks.form.submit">Send Task Request</span>
-                    </button>
-                </form>
+                        <form id="visitor-task-form" class="visitor-task-form">
+                            <div class="task-form-grid">
+                                <div class="form-group">
+                                    <label for="visitor-task-title" class="form-label" data-i18n="tasks.planner.task_name">Task name</label>
+                                    <input type="text" id="visitor-task-title" name="title" class="form-input" data-i18n-placeholder="tasks.planner.task_name_placeholder" placeholder="Prepare a landing page draft" maxlength="120" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="visitor-task-priority" class="form-label" data-i18n="tasks.form.priority">Priority</label>
+                                    <select id="visitor-task-priority" name="priority" class="task-priority-select">
+                                        <option value="low" data-i18n="tasks.priority.low">Low</option>
+                                        <option value="medium" selected data-i18n="tasks.priority.medium">Medium</option>
+                                        <option value="high" data-i18n="tasks.priority.high">High</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="visitor-task-deadline" class="form-label" data-i18n="tasks.planner.deadline">Deadline</label>
+                                <input type="date" id="visitor-task-deadline" name="deadline" class="form-input">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary task-add-btn">
+                                <i class="fas fa-plus"></i>
+                                <span data-i18n="tasks.planner.add">Add task</span>
+                            </button>
+                        </form>
+
+                        <div class="task-planner-toolbar">
+                            <div class="task-filter-group" role="tablist" aria-label="Task filters">
+                                <button type="button" class="task-filter-btn active" data-filter="all" data-i18n="tasks.planner.filters.all">All</button>
+                                <button type="button" class="task-filter-btn" data-filter="open" data-i18n="tasks.planner.filters.open">Open</button>
+                                <button type="button" class="task-filter-btn" data-filter="done" data-i18n="tasks.planner.filters.done">Done</button>
+                            </div>
+
+                            <button type="button" id="clear-completed-tasks" class="task-clear-btn" data-i18n="tasks.planner.clear_completed">Clear completed</button>
+                        </div>
+
+                        <div class="task-summary" aria-live="polite">
+                            <div class="task-summary-card">
+                                <span id="task-total-count" class="task-summary-value">0</span>
+                                <span class="task-summary-label" data-i18n="tasks.planner.summary.total">Total</span>
+                            </div>
+                            <div class="task-summary-card">
+                                <span id="task-open-count" class="task-summary-value">0</span>
+                                <span class="task-summary-label" data-i18n="tasks.planner.summary.open">Open</span>
+                            </div>
+                            <div class="task-summary-card">
+                                <span id="task-done-count" class="task-summary-value">0</span>
+                                <span class="task-summary-label" data-i18n="tasks.planner.summary.done">Done</span>
+                            </div>
+                        </div>
+
+                        <p id="visitor-task-empty" class="task-empty-state" data-i18n="tasks.planner.empty">
+                            No tasks yet. Add the first one to start planning.
+                        </p>
+                        <ul id="visitor-task-list" class="visitor-task-list" aria-live="polite"></ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
