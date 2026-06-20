@@ -62,7 +62,7 @@
                     <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projects</a></li>
                     <li><a href="#experience" class="nav-link" data-i18n="nav.experience">Experience</a></li>
                     <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
-                    <li><a href="#tasks" class="nav-link">Tasks</a></li>
+                    <li><a href="#tasks" class="nav-link" data-i18n="nav.tasks">Tasks</a></li>
                 </ul>
             </div>
             
@@ -379,38 +379,38 @@
     <section id="tasks" class="section" style="background: var(--bg-secondary);">
         <div class="container">
             <div class="section-header">
-                <p class="section-subtitle">Visitor workspace</p>
-                <h2 class="section-title">Visitor Task Board</h2>
+                <p class="section-subtitle" data-i18n="tasks.subtitle">Visitor workspace</p>
+                <h2 class="section-title" data-i18n="tasks.title">Visitor Task Board</h2>
             </div>
 
             <div class="tasks-wrapper animate-on-scroll">
                 <div class="tasks-input-bar">
-                    <input type="text" id="task-input" class="form-input task-input-field" placeholder="Add your task for this visit..." maxlength="200">
+                    <input type="text" id="task-input" class="form-input task-input-field" data-i18n-placeholder="tasks.input_placeholder" placeholder="Add your task for this visit..." maxlength="200">
                     <select id="task-priority" class="task-priority-select">
-                        <option value="low">🟢 Low</option>
-                        <option value="medium" selected>🟡 Medium</option>
-                        <option value="high">🔴 High</option>
+                        <option value="low" data-i18n="tasks.priority.low">🟢 Low</option>
+                        <option value="medium" selected data-i18n="tasks.priority.medium">🟡 Medium</option>
+                        <option value="high" data-i18n="tasks.priority.high">🔴 High</option>
                     </select>
                     <button id="task-add-btn" class="btn btn-primary task-add-btn">
                         <i class="fas fa-plus"></i>
-                        <span>Add Task</span>
+                        <span data-i18n="tasks.add_task">Add Task</span>
                     </button>
                 </div>
 
                 <div class="tasks-filters">
-                    <button class="task-filter-btn active" data-filter="all">All</button>
-                    <button class="task-filter-btn" data-filter="pending">Pending</button>
-                    <button class="task-filter-btn" data-filter="done">Completed</button>
+                    <button class="task-filter-btn active" data-filter="all" data-i18n="tasks.filters.all">All</button>
+                    <button class="task-filter-btn" data-filter="pending" data-i18n="tasks.filters.pending">Pending</button>
+                    <button class="task-filter-btn" data-filter="done" data-i18n="tasks.filters.done">Completed</button>
                 </div>
 
                 <div class="tasks-stats">
                     <span id="tasks-total">0 tasks</span>
                     <span id="tasks-done">0 completed</span>
                     <button id="tasks-clear-done" class="task-clear-btn">
-                        <i class="fas fa-trash-alt"></i> Clear completed
+                        <i class="fas fa-trash-alt"></i> <span data-i18n="tasks.clear_completed">Clear completed</span>
                     </button>
                 </div>
-                <p class="section-subtitle" style="margin-top: 12px; font-size: 0.95rem;">
+                <p class="section-subtitle" style="margin-top: 12px; font-size: 0.95rem;" data-i18n="tasks.note">
                     Tasks are stored only in your browser and are private to your device.
                 </p>
 
