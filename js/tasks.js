@@ -1,5 +1,6 @@
 (() => {
-    const STORAGE_KEY = 'vv_tasks';
+    const STORAGE_KEY = 'vv_visitor_tasks';
+    const LEGACY_STORAGE_KEY = 'vv_tasks';
     let currentFilter = 'all';
 
     const taskInput = document.getElementById('task-input');
@@ -12,10 +13,39 @@
 
     if (!taskInput) return;
 
+    function normalizeTasks(value) {
+        if (!Array.isArray(value)) return [];
+        return value.filter(task => task && typeof task.text === 'string').map(task => ({
+            id: typeof task.id === 'string' ? task.id : createId(),
+            text: task.text.trim(),
+            priority: ['low', 'medium', 'high'].includes(task.priority) ? task.priority : 'medium',
+            done: Boolean(task.done),
+            createdAt: Number.isFinite(task.createdAt) ? task.createdAt : Date.now()
+        })).filter(task => task.text.length > 0);
+    }
+
+    function migrateLegacyTasks() {
+        const existing = localStorage.getItem(STORAGE_KEY);
+        if (existing !== null) return;
+
+        const legacy = localStorage.getItem(LEGACY_STORAGE_KEY);
+        if (!legacy) return;
+
+        try {
+            const migrated = normalizeTasks(JSON.parse(legacy));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
+            localStorage.removeItem(LEGACY_STORAGE_KEY);
+        } catch (error) {
+            console.error('Unable to migrate legacy visitor tasks:', error);
+        }
+    }
+
     function loadTasks() {
         try {
-            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-        } catch {
+            const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            return normalizeTasks(parsed);
+        } catch (error) {
+            console.error('Unable to load visitor tasks:', error);
             return [];
         }
     }
@@ -29,7 +59,7 @@
     }
 
     function addTask() {
-        const text = taskInput.value.trim();
+        const text = taskInput.value.replace(/\s+/g, ' ').trim();
         if (!text) return;
 
         const tasks = loadTasks();
@@ -89,7 +119,7 @@
             taskList.innerHTML = `
                 <li class="task-empty-state">
                     <i class="fas fa-clipboard-list"></i>
-                    <p>${currentFilter === 'done' ? 'No completed tasks yet.' : currentFilter === 'pending' ? 'All tasks are done! 🎉' : 'No tasks yet. Add your first task above!'}</p>
+                    <p>${currentFilter === 'done' ? 'No completed tasks yet.' : currentFilter === 'pending' ? 'All visitor tasks are done! 🎉' : 'No visitor tasks yet. Add your first task above!'}</p>
                 </li>`;
             return;
         }
@@ -137,5 +167,6 @@
         });
     });
 
+    migrateLegacyTasks();
     render();
 })();
