@@ -13,6 +13,14 @@
 
     if (!taskInput) return;
 
+    function t(key, fallback) {
+        if (window.i18n && typeof window.i18n.t === 'function') {
+            const value = window.i18n.t(key);
+            if (value && value !== key) return value;
+        }
+        return fallback;
+    }
+
     function normalizeTasks(value) {
         if (!Array.isArray(value)) return [];
         return value.filter(task => task && typeof task.text === 'string').map(task => ({
@@ -101,6 +109,10 @@
         return { low: '🟢', medium: '🟡', high: '🔴' }[p] || '';
     }
 
+    function getPriorityText(priority) {
+        return t(`tasks.priority.${priority}`, priority);
+    }
+
     function filteredTasks(tasks) {
         if (currentFilter === 'pending') return tasks.filter(t => !t.done);
         if (currentFilter === 'done') return tasks.filter(t => t.done);
@@ -112,26 +124,30 @@
         const visible = filteredTasks(tasks);
         const doneCount = tasks.filter(t => t.done).length;
 
-        tasksTotal.textContent = `${tasks.length} task${tasks.length !== 1 ? 's' : ''}`;
-        tasksDone.textContent = `${doneCount} completed`;
+        const taskWord = tasks.length === 1
+            ? t('tasks.stats.task_singular', 'task')
+            : t('tasks.stats.task_plural', 'tasks');
+        const completedWord = t('tasks.stats.completed', 'completed');
+        tasksTotal.textContent = `${tasks.length} ${taskWord}`;
+        tasksDone.textContent = `${doneCount} ${completedWord}`;
 
         if (visible.length === 0) {
             taskList.innerHTML = `
                 <li class="task-empty-state">
                     <i class="fas fa-clipboard-list"></i>
-                    <p>${currentFilter === 'done' ? 'No completed tasks yet.' : currentFilter === 'pending' ? 'All visitor tasks are done! 🎉' : 'No visitor tasks yet. Add your first task above!'}</p>
+                    <p>${currentFilter === 'done' ? t('tasks.empty.done', 'No completed tasks yet.') : currentFilter === 'pending' ? t('tasks.empty.pending', 'All visitor tasks are done! 🎉') : t('tasks.empty.all', 'No visitor tasks yet. Add your first task above!')}</p>
                 </li>`;
             return;
         }
 
         taskList.innerHTML = visible.map(task => `
             <li class="task-item ${task.done ? 'task-done' : ''} task-priority-${task.priority}" data-id="${task.id}">
-                <button class="task-check-btn" data-id="${task.id}" aria-label="${task.done ? 'Mark incomplete' : 'Mark complete'}">
+                <button class="task-check-btn" data-id="${task.id}" aria-label="${task.done ? t('tasks.aria.mark_incomplete', 'Mark incomplete') : t('tasks.aria.mark_complete', 'Mark complete')}">
                     <i class="fas ${task.done ? 'fa-check-circle' : 'fa-circle'}"></i>
                 </button>
-                <span class="task-priority-icon">${priorityLabel(task.priority)}</span>
+                <span class="task-priority-icon" title="${escapeHtml(getPriorityText(task.priority))}">${priorityLabel(task.priority)}</span>
                 <span class="task-text">${escapeHtml(task.text)}</span>
-                <button class="task-delete-btn" data-id="${task.id}" aria-label="Delete task">
+                <button class="task-delete-btn" data-id="${task.id}" aria-label="${t('tasks.aria.delete_task', 'Delete task')}">
                     <i class="fas fa-times"></i>
                 </button>
             </li>
@@ -166,6 +182,8 @@
             render();
         });
     });
+
+    document.addEventListener('languageChanged', render);
 
     migrateLegacyTasks();
     render();
