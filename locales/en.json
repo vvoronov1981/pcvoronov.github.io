@@ -6,7 +6,8 @@
     "services": "Services",
     "projects": "Projects",
     "experience": "Experience",
-    "contact": "Contact"
+    "contact": "Contact",
+    "tasks": "Tasks"
   },
   "hero": {
     "greeting": "Hello, I'm",
@@ -135,6 +136,39 @@
       "feature2": "Deduction optimization",
       "feature3": "Tax planning for businesses",
       "feature4": "Compliance and filing assistance"
+    }
+  },
+  "tasks": {
+    "title": "Visitor Task Board",
+    "subtitle": "Visitor workspace",
+    "input_placeholder": "Add your task for this visit...",
+    "add_task": "Add Task",
+    "clear_completed": "Clear completed",
+    "note": "Tasks are stored only in your browser and are private to your device.",
+    "priority": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "filters": {
+      "all": "All",
+      "pending": "Pending",
+      "done": "Completed"
+    },
+    "stats": {
+      "task_singular": "task",
+      "task_plural": "tasks",
+      "completed": "completed"
+    },
+    "empty": {
+      "all": "No visitor tasks yet. Add your first task above!",
+      "pending": "All visitor tasks are done! 🎉",
+      "done": "No completed tasks yet."
+    },
+    "aria": {
+      "mark_complete": "Mark complete",
+      "mark_incomplete": "Mark incomplete",
+      "delete_task": "Delete task"
     }
   }
 }
