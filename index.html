@@ -379,13 +379,13 @@
     <section id="tasks" class="section" style="background: var(--bg-secondary);">
         <div class="container">
             <div class="section-header">
-                <p class="section-subtitle">Your personal workspace</p>
-                <h2 class="section-title">Task Manager</h2>
+                <p class="section-subtitle">Visitor workspace</p>
+                <h2 class="section-title">Visitor Task Board</h2>
             </div>
 
             <div class="tasks-wrapper animate-on-scroll">
                 <div class="tasks-input-bar">
-                    <input type="text" id="task-input" class="form-input task-input-field" placeholder="Add a new task..." maxlength="200">
+                    <input type="text" id="task-input" class="form-input task-input-field" placeholder="Add your task for this visit..." maxlength="200">
                     <select id="task-priority" class="task-priority-select">
                         <option value="low">🟢 Low</option>
                         <option value="medium" selected>🟡 Medium</option>
@@ -410,6 +410,9 @@
                         <i class="fas fa-trash-alt"></i> Clear completed
                     </button>
                 </div>
+                <p class="section-subtitle" style="margin-top: 12px; font-size: 0.95rem;">
+                    Tasks are stored only in your browser and are private to your device.
+                </p>
 
                 <ul id="task-list" class="task-list">
                     <li class="task-empty-state">
@@ -470,4 +473,3 @@
     <script src="//code.tidio.co/b11psn3qwvf4bxdsmvydlwpeklm0lx6o.js" async></script>
 </body>
 </html>
-
