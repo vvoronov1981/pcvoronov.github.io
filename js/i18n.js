@@ -83,6 +83,7 @@ class I18n {
         await this.loadTranslations(lang);
         this.updatePageContent();
         this.updateLanguageButtons();
+        document.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
     }
 
     /**
