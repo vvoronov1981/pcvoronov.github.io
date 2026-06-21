@@ -1002,6 +1002,30 @@
     opacity: 0.8;
 }
 
+.visitor-task-deadline--overdue {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+.visitor-task-overdue-badge {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 6px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(239, 68, 68, 0.12);
+    color: #dc2626;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.visitor-task-item.is-overdue {
+    border-color: rgba(239, 68, 68, 0.35);
+    background: rgba(239, 68, 68, 0.04);
+}
+
 @media (max-width: 900px) {
     .tasks-layout {
         grid-template-columns: 1fr;
