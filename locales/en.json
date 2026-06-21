@@ -193,6 +193,7 @@
         "mark_done": "Mark as done",
         "delete": "Delete task"
       }
-    }
+    },
+    "overdue": "Overdue"
   }
 }
