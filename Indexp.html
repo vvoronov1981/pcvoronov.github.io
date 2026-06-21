@@ -35,6 +35,7 @@
         <a href="#advantages">Преимущества</a>
         <a href="#about">О компании</a>
         <a href="#process">Как работаем</a>
+        <a href="#tasks">Мои задачи</a>
         <a href="#contacts">Оставить заявку</a>
         <a href="investors.html">Инвесторам</a>
         <a href="bank-details.html">Реквизиты</a>
@@ -253,6 +254,63 @@
       </div>
     </section>
 
+    <section class="section" id="tasks">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Мои задачи</p>
+          <h2>Составьте список задач — мы возьмём их в работу</h2>
+          <p>Добавьте всё, что нужно решить: настройка, разработка, обслуживание. Затем одним кликом отправьте список через форму заявки.</p>
+        </div>
+
+        <div class="task-board">
+          <div class="card task-input-card">
+            <h3>Добавить задачу</h3>
+            <form id="task-form" class="task-form" novalidate>
+              <div class="form-group">
+                <label for="task-text">Описание задачи *</label>
+                <input type="text" id="task-text" placeholder="Например: настроить VPN, обновить сервер..." autocomplete="off" />
+              </div>
+              <div class="task-form-row">
+                <div class="form-group">
+                  <label for="task-service-sel">Направление</label>
+                  <select id="task-service-sel">
+                    <option value="">— Не указано —</option>
+                    <option value="Управление и мониторинг сетей">Сети</option>
+                    <option value="Поддержка серверов и оборудования">Серверы</option>
+                    <option value="Разработка программного обеспечения">Разработка ПО</option>
+                    <option value="Аудит и IT-консалтинг">IT-консалтинг</option>
+                    <option value="Другое">Другое</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="task-priority-sel">Приоритет</label>
+                  <select id="task-priority-sel">
+                    <option value="normal">Обычный</option>
+                    <option value="high">Высокий</option>
+                    <option value="low">Низкий</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-add-task">+ Добавить задачу</button>
+            </form>
+          </div>
+
+          <div class="task-list-wrap">
+            <div class="task-list-header">
+              <h3>Список задач <span class="task-count" id="task-count">0</span></h3>
+              <div class="task-header-actions">
+                <button class="btn btn-secondary btn-clear-tasks" id="clear-tasks-btn" title="Удалить всё" aria-label="Удалить все задачи">Очистить</button>
+                <a class="btn btn-send-tasks" id="send-tasks-btn" href="#request-form" aria-label="Отправить задачи в форму заявки">Отправить заявку →</a>
+              </div>
+            </div>
+            <ul class="task-list" id="task-list" aria-label="Список задач">
+              <li class="task-empty" id="task-empty">Задачи пока не добавлены. Добавьте первую задачу выше!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="contacts">
       <div class="container contact-shell">
         <div class="contact-intro">
@@ -397,6 +455,170 @@
 
   gtag('config', 'AW-10993663020');
 </script>
+
+  <!-- Task List Script -->
+  <script>
+  (function () {
+    var STORAGE_KEY = 'pcvoronov_tasks';
+    var taskForm = document.getElementById('task-form');
+    var taskTextInput = document.getElementById('task-text');
+    var taskServiceSel = document.getElementById('task-service-sel');
+    var taskPrioritySel = document.getElementById('task-priority-sel');
+    var taskList = document.getElementById('task-list');
+    var taskEmpty = document.getElementById('task-empty');
+    var taskCount = document.getElementById('task-count');
+    var sendTasksBtn = document.getElementById('send-tasks-btn');
+    var clearTasksBtn = document.getElementById('clear-tasks-btn');
+
+    var PRIORITY_LABELS = { high: 'Высокий', normal: 'Обычный', low: 'Низкий' };
+    var PRIORITY_CLASS = { high: 'task-priority-high', normal: 'task-priority-normal', low: 'task-priority-low' };
+
+    function loadTasks() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch (e) { return []; }
+    }
+
+    function saveTasks(tasks) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+    }
+
+    function renderTasks() {
+      var tasks = loadTasks();
+      taskList.innerHTML = '';
+      taskCount.textContent = tasks.length;
+      if (tasks.length === 0) {
+        var empty = document.createElement('li');
+        empty.className = 'task-empty';
+        empty.textContent = 'Задачи пока не добавлены. Добавьте первую задачу выше!';
+        taskList.appendChild(empty);
+        if (sendTasksBtn) sendTasksBtn.setAttribute('aria-disabled', 'true');
+        if (clearTasksBtn) clearTasksBtn.disabled = true;
+        return;
+      }
+      if (sendTasksBtn) sendTasksBtn.removeAttribute('aria-disabled');
+      if (clearTasksBtn) clearTasksBtn.disabled = false;
+      tasks.forEach(function (task, idx) {
+        var li = document.createElement('li');
+        li.className = 'task-item' + (task.done ? ' task-done' : '');
+
+        var checkBtn = document.createElement('button');
+        checkBtn.className = 'task-check-btn';
+        checkBtn.setAttribute('aria-label', task.done ? 'Снять отметку' : 'Отметить выполненной');
+        checkBtn.innerHTML = task.done ? '&#10003;' : '';
+        checkBtn.title = task.done ? 'Снять отметку' : 'Отметить выполненной';
+        checkBtn.addEventListener('click', function () { toggleTask(idx); });
+
+        var body = document.createElement('div');
+        body.className = 'task-body';
+
+        var text = document.createElement('span');
+        text.className = 'task-text';
+        text.textContent = task.text;
+
+        var meta = document.createElement('div');
+        meta.className = 'task-meta';
+
+        if (task.service) {
+          var svcTag = document.createElement('span');
+          svcTag.className = 'task-tag task-tag-service';
+          svcTag.textContent = task.service;
+          meta.appendChild(svcTag);
+        }
+
+        var priTag = document.createElement('span');
+        priTag.className = 'task-tag ' + (PRIORITY_CLASS[task.priority] || 'task-priority-normal');
+        priTag.textContent = PRIORITY_LABELS[task.priority] || 'Обычный';
+        meta.appendChild(priTag);
+
+        body.appendChild(text);
+        body.appendChild(meta);
+
+        var delBtn = document.createElement('button');
+        delBtn.className = 'task-del-btn';
+        delBtn.setAttribute('aria-label', 'Удалить задачу');
+        delBtn.innerHTML = '&times;';
+        delBtn.addEventListener('click', function () { deleteTask(idx); });
+
+        li.appendChild(checkBtn);
+        li.appendChild(body);
+        li.appendChild(delBtn);
+        taskList.appendChild(li);
+      });
+    }
+
+    function addTask(text, service, priority) {
+      var tasks = loadTasks();
+      tasks.push({ text: text, service: service, priority: priority, done: false });
+      saveTasks(tasks);
+      renderTasks();
+    }
+
+    function deleteTask(idx) {
+      var tasks = loadTasks();
+      tasks.splice(idx, 1);
+      saveTasks(tasks);
+      renderTasks();
+    }
+
+    function toggleTask(idx) {
+      var tasks = loadTasks();
+      tasks[idx].done = !tasks[idx].done;
+      saveTasks(tasks);
+      renderTasks();
+    }
+
+    function clearAllTasks() {
+      saveTasks([]);
+      renderTasks();
+    }
+
+    function buildTasksSummary() {
+      var tasks = loadTasks();
+      if (tasks.length === 0) return '';
+      var lines = tasks.map(function (t, i) {
+        var prefix = (i + 1) + '. ' + (t.done ? '[выполнено] ' : '');
+        var svc = t.service ? ' [' + t.service + ']' : '';
+        var pri = t.priority !== 'normal' ? ' (' + (PRIORITY_LABELS[t.priority] || t.priority) + ' приоритет)' : '';
+        return prefix + t.text + svc + pri;
+      });
+      return 'Список задач:\n' + lines.join('\n');
+    }
+
+    if (taskForm) {
+      taskForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var text = taskTextInput.value.trim();
+        if (!text) { taskTextInput.focus(); return; }
+        var service = taskServiceSel ? taskServiceSel.value : '';
+        var priority = taskPrioritySel ? taskPrioritySel.value : 'normal';
+        addTask(text, service, priority);
+        taskTextInput.value = '';
+        if (taskServiceSel) taskServiceSel.value = '';
+        if (taskPrioritySel) taskPrioritySel.value = 'normal';
+        taskTextInput.focus();
+      });
+    }
+
+    if (clearTasksBtn) {
+      clearTasksBtn.addEventListener('click', function () {
+        if (confirm('Удалить все задачи?')) clearAllTasks();
+      });
+    }
+
+    if (sendTasksBtn) {
+      sendTasksBtn.addEventListener('click', function (e) {
+        var summary = buildTasksSummary();
+        if (!summary) return;
+        var reqTask = document.getElementById('req-task');
+        if (reqTask) {
+          reqTask.value = summary;
+          window.setTimeout(function () { reqTask.focus(); }, 200);
+        }
+      });
+    }
+
+    renderTasks();
+  })();
+  </script>
 
   <script>
   (function () {
