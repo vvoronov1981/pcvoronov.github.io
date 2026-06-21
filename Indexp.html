@@ -1,667 +1,767 @@
-<!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PC Voronov — Сетевые решения, IT‑инфраструктура и разработка ПО</title>
-  <meta name="description" content="PC Voronov — услуги по проектированию и сопровождению сетей, обслуживанию IT‑инфраструктуры, настройке оборудования и разработке программного обеспечения." />
-  <meta name="theme-color" content="#0f172a" />
-  <meta name="format-detection" content="telephone=no" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="PC Voronov — Сетевые решения, IT‑инфраструктура и разработка ПО" />
-  <meta property="og:description" content="Надёжная поддержка сетей, серверов, оборудования и бизнес‑приложений для компаний и частных клиентов." />
-  <meta property="og:image" content="n.png" />
-  <meta property="og:locale" content="ru_RU" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="stylesp.css" />
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PC Voronov — Сетевые решения, IT‑инфраструктура и разработка ПО</title>
+  <meta name="description" content="PC Voronov — услуги по проектированию и сопровождению сетей, обслуживанию IT‑инфраструктуры, настройке оборудования и разработке программного обеспечения." />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PC Voronov — Сетевые решения, IT‑инфраструктура и разработка ПО" />
+  <meta property="og:description" content="Надёжная поддержка сетей, серверов, оборудования и бизнес‑приложений для компаний и частных клиентов." />
+  <meta property="og:image" content="n.png" />
+  <meta property="og:locale" content="ru_RU" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="stylesp.css" />
+  <style>
+  /* ── Quick-Check Chips ─────────────────────────────── */
+  .quick-check{margin-bottom:2rem;padding:1.5rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:1rem}
+  .quick-check-title{font-size:1.05rem;font-weight:700;margin:0 0 .4rem}
+  .quick-check-hint{font-size:.85rem;color:#94a3b8;margin:0 0 1.25rem}
+  .quick-chips-wrap{display:flex;flex-direction:column;gap:1rem}
+  .chip-category{display:block;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#38bdf8;margin-bottom:.45rem}
+  .quick-chips{display:flex;flex-wrap:wrap;gap:.45rem}
+  .chip{padding:.38rem .8rem;border:1.5px solid rgba(255,255,255,.18);border-radius:2rem;background:transparent;color:inherit;font-size:.82rem;cursor:pointer;transition:background .15s,border-color .15s,color .15s,transform .1s}
+  .chip:hover{background:rgba(56,189,248,.12);border-color:#38bdf8;color:#38bdf8;transform:translateY(-1px)}
+  .chip.chip-selected{background:#38bdf8;border-color:#38bdf8;color:#0f172a;font-weight:700}
+  .chip.chip-selected::before{content:"✓ "}
+  .quick-check-footer{margin-top:1rem;font-size:.8rem;color:#64748b}
+  .quick-check-footer strong{color:#38bdf8}
+  /* ── Task item flash animation ─────────────────────── */
+  @keyframes task-flash{0%{background:rgba(56,189,248,.25)}100%{background:transparent}}
+  .task-item-new{animation:task-flash .7s ease-out}
+  </style>
 </head>
-<body>
-  <a class="skip-link" href="#main">Перейти к содержимому</a>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#hero" aria-label="PC Voronov — на главную">
-        <img src="n.png" alt="Логотип PC Voronov" class="logo" />
-        <span class="brand-text">
-          <span class="brand-title">PC Voronov</span>
-          <span class="tagline">Сетевые решения, обслуживание оборудования и разработка ПО</span>
-        </span>
-      </a>
-
-      <nav class="main-nav" aria-label="Главное меню">
-        <a href="#services">Услуги</a>
-        <a href="#advantages">Преимущества</a>
-        <a href="#about">О компании</a>
-        <a href="#process">Как работаем</a>
-        <a href="#tasks">Мои задачи</a>
-        <a href="#contacts">Оставить заявку</a>
-        <a href="investors.html">Инвесторам</a>
-        <a href="bank-details.html">Реквизиты</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main">
-    <section class="hero" id="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">IT‑поддержка для бизнеса и частных клиентов</p>
-          <h1>Надёжная IT‑инфраструктура, стабильные сети и программные решения под ваши задачи</h1>
-          <p class="hero-lead">
-            PC Voronov помогает проектировать, внедрять и поддерживать компьютерные сети, серверное оборудование
-            и прикладное ПО. Работаем аккуратно, системно и с фокусом на устойчивость вашей инфраструктуры.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn" href="#request-form">Оставить задачу</a>
-            <a class="btn btn-secondary" href="#services">Посмотреть услуги</a>
-          </div>
-
-          <ul class="hero-points" aria-label="Ключевые преимущества">
-            <li>Проектирование и сопровождение LAN/WAN‑сетей</li>
-            <li>Настройка серверов, маршрутизаторов и коммутаторов</li>
-            <li>Разработка и внедрение программных решений</li>
-            <li>Онлайн-заявка за 1 минуту с быстрым ответом</li>
-          </ul>
-        </div>
-
-        <aside class="hero-panel" aria-label="Краткая информация">
-          <div class="panel-card">
-            <p class="panel-label">Формат работы</p>
-            <p class="panel-value">Удалённо и с выездом</p>
-          </div>
-          <div class="panel-card">
-            <p class="panel-label">Основные направления</p>
-            <p class="panel-value">Сети, оборудование, IT‑поддержка, разработка ПО</p>
-          </div>
-          <div class="panel-card">
-            <p class="panel-label">Локация</p>
-            <p class="panel-value">Краматорск</p>
-          </div>
-          <div class="panel-card highlight-card">
-            <p class="panel-label">Быстрый контакт</p>
-            <a href="tel:+380505235040">+380 (50) 523‑5040</a>
-            <a href="mailto:comprw@gmail.com">comprw@gmail.com</a>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section" id="services">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-kicker">Услуги</p>
-          <h2>Комплексная техническая поддержка и развитие IT‑среды</h2>
-          <p>
-            Подбираем решения под реальную инфраструктуру и бизнес‑процессы: от настройки сетей и оборудования
-            до автоматизации внутренних операций и сопровождения систем.
-          </p>
-        </div>
-
-        <div class="cards services-grid">
-          <article class="card service-card">
-            <div class="card-icon" aria-hidden="true">01</div>
-            <h3>Управление и мониторинг сетей</h3>
-            <p>
-              Проектирование LAN/WAN, настройка маршрутизации, VLAN, контроль стабильности соединений,
-              мониторинг и сопровождение критичных узлов инфраструктуры.
-            </p>
-            <div class="service-actions">
-              <a class="btn btn-service" href="#request-form" data-service="Управление и мониторинг сетей">Оставить заявку</a>
-            </div>
-          </article>
-
-          <article class="card service-card">
-            <div class="card-icon" aria-hidden="true">02</div>
-            <h3>Поддержка серверов и оборудования</h3>
-            <p>
-              Настройка серверов, коммутаторов, маршрутизаторов и рабочих станций, обновление ПО,
-              резервирование, профилактика сбоев и техническое обслуживание.
-            </p>
-            <div class="service-actions">
-              <a class="btn btn-service" href="#request-form" data-service="Поддержка серверов и оборудования">Оставить заявку</a>
-            </div>
-          </article>
-
-          <article class="card service-card">
-            <div class="card-icon" aria-hidden="true">03</div>
-            <h3>Разработка программного обеспечения</h3>
-            <p>
-              Создание прикладных решений для автоматизации бизнес‑процессов, интеграции с существующими
-              системами и разработки внутренних сервисов под конкретные задачи.
-            </p>
-            <div class="service-actions">
-              <a class="btn btn-service" href="#request-form" data-service="Разработка программного обеспечения">Оставить заявку</a>
-            </div>
-          </article>
-
-          <article class="card service-card">
-            <div class="card-icon" aria-hidden="true">04</div>
-            <h3>Аудит и IT‑консалтинг</h3>
-            <p>
-              Анализ текущей инфраструктуры, оценка рисков, рекомендации по безопасности,
-              масштабированию и оптимизации затрат на поддержку IT‑среды.
-            </p>
-            <div class="service-actions">
-              <a class="btn btn-service" href="#request-form" data-service="Аудит и IT-консалтинг">Оставить заявку</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-muted" id="advantages">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-kicker">Почему выбирают нас</p>
-          <h2>Практичный подход без лишней сложности</h2>
-        </div>
-
-        <div class="cards advantage-grid">
-          <article class="card info-card">
-            <h3>Системный подход</h3>
-            <p>Сначала анализируем инфраструктуру и задачи, затем предлагаем решение, которое действительно подходит по масштабу и бюджету.</p>
-          </article>
-          <article class="card info-card">
-            <h3>Фокус на надёжность</h3>
-            <p>Приоритет — стабильность работы сети, оборудования и сервисов, чтобы минимизировать простои и потери времени.</p>
-          </article>
-          <article class="card info-card">
-            <h3>Индивидуальные решения</h3>
-            <p>Подбираем инструменты и архитектуру под конкретные процессы компании, а не используем шаблонный подход.</p>
-          </article>
-          <article class="card info-card">
-            <h3>Понятная коммуникация</h3>
-            <p>Объясняем технические решения простым языком, согласовываем этапы работ и держим связь на протяжении проекта.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="container split-layout">
-        <div>
-          <div class="section-heading left-aligned">
-            <p class="section-kicker">О компании</p>
-            <h2>PC Voronov — частная IT‑практика</h2>
-          </div>
-          <p>
-            PC Voronov — частная компания (ИП), специализирующаяся на сетевой инфраструктуре,
-            техническом сопровождении оборудования и разработке программного обеспечения.
-            Руководитель — ИП Воронов Владимир Геннадиевич.
-          </p>
-          <p>
-            Мы работаем с задачами разного уровня сложности: от настройки отдельных узлов и рабочих мест
-            до комплексного сопровождения IT‑среды и разработки специализированных приложений.
-          </p>
-        </div>
-
-        <div class="card checklist-card">
-          <h3>Ключевые компетенции</h3>
-          <ul class="check-list">
-            <li>Проектирование, развёртывание и сопровождение сетевых решений</li>
-            <li>Поддержка серверного и сетевого оборудования</li>
-            <li>Автоматизация процессов и разработка прикладного ПО</li>
-            <li>Аудит, рекомендации и планирование модернизации инфраструктуры</li>
-            <li>Конфиденциальность и аккуратная работа с корпоративными данными</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-muted" id="process">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-kicker">Как работаем</p>
-          <h2>Прозрачный процесс взаимодействия</h2>
-        </div>
-
-        <div class="timeline">
-          <article class="timeline-item">
-            <span class="timeline-step">1</span>
-            <div>
-              <h3>Первичный запрос</h3>
-              <p>Вы описываете задачу, текущую ситуацию и ожидаемый результат. Мы уточняем детали и определяем формат работы.</p>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <span class="timeline-step">2</span>
-            <div>
-              <h3>Анализ и предложение решения</h3>
-              <p>Оцениваем инфраструктуру, выявляем риски и подготавливаем понятный план действий с приоритетами.</p>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <span class="timeline-step">3</span>
-            <div>
-              <h3>Выполнение работ</h3>
-              <p>Настраиваем, внедряем, модернизируем и тестируем решения, уделяя внимание безопасности и отказоустойчивости.</p>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <span class="timeline-step">4</span>
-            <div>
-              <h3>Поддержка и развитие</h3>
-              <p>При необходимости сопровождаем систему после внедрения и помогаем планировать дальнейшее развитие инфраструктуры.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="tasks">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-kicker">Мои задачи</p>
-          <h2>Составьте список задач — мы возьмём их в работу</h2>
-          <p>Добавьте всё, что нужно решить: настройка, разработка, обслуживание. Затем одним кликом отправьте список через форму заявки.</p>
-        </div>
-
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#hero" aria-label="PC Voronov — на главную">
+        <img src="n.png" alt="Логотип PC Voronov" class="logo" />
+        <span class="brand-text">
+          <span class="brand-title">PC Voronov</span>
+          <span class="tagline">Сетевые решения, обслуживание оборудования и разработка ПО</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Главное меню">
+        <a href="#services">Услуги</a>
+        <a href="#advantages">Преимущества</a>
+        <a href="#about">О компании</a>
+        <a href="#process">Как работаем</a>
+        <a href="#tasks">Мои задачи</a>
+        <a href="#contacts">Оставить заявку</a>
+        <a href="investors.html">Инвесторам</a>
+        <a href="bank-details.html">Реквизиты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">IT‑поддержка для бизнеса и частных клиентов</p>
+          <h1>Надёжная IT‑инфраструктура, стабильные сети и программные решения под ваши задачи</h1>
+          <p class="hero-lead">
+            PC Voronov помогает проектировать, внедрять и поддерживать компьютерные сети, серверное оборудование
+            и прикладное ПО. Работаем аккуратно, системно и с фокусом на устойчивость вашей инфраструктуры.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn" href="#request-form">Оставить задачу</a>
+            <a class="btn btn-secondary" href="#services">Посмотреть услуги</a>
+          </div>
+
+          <ul class="hero-points" aria-label="Ключевые преимущества">
+            <li>Проектирование и сопровождение LAN/WAN‑сетей</li>
+            <li>Настройка серверов, маршрутизаторов и коммутаторов</li>
+            <li>Разработка и внедрение программных решений</li>
+            <li>Онлайн-заявка за 1 минуту с быстрым ответом</li>
+          </ul>
+        </div>
+
+        <aside class="hero-panel" aria-label="Краткая информация">
+          <div class="panel-card">
+            <p class="panel-label">Формат работы</p>
+            <p class="panel-value">Удалённо и с выездом</p>
+          </div>
+          <div class="panel-card">
+            <p class="panel-label">Основные направления</p>
+            <p class="panel-value">Сети, оборудование, IT‑поддержка, разработка ПО</p>
+          </div>
+          <div class="panel-card">
+            <p class="panel-label">Локация</p>
+            <p class="panel-value">Краматорск</p>
+          </div>
+          <div class="panel-card highlight-card">
+            <p class="panel-label">Быстрый контакт</p>
+            <a href="tel:+380505235040">+380 (50) 523‑5040</a>
+            <a href="mailto:comprw@gmail.com">comprw@gmail.com</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Услуги</p>
+          <h2>Комплексная техническая поддержка и развитие IT‑среды</h2>
+          <p>
+            Подбираем решения под реальную инфраструктуру и бизнес‑процессы: от настройки сетей и оборудования
+            до автоматизации внутренних операций и сопровождения систем.
+          </p>
+        </div>
+
+        <div class="cards services-grid">
+          <article class="card service-card">
+            <div class="card-icon" aria-hidden="true">01</div>
+            <h3>Управление и мониторинг сетей</h3>
+            <p>
+              Проектирование LAN/WAN, настройка маршрутизации, VLAN, контроль стабильности соединений,
+              мониторинг и сопровождение критичных узлов инфраструктуры.
+            </p>
+            <div class="service-actions">
+              <a class="btn btn-service" href="#request-form" data-service="Управление и мониторинг сетей">Оставить заявку</a>
+            </div>
+          </article>
+
+          <article class="card service-card">
+            <div class="card-icon" aria-hidden="true">02</div>
+            <h3>Поддержка серверов и оборудования</h3>
+            <p>
+              Настройка серверов, коммутаторов, маршрутизаторов и рабочих станций, обновление ПО,
+              резервирование, профилактика сбоев и техническое обслуживание.
+            </p>
+            <div class="service-actions">
+              <a class="btn btn-service" href="#request-form" data-service="Поддержка серверов и оборудования">Оставить заявку</a>
+            </div>
+          </article>
+
+          <article class="card service-card">
+            <div class="card-icon" aria-hidden="true">03</div>
+            <h3>Разработка программного обеспечения</h3>
+            <p>
+              Создание прикладных решений для автоматизации бизнес‑процессов, интеграции с существующими
+              системами и разработки внутренних сервисов под конкретные задачи.
+            </p>
+            <div class="service-actions">
+              <a class="btn btn-service" href="#request-form" data-service="Разработка программного обеспечения">Оставить заявку</a>
+            </div>
+          </article>
+
+          <article class="card service-card">
+            <div class="card-icon" aria-hidden="true">04</div>
+            <h3>Аудит и IT‑консалтинг</h3>
+            <p>
+              Анализ текущей инфраструктуры, оценка рисков, рекомендации по безопасности,
+              масштабированию и оптимизации затрат на поддержку IT‑среды.
+            </p>
+            <div class="service-actions">
+              <a class="btn btn-service" href="#request-form" data-service="Аудит и IT-консалтинг">Оставить заявку</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="advantages">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Почему выбирают нас</p>
+          <h2>Практичный подход без лишней сложности</h2>
+        </div>
+
+        <div class="cards advantage-grid">
+          <article class="card info-card">
+            <h3>Системный подход</h3>
+            <p>Сначала анализируем инфраструктуру и задачи, затем предлагаем решение, которое действительно подходит по масштабу и бюджету.</p>
+          </article>
+          <article class="card info-card">
+            <h3>Фокус на надёжность</h3>
+            <p>Приоритет — стабильность работы сети, оборудования и сервисов, чтобы минимизировать простои и потери времени.</p>
+          </article>
+          <article class="card info-card">
+            <h3>Индивидуальные решения</h3>
+            <p>Подбираем инструменты и архитектуру под конкретные процессы компании, а не используем шаблонный подход.</p>
+          </article>
+          <article class="card info-card">
+            <h3>Понятная коммуникация</h3>
+            <p>Объясняем технические решения простым языком, согласовываем этапы работ и держим связь на протяжении проекта.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container split-layout">
+        <div>
+          <div class="section-heading left-aligned">
+            <p class="section-kicker">О компании</p>
+            <h2>PC Voronov — частная IT‑практика</h2>
+          </div>
+          <p>
+            PC Voronov — частная компания (ИП), специализирующаяся на сетевой инфраструктуре,
+            техническом сопровождении оборудования и разработке программного обеспечения.
+            Руководитель — ИП Воронов Владимир Геннадиевич.
+          </p>
+          <p>
+            Мы работаем с задачами разного уровня сложности: от настройки отдельных узлов и рабочих мест
+            до комплексного сопровождения IT‑среды и разработки специализированных приложений.
+          </p>
+        </div>
+
+        <div class="card checklist-card">
+          <h3>Ключевые компетенции</h3>
+          <ul class="check-list">
+            <li>Проектирование, развёртывание и сопровождение сетевых решений</li>
+            <li>Поддержка серверного и сетевого оборудования</li>
+            <li>Автоматизация процессов и разработка прикладного ПО</li>
+            <li>Аудит, рекомендации и планирование модернизации инфраструктуры</li>
+            <li>Конфиденциальность и аккуратная работа с корпоративными данными</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="process">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Как работаем</p>
+          <h2>Прозрачный процесс взаимодействия</h2>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <span class="timeline-step">1</span>
+            <div>
+              <h3>Первичный запрос</h3>
+              <p>Вы описываете задачу, текущую ситуацию и ожидаемый результат. Мы уточняем детали и определяем формат работы.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-step">2</span>
+            <div>
+              <h3>Анализ и предложение решения</h3>
+              <p>Оцениваем инфраструктуру, выявляем риски и подготавливаем понятный план действий с приоритетами.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-step">3</span>
+            <div>
+              <h3>Выполнение работ</h3>
+              <p>Настраиваем, внедряем, модернизируем и тестируем решения, уделяя внимание безопасности и отказоустойчивости.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-step">4</span>
+            <div>
+              <h3>Поддержка и развитие</h3>
+              <p>При необходимости сопровождаем систему после внедрения и помогаем планировать дальнейшее развитие инфраструктуры.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tasks">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Мои задачи</p>
+          <h2>Составьте список задач — мы возьмём их в работу</h2>
+          <p>Добавьте всё, что нужно решить: настройка, разработка, обслуживание. Затем одним кликом отправьте список через форму заявки.</p>
+        </div>
+
         <div class="task-board">
-          <div class="card task-input-card">
-            <h3>Добавить задачу</h3>
-            <form id="task-form" class="task-form" novalidate>
-              <div class="form-group">
-                <label for="task-text">Описание задачи *</label>
-                <input type="text" id="task-text" placeholder="Например: настроить VPN, обновить сервер..." autocomplete="off" />
-              </div>
-              <div class="task-form-row">
-                <div class="form-group">
-                  <label for="task-service-sel">Направление</label>
-                  <select id="task-service-sel">
-                    <option value="">— Не указано —</option>
-                    <option value="Управление и мониторинг сетей">Сети</option>
-                    <option value="Поддержка серверов и оборудования">Серверы</option>
-                    <option value="Разработка программного обеспечения">Разработка ПО</option>
-                    <option value="Аудит и IT-консалтинг">IT-консалтинг</option>
-                    <option value="Другое">Другое</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="task-priority-sel">Приоритет</label>
-                  <select id="task-priority-sel">
-                    <option value="normal">Обычный</option>
-                    <option value="high">Высокий</option>
-                    <option value="low">Низкий</option>
-                  </select>
+          <!-- ── Quick-Check: click to add tasks ──────────────── -->
+          <div class="quick-check" id="quick-check">
+            <h3 class="quick-check-title">⚡ Быстрый выбор — нажмите на нужные задачи</h3>
+            <p class="quick-check-hint">Кликните по задаче — она сразу добавится в список. Или введите свою задачу вручную ниже.</p>
+            <div class="quick-chips-wrap">
+
+              <div class="quick-chips-group">
+                <span class="chip-category">🌐 Сети</span>
+                <div class="quick-chips">
+                  <button type="button" class="chip" data-service="Управление и мониторинг сетей" data-text="Настройка VPN-соединения">Настройка VPN</button>
+                  <button type="button" class="chip" data-service="Управление и мониторинг сетей" data-text="Настройка VLAN и сегментации сети">VLAN / сегментация</button>
+                  <button type="button" class="chip" data-service="Управление и мониторинг сетей" data-text="Мониторинг и диагностика сети">Мониторинг сети</button>
+                  <button type="button" class="chip" data-service="Управление и мониторинг сетей" data-text="Проектирование новой LAN/WAN">Проект сети</button>
+                  <button type="button" class="chip" data-service="Управление и мониторинг сетей" data-text="Устранение неполадок с интернет-соединением">Нет интернета</button>
+                  <button type="button" class="chip" data-service="Управление и мониторинг сетей" data-text="Настройка Wi-Fi точек доступа">Wi-Fi / точки доступа</button>
                 </div>
               </div>
-              <button type="submit" class="btn btn-add-task">+ Добавить задачу</button>
-            </form>
-          </div>
 
-          <div class="task-list-wrap">
-            <div class="task-list-header">
-              <h3>Список задач <span class="task-count" id="task-count">0</span></h3>
-              <div class="task-header-actions">
-                <button class="btn btn-secondary btn-clear-tasks" id="clear-tasks-btn" title="Удалить всё" aria-label="Удалить все задачи">Очистить</button>
-                <a class="btn btn-send-tasks" id="send-tasks-btn" href="#request-form" aria-label="Отправить задачи в форму заявки">Отправить заявку →</a>
+              <div class="quick-chips-group">
+                <span class="chip-category">🖥️ Серверы и оборудование</span>
+                <div class="quick-chips">
+                  <button type="button" class="chip" data-service="Поддержка серверов и оборудования" data-text="Обновление ОС и программного обеспечения сервера">Обновление сервера</button>
+                  <button type="button" class="chip" data-service="Поддержка серверов и оборудования" data-text="Настройка резервного копирования данных">Резервное копирование</button>
+                  <button type="button" class="chip" data-service="Поддержка серверов и оборудования" data-text="Диагностика и замена оборудования">Диагностика железа</button>
+                  <button type="button" class="chip" data-service="Поддержка серверов и оборудования" data-text="Настройка нового рабочего места / ПК">Новое рабочее место</button>
+                  <button type="button" class="chip" data-service="Поддержка серверов и оборудования" data-text="Профилактическое обслуживание серверов">Профилактика ТО</button>
+                  <button type="button" class="chip" data-service="Поддержка серверов и оборудования" data-text="Настройка почтового сервера">Почтовый сервер</button>
+                </div>
               </div>
+
+              <div class="quick-chips-group">
+                <span class="chip-category">💻 Разработка ПО</span>
+                <div class="quick-chips">
+                  <button type="button" class="chip" data-service="Разработка программного обеспечения" data-text="Разработка внутреннего бизнес-приложения">Бизнес-приложение</button>
+                  <button type="button" class="chip" data-service="Разработка программного обеспечения" data-text="Автоматизация бизнес-процессов">Автоматизация процессов</button>
+                  <button type="button" class="chip" data-service="Разработка программного обеспечения" data-text="Интеграция с существующими системами">Интеграция систем</button>
+                  <button type="button" class="chip" data-service="Разработка программного обеспечения" data-text="Создание скриптов и утилит для администрирования">Скрипты / утилиты</button>
+                  <button type="button" class="chip" data-service="Разработка программного обеспечения" data-text="Разработка веб-приложения или API">Веб-приложение / API</button>
+                </div>
+              </div>
+
+              <div class="quick-chips-group">
+                <span class="chip-category">🔍 Аудит и консалтинг</span>
+                <div class="quick-chips">
+                  <button type="button" class="chip" data-service="Аудит и IT-консалтинг" data-text="Аудит IT-инфраструктуры и безопасности">Аудит безопасности</button>
+                  <button type="button" class="chip" data-service="Аудит и IT-консалтинг" data-text="Оценка рисков и оптимизация IT-затрат">Оптимизация затрат</button>
+                  <button type="button" class="chip" data-service="Аудит и IT-консалтинг" data-text="IT-консультация по развитию инфраструктуры">IT-консультация</button>
+                  <button type="button" class="chip" data-service="Аудит и IT-консалтинг" data-text="Разработка IT-стратегии и дорожной карты">IT-стратегия</button>
+                </div>
+              </div>
+
             </div>
-            <ul class="task-list" id="task-list" aria-label="Список задач">
-              <li class="task-empty" id="task-empty">Задачи пока не добавлены. Добавьте первую задачу выше!</li>
-            </ul>
+            <p class="quick-check-footer">Выбрано задач: <strong id="chip-count">0</strong></p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contacts">
-      <div class="container contact-shell">
-        <div class="contact-intro">
-          <p class="section-kicker">Контакты</p>
-          <h2>Обсудим задачу и предложим оптимальный вариант решения</h2>
-          <p>
-            Если вам нужна консультация, модернизация сети, обслуживание оборудования или разработка программного решения,
-            свяжитесь с нами удобным способом.
-          </p>
-
-          <div class="request-benefits" aria-label="Преимущества заявки через сайт">
-            <div class="request-benefit">
-              <strong>1 минута</strong>
-              <span>чтобы отправить задачу через сайт</span>
-            </div>
-            <div class="request-benefit">
-              <strong>1 рабочий день</strong>
-              <span>на обратную связь и план работ</span>
-            </div>
-          </div>
-
-          <div class="card request-checklist-card">
-            <h3>Что удобно указать в заявке</h3>
-            <ul class="check-list request-checklist">
-              <li>какая проблема возникла или какой результат нужен</li>
-              <li>какое оборудование, сеть или программа участвует в задаче</li>
-              <li>желаемый срок и, при наличии, ориентировочный бюджет</li>
-            </ul>
-          </div>
-
-          <div class="contact-list">
-            <a class="contact-item" href="tel:+380505235040">
-              <span>Телефон</span>
-              <strong>+380 (50) 523&#x2011;5040</strong>
-            </a>
-            <a class="contact-item" href="mailto:comprw@gmail.com">
-              <span>Email</span>
-              <strong>comprw@gmail.com</strong>
-            </a>
-            <div class="contact-item">
-              <span>Руководитель</span>
-              <strong>ИП Воронов Владимир Геннадиевич</strong>
-            </div>
-            <div class="contact-item">
-              <span>Локация</span>
-              <strong>Краматорск</strong>
-            </div>
-          </div>
-        </div>
-
-        <div class="card contact-form-card" id="request-form">
-          <h3>Оставить задачу</h3>
-          <p>Заполните форму — мы свяжемся с вами в течение рабочего дня и предложим план выполнения.</p>
-          <form id="contact-form" class="request-form" action="https://formsubmit.co/comprw@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Новая заявка с сайта PC Voronov" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="source" value="indexp-main-site" />
-
-            <div class="form-group">
-              <label for="req-name">Ваше имя *</label>
-              <input type="text" id="req-name" name="name" required placeholder="Иван Иванов" autocomplete="name" />
-            </div>
-
-            <div class="form-group">
-              <label for="req-company">Компания</label>
-              <input type="text" id="req-company" name="company" placeholder="Название компании (если есть)" autocomplete="organization" />
-            </div>
-
-            <div class="form-group">
-              <label for="req-contact">Email или телефон *</label>
-              <input type="text" id="req-contact" name="contact" required placeholder="email@example.com или +380..." />
-            </div>
-
-            <div class="form-group">
-              <label for="req-service">Направление</label>
-              <select id="req-service" name="service">
-                <option value="">— Выберите направление —</option>
-                <option value="Управление и мониторинг сетей">Управление и мониторинг сетей</option>
-                <option value="Поддержка серверов и оборудования">Поддержка серверов и оборудования</option>
-                <option value="Разработка программного обеспечения">Разработка программного обеспечения</option>
-                <option value="Аудит и IT-консалтинг">Аудит и IT-консалтинг</option>
-                <option value="Другое">Другое</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="req-task">Описание задачи *</label>
-              <textarea id="req-task" name="task" required rows="4" placeholder="Опишите вашу задачу или проблему..."></textarea>
-            </div>
-
-            <div class="form-group">
-              <label for="req-deadline">Желаемый срок</label>
-              <input type="text" id="req-deadline" name="deadline" placeholder="Например: до 30.06 или в течение 2 недель" />
-            </div>
-
-            <div class="form-group">
-              <label for="req-budget">Ориентировочный бюджет</label>
-              <input type="text" id="req-budget" name="budget" placeholder="По желанию: например 500–1000 USD" />
-            </div>
-
-            <div class="form-group">
-              <label for="req-consent">Подтверждение *</label>
-              <select id="req-consent" name="consent" required>
-                <option value="">— Выберите —</option>
-                <option value="Да, согласен(а) на обработку заявки">Да, согласен(а) на обработку заявки</option>
-              </select>
-            </div>
-
-            <button type="submit" class="btn btn-submit">Отправить заявку</button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>
-        <p class="footer-brand">© PC Voronov — ИП Воронов Владимир Геннадиевич</p>
-        <p class="footer-text">Сетевые решения, обслуживание оборудования и разработка программного обеспечения.</p>
-        <p class="footer-text">Краматорск</p>
-      </div>
-
-      <nav class="footer-nav" aria-label="Навигация в подвале">
-        <a href="#services">Услуги</a>
-        <a href="#advantages">Преимущества</a>
-        <a href="#about">О компании</a>
-        <a href="#contacts">Контакты</a>
-      </nav>
-    </div>
-  </footer>
-  <!-- Tidio Chat -->
-  <script src="//code.tidio.co/b11psn3qwvf4bxdsmvydlwpeklm0lx6o.js" async></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10993663020">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-10993663020');
-</script>
-
-  <!-- Task List Script -->
-  <script>
-  (function () {
-    var STORAGE_KEY = 'pcvoronov_tasks';
-    var taskForm = document.getElementById('task-form');
-    var taskTextInput = document.getElementById('task-text');
-    var taskServiceSel = document.getElementById('task-service-sel');
-    var taskPrioritySel = document.getElementById('task-priority-sel');
-    var taskList = document.getElementById('task-list');
-    var taskEmpty = document.getElementById('task-empty');
-    var taskCount = document.getElementById('task-count');
-    var sendTasksBtn = document.getElementById('send-tasks-btn');
-    var clearTasksBtn = document.getElementById('clear-tasks-btn');
-
-    var PRIORITY_LABELS = { high: 'Высокий', normal: 'Обычный', low: 'Низкий' };
-    var PRIORITY_CLASS = { high: 'task-priority-high', normal: 'task-priority-normal', low: 'task-priority-low' };
-
-    function loadTasks() {
-      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch (e) { return []; }
-    }
-
-    function saveTasks(tasks) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
-    }
-
-    function renderTasks() {
-      var tasks = loadTasks();
-      taskList.innerHTML = '';
-      taskCount.textContent = tasks.length;
-      if (tasks.length === 0) {
-        var empty = document.createElement('li');
-        empty.className = 'task-empty';
-        empty.textContent = 'Задачи пока не добавлены. Добавьте первую задачу выше!';
-        taskList.appendChild(empty);
-        if (sendTasksBtn) sendTasksBtn.setAttribute('aria-disabled', 'true');
-        if (clearTasksBtn) clearTasksBtn.disabled = true;
-        return;
-      }
-      if (sendTasksBtn) sendTasksBtn.removeAttribute('aria-disabled');
-      if (clearTasksBtn) clearTasksBtn.disabled = false;
-      tasks.forEach(function (task, idx) {
-        var li = document.createElement('li');
-        li.className = 'task-item' + (task.done ? ' task-done' : '');
-
-        var checkBtn = document.createElement('button');
-        checkBtn.className = 'task-check-btn';
-        checkBtn.setAttribute('aria-label', task.done ? 'Снять отметку' : 'Отметить выполненной');
-        checkBtn.innerHTML = task.done ? '&#10003;' : '';
-        checkBtn.title = task.done ? 'Снять отметку' : 'Отметить выполненной';
-        checkBtn.addEventListener('click', function () { toggleTask(idx); });
-
-        var body = document.createElement('div');
-        body.className = 'task-body';
-
-        var text = document.createElement('span');
-        text.className = 'task-text';
-        text.textContent = task.text;
-
-        var meta = document.createElement('div');
-        meta.className = 'task-meta';
-
-        if (task.service) {
-          var svcTag = document.createElement('span');
-          svcTag.className = 'task-tag task-tag-service';
-          svcTag.textContent = task.service;
-          meta.appendChild(svcTag);
-        }
-
-        var priTag = document.createElement('span');
-        priTag.className = 'task-tag ' + (PRIORITY_CLASS[task.priority] || 'task-priority-normal');
-        priTag.textContent = PRIORITY_LABELS[task.priority] || 'Обычный';
-        meta.appendChild(priTag);
-
-        body.appendChild(text);
-        body.appendChild(meta);
-
-        var delBtn = document.createElement('button');
-        delBtn.className = 'task-del-btn';
-        delBtn.setAttribute('aria-label', 'Удалить задачу');
-        delBtn.innerHTML = '&times;';
-        delBtn.addEventListener('click', function () { deleteTask(idx); });
-
-        li.appendChild(checkBtn);
-        li.appendChild(body);
-        li.appendChild(delBtn);
-        taskList.appendChild(li);
-      });
-    }
-
-    function addTask(text, service, priority) {
-      var tasks = loadTasks();
-      tasks.push({ text: text, service: service, priority: priority, done: false });
-      saveTasks(tasks);
-      renderTasks();
-    }
-
-    function deleteTask(idx) {
-      var tasks = loadTasks();
-      tasks.splice(idx, 1);
-      saveTasks(tasks);
-      renderTasks();
-    }
-
-    function toggleTask(idx) {
-      var tasks = loadTasks();
-      tasks[idx].done = !tasks[idx].done;
-      saveTasks(tasks);
-      renderTasks();
-    }
-
-    function clearAllTasks() {
-      saveTasks([]);
-      renderTasks();
-    }
-
-    function buildTasksSummary() {
-      var tasks = loadTasks();
-      if (tasks.length === 0) return '';
-      var lines = tasks.map(function (t, i) {
-        var prefix = (i + 1) + '. ' + (t.done ? '[выполнено] ' : '');
-        var svc = t.service ? ' [' + t.service + ']' : '';
-        var pri = t.priority !== 'normal' ? ' (' + (PRIORITY_LABELS[t.priority] || t.priority) + ' приоритет)' : '';
-        return prefix + t.text + svc + pri;
-      });
-      return 'Список задач:\n' + lines.join('\n');
-    }
-
-    if (taskForm) {
-      taskForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var text = taskTextInput.value.trim();
-        if (!text) { taskTextInput.focus(); return; }
-        var service = taskServiceSel ? taskServiceSel.value : '';
-        var priority = taskPrioritySel ? taskPrioritySel.value : 'normal';
-        addTask(text, service, priority);
-        taskTextInput.value = '';
-        if (taskServiceSel) taskServiceSel.value = '';
-        if (taskPrioritySel) taskPrioritySel.value = 'normal';
-        taskTextInput.focus();
-      });
-    }
-
-    if (clearTasksBtn) {
-      clearTasksBtn.addEventListener('click', function () {
-        if (confirm('Удалить все задачи?')) clearAllTasks();
-      });
-    }
-
-    if (sendTasksBtn) {
-      sendTasksBtn.addEventListener('click', function (e) {
-        var summary = buildTasksSummary();
-        if (!summary) return;
-        var reqTask = document.getElementById('req-task');
-        if (reqTask) {
-          reqTask.value = summary;
-          window.setTimeout(function () { reqTask.focus(); }, 200);
-        }
-      });
-    }
-
-    renderTasks();
+          <!-- ── /Quick-Check ──────────────────────────────────── -->
+          <div class="card task-input-card">
+            <h3>Добавить задачу</h3>
+            <form id="task-form" class="task-form" novalidate>
+              <div class="form-group">
+                <label for="task-text">Описание задачи *</label>
+                <input type="text" id="task-text" placeholder="Например: настроить VPN, обновить сервер..." autocomplete="off" />
+              </div>
+              <div class="task-form-row">
+                <div class="form-group">
+                  <label for="task-service-sel">Направление</label>
+                  <select id="task-service-sel">
+                    <option value="">— Не указано —</option>
+                    <option value="Управление и мониторинг сетей">Сети</option>
+                    <option value="Поддержка серверов и оборудования">Серверы</option>
+                    <option value="Разработка программного обеспечения">Разработка ПО</option>
+                    <option value="Аудит и IT-консалтинг">IT-консалтинг</option>
+                    <option value="Другое">Другое</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="task-priority-sel">Приоритет</label>
+                  <select id="task-priority-sel">
+                    <option value="normal">Обычный</option>
+                    <option value="high">Высокий</option>
+                    <option value="low">Низкий</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-add-task">+ Добавить задачу</button>
+            </form>
+          </div>
+
+          <div class="task-list-wrap">
+            <div class="task-list-header">
+              <h3>Список задач <span class="task-count" id="task-count">0</span></h3>
+              <div class="task-header-actions">
+                <button class="btn btn-secondary btn-clear-tasks" id="clear-tasks-btn" title="Удалить всё" aria-label="Удалить все задачи">Очистить</button>
+                <a class="btn btn-send-tasks" id="send-tasks-btn" href="#request-form" aria-label="Отправить задачи в форму заявки">Отправить заявку →</a>
+              </div>
+            </div>
+            <ul class="task-list" id="task-list" aria-label="Список задач">
+              <li class="task-empty" id="task-empty">Задачи пока не добавлены. Добавьте первую задачу выше!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacts">
+      <div class="container contact-shell">
+        <div class="contact-intro">
+          <p class="section-kicker">Контакты</p>
+          <h2>Обсудим задачу и предложим оптимальный вариант решения</h2>
+          <p>
+            Если вам нужна консультация, модернизация сети, обслуживание оборудования или разработка программного решения,
+            свяжитесь с нами удобным способом.
+          </p>
+
+          <div class="request-benefits" aria-label="Преимущества заявки через сайт">
+            <div class="request-benefit">
+              <strong>1 минута</strong>
+              <span>чтобы отправить задачу через сайт</span>
+            </div>
+            <div class="request-benefit">
+              <strong>1 рабочий день</strong>
+              <span>на обратную связь и план работ</span>
+            </div>
+          </div>
+
+          <div class="card request-checklist-card">
+            <h3>Что удобно указать в заявке</h3>
+            <ul class="check-list request-checklist">
+              <li>какая проблема возникла или какой результат нужен</li>
+              <li>какое оборудование, сеть или программа участвует в задаче</li>
+              <li>желаемый срок и, при наличии, ориентировочный бюджет</li>
+            </ul>
+          </div>
+
+          <div class="contact-list">
+            <a class="contact-item" href="tel:+380505235040">
+              <span>Телефон</span>
+              <strong>+380 (50) 523&#x2011;5040</strong>
+            </a>
+            <a class="contact-item" href="mailto:comprw@gmail.com">
+              <span>Email</span>
+              <strong>comprw@gmail.com</strong>
+            </a>
+            <div class="contact-item">
+              <span>Руководитель</span>
+              <strong>ИП Воронов Владимир Геннадиевич</strong>
+            </div>
+            <div class="contact-item">
+              <span>Локация</span>
+              <strong>Краматорск</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="card contact-form-card" id="request-form">
+          <h3>Оставить задачу</h3>
+          <p>Заполните форму — мы свяжемся с вами в течение рабочего дня и предложим план выполнения.</p>
+          <form id="contact-form" class="request-form" action="https://formsubmit.co/comprw@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Новая заявка с сайта PC Voronov" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="source" value="indexp-main-site" />
+
+            <div class="form-group">
+              <label for="req-name">Ваше имя *</label>
+              <input type="text" id="req-name" name="name" required placeholder="Иван Иванов" autocomplete="name" />
+            </div>
+
+            <div class="form-group">
+              <label for="req-company">Компания</label>
+              <input type="text" id="req-company" name="company" placeholder="Название компании (если есть)" autocomplete="organization" />
+            </div>
+
+            <div class="form-group">
+              <label for="req-contact">Email или телефон *</label>
+              <input type="text" id="req-contact" name="contact" required placeholder="email@example.com или +380..." />
+            </div>
+
+            <div class="form-group">
+              <label for="req-service">Направление</label>
+              <select id="req-service" name="service">
+                <option value="">— Выберите направление —</option>
+                <option value="Управление и мониторинг сетей">Управление и мониторинг сетей</option>
+                <option value="Поддержка серверов и оборудования">Поддержка серверов и оборудования</option>
+                <option value="Разработка программного обеспечения">Разработка программного обеспечения</option>
+                <option value="Аудит и IT-консалтинг">Аудит и IT-консалтинг</option>
+                <option value="Другое">Другое</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="req-task">Описание задачи *</label>
+              <textarea id="req-task" name="task" required rows="4" placeholder="Опишите вашу задачу или проблему..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="req-deadline">Желаемый срок</label>
+              <input type="text" id="req-deadline" name="deadline" placeholder="Например: до 30.06 или в течение 2 недель" />
+            </div>
+
+            <div class="form-group">
+              <label for="req-budget">Ориентировочный бюджет</label>
+              <input type="text" id="req-budget" name="budget" placeholder="По желанию: например 500–1000 USD" />
+            </div>
+
+            <div class="form-group">
+              <label for="req-consent">Подтверждение *</label>
+              <select id="req-consent" name="consent" required>
+                <option value="">— Выберите —</option>
+                <option value="Да, согласен(а) на обработку заявки">Да, согласен(а) на обработку заявки</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-submit">Отправить заявку</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-brand">© PC Voronov — ИП Воронов Владимир Геннадиевич</p>
+        <p class="footer-text">Сетевые решения, обслуживание оборудования и разработка программного обеспечения.</p>
+        <p class="footer-text">Краматорск</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Навигация в подвале">
+        <a href="#services">Услуги</a>
+        <a href="#advantages">Преимущества</a>
+        <a href="#about">О компании</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </div>
+  </footer>
+  <!-- Tidio Chat -->
+  <script src="//code.tidio.co/b11psn3qwvf4bxdsmvydlwpeklm0lx6o.js" async></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10993663020">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-10993663020');
+</script>
+
+  <!-- Task List Script -->
+  <script>
+  (function () {
+    var STORAGE_KEY = 'pcvoronov_tasks';
+    var taskForm = document.getElementById('task-form');
+    var taskTextInput = document.getElementById('task-text');
+    var taskServiceSel = document.getElementById('task-service-sel');
+    var taskPrioritySel = document.getElementById('task-priority-sel');
+    var taskList = document.getElementById('task-list');
+    var taskEmpty = document.getElementById('task-empty');
+    var taskCount = document.getElementById('task-count');
+    var sendTasksBtn = document.getElementById('send-tasks-btn');
+    var clearTasksBtn = document.getElementById('clear-tasks-btn');
+
+    var PRIORITY_LABELS = { high: 'Высокий', normal: 'Обычный', low: 'Низкий' };
+    var PRIORITY_CLASS = { high: 'task-priority-high', normal: 'task-priority-normal', low: 'task-priority-low' };
+
+    function loadTasks() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch (e) { return []; }
+    }
+
+    function saveTasks(tasks) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+    }
+
+    function renderTasks() {
+      var tasks = loadTasks();
+      taskList.innerHTML = '';
+      taskCount.textContent = tasks.length;
+      if (tasks.length === 0) {
+        var empty = document.createElement('li');
+        empty.className = 'task-empty';
+        empty.textContent = 'Задачи пока не добавлены. Добавьте первую задачу выше!';
+        taskList.appendChild(empty);
+        if (sendTasksBtn) sendTasksBtn.setAttribute('aria-disabled', 'true');
+        if (clearTasksBtn) clearTasksBtn.disabled = true;
+        return;
+      }
+      if (sendTasksBtn) sendTasksBtn.removeAttribute('aria-disabled');
+      if (clearTasksBtn) clearTasksBtn.disabled = false;
+      tasks.forEach(function (task, idx) {
+        var li = document.createElement('li');
+        li.className = 'task-item' + (task.done ? ' task-done' : '');
+
+        var checkBtn = document.createElement('button');
+        checkBtn.className = 'task-check-btn';
+        checkBtn.setAttribute('aria-label', task.done ? 'Снять отметку' : 'Отметить выполненной');
+        checkBtn.innerHTML = task.done ? '&#10003;' : '';
+        checkBtn.title = task.done ? 'Снять отметку' : 'Отметить выполненной';
+        checkBtn.addEventListener('click', function () { toggleTask(idx); });
+
+        var body = document.createElement('div');
+        body.className = 'task-body';
+
+        var text = document.createElement('span');
+        text.className = 'task-text';
+        text.textContent = task.text;
+
+        var meta = document.createElement('div');
+        meta.className = 'task-meta';
+
+        if (task.service) {
+          var svcTag = document.createElement('span');
+          svcTag.className = 'task-tag task-tag-service';
+          svcTag.textContent = task.service;
+          meta.appendChild(svcTag);
+        }
+
+        var priTag = document.createElement('span');
+        priTag.className = 'task-tag ' + (PRIORITY_CLASS[task.priority] || 'task-priority-normal');
+        priTag.textContent = PRIORITY_LABELS[task.priority] || 'Обычный';
+        meta.appendChild(priTag);
+
+        body.appendChild(text);
+        body.appendChild(meta);
+
+        var delBtn = document.createElement('button');
+        delBtn.className = 'task-del-btn';
+        delBtn.setAttribute('aria-label', 'Удалить задачу');
+        delBtn.innerHTML = '&times;';
+        delBtn.addEventListener('click', function () { deleteTask(idx); });
+
+        li.appendChild(checkBtn);
+        li.appendChild(body);
+        li.appendChild(delBtn);
+        taskList.appendChild(li);
+      });
+    }
+
+    function addTask(text, service, priority) {
+      var tasks = loadTasks();
+      tasks.push({ text: text, service: service, priority: priority, done: false });
+      saveTasks(tasks);
+      renderTasks();
+    }
+
+    function deleteTask(idx) {
+      var tasks = loadTasks();
+      tasks.splice(idx, 1);
+      saveTasks(tasks);
+      renderTasks();
+    }
+
+    function toggleTask(idx) {
+      var tasks = loadTasks();
+      tasks[idx].done = !tasks[idx].done;
+      saveTasks(tasks);
+      renderTasks();
+    }
+
+    function clearAllTasks() {
+      saveTasks([]);
+      renderTasks();
+    }
+
+    function buildTasksSummary() {
+      var tasks = loadTasks();
+      if (tasks.length === 0) return '';
+      var lines = tasks.map(function (t, i) {
+        var prefix = (i + 1) + '. ' + (t.done ? '[выполнено] ' : '');
+        var svc = t.service ? ' [' + t.service + ']' : '';
+        var pri = t.priority !== 'normal' ? ' (' + (PRIORITY_LABELS[t.priority] || t.priority) + ' приоритет)' : '';
+        return prefix + t.text + svc + pri;
+      });
+      return 'Список задач:\n' + lines.join('\n');
+    }
+
+    if (taskForm) {
+      taskForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var text = taskTextInput.value.trim();
+        if (!text) { taskTextInput.focus(); return; }
+        var service = taskServiceSel ? taskServiceSel.value : '';
+        var priority = taskPrioritySel ? taskPrioritySel.value : 'normal';
+        addTask(text, service, priority);
+        taskTextInput.value = '';
+        if (taskServiceSel) taskServiceSel.value = '';
+        if (taskPrioritySel) taskPrioritySel.value = 'normal';
+        taskTextInput.focus();
+      });
+    }
+
+    if (clearTasksBtn) {
+      clearTasksBtn.addEventListener('click', function () {
+        if (confirm('Удалить все задачи?')) clearAllTasks();
+      });
+    }
+
+    if (sendTasksBtn) {
+      sendTasksBtn.addEventListener('click', function (e) {
+        var summary = buildTasksSummary();
+        if (!summary) return;
+        var reqTask = document.getElementById('req-task');
+        if (reqTask) {
+          reqTask.value = summary;
+          window.setTimeout(function () { reqTask.focus(); }, 200);
+        }
+      });
+    }
+
+    renderTasks();
+    window.pcvAddTask = addTask;
   })();
-  </script>
-
+  </script>
+
+  <script>
+  (function () {
+    var form = document.getElementById('contact-form');
+    var serviceField = document.getElementById('req-service');
+    var taskField = document.getElementById('req-task');
+    var serviceLinks = document.querySelectorAll('[data-service]');
+    if (serviceLinks.length && serviceField) {
+      serviceLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          serviceField.value = link.getAttribute('data-service') || '';
+          if (taskField) {
+            window.setTimeout(function () {
+              taskField.focus();
+            }, 150);
+          }
+        });
+      });
+    }
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('.btn-submit');
+      var origText = btn.textContent;
+      btn.textContent = 'Отправка...';
+      btn.disabled = true;
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      })
+        .then(function (r) {
+          if (r.ok) {
+            form.innerHTML = '<div class="form-success"><p class="form-success-icon">&#10003;</p><p>Заявка отправлена! Мы свяжемся с вами в ближайшее время.</p></div>';
+          } else { throw new Error(); }
+        })
+        .catch(function () {
+          btn.textContent = origText;
+          btn.disabled = false;
+          alert('Ошибка при отправке. Напишите нам напрямую: comprw@gmail.com');
+        });
+    });
+  })();
+  <!-- Quick-Check Chip Script -->
   <script>
   (function () {
-    var form = document.getElementById('contact-form');
-    var serviceField = document.getElementById('req-service');
-    var taskField = document.getElementById('req-task');
-    var serviceLinks = document.querySelectorAll('[data-service]');
-    if (serviceLinks.length && serviceField) {
-      serviceLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
-          serviceField.value = link.getAttribute('data-service') || '';
-          if (taskField) {
-            window.setTimeout(function () {
-              taskField.focus();
-            }, 150);
+    var chipCount = document.getElementById('chip-count');
+    var selected = 0;
+
+    document.querySelectorAll('.chip[data-text]').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var isSelected = chip.classList.contains('chip-selected');
+        var text = chip.getAttribute('data-text');
+        var service = chip.getAttribute('data-service') || '';
+
+        if (!isSelected) {
+          chip.classList.add('chip-selected');
+          selected++;
+          if (typeof window.pcvAddTask === 'function') {
+            window.pcvAddTask(text, service, 'normal');
           }
-        });
+        } else {
+          chip.classList.remove('chip-selected');
+          selected = Math.max(0, selected - 1);
+        }
+        if (chipCount) chipCount.textContent = selected;
       });
-    }
-    if (!form) return;
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var btn = form.querySelector('.btn-submit');
-      var origText = btn.textContent;
-      btn.textContent = 'Отправка...';
-      btn.disabled = true;
-      fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' }
-      })
-        .then(function (r) {
-          if (r.ok) {
-            form.innerHTML = '<div class="form-success"><p class="form-success-icon">&#10003;</p><p>Заявка отправлена! Мы свяжемся с вами в ближайшее время.</p></div>';
-          } else { throw new Error(); }
-        })
-        .catch(function () {
-          btn.textContent = origText;
-          btn.disabled = false;
-          alert('Ошибка при отправке. Напишите нам напрямую: comprw@gmail.com');
-        });
     });
   })();
-  </script></body>
-</html>
-
+  </script></body>
+</html>
+
