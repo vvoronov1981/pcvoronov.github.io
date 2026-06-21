@@ -512,15 +512,31 @@ function getFilteredTasks() {
     return taskPlannerState.items;
 }
 
+function isTaskOverdue(task) {
+    if (!task.deadline || task.completed) {
+        return false;
+    }
+    const [year, month, day] = task.deadline.split('-').map(Number);
+    if (!year || !month || !day) {
+        return false;
+    }
+    const deadline = new Date(year, month - 1, day);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return deadline < today;
+}
+
 function createTaskMarkup(task) {
-    const completedClass = task.completed ? ' is-completed' : '';
+    const overdue = isTaskOverdue(task);
+    const completedClass = task.completed ? ' is-completed' : (overdue ? ' is-overdue' : '');
     const priorityLabel = translate(`tasks.priority.${task.priority}`, task.priority);
     const toggleLabel = task.completed
         ? translate('tasks.planner.actions.mark_open', 'Mark as open')
         : translate('tasks.planner.actions.mark_done', 'Mark as done');
     const deleteLabel = translate('tasks.planner.actions.delete', 'Delete task');
+    const overdueLabel = overdue ? ` <span class="visitor-task-overdue-badge">${escapeHtml(translate('tasks.planner.overdue', 'Overdue'))}</span>` : '';
     const deadlineMarkup = task.deadline
-        ? `<span class="visitor-task-deadline"><i class="fas fa-calendar-alt"></i> ${escapeHtml(translate('tasks.planner.deadline_prefix', 'Due'))}: ${escapeHtml(formatTaskDate(task.deadline))}</span>`
+        ? `<span class="visitor-task-deadline${overdue ? ' visitor-task-deadline--overdue' : ''}"><i class="fas fa-calendar-alt"></i> ${escapeHtml(translate('tasks.planner.deadline_prefix', 'Due'))}: ${escapeHtml(formatTaskDate(task.deadline))}${overdueLabel}</span>`
         : `<span class="visitor-task-deadline visitor-task-deadline-empty">${escapeHtml(translate('tasks.planner.no_deadline', 'No deadline'))}</span>`;
 
     return `
@@ -545,7 +561,11 @@ function createTaskMarkup(task) {
 }
 
 function formatTaskDate(value) {
-    const date = new Date(value);
+    // Parse YYYY-MM-DD as a local date to avoid timezone offset shifting the displayed day
+    const parts = value.split('-').map(Number);
+    const date = parts.length === 3 && parts[0] && parts[1] && parts[2]
+        ? new Date(parts[0], parts[1] - 1, parts[2])
+        : new Date(value);
     if (Number.isNaN(date.getTime())) {
         return value;
     }
