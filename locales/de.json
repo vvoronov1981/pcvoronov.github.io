@@ -193,6 +193,7 @@
         "mark_done": "Als erledigt markieren",
         "delete": "Aufgabe löschen"
       }
-    }
+    },
+    "overdue": "Überfällig"
   }
 }
