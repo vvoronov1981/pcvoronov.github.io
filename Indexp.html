@@ -623,7 +623,19 @@
       tasks.push({ text: text, service: service, priority: priority, done: false });
       saveTasks(tasks);
       renderTasks();
-    }
+      var items = taskList.querySelectorAll('.task-item');
+      var last = items[items.length - 1];
+      if (last) { last.classList.add('task-item-new'); }
+    }
+
+    function removeTaskByText(text) {
+      var tasks = loadTasks();
+      var idx = -1;
+      for (var i = 0; i < tasks.length; i++) {
+        if (tasks[i].text === text) { idx = i; break; }
+      }
+      if (idx !== -1) { tasks.splice(idx, 1); saveTasks(tasks); renderTasks(); }
+    }
 
     function deleteTask(idx) {
       var tasks = loadTasks();
@@ -684,13 +696,22 @@
         var reqTask = document.getElementById('req-task');
         if (reqTask) {
           reqTask.value = summary;
-          window.setTimeout(function () { reqTask.focus(); }, 200);
-        }
-      });
-    }
+          var requestForm = document.getElementById('request-form');
+          window.setTimeout(function () {
+            if (requestForm) {
+              requestForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              window.setTimeout(function () { reqTask.focus(); }, 400);
+            } else {
+              reqTask.focus();
+            }
+          }, 100);
+        }
+      });
+    }
 
     renderTasks();
     window.pcvAddTask = addTask;
+    window.pcvRemoveTaskByText = removeTaskByText;
   })();
   </script>
 
@@ -699,7 +720,7 @@
     var form = document.getElementById('contact-form');
     var serviceField = document.getElementById('req-service');
     var taskField = document.getElementById('req-task');
-    var serviceLinks = document.querySelectorAll('[data-service]');
+    var serviceLinks = document.querySelectorAll('.btn-service[data-service]');
     if (serviceLinks.length && serviceField) {
       serviceLinks.forEach(function (link) {
         link.addEventListener('click', function () {
@@ -742,7 +763,11 @@
   <script>
   (function () {
     var chipCount = document.getElementById('chip-count');
-    var selected = 0;
+
+    function updateChipCount() {
+      var n = document.querySelectorAll('.chip.chip-selected').length;
+      if (chipCount) chipCount.textContent = n;
+    }
 
     document.querySelectorAll('.chip[data-text]').forEach(function (chip) {
       chip.addEventListener('click', function () {
@@ -752,19 +777,20 @@
 
         if (!isSelected) {
           chip.classList.add('chip-selected');
-          selected++;
           if (typeof window.pcvAddTask === 'function') {
             window.pcvAddTask(text, service, 'normal');
           }
         } else {
           chip.classList.remove('chip-selected');
-          selected = Math.max(0, selected - 1);
+          if (typeof window.pcvRemoveTaskByText === 'function') {
+            window.pcvRemoveTaskByText(text);
+          }
         }
-        if (chipCount) chipCount.textContent = selected;
+        updateChipCount();
       });
     });
   })();
-  </script></body>
+  </script></body>
 </html>
 
 
