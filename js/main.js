@@ -9,7 +9,8 @@ let i18n, themeManager, particlesAnimation, projectsManager;
 const TASK_STORAGE_KEY = 'visitor-task-planner-items';
 const taskPlannerState = {
     items: [],
-    filter: 'all'
+    filter: 'all',
+    editingTaskId: null
 };
 
 /**
@@ -414,6 +415,42 @@ function setupTaskPlanner() {
             taskPlannerState.items = taskPlannerState.items.filter((item) => item.id !== taskId);
         }
 
+        if (action === 'edit') {
+            taskPlannerState.editingTaskId = taskId;
+            persistTasks();
+            renderTaskPlanner();
+            return;
+        }
+
+        if (action === 'cancel-edit') {
+            taskPlannerState.editingTaskId = null;
+            renderTaskPlanner();
+            return;
+        }
+
+        if (action === 'save-edit') {
+            const listItem = target.closest('.visitor-task-item');
+            if (listItem) {
+                const titleInput = listItem.querySelector('.visitor-task-edit-title');
+                const priorityInput = listItem.querySelector('.visitor-task-edit-priority');
+                const deadlineInput = listItem.querySelector('.visitor-task-edit-deadline');
+                if (titleInput && titleInput.value.trim()) {
+                    taskPlannerState.items = taskPlannerState.items.map((item) =>
+                        item.id === taskId
+                            ? { ...item, title: titleInput.value.trim(), priority: priorityInput ? priorityInput.value : item.priority, deadline: deadlineInput ? deadlineInput.value : item.deadline }
+                            : item
+                    );
+                    taskPlannerState.editingTaskId = null;
+                    persistTasks();
+                    renderTaskPlanner();
+                    showNotification(translate('tasks.planner.updated', 'Task updated.'), 'success');
+                } else if (titleInput) {
+                    titleInput.focus();
+                }
+            }
+            return;
+        }
+
         persistTasks();
         renderTaskPlanner();
     });
@@ -534,6 +571,45 @@ function createTaskMarkup(task) {
         ? translate('tasks.planner.actions.mark_open', 'Mark as open')
         : translate('tasks.planner.actions.mark_done', 'Mark as done');
     const deleteLabel = translate('tasks.planner.actions.delete', 'Delete task');
+    const editLabel = translate('tasks.planner.actions.edit', 'Edit task');
+    const saveLabel = translate('tasks.planner.actions.save', 'Save');
+    const cancelLabel = translate('tasks.planner.actions.cancel', 'Cancel');
+    const priorityLow = translate('tasks.priority.low', 'Low');
+    const priorityMedium = translate('tasks.priority.medium', 'Medium');
+    const priorityHigh = translate('tasks.priority.high', 'High');
+
+    if (task.id === taskPlannerState.editingTaskId) {
+        return `
+        <li class="visitor-task-item is-editing">
+            <div class="visitor-task-edit-form">
+                <div class="task-form-grid">
+                    <div class="form-group" style="margin-bottom:0">
+                        <input type="text" class="form-input visitor-task-edit-title" value="${escapeHtml(task.title)}" maxlength="120" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom:0">
+                        <select class="task-priority-select visitor-task-edit-priority">
+                            <option value="low" ${task.priority === 'low' ? 'selected' : ''}>${escapeHtml(priorityLow)}</option>
+                            <option value="medium" ${task.priority === 'medium' ? 'selected' : ''}>${escapeHtml(priorityMedium)}</option>
+                            <option value="high" ${task.priority === 'high' ? 'selected' : ''}>${escapeHtml(priorityHigh)}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:0">
+                    <input type="date" class="form-input visitor-task-edit-deadline" value="${escapeHtml(task.deadline)}">
+                </div>
+                <div class="visitor-task-edit-actions">
+                    <button type="button" class="btn btn-primary visitor-task-save-btn" data-task-action="save-edit" data-task-id="${escapeHtml(task.id)}">
+                        <i class="fas fa-check"></i> ${escapeHtml(saveLabel)}
+                    </button>
+                    <button type="button" class="btn btn-secondary visitor-task-cancel-btn" data-task-action="cancel-edit" data-task-id="${escapeHtml(task.id)}">
+                        ${escapeHtml(cancelLabel)}
+                    </button>
+                </div>
+            </div>
+        </li>
+        `;
+    }
+
     const overdueLabel = overdue ? ` <span class="visitor-task-overdue-badge">${escapeHtml(translate('tasks.planner.overdue', 'Overdue'))}</span>` : '';
     const deadlineMarkup = task.deadline
         ? `<span class="visitor-task-deadline${overdue ? ' visitor-task-deadline--overdue' : ''}"><i class="fas fa-calendar-alt"></i> ${escapeHtml(translate('tasks.planner.deadline_prefix', 'Due'))}: ${escapeHtml(formatTaskDate(task.deadline))}${overdueLabel}</span>`
@@ -553,9 +629,14 @@ function createTaskMarkup(task) {
                     ${deadlineMarkup}
                 </div>
             </div>
-            <button type="button" class="visitor-task-delete" data-task-action="delete" data-task-id="${escapeHtml(task.id)}" aria-label="${escapeHtml(deleteLabel)}">
-                <i class="fas fa-trash-alt"></i>
-            </button>
+            <div class="visitor-task-actions">
+                <button type="button" class="visitor-task-edit" data-task-action="edit" data-task-id="${escapeHtml(task.id)}" aria-label="${escapeHtml(editLabel)}">
+                    <i class="fas fa-pen"></i>
+                </button>
+                <button type="button" class="visitor-task-delete" data-task-action="delete" data-task-id="${escapeHtml(task.id)}" aria-label="${escapeHtml(deleteLabel)}">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
         </li>
     `;
 }
@@ -841,3 +922,4 @@ if (document.readyState === 'loading') {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { init, i18n, themeManager, particlesAnimation, projectsManager };
 }
+
