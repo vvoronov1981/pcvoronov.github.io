@@ -191,9 +191,14 @@
       "actions": {
         "mark_open": "Mark as open",
         "mark_done": "Mark as done",
-        "delete": "Delete task"
+        "delete": "Delete task",
+        "edit": "Edit task",
+        "save": "Save",
+        "cancel": "Cancel"
       }
     },
-    "overdue": "Overdue"
+    "overdue": "Overdue",
+    "updated": "Task updated."
   }
 }
+
