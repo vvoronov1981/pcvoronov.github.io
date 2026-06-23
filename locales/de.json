@@ -191,9 +191,14 @@
       "actions": {
         "mark_open": "Als offen markieren",
         "mark_done": "Als erledigt markieren",
-        "delete": "Aufgabe löschen"
+        "delete": "Aufgabe löschen",
+        "edit": "Aufgabe bearbeiten",
+        "save": "Speichern",
+        "cancel": "Abbrechen"
       }
     },
-    "overdue": "Überfällig"
+    "overdue": "Überfällig",
+    "updated": "Aufgabe aktualisiert."
   }
 }
+
