@@ -915,7 +915,8 @@
 }
 
 .visitor-task-toggle,
-.visitor-task-delete {
+.visitor-task-delete,
+.visitor-task-edit {
     width: 42px;
     height: 42px;
     border: none;
@@ -934,6 +935,18 @@
 .visitor-task-delete:hover {
     background: rgba(239, 68, 68, 0.12);
     color: #ef4444;
+}
+
+.visitor-task-edit:hover {
+    background: rgba(99, 102, 241, 0.12);
+    color: var(--accent-primary);
+}
+
+.visitor-task-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
 }
 
 .visitor-task-content {
@@ -1026,6 +1039,36 @@
     background: rgba(239, 68, 68, 0.04);
 }
 
+.visitor-task-item.is-editing {
+    grid-template-columns: 1fr;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.visitor-task-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.visitor-task-edit-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.visitor-task-save-btn,
+.visitor-task-cancel-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+}
+
+.btn-secondary {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
 @media (max-width: 900px) {
     .tasks-layout {
         grid-template-columns: 1fr;
@@ -1057,9 +1100,15 @@
     }
 
     .visitor-task-toggle,
-    .visitor-task-delete {
+    .visitor-task-delete,
+    .visitor-task-edit {
         width: 100%;
         border-radius: var(--radius-sm);
         background: var(--bg-secondary);
     }
+
+    .visitor-task-actions {
+        flex-direction: row;
+    }
 }
+
