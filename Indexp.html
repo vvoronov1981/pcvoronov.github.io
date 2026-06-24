@@ -107,6 +107,7 @@
             <a class="btn" href="#request-form">Оставить задачу</a>
             <a class="btn btn-secondary" href="#services">Посмотреть услуги</a>
           </div>
+          <p style="margin:.9rem 0 0;font-size:.82rem;color:#64748b;">💡 <a href="#tasks" style="color:#38bdf8;text-decoration:none;">Составьте список задач</a> и отправьте одним кликом</p>
 
           <ul class="hero-points" aria-label="Ключевые преимущества">
             <li>Проектирование и сопровождение LAN/WAN‑сетей</li>
@@ -1333,7 +1334,90 @@
   })();
   </script>
 
+<!-- ── Floating Task FAB & Toast ──────────────────────── -->
+<style>
+#task-fab{position:fixed;bottom:2rem;left:2rem;z-index:8000;display:flex;align-items:center;gap:.5rem;padding:.65rem 1.25rem;background:#1e293b;border:2px solid rgba(56,189,248,.3);color:#e2e8f0;font-size:.88rem;font-weight:600;border-radius:2.5rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.45);transition:transform .15s,box-shadow .15s,border-color .15s;text-decoration:none;white-space:nowrap}
+#task-fab:hover{transform:translateY(-2px);border-color:#38bdf8;box-shadow:0 6px 28px rgba(56,189,248,.3);color:#38bdf8}
+#task-fab.has-tasks{border-color:#38bdf8;background:linear-gradient(135deg,#0a1e35,#0f2843)}
+.task-fab-badge{background:#38bdf8;color:#0f172a;font-size:.72rem;font-weight:800;min-width:1.4rem;height:1.4rem;border-radius:1rem;display:inline-flex;align-items:center;justify-content:center;padding:0 .38rem;flex-shrink:0}
+.task-toast{position:fixed;bottom:5.8rem;left:2rem;z-index:9500;background:#1e293b;border:1.5px solid #38bdf8;color:#e2e8f0;padding:.7rem 1.1rem;border-radius:.9rem;font-size:.87rem;font-weight:500;box-shadow:0 6px 24px rgba(0,0,0,.55);pointer-events:none;transform:translateY(14px);opacity:0;transition:transform .28s,opacity .28s;max-width:300px;line-height:1.4}
+.task-toast.visible{transform:translateY(0);opacity:1}
+@media(max-width:480px){#task-fab{bottom:1.25rem;left:1rem;padding:.55rem 1rem;font-size:.82rem}.task-toast{left:1rem;bottom:5rem;max-width:calc(100vw - 2rem)}}
+</style>
+
+<a id="task-fab" href="#tasks" aria-label="Перейти к списку задач">
+  <span aria-hidden="true">📋</span>
+  <span id="task-fab-label">Мои задачи</span>
+  <span class="task-fab-badge" id="task-fab-badge" style="display:none" aria-label="задач в списке">0</span>
+</a>
+<div id="task-toast" class="task-toast" aria-live="polite" role="status"></div>
+
+<script>
+(function () {
+  var fab      = document.getElementById('task-fab');
+  var fabBadge = document.getElementById('task-fab-badge');
+  var toast    = document.getElementById('task-toast');
+  var toastTimer;
+  var STORAGE_KEY = 'pcvoronov_tasks';
+
+  function getTaskCount() {
+    try { return (JSON.parse(localStorage.getItem(STORAGE_KEY)) || []).length; } catch(e){ return 0; }
+  }
+
+  function updateFab() {
+    var n = getTaskCount();
+    if (n > 0) {
+      fabBadge.textContent = n;
+      fabBadge.style.display = 'inline-flex';
+      fab.classList.add('has-tasks');
+    } else {
+      fabBadge.style.display = 'none';
+      fab.classList.remove('has-tasks');
+    }
+  }
+
+  function showToast(msg) {
+    clearTimeout(toastTimer);
+    toast.textContent = msg;
+    toast.classList.add('visible');
+    toastTimer = setTimeout(function () { toast.classList.remove('visible'); }, 3200);
+  }
+
+  function patchTasks() {
+    var origAdd = window.pcvAddTask;
+    var origRemove = window.pcvRemoveTaskByText;
+    if (origAdd && !origAdd._fabPatched) {
+      window.pcvAddTask = function (text, service, priority) {
+        origAdd(text, service, priority);
+        updateFab();
+        var n = getTaskCount();
+        var plural = n === 1 ? 'задача' : (n < 5 ? 'задачи' : 'задач');
+        showToast('✓ Задача добавлена! В списке: ' + n + ' ' + plural);
+      };
+      window.pcvAddTask._fabPatched = true;
+    }
+    if (origRemove && !origRemove._fabPatched) {
+      window.pcvRemoveTaskByText = function (text) {
+        origRemove(text);
+        updateFab();
+      };
+      window.pcvRemoveTaskByText._fabPatched = true;
+    }
+  }
+
+  updateFab();
+  /* Patch functions as soon as they are available */
+  [100, 300, 600].forEach(function(ms){ setTimeout(patchTasks, ms); });
+  window.addEventListener('load', function () { patchTasks(); updateFab(); });
+
+  /* Keep badge in sync when localStorage changes in another tab */
+  window.addEventListener('storage', function (e) {
+    if (e.key === STORAGE_KEY) updateFab();
+  });
+})();
+</script>
+<!-- ══ End Floating Task FAB ════════════════════════ -->
 </body>
-</html>
+</html>
 
 
