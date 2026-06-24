@@ -68,6 +68,47 @@
   .btn-mailto:hover{background:rgba(56,189,248,.12);border-color:#38bdf8}
   /* disable btn-send-tasks visually when aria-disabled */
   .btn-send-tasks[aria-disabled="true"]{opacity:.4;pointer-events:none;cursor:not-allowed}
+
+  /* ── IT Diagnostic Wizard ──────────────────────── */
+  .it-wizard-card{margin-bottom:1.5rem;padding:1.25rem 1.5rem;background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(56,189,248,.08));border:1.5px solid rgba(99,102,241,.3);border-radius:1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+  .it-wizard-icon{font-size:2rem;flex-shrink:0}
+  .it-wizard-header{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;width:100%}
+  .it-wizard-title{margin:0;font-size:1rem;font-weight:700;color:#e2e8f0}
+  .it-wizard-sub{margin:.2rem 0 0;font-size:.83rem;color:#94a3b8}
+  .btn-wizard-start{margin-left:auto;white-space:nowrap;background:linear-gradient(135deg,#6366f1,#38bdf8);border:none;color:#fff;padding:.55rem 1.25rem;border-radius:2rem;font-weight:700;font-size:.9rem;cursor:pointer;transition:opacity .15s,transform .1s}
+  .btn-wizard-start:hover{opacity:.88;transform:translateY(-1px)}
+  @media(max-width:640px){.btn-wizard-start{margin-left:0;width:100%}}
+
+  /* Overlay */
+  .wizard-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:8000;align-items:center;justify-content:center;padding:1rem}
+  .wizard-overlay.open{display:flex}
+
+  /* Modal */
+  .wizard-modal{background:#1e293b;border:1px solid rgba(255,255,255,.1);border-radius:1.25rem;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;padding:1.75rem;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.55)}
+  .wizard-close{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,.1);border:none;color:#e2e8f0;width:2rem;height:2rem;border-radius:50%;cursor:pointer;font-size:1rem}
+  .wizard-close:hover{background:rgba(255,255,255,.2)}
+
+  /* Progress */
+  .wizard-progress{height:4px;background:rgba(255,255,255,.08);border-radius:2px;margin-bottom:1.5rem;overflow:hidden}
+  .wizard-progress-bar{height:100%;background:linear-gradient(90deg,#6366f1,#38bdf8);border-radius:2px;transition:width .3s ease}
+
+  /* Step */
+  .wizard-step-title{font-size:1.05rem;font-weight:700;margin:0 0 1.25rem;color:#e2e8f0}
+  .wizard-options{display:flex;flex-direction:column;gap:.65rem}
+  .wizard-option{padding:.85rem 1.1rem;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.12);border-radius:.75rem;color:#e2e8f0;font-size:.9rem;text-align:left;cursor:pointer;transition:background .15s,border-color .15s,transform .1s}
+  .wizard-option:hover{background:rgba(56,189,248,.1);border-color:#38bdf8;color:#38bdf8;transform:translateX(3px)}
+  .wizard-back{margin-top:1rem;background:transparent;border:none;color:#94a3b8;font-size:.85rem;cursor:pointer;padding:0}
+  .wizard-back:hover{color:#e2e8f0}
+
+  /* Step 3 confirm */
+  .wizard-confirm{text-align:center}
+  .wizard-confirm-icon{width:3rem;height:3rem;background:#38bdf8;color:#0f172a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;margin:0 auto 1rem}
+  .wizard-confirm-task{margin:1rem 0 1.5rem;padding:1rem;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.25);border-radius:.75rem;font-size:.9rem;color:#cbd5e1;text-align:left}
+  .wizard-confirm-task strong{display:block;color:#38bdf8;margin-bottom:.35rem;font-size:.82rem;text-transform:uppercase;letter-spacing:.05em}
+  .wizard-confirm .btn{width:100%;margin-bottom:.65rem}
+  .wizard-confirm .btn-secondary{background:transparent;border:1.5px solid rgba(255,255,255,.18)}
+  .wizard-confirm .btn-secondary:hover{border-color:#38bdf8;color:#38bdf8}
+  .wizard-added-toast{margin-top:.85rem;padding:.6rem 1rem;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.3);border-radius:.65rem;font-size:.85rem;color:#38bdf8;display:none}
 </style>
 <body>
   <a class="skip-link" href="#main" data-uk="Перейти до вмісту" data-de="Zum Inhalt springen">Перейти до вмісту</a>
@@ -313,6 +354,64 @@
         </div>
 
         <div class="task-board">
+
+          <!-- ── IT Diagnostic Wizard Card ───────────────── -->
+          <div class="it-wizard-card" id="it-wizard-card">
+            <div class="it-wizard-header">
+              <span class="it-wizard-icon">🔍</span>
+              <div>
+                <h3 class="it-wizard-title" data-uk="Не впевнені, що вам потрібно?" data-de="Unsicher, was Sie brauchen?">Не впевнені, що вам потрібно?</h3>
+                <p class="it-wizard-sub" data-uk="Пройдіть швидку діагностику — за 3 кроки ми визначимо потрібну послугу" data-de="Machen Sie in 3 Schritten einen schnellen Check — wir ermitteln den passenden Service">Пройдіть швидку діагностику — за 3 кроки ми визначимо потрібну послугу</p>
+              </div>
+              <button type="button" class="btn-wizard-start" id="wizard-start-btn" data-uk="Почати діагностику →" data-de="Diagnose starten →">Почати діагностику →</button>
+            </div>
+          </div>
+
+          <!-- ── Wizard Modal ──────────────────────────────── -->
+          <div id="wizard-overlay" class="wizard-overlay" role="dialog" aria-modal="true" aria-labelledby="wizard-step-title-1">
+            <div class="wizard-modal">
+              <button class="wizard-close" id="wizard-close-btn" aria-label="Закрити">✕</button>
+              <div class="wizard-progress"><div class="wizard-progress-bar" id="wizard-progress-bar" style="width:33%"></div></div>
+
+              <!-- Step 1 -->
+              <div class="wizard-step" id="wizard-step-1">
+                <h3 class="wizard-step-title" id="wizard-step-title-1" data-uk="Крок 1 з 3: Яка сфера потребує допомоги?" data-de="Schritt 1 von 3: Welcher Bereich braucht Hilfe?">Крок 1 з 3: Яка сфера потребує допомоги?</h3>
+                <div class="wizard-options">
+                  <button class="wizard-option" data-category="network" data-uk="🌐 Мережа або інтернет-з'єднання" data-de="🌐 Netzwerk oder Internetverbindung">🌐 Мережа або інтернет-з'єднання</button>
+                  <button class="wizard-option" data-category="server" data-uk="🖥️ Сервер або комп'ютерне обладнання" data-de="🖥️ Server oder Computer-Hardware">🖥️ Сервер або комп'ютерне обладнання</button>
+                  <button class="wizard-option" data-category="software" data-uk="💻 Програмне забезпечення або розробка" data-de="💻 Software oder Entwicklung">💻 Програмне забезпечення або розробка</button>
+                  <button class="wizard-option" data-category="security" data-uk="🔒 Безпека, аудит або IT-консалтинг" data-de="🔒 Sicherheit, Audit oder IT-Beratung">🔒 Безпека, аудит або IT-консалтинг</button>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="wizard-step" id="wizard-step-2" style="display:none">
+                <h3 class="wizard-step-title" id="wizard-step2-title" data-uk="Крок 2 з 3: Уточніть завдання" data-de="Schritt 2 von 3: Aufgabe präzisieren">Крок 2 з 3: Уточніть завдання</h3>
+                <div class="wizard-options" id="wizard-step2-options"></div>
+                <button class="wizard-back" id="wizard-back-btn">← <span data-uk="Назад" data-de="Zurück">Назад</span></button>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="wizard-step wizard-confirm" id="wizard-step-3" style="display:none">
+                <div class="wizard-confirm-icon">✓</div>
+                <h3 class="wizard-step-title" data-uk="Завдання визначено!" data-de="Aufgabe wurde ermittelt!">Завдання визначено!</h3>
+                <div class="wizard-confirm-task">
+                  <strong data-uk="Рекомендована послуга:" data-de="Empfohlene Leistung:">Рекомендована послуга:</strong>
+                  <span id="wizard-confirm-service"></span>
+                </div>
+                <div class="wizard-confirm-task" style="margin-top:-.5rem">
+                  <strong data-uk="Опис завдання:" data-de="Aufgabenbeschreibung:">Опис завдання:</strong>
+                  <span id="wizard-confirm-task-text"></span>
+                </div>
+                <button type="button" class="btn" id="wizard-add-btn"><span data-uk="+ Додати до списку завдань" data-de="+ Zur Aufgabenliste hinzufügen">+ Додати до списку завдань</span></button>
+                <button type="button" class="btn btn-secondary" id="wizard-restart-btn"><span data-uk="↩ Додати ще одне завдання" data-de="↩ Weitere Aufgabe hinzufügen">↩ Додати ще одне завдання</span></button>
+                <div class="wizard-added-toast" id="wizard-added-toast" data-uk="✓ Завдання додано до списку! Прокрутіть вниз, щоб побачити." data-de="✓ Aufgabe wurde zur Liste hinzugefügt! Scrollen Sie nach unten.">✓ Завдання додано до списку! Прокрутіть вниз, щоб побачити.</div>
+              </div>
+
+            </div>
+          </div>
+          <!-- ── /Wizard Modal ─────────────────────────────── -->
+
           <div class="quick-check" id="quick-check">
             <h3 class="quick-check-title" data-uk="⚡ Швидкий вибір — натисніть на потрібні завдання" data-de="⚡ Schnellauswahl — klicken Sie auf passende Aufgaben">⚡ Швидкий вибір — натисніть на потрібні завдання</h3>
             <p class="quick-check-hint" data-uk="Натисніть на завдання — воно одразу додасться до списку. Або введіть власне завдання вручну нижче." data-de="Klicken Sie auf eine Aufgabe — sie wird sofort zur Liste hinzugefügt. Oder geben Sie unten eine eigene Aufgabe ein.">Натисніть на завдання — воно одразу додасться до списку. Або введіть власне завдання вручну нижче.</p>
@@ -1177,6 +1276,210 @@
     syncChipsWithTasks();
   })();
   </script>
+
+<!-- ── IT Diagnostic Wizard Script ──────────────── -->
+<script>
+(function () {
+  var lang = document.documentElement.lang || 'uk';
+
+  function t(el, attr) {
+    var v = el ? el.getAttribute('data-' + lang) : null;
+    return v || (el ? el.textContent : '');
+  }
+
+  var WIZARD_DATA = {
+    network: {
+      options: [
+        { uk: 'Немає інтернету або нестабільне з\'єднання', de: 'Kein oder instabiles Internet', service: 'Управління та моніторинг мереж', task_uk: 'Усунення проблем з інтернет-з\'єднанням', task_de: 'Probleme mit der Internetverbindung beheben' },
+        { uk: 'Налаштувати VPN-з\'єднання', de: 'VPN-Verbindung einrichten', service: 'Управління та моніторинг мереж', task_uk: 'Налаштування VPN-з\'єднання для безпечного доступу', task_de: 'VPN-Verbindung für sicheren Zugriff einrichten' },
+        { uk: 'Проблеми з Wi-Fi або точками доступу', de: 'WLAN- oder Access-Point-Probleme', service: 'Управління та моніторинг мереж', task_uk: 'Налаштування та оптимізація Wi-Fi мережі', task_de: 'WLAN-Netzwerk konfigurieren und optimieren' },
+        { uk: 'Побудувати або оновити корпоративну мережу', de: 'Firmennetzwerk aufbauen oder erneuern', service: 'Управління та моніторинг мереж', task_uk: 'Проєктування та налаштування LAN/WAN-мережі', task_de: 'LAN/WAN-Netzwerk planen und konfigurieren' },
+        { uk: 'Налаштувати VLAN або сегментацію мережі', de: 'VLAN oder Netzwerksegmentierung einrichten', service: 'Управління та моніторинг мереж', task_uk: 'Налаштування VLAN і сегментації корпоративної мережі', task_de: 'VLAN und Netzwerksegmentierung konfigurieren' },
+        { uk: 'Моніторинг і діагностика мережевої інфраструктури', de: 'Netzwerk-Monitoring und Diagnose', service: 'Управління та моніторинг мереж', task_uk: 'Налаштування системи моніторингу мережевої інфраструктури', task_de: 'Netzwerk-Monitoring-System einrichten' }
+      ]
+    },
+    server: {
+      options: [
+        { uk: 'Налаштувати новий сервер або робоче місце', de: 'Neuen Server oder Arbeitsplatz einrichten', service: 'Підтримка серверів та обладнання', task_uk: 'Налаштування та конфігурація нового сервера або ПК', task_de: 'Neuen Server oder PC einrichten und konfigurieren' },
+        { uk: 'Налаштувати резервне копіювання даних', de: 'Datensicherung einrichten', service: 'Підтримка серверів та обладнання', task_uk: 'Налаштування автоматичного резервного копіювання даних', task_de: 'Automatische Datensicherung einrichten' },
+        { uk: 'Оновити ОС або серверне програмне забезпечення', de: 'Betriebssystem oder Server-Software aktualisieren', service: 'Підтримка серверів та обладнання', task_uk: 'Оновлення операційної системи та серверного ПЗ', task_de: 'Betriebssystem und Server-Software aktualisieren' },
+        { uk: 'Діагностика або заміна несправного обладнання', de: 'Defekte Hardware diagnostizieren oder ersetzen', service: 'Підтримка серверів та обладнання', task_uk: 'Діагностика та усунення несправностей обладнання', task_de: 'Hardware-Diagnose und Störungsbehebung' },
+        { uk: 'Налаштувати поштовий або інший корпоративний сервер', de: 'Mail- oder Unternehmensserver konfigurieren', service: 'Підтримка серверів та обладнання', task_uk: 'Налаштування та конфігурація корпоративного поштового сервера', task_de: 'Unternehmens-Mailserver konfigurieren' },
+        { uk: 'Профілактичне технічне обслуговування серверів', de: 'Vorbeugende Serverwartung', service: 'Підтримка серверів та обладнання', task_uk: 'Профілактичне технічне обслуговування серверного обладнання', task_de: 'Vorbeugende Wartung der Server-Hardware' }
+      ]
+    },
+    software: {
+      options: [
+        { uk: 'Розробити веб-застосунок або API', de: 'Webanwendung oder API entwickeln', service: 'Розробка програмного забезпечення', task_uk: 'Розробка веб-застосунку або REST API під завдання бізнесу', task_de: 'Webanwendung oder REST API für Geschäftsanforderungen entwickeln' },
+        { uk: 'Автоматизувати бізнес-процеси або задачі', de: 'Geschäftsprozesse automatisieren', service: 'Розробка програмного забезпечення', task_uk: 'Автоматизація повторюваних бізнес-процесів та задач', task_de: 'Wiederkehrende Geschäftsprozesse automatisieren' },
+        { uk: 'Розробити внутрішнє бізнес-рішення або ERP', de: 'Internes Business-Tool oder ERP entwickeln', service: 'Розробка програмного забезпечення', task_uk: 'Розробка внутрішнього бізнес-застосунку або ERP-системи', task_de: 'Internes Business-Tool oder ERP-System entwickeln' },
+        { uk: 'Інтегрувати зовнішні сервіси або системи', de: 'Externe Dienste oder Systeme integrieren', service: 'Розробка програмного забезпечення', task_uk: 'Інтеграція зовнішніх сервісів та API з наявними системами', task_de: 'Externe Services und APIs in bestehende Systeme integrieren' },
+        { uk: 'Написати скрипти або утиліти для адміністрування', de: 'Admin-Skripte oder Tools schreiben', service: 'Розробка програмного забезпечення', task_uk: 'Розробка скриптів та утиліт для автоматизації адміністрування', task_de: 'Skripte und Tools zur Verwaltungsautomatisierung entwickeln' }
+      ]
+    },
+    security: {
+      options: [
+        { uk: 'Провести аудит безпеки IT-інфраструктури', de: 'IT-Sicherheitsaudit durchführen', service: 'Аудит та IT-консалтинг', task_uk: 'Аудит безпеки IT-інфраструктури та виявлення вразливостей', task_de: 'IT-Sicherheitsaudit und Schwachstellenanalyse durchführen' },
+        { uk: 'Оцінити ризики та оптимізувати IT-витрати', de: 'Risiken bewerten und IT-Kosten optimieren', service: 'Аудит та IT-консалтинг', task_uk: 'Оцінка IT-ризиків та рекомендації щодо оптимізації витрат', task_de: 'IT-Risikobewertung und Kostenoptimierungsempfehlungen' },
+        { uk: 'Отримати IT-консультацію або стратегію', de: 'IT-Beratung oder Strategie erhalten', service: 'Аудит та IT-консалтинг', task_uk: 'IT-консультація та розробка стратегії розвитку інфраструктури', task_de: 'IT-Beratung und Infrastruktur-Entwicklungsstrategie' },
+        { uk: 'Перевірити відповідність вимогам безпеки', de: 'Sicherheitskonformität prüfen', service: 'Аудит та IT-консалтинг', task_uk: 'Перевірка відповідності IT-інфраструктури вимогам безпеки', task_de: 'Prüfung der IT-Infrastruktur auf Sicherheitskonformität' }
+      ]
+    }
+  };
+
+  var overlay = document.getElementById('wizard-overlay');
+  var step1 = document.getElementById('wizard-step-1');
+  var step2 = document.getElementById('wizard-step-2');
+  var step3 = document.getElementById('wizard-step-3');
+  var progressBar = document.getElementById('wizard-progress-bar');
+  var step2OptionsEl = document.getElementById('wizard-step2-options');
+  var confirmService = document.getElementById('wizard-confirm-service');
+  var confirmTaskText = document.getElementById('wizard-confirm-task-text');
+  var addedToast = document.getElementById('wizard-added-toast');
+  var startBtn = document.getElementById('wizard-start-btn');
+  var closeBtn = document.getElementById('wizard-close-btn');
+  var backBtn = document.getElementById('wizard-back-btn');
+  var addBtn = document.getElementById('wizard-add-btn');
+  var restartBtn = document.getElementById('wizard-restart-btn');
+
+  var currentCategory = null;
+  var selectedOption = null;
+
+  function getLang() {
+    return document.documentElement.lang === 'de' ? 'de' : 'uk';
+  }
+
+  function applyLang() {
+    /* re-apply i18n attributes in wizard */
+    overlay.querySelectorAll('[data-uk]').forEach(function (el) {
+      var l = getLang();
+      var val = el.getAttribute('data-' + l);
+      if (val && el.tagName !== 'INPUT' && el.tagName !== 'SELECT') {
+        if (!el.children.length) el.textContent = val;
+      }
+    });
+  }
+
+  function setProgress(pct) {
+    progressBar.style.width = pct + '%';
+  }
+
+  function showStep(step) {
+    step1.style.display = 'none';
+    step2.style.display = 'none';
+    step3.style.display = 'none';
+    step.style.display = '';
+  }
+
+  function openWizard() {
+    currentCategory = null;
+    selectedOption = null;
+    showStep(step1);
+    setProgress(33);
+    if (addedToast) addedToast.style.display = 'none';
+    applyLang();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeWizard() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function buildStep2(category) {
+    var l = getLang();
+    var data = WIZARD_DATA[category];
+    step2OptionsEl.innerHTML = '';
+    data.options.forEach(function (opt) {
+      var btn = document.createElement('button');
+      btn.className = 'wizard-option';
+      btn.textContent = opt[l] || opt.uk;
+      btn.addEventListener('click', function () {
+        selectedOption = opt;
+        showConfirm(opt);
+      });
+      step2OptionsEl.appendChild(btn);
+    });
+  }
+
+  function showConfirm(opt) {
+    var l = getLang();
+    confirmService.textContent = opt.service;
+    confirmTaskText.textContent = opt['task_' + l] || opt.task_uk;
+    addedToast.style.display = 'none';
+    addBtn.disabled = false;
+    var addBtnSpan = addBtn.querySelector('[data-uk]');
+    if (addBtnSpan) addBtnSpan.textContent = addBtnSpan.getAttribute('data-' + l) || addBtnSpan.textContent;
+    var restartSpan = restartBtn.querySelector('[data-uk]');
+    if (restartSpan) restartSpan.textContent = restartSpan.getAttribute('data-' + l) || restartSpan.textContent;
+    showStep(step3);
+    setProgress(100);
+  }
+
+  step1.querySelectorAll('.wizard-option').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var l = getLang();
+      currentCategory = btn.getAttribute('data-category');
+      /* update step2 title lang */
+      var s2title = document.getElementById('wizard-step2-title');
+      if (s2title) s2title.textContent = s2title.getAttribute('data-' + l) || s2title.textContent;
+      buildStep2(currentCategory);
+      showStep(step2);
+      setProgress(66);
+    });
+  });
+
+  backBtn && backBtn.addEventListener('click', function () {
+    showStep(step1);
+    setProgress(33);
+  });
+
+  addBtn && addBtn.addEventListener('click', function () {
+    if (!selectedOption) return;
+    var l = getLang();
+    var taskText = selectedOption['task_' + l] || selectedOption.task_uk;
+    var service = selectedOption.service;
+    if (typeof window.pcvAddTask === 'function') {
+      window.pcvAddTask(taskText, service, 'normal');
+    }
+    addedToast.textContent = addedToast.getAttribute('data-' + l) || addedToast.getAttribute('data-uk');
+    addedToast.style.display = 'block';
+    addBtn.disabled = true;
+  });
+
+  restartBtn && restartBtn.addEventListener('click', function () {
+    currentCategory = null;
+    selectedOption = null;
+    addedToast.style.display = 'none';
+    addBtn.disabled = false;
+    showStep(step1);
+    setProgress(33);
+  });
+
+  startBtn && startBtn.addEventListener('click', openWizard);
+  closeBtn && closeBtn.addEventListener('click', closeWizard);
+  overlay && overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeWizard();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeWizard();
+  });
+
+  /* re-apply lang when language switches */
+  document.addEventListener('pcv-language-changed', function () {
+    var l = getLang();
+    var startSpan = startBtn;
+    if (startSpan) startSpan.textContent = startSpan.getAttribute('data-' + l) || startSpan.textContent;
+    var wizTitle = document.querySelector('.it-wizard-title');
+    if (wizTitle) wizTitle.textContent = wizTitle.getAttribute('data-' + l) || wizTitle.textContent;
+    var wizSub = document.querySelector('.it-wizard-sub');
+    if (wizSub) wizSub.textContent = wizSub.getAttribute('data-' + l) || wizSub.textContent;
+    if (overlay.classList.contains('open')) applyLang();
+  });
+})();
+</script>
+<!-- ── /IT Diagnostic Wizard Script ─────────────── -->
 
 <!-- ════════════════════════════════════════════════
      KI-Unterstützung  –  Paid AI Support Button
