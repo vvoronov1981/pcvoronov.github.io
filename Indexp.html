@@ -33,6 +33,36 @@
   /* ── Task item flash animation ─────────────────────── */
   @keyframes task-flash{0%{background:rgba(56,189,248,.25)}100%{background:transparent}}
   .task-item-new{animation:task-flash .7s ease-out}
+  /* ── IT Diagnosis Wizard ─────────────────────────── */
+  .wizard-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:1.25rem;padding:2rem;max-width:700px;margin:0 auto}
+  .wizard-steps{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:2rem}
+  .wizard-step{width:2.2rem;height:2.2rem;border-radius:50%;border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;color:#64748b;transition:all .3s}
+  .wizard-step.active{border-color:#38bdf8;color:#38bdf8}
+  .wizard-step.done{background:#38bdf8;border-color:#38bdf8;color:#0f172a}
+  .wizard-divider{height:2px;width:3rem;background:rgba(255,255,255,.12)}
+  .wizard-panel{display:none}
+  .wizard-panel.active{display:block}
+  .wizard-question{font-size:1.15rem;font-weight:700;margin:0 0 .35rem}
+  .wizard-hint{font-size:.85rem;color:#94a3b8;margin:0 0 1.5rem}
+  .wizard-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem}
+  .wizard-option{padding:.9rem 1.1rem;border:1.5px solid rgba(255,255,255,.14);border-radius:.85rem;background:transparent;color:inherit;cursor:pointer;display:flex;align-items:center;gap:.75rem;text-align:left;transition:all .15s;font-size:.9rem;font-family:inherit}
+  .wizard-option:hover{border-color:#38bdf8;background:rgba(56,189,248,.08)}
+  .wizard-option.selected{border-color:#38bdf8;background:rgba(56,189,248,.15);color:#38bdf8}
+  .wo-icon{font-size:1.4rem;flex-shrink:0}
+  .wo-text{font-weight:500}
+  .wizard-urgency{grid-template-columns:1fr}
+  .wizard-next-btn{margin-top:1.5rem}
+  .wizard-next-btn:disabled{opacity:.4;cursor:not-allowed}
+  .wizard-result{text-align:center;padding:1rem 0}
+  .wr-icon{font-size:2.5rem;margin-bottom:.5rem}
+  .wr-title{font-size:1.2rem;font-weight:700;margin:0 0 .4rem}
+  .wr-subtitle{color:#94a3b8;font-size:.9rem;margin:0 0 1.5rem}
+  .wr-tasks{list-style:none;padding:0;margin:0 0 1.5rem;text-align:left}
+  .wr-tasks li{padding:.5rem .75rem;border-radius:.5rem;background:rgba(56,189,248,.08);border-left:3px solid #38bdf8;margin-bottom:.5rem;font-size:.9rem}
+  .wr-actions{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+  .wizard-restart-btn{background:none;border:none;color:#64748b;font-size:.8rem;cursor:pointer;margin-top:1.25rem;text-decoration:underline;font-family:inherit}
+  .wizard-restart-btn:hover{color:#94a3b8}
+  @media(max-width:600px){.wizard-options{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -53,7 +83,8 @@
         <a href="#advantages">Преимущества</a>
         <a href="#about">О компании</a>
         <a href="#process">Как работаем</a>
-        <a href="#tasks">Мои задачи</a>
+        <a href="#diagnosis">Диагностика</a>
+        <a href="#tasks">Мои задачи</a>
         <a href="#contacts">Оставить заявку</a>
         <a href="investors.html">Инвесторам</a>
         <a href="bank-details.html">Реквизиты</a>
@@ -272,6 +303,87 @@
       </div>
     </section>
 
+    <section class="section section-muted" id="diagnosis">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Диагностика</p>
+          <h2>Узнайте, какая IT‑помощь вам нужна</h2>
+          <p>Ответьте на 3 вопроса — мы подберём нужные услуги и сразу добавим задачи в ваш список.</p>
+        </div>
+
+        <div class="wizard-card" id="it-wizard">
+          <!-- Step indicator -->
+          <div class="wizard-steps" aria-label="Шаги мастера">
+            <div class="wizard-step active" id="wstep-1" aria-current="step">1</div>
+            <div class="wizard-divider" aria-hidden="true"></div>
+            <div class="wizard-step" id="wstep-2">2</div>
+            <div class="wizard-divider" aria-hidden="true"></div>
+            <div class="wizard-step" id="wstep-3">3</div>
+          </div>
+
+          <!-- Step 1: Category -->
+          <div class="wizard-panel active" id="wpanel-1">
+            <h3 class="wizard-question">Что вас интересует?</h3>
+            <p class="wizard-hint">Выберите основное направление</p>
+            <div class="wizard-options">
+              <button type="button" class="wizard-option" data-step="1" data-value="networks">
+                <span class="wo-icon">🌐</span><span class="wo-text">Сети / Интернет</span>
+              </button>
+              <button type="button" class="wizard-option" data-step="1" data-value="servers">
+                <span class="wo-icon">🖥️</span><span class="wo-text">Серверы / Оборудование</span>
+              </button>
+              <button type="button" class="wizard-option" data-step="1" data-value="software">
+                <span class="wo-icon">💻</span><span class="wo-text">Разработка ПО</span>
+              </button>
+              <button type="button" class="wizard-option" data-step="1" data-value="audit">
+                <span class="wo-icon">🔍</span><span class="wo-text">Аудит / Безопасность</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Specific tasks (populated by JS) -->
+          <div class="wizard-panel" id="wpanel-2">
+            <h3 class="wizard-question">Какие задачи нужно решить?</h3>
+            <p class="wizard-hint">Выберите одну или несколько</p>
+            <div class="wizard-options wizard-multi" id="wizard-tasks-options"></div>
+            <button type="button" class="btn wizard-next-btn" id="wizard-step2-next" disabled>Далее →</button>
+          </div>
+
+          <!-- Step 3: Urgency -->
+          <div class="wizard-panel" id="wpanel-3">
+            <h3 class="wizard-question">Как срочно нужна помощь?</h3>
+            <p class="wizard-hint">Выберите подходящий вариант</p>
+            <div class="wizard-options wizard-urgency">
+              <button type="button" class="wizard-option" data-step="3" data-value="urgent">
+                <span class="wo-icon">🔴</span><span class="wo-text">Срочно (сегодня‑завтра)</span>
+              </button>
+              <button type="button" class="wizard-option" data-step="3" data-value="week">
+                <span class="wo-icon">🟡</span><span class="wo-text">На этой неделе</span>
+              </button>
+              <button type="button" class="wizard-option" data-step="3" data-value="flexible">
+                <span class="wo-icon">🟢</span><span class="wo-text">Не срочно — планирую заранее</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Result panel -->
+          <div class="wizard-panel" id="wpanel-result">
+            <div class="wizard-result">
+              <div class="wr-icon">✅</div>
+              <h3 class="wr-title">Подобрали подходящие задачи!</h3>
+              <p class="wr-subtitle" id="wr-subtitle"></p>
+              <ul class="wr-tasks" id="wr-task-list"></ul>
+              <div class="wr-actions">
+                <button type="button" class="btn" id="wizard-add-btn">+ Добавить задачи в список</button>
+                <a class="btn btn-secondary" href="#contacts">Оставить заявку</a>
+              </div>
+              <button type="button" class="wizard-restart-btn" id="wizard-restart">← Пройти заново</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="tasks">
       <div class="container">
         <div class="section-heading">
@@ -1080,6 +1192,146 @@
 })();
 </script>
 <!-- ══ End KI-Unterstützung ════════════════════════ -->
+  <!-- IT Diagnosis Wizard Script -->
+  <script>
+  (function () {
+    var WIZARD_TASKS = {
+      networks: [
+        {text:'Настройка VPN-соединения', service:'Управление и мониторинг сетей'},
+        {text:'Настройка VLAN и сегментации сети', service:'Управление и мониторинг сетей'},
+        {text:'Мониторинг и диагностика сети', service:'Управление и мониторинг сетей'},
+        {text:'Проектирование новой LAN/WAN', service:'Управление и мониторинг сетей'},
+        {text:'Устранение неполадок с интернет-соединением', service:'Управление и мониторинг сетей'},
+        {text:'Настройка Wi-Fi точек доступа', service:'Управление и мониторинг сетей'}
+      ],
+      servers: [
+        {text:'Обновление ОС и программного обеспечения сервера', service:'Поддержка серверов и оборудования'},
+        {text:'Настройка резервного копирования данных', service:'Поддержка серверов и оборудования'},
+        {text:'Диагностика и замена оборудования', service:'Поддержка серверов и оборудования'},
+        {text:'Настройка нового рабочего места / ПК', service:'Поддержка серверов и оборудования'},
+        {text:'Профилактическое обслуживание серверов', service:'Поддержка серверов и оборудования'},
+        {text:'Настройка почтового сервера', service:'Поддержка серверов и оборудования'}
+      ],
+      software: [
+        {text:'Разработка внутреннего бизнес-приложения', service:'Разработка программного обеспечения'},
+        {text:'Автоматизация бизнес-процессов', service:'Разработка программного обеспечения'},
+        {text:'Интеграция с существующими системами', service:'Разработка программного обеспечения'},
+        {text:'Создание скриптов и утилит для администрирования', service:'Разработка программного обеспечения'},
+        {text:'Разработка веб-приложения или API', service:'Разработка программного обеспечения'}
+      ],
+      audit: [
+        {text:'Аудит IT-инфраструктуры и безопасности', service:'Аудит и IT-консалтинг'},
+        {text:'Оценка рисков и оптимизация IT-затрат', service:'Аудит и IT-консалтинг'},
+        {text:'IT-консультация по развитию инфраструктуры', service:'Аудит и IT-консалтинг'},
+        {text:'Разработка IT-стратегии и дорожной карты', service:'Аудит и IT-консалтинг'}
+      ]
+    };
+
+    var URGENCY_PRIORITY = { urgent: 'high', week: 'high', flexible: 'normal' };
+    var URGENCY_LABEL = { urgent: 'Срочно', week: 'На этой неделе', flexible: 'Не срочно' };
+    var state = { category: null, tasks: [], urgency: null };
+
+    var wizard = document.getElementById('it-wizard');
+    if (!wizard) return;
+
+    function showPanel(num) {
+      wizard.querySelectorAll('.wizard-panel').forEach(function (p) { p.classList.remove('active'); });
+      var panel = num === 'result' ? document.getElementById('wpanel-result') : document.getElementById('wpanel-' + num);
+      if (panel) panel.classList.add('active');
+      for (var i = 1; i <= 3; i++) {
+        var step = document.getElementById('wstep-' + i);
+        if (!step) continue;
+        step.classList.remove('active', 'done');
+        if (num === 'result') { step.classList.add('done'); }
+        else if (i < num) { step.classList.add('done'); }
+        else if (i === num) { step.classList.add('active'); }
+      }
+    }
+
+    wizard.querySelectorAll('.wizard-option[data-step="1"]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        state.category = btn.getAttribute('data-value');
+        state.tasks = [];
+        buildStep2();
+        showPanel(2);
+      });
+    });
+
+    function buildStep2() {
+      var container = document.getElementById('wizard-tasks-options');
+      container.innerHTML = '';
+      var nextBtn = document.getElementById('wizard-step2-next');
+      nextBtn.disabled = true;
+      (WIZARD_TASKS[state.category] || []).forEach(function (task) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'wizard-option';
+        btn.innerHTML = '<span class="wo-text">' + task.text + '</span>';
+        btn.dataset.taskText = task.text;
+        btn.dataset.taskService = task.service;
+        btn.addEventListener('click', function () {
+          btn.classList.toggle('selected');
+          nextBtn.disabled = container.querySelectorAll('.wizard-option.selected').length === 0;
+        });
+        container.appendChild(btn);
+      });
+    }
+
+    document.getElementById('wizard-step2-next').addEventListener('click', function () {
+      var selected = document.getElementById('wizard-tasks-options').querySelectorAll('.wizard-option.selected');
+      state.tasks = [];
+      selected.forEach(function (btn) {
+        state.tasks.push({ text: btn.dataset.taskText, service: btn.dataset.taskService });
+      });
+      showPanel(3);
+    });
+
+    wizard.querySelectorAll('.wizard-option[data-step="3"]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        state.urgency = btn.getAttribute('data-value');
+        showResult();
+      });
+    });
+
+    function showResult() {
+      document.getElementById('wr-subtitle').textContent =
+        'Приоритет: ' + (URGENCY_LABEL[state.urgency] || '') + ' · Задач выбрано: ' + state.tasks.length;
+      var taskList = document.getElementById('wr-task-list');
+      taskList.innerHTML = '';
+      state.tasks.forEach(function (task) {
+        var li = document.createElement('li');
+        li.textContent = task.text;
+        taskList.appendChild(li);
+      });
+      showPanel('result');
+    }
+
+    document.getElementById('wizard-add-btn').addEventListener('click', function () {
+      var priority = URGENCY_PRIORITY[state.urgency] || 'normal';
+      if (typeof window.pcvAddTask === 'function') {
+        state.tasks.forEach(function (task) {
+          window.pcvAddTask(task.text, task.service, priority);
+        });
+      }
+      this.textContent = '✓ Задачи добавлены!';
+      this.disabled = true;
+      var tasksSection = document.getElementById('tasks');
+      if (tasksSection) {
+        window.setTimeout(function () {
+          tasksSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+      }
+    });
+
+    document.getElementById('wizard-restart').addEventListener('click', function () {
+      state = { category: null, tasks: [], urgency: null };
+      var addBtn = document.getElementById('wizard-add-btn');
+      addBtn.textContent = '+ Добавить задачи в список';
+      addBtn.disabled = false;
+      showPanel(1);
+    });
+  })();
+  </script>
 
 </body>
 </html>
