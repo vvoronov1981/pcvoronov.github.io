@@ -789,22 +789,299 @@
         updateChipCount();
       });
     });
-
-    // Restore chip selected states from localStorage on page load
-    (function restoreChipStates() {
-      try {
-        var tasks = JSON.parse(localStorage.getItem('pcvoronov_tasks')) || [];
-        var taskTexts = tasks.map(function (t) { return t.text; });
-        document.querySelectorAll('.chip[data-text]').forEach(function (chip) {
-          if (taskTexts.indexOf(chip.getAttribute('data-text')) !== -1) {
-            chip.classList.add('chip-selected');
-          }
-        });
-        updateChipCount();
-      } catch (e) {}
-    })();
   })();
-  </script></body>
+  </script><!-- ════════════════════════════════════════════════
+     KI-Unterstützung  –  Paid AI Support Button
+     Insert this block just before </body>
+     ════════════════════════════════════════════════ -->
+
+<style>
+/* ── Floating button ───────────────────────────── */
+#ki-support-btn{
+  position:fixed;bottom:2rem;right:2rem;z-index:9000;
+  display:flex;align-items:center;gap:.55rem;
+  padding:.7rem 1.3rem;
+  background:linear-gradient(135deg,#6366f1,#38bdf8);
+  color:#fff;font-size:.95rem;font-weight:700;
+  border:none;border-radius:2.5rem;cursor:pointer;
+  box-shadow:0 4px 22px rgba(99,102,241,.5);
+  transition:transform .15s,box-shadow .15s;
+}
+#ki-support-btn:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(99,102,241,.7);}
+#ki-support-btn .ki-badge{
+  position:absolute;top:-.45rem;right:-.35rem;
+  background:#f59e0b;color:#0f172a;font-size:.62rem;font-weight:800;
+  padding:.13rem .42rem;border-radius:1rem;text-transform:uppercase;letter-spacing:.04em;
+}
+
+/* ── Overlay ───────────────────────────────────── */
+#ki-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.65);z-index:9100;
+  align-items:flex-end;justify-content:flex-end;
+  padding:1rem 2rem 6rem 1rem;
+}
+#ki-overlay.open{display:flex;}
+
+/* ── Modal window ──────────────────────────────── */
+#ki-modal{
+  width:380px;max-height:82vh;
+  background:#1e293b;border:1px solid rgba(255,255,255,.1);
+  border-radius:1.25rem;display:flex;flex-direction:column;
+  overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.55);
+}
+.ki-header{
+  display:flex;align-items:center;gap:.75rem;
+  padding:1rem 1.25rem;
+  background:linear-gradient(135deg,#6366f1,#38bdf8);
+  color:#fff;flex-shrink:0;
+}
+.ki-header h3{margin:0;font-size:1rem;}
+.ki-header p{margin:0;font-size:.74rem;opacity:.85;}
+#ki-close-btn{
+  margin-left:auto;background:rgba(255,255,255,.2);border:none;color:#fff;
+  width:2rem;height:2rem;border-radius:50%;cursor:pointer;font-size:1rem;
+  flex-shrink:0;
+}
+#ki-close-btn:hover{background:rgba(255,255,255,.35);}
+
+/* ── Payment screen ────────────────────────────── */
+#ki-pay-screen{padding:1.25rem;overflow-y:auto;}
+.ki-price-box{
+  text-align:center;padding:1.1rem;
+  background:rgba(255,255,255,.05);border-radius:.85rem;margin-bottom:1rem;
+}
+.ki-price{font-size:2.2rem;font-weight:800;color:#38bdf8;}
+.ki-price-period{font-size:.78rem;color:#94a3b8;margin-top:.2rem;}
+.ki-features{list-style:none;padding:0;margin:0 0 1.25rem;}
+.ki-features li{padding:.35rem 0;font-size:.88rem;color:#cbd5e1;}
+.ki-features li::before{content:"✓ ";color:#38bdf8;font-weight:700;}
+.ki-pay-btn{
+  width:100%;padding:.85rem;
+  background:linear-gradient(135deg,#6366f1,#38bdf8);
+  color:#fff;font-weight:700;font-size:1rem;
+  border:none;border-radius:.8rem;cursor:pointer;transition:opacity .15s;
+}
+.ki-liqpay-btn{background:linear-gradient(135deg,#009966,#00c07a);display:block;text-align:center;text-decoration:none;}
+.ki-liqpay-btn:hover{opacity:.9;}
+.ki-qr-block{text-align:center;padding:.25rem 0;}
+.ki-qr-hint{font-size:.82rem;color:#94a3b8;margin:0 0 .75rem;}
+.ki-qr-img{
+  width:180px;height:180px;border-radius:.75rem;
+  border:3px solid #38bdf8;display:inline-block;
+  transition:transform .15s;
+}
+.ki-qr-img:hover{transform:scale(1.04);}
+.ki-pay-note{font-size:.72rem;color:#64748b;text-align:center;margin-top:.6rem;}
+
+/* ── Chat screen ───────────────────────────────── */
+#ki-chat-screen{display:none;flex-direction:column;flex:1;min-height:0;}
+#ki-messages{
+  flex:1;overflow-y:auto;padding:1rem;
+  display:flex;flex-direction:column;gap:.65rem;
+}
+.ki-msg{
+  max-width:85%;padding:.6rem .9rem;border-radius:.85rem;
+  font-size:.88rem;line-height:1.5;
+}
+.ki-msg.bot{
+  background:rgba(56,189,248,.12);color:#e2e8f0;
+  align-self:flex-start;border-bottom-left-radius:.2rem;
+}
+.ki-msg.user{
+  background:#6366f1;color:#fff;
+  align-self:flex-end;border-bottom-right-radius:.2rem;
+}
+.ki-msg.typing{color:#64748b;font-style:italic;}
+#ki-input-row{
+  display:flex;gap:.5rem;padding:.75rem 1rem;
+  border-top:1px solid rgba(255,255,255,.08);flex-shrink:0;
+}
+#ki-user-input{
+  flex:1;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  color:#e2e8f0;padding:.55rem .85rem;
+  border-radius:2rem;font-size:.88rem;outline:none;
+}
+#ki-user-input:focus{border-color:#38bdf8;}
+#ki-send-btn{
+  background:#6366f1;color:#fff;border:none;
+  padding:.55rem 1rem;border-radius:2rem;
+  cursor:pointer;font-weight:700;font-size:.95rem;
+}
+#ki-send-btn:hover{background:#38bdf8;}
+
+@media(max-width:480px){
+  #ki-overlay{padding:0;align-items:flex-end;justify-content:center;}
+  #ki-modal{width:100%;border-radius:1.25rem 1.25rem 0 0;max-height:90vh;}
+  #ki-support-btn{bottom:1.25rem;right:1.25rem;}
+}
+</style>
+
+<!-- ── Floating button ─────────────────────────── -->
+<button id="ki-support-btn" aria-label="KI-Unterstützung öffnen" aria-haspopup="dialog">
+  <span style="font-size:1.15rem">🤖</span>
+  <span>KI-Unterstützung</span>
+  <span class="ki-badge">Paid</span>
+</button>
+
+<!-- ── Modal ───────────────────────────────────── -->
+<div id="ki-overlay" role="dialog" aria-modal="true" aria-label="KI-Unterstützung">
+  <div id="ki-modal">
+
+    <div class="ki-header">
+      <span style="font-size:1.5rem;flex-shrink:0">🤖</span>
+      <div>
+        <h3>KI-Unterstützung</h3>
+        <p>AI-powered IT-Support · PC Voronov</p>
+      </div>
+      <button id="ki-close-btn" aria-label="Schließen">✕</button>
+    </div>
+
+    <!-- Payment screen -->
+    <div id="ki-pay-screen">
+      <div class="ki-price-box">
+        <div class="ki-price">$9<span style="font-size:1.1rem">.90</span></div>
+        <div class="ki-price-period">Einmalige Zahlung · 30&nbsp;Min. KI-Session</div>
+      </div>
+      <ul class="ki-features">
+        <li>Sofortige KI-Antworten auf Ihre IT-Fragen</li>
+        <li>Netzwerk-, Server- &amp; Software-Diagnose</li>
+        <li>Fachkundige Analyse in Echtzeit</li>
+        <li>Auf Deutsch, Russisch und Englisch</li>
+      </ul>
+      <!-- QR Code payment block -->
+      <div class="ki-qr-block">
+        <p class="ki-qr-hint">📱 QR-Code mit Privat24 oder LiqPay scannen:</p>
+        <a href="https://www.privat24.ua/rd/send_qr/liqpay_static_qr/qr_17b02902a9b8408999aacf8e791ce120"
+           target="_blank" rel="noopener" id="ki-qr-link">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&color=0f172a&bgcolor=e2e8f0&data=https%3A%2F%2Fwww.privat24.ua%2Frd%2Fsend_qr%2Fliqpay_static_qr%2Fqr_17b02902a9b8408999aacf8e791ce120"
+            alt="LiqPay QR-Code bezahlen"
+            class="ki-qr-img" />
+        </a>
+        <a class="ki-pay-btn ki-liqpay-btn" id="ki-pay-btn"
+           href="https://www.privat24.ua/rd/send_qr/liqpay_static_qr/qr_17b02902a9b8408999aacf8e791ce120"
+           target="_blank" rel="noopener">
+          💳 Auf Handy öffnen &amp; bezahlen
+        </a>
+        <p class="ki-pay-note">Nach Zahlung auf <strong style="color:#38bdf8">„Chat starten"</strong> klicken ↓</p>
+        <button class="ki-pay-btn" id="ki-paid-confirm-btn"
+                style="background:rgba(255,255,255,.08);margin-top:.4rem;font-size:.85rem;">
+          ✅ Ich habe bezahlt – Chat starten
+        </button>
+      </div>
+    </div>
+
+    <!-- Chat screen -->
+    <div id="ki-chat-screen">
+      <div id="ki-messages"></div>
+      <div id="ki-input-row">
+        <input id="ki-user-input" type="text"
+               placeholder="Ihre IT-Frage eingeben…" autocomplete="off" />
+        <button id="ki-send-btn" aria-label="Senden">➤</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  /* ── CONFIG ─────────────────────────────────────── */
+  // Ihre Cloudflare Worker URL (nach dem Deploy eintragen)
+  var WORKER_URL = 'https://ki-proxy.YOUR-NAME.workers.dev';
+  /* ─────────────────────────────────────────────── */
+
+  var PAID_KEY = 'ki_paid_session';
+  var overlay    = document.getElementById('ki-overlay');
+  var payScreen  = document.getElementById('ki-pay-screen');
+  var chatScreen = document.getElementById('ki-chat-screen');
+  var messages   = document.getElementById('ki-messages');
+  var userInput  = document.getElementById('ki-user-input');
+
+  var history = [{
+    role: 'system',
+    content: 'Du bist ein freundlicher, kompetenter KI-IT-Assistent von PC Voronov (pcvoronov.github.io). ' +
+             'Du hilfst bei Netzwerk-, Server-, Software- und IT-Infrastruktur-Problemen. ' +
+             'Antworte in der Sprache des Nutzers (Deutsch, Russisch oder Englisch). ' +
+             'Sei präzise, freundlich und verweise bei komplexen Aufgaben auf PC Voronov.'
+  }];
+
+  /* open / close */
+  document.getElementById('ki-support-btn').addEventListener('click', function () {
+    overlay.classList.add('open');
+    if (sessionStorage.getItem(PAID_KEY) === '1') showChat();
+  });
+  document.getElementById('ki-close-btn').addEventListener('click', closeModal);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+  function closeModal() { overlay.classList.remove('open'); }
+
+  /* "I have paid" confirm button → opens chat */
+  document.getElementById('ki-paid-confirm-btn').addEventListener('click', function () {
+    sessionStorage.setItem(PAID_KEY, '1');
+    showChat();
+  });
+
+  /* show chat */
+  function showChat() {
+    payScreen.style.display = 'none';
+    chatScreen.style.display = 'flex';
+    if (!messages.firstChild) {
+      addMsg('bot', '👋 Hallo! Ich bin Ihr KI-IT-Assistent. ' +
+                    'Stellen Sie mir Ihre IT-Frage – ich helfe sofort!');
+    }
+    userInput.focus();
+  }
+
+  /* add message bubble */
+  function addMsg(role, text) {
+    var el = document.createElement('div');
+    el.className = 'ki-msg ' + role;
+    el.textContent = text;
+    messages.appendChild(el);
+    messages.scrollTop = messages.scrollHeight;
+    return el;
+  }
+
+  /* send to OpenAI */
+  async function sendMessage() {
+    var text = userInput.value.trim();
+    if (!text) return;
+    addMsg('user', text);
+    userInput.value = '';
+    history.push({ role: 'user', content: text });
+
+    var typing = addMsg('bot typing', '…');
+    try {
+      var res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history })
+      });
+      var data = await res.json();
+      var reply = (data.choices && data.choices[0])
+                  ? data.choices[0].message.content
+                  : 'Entschuldigung – keine Antwort erhalten.';
+      typing.className = 'ki-msg bot';
+      typing.textContent = reply;
+      history.push({ role: 'assistant', content: reply });
+    } catch (err) {
+      typing.className = 'ki-msg bot';
+      typing.textContent = 'Verbindungsfehler. Bitte versuchen Sie es erneut.';
+    }
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  document.getElementById('ki-send-btn').addEventListener('click', sendMessage);
+  userInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') sendMessage();
+  });
+})();
+</script>
+<!-- ══ End KI-Unterstützung ════════════════════════ -->
+
+</body>
 </html>
 
 
