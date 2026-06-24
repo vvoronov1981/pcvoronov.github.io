@@ -62,8 +62,13 @@
   @media(max-width:640px){
     .language-switcher{width:100%;justify-content:center}
   }
-  </style>
-</head>
+  .task-email-alt{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-top:.85rem;padding:.75rem 1rem;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.12);border-radius:.75rem}
+  .task-email-sep{font-size:.82rem;color:#94a3b8}
+  .btn-mailto{padding:.4rem .95rem;font-size:.85rem;background:transparent;border:1.5px solid rgba(56,189,248,.45);color:#38bdf8;border-radius:2rem;text-decoration:none;transition:background .15s,border-color .15s}
+  .btn-mailto:hover{background:rgba(56,189,248,.12);border-color:#38bdf8}
+  /* disable btn-send-tasks visually when aria-disabled */
+  .btn-send-tasks[aria-disabled="true"]{opacity:.4;pointer-events:none;cursor:not-allowed}
+</style>
 <body>
   <a class="skip-link" href="#main" data-uk="Перейти до вмісту" data-de="Zum Inhalt springen">Перейти до вмісту</a>
 
@@ -406,6 +411,10 @@
             <ul class="task-list" id="task-list" data-aria-label-uk="Список завдань" data-aria-label-de="Aufgabenliste" aria-label="Список завдань">
               <li class="task-empty" id="task-empty" data-uk="Завдання ще не додано. Додайте перше завдання вище!" data-de="Noch keine Aufgaben vorhanden. Fügen Sie oben die erste Aufgabe hinzu!">Завдання ще не додано. Додайте перше завдання вище!</li>
             </ul>
+          </div>
+          <div class="task-email-alt" id="task-email-alt" style="display:none">
+            <span class="task-email-sep" data-uk="або надішліть список завдань напряму:" data-de="oder senden Sie die Aufgabenliste direkt:">або надішліть список завдань напряму:</span>
+            <a id="task-mailto-btn" class="btn btn-mailto" href="mailto:comprw@gmail.com" data-uk="✉ Написати на email" data-de="✉ Per E-Mail senden">✉ Написати на email</a>
           </div>
         </div>
       </div>
@@ -877,6 +886,8 @@
         taskList.appendChild(empty);
         if (sendTasksBtn) sendTasksBtn.setAttribute('aria-disabled', 'true');
         if (clearTasksBtn) clearTasksBtn.disabled = true;
+        var emailAltEl = document.getElementById('task-email-alt');
+        if (emailAltEl) emailAltEl.style.display = 'none';
         return;
       }
       if (sendTasksBtn) sendTasksBtn.removeAttribute('aria-disabled');
@@ -929,6 +940,22 @@
         li.appendChild(delBtn);
         taskList.appendChild(li);
       });
+
+      // Update mailto button
+      var emailAlt = document.getElementById('task-email-alt');
+      var mailtoBtn = document.getElementById('task-mailto-btn');
+      if (emailAlt) emailAlt.style.display = '';
+      if (mailtoBtn) {
+        var lang = currentLang();
+        var mailLines = tasks.map(function (t, i) {
+          var svc = t.service ? ' [' + serviceLabel(t.service) + ']' : '';
+          var done = t.done ? (lang === 'de' ? '[erledigt] ' : '[виконано] ') : '';
+          return (i + 1) + '. ' + done + t.text + svc;
+        });
+        var mailBody = (lang === 'de' ? 'Aufgabenliste:' : 'Перелік завдань:') + '\n' + mailLines.join('\n') + '\n\n---\nPC Voronov Website';
+        var mailSubj = lang === 'de' ? 'Aufgaben von der PC Voronov Website' : 'Завдання з сайту PC Voronov';
+        mailtoBtn.href = 'mailto:comprw@gmail.com?subject=' + encodeURIComponent(mailSubj) + '&body=' + encodeURIComponent(mailBody);
+      }
     }
 
     function addTask(text, service, priority, id) {
@@ -1003,12 +1030,21 @@
     }
 
     if (sendTasksBtn) {
-      sendTasksBtn.addEventListener('click', function () {
+      sendTasksBtn.addEventListener('click', function (e) {
         var summary = buildTasksSummary();
-        if (!summary) return;
+        if (!summary) { e.preventDefault(); return; }
         var reqTask = document.getElementById('req-task');
         if (reqTask) {
           reqTask.value = summary;
+          // Auto-fill service based on most-used task service
+          var tasks = loadTasks();
+          var reqService = document.getElementById('req-service');
+          if (reqService && tasks.length > 0) {
+            var sc = {};
+            tasks.forEach(function (t) { if (t.service) sc[t.service] = (sc[t.service] || 0) + 1; });
+            var topSvc = Object.keys(sc).sort(function (a, b) { return sc[b] - sc[a]; })[0];
+            if (topSvc) reqService.value = topSvc;
+          }
           var requestForm = document.getElementById('request-form');
           window.setTimeout(function () {
             if (requestForm) {
@@ -1434,3 +1470,4 @@
 <!-- ══ End KI-Unterstützung ════════════════════════ -->
 </body>
 </html>
+
