@@ -1,21 +1,21 @@
-<!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PC Voronov — Сетевые решения, IT‑инфраструктура и разработка ПО</title>
-  <meta name="description" content="PC Voronov — услуги по проектированию и сопровождению сетей, обслуживанию IT‑инфраструктуры, настройке оборудования и разработке программного обеспечения." />
-  <meta name="theme-color" content="#0f172a" />
-  <meta name="format-detection" content="telephone=no" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="PC Voronov — Сетевые решения, IT‑инфраструктура и разработка ПО" />
-  <meta property="og:description" content="Надёжная поддержка сетей, серверов, оборудования и бизнес‑приложений для компаний и частных клиентов." />
-  <meta property="og:image" content="n.png" />
-  <meta property="og:locale" content="ru_RU" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="stylesp.css" />
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PC Voronov — IT-послуги, мережі, сервери та розробка ПЗ</title>
+  <meta name="description" content="PC Voronov — IT-послуги для бізнесу та приватних клієнтів: мережі, сервери, обладнання, програмне забезпечення, аудит, консалтинг та KI-підтримка." />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PC Voronov — IT-послуги, мережі, сервери та розробка ПЗ" />
+  <meta property="og:description" content="Надійна IT-підтримка, мережеві рішення, серверний супровід, розробка ПЗ та консалтинг для клієнтів в Україні та Європі." />
+  <meta property="og:image" content="n.png" />
+  <meta property="og:locale" content="uk_UA" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="stylesp.css" />
   <style>
   /* ── Quick-Check Chips ─────────────────────────────── */
   .quick-check{margin-bottom:2rem;padding:1.5rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:1rem}
@@ -33,782 +33,982 @@
   /* ── Task item flash animation ─────────────────────── */
   @keyframes task-flash{0%{background:rgba(56,189,248,.25)}100%{background:transparent}}
   .task-item-new{animation:task-flash .7s ease-out}
-  /* ── IT Diagnosis Wizard ─────────────────────────── */
-  .wizard-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:1.25rem;padding:2rem;max-width:700px;margin:0 auto}
-  .wizard-steps{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:2rem}
-  .wizard-step{width:2.2rem;height:2.2rem;border-radius:50%;border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;color:#64748b;transition:all .3s}
-  .wizard-step.active{border-color:#38bdf8;color:#38bdf8}
-  .wizard-step.done{background:#38bdf8;border-color:#38bdf8;color:#0f172a}
-  .wizard-divider{height:2px;width:3rem;background:rgba(255,255,255,.12)}
-  .wizard-panel{display:none}
-  .wizard-panel.active{display:block}
-  .wizard-question{font-size:1.15rem;font-weight:700;margin:0 0 .35rem}
-  .wizard-hint{font-size:.85rem;color:#94a3b8;margin:0 0 1.5rem}
-  .wizard-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem}
-  .wizard-option{padding:.9rem 1.1rem;border:1.5px solid rgba(255,255,255,.14);border-radius:.85rem;background:transparent;color:inherit;cursor:pointer;display:flex;align-items:center;gap:.75rem;text-align:left;transition:all .15s;font-size:.9rem;font-family:inherit}
-  .wizard-option:hover{border-color:#38bdf8;background:rgba(56,189,248,.08)}
-  .wizard-option.selected{border-color:#38bdf8;background:rgba(56,189,248,.15);color:#38bdf8}
-  .wo-icon{font-size:1.4rem;flex-shrink:0}
-  .wo-text{font-weight:500}
-  .wizard-urgency{grid-template-columns:1fr}
-  .wizard-next-btn{margin-top:1.5rem}
-  .wizard-next-btn:disabled{opacity:.4;cursor:not-allowed}
-  .wizard-result{text-align:center;padding:1rem 0}
-  .wr-icon{font-size:2.5rem;margin-bottom:.5rem}
-  .wr-title{font-size:1.2rem;font-weight:700;margin:0 0 .4rem}
-  .wr-subtitle{color:#94a3b8;font-size:.9rem;margin:0 0 1.5rem}
-  .wr-tasks{list-style:none;padding:0;margin:0 0 1.5rem;text-align:left}
-  .wr-tasks li{padding:.5rem .75rem;border-radius:.5rem;background:rgba(56,189,248,.08);border-left:3px solid #38bdf8;margin-bottom:.5rem;font-size:.9rem}
-  .wr-actions{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
-  .wizard-restart-btn{background:none;border:none;color:#64748b;font-size:.8rem;cursor:pointer;margin-top:1.25rem;text-decoration:underline;font-family:inherit}
-  .wizard-restart-btn:hover{color:#94a3b8}
-  @media(max-width:600px){.wizard-options{grid-template-columns:1fr}}
+
+  .header-controls{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+  .language-switcher{display:inline-flex;align-items:center;gap:.35rem;padding:.28rem;background:rgba(15,23,42,.08);border:1px solid rgba(148,163,184,.28);border-radius:999px}
+  .lang-btn{border:none;background:transparent;color:inherit;font-weight:700;font-size:.8rem;padding:.45rem .8rem;border-radius:999px;cursor:pointer;transition:background .15s,color .15s}
+  .lang-btn.is-active{background:#38bdf8;color:#0f172a}
+  .business-strip,.policy-grid,.price-grid,.owner-grid{display:grid;gap:1rem}
+  .business-strip{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:1.5rem}
+  .info-pill{padding:1rem 1.1rem;border:1px solid rgba(255,255,255,.09);border-radius:1rem;background:rgba(255,255,255,.03)}
+  .info-pill strong,.price-amount{display:block;font-size:1.05rem;color:#38bdf8;margin-top:.35rem}
+  .price-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .pricing-card{display:flex;flex-direction:column;gap:1rem}
+  .pricing-card p{margin:0}
+  .pricing-card .service-actions{margin-top:auto}
+  .price-note{font-size:.85rem;color:#94a3b8}
+  .policy-grid,.owner-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .policy-card,.owner-card{height:100%}
+  .info-list,.contact-note-list{margin:0;padding-left:1.2rem;display:grid;gap:.65rem}
+  .owner-list{display:grid;gap:.8rem;margin:0}
+  .owner-list div{padding:.95rem 1rem;border-radius:1rem;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03)}
+  .owner-list dt{font-weight:700;color:#cbd5e1}
+  .owner-list dd{margin:.35rem 0 0;color:#e2e8f0}
+  .muted-line{color:#94a3b8}
+  .contact-form-card .contact-note-list{margin-top:1.25rem}
+  @media(max-width:960px){
+    .header-controls{width:100%;justify-content:space-between}
+  }
+  @media(max-width:640px){
+    .language-switcher{width:100%;justify-content:center}
+  }
   </style>
 </head>
-<body>
-  <a class="skip-link" href="#main">Перейти к содержимому</a>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#hero" aria-label="PC Voronov — на главную">
-        <img src="n.png" alt="Логотип PC Voronov" class="logo" />
-        <span class="brand-text">
-          <span class="brand-title">PC Voronov</span>
-          <span class="tagline">Сетевые решения, обслуживание оборудования и разработка ПО</span>
-        </span>
-      </a>
-
-      <nav class="main-nav" aria-label="Главное меню">
-        <a href="#services">Услуги</a>
-        <a href="#advantages">Преимущества</a>
-        <a href="#about">О компании</a>
-        <a href="#process">Как работаем</a>
-        <a href="#diagnosis">Диагностика</a>
-        <a href="#tasks">Мои задачи</a>
-        <a href="#contacts">Оставить заявку</a>
-        <a href="investors.html">Инвесторам</a>
-        <a href="bank-details.html">Реквизиты</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main">
-    <section class="hero" id="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">IT‑поддержка для бизнеса и частных клиентов</p>
-          <h1>Надёжная IT‑инфраструктура, стабильные сети и программные решения под ваши задачи</h1>
-          <p class="hero-lead">
-            PC Voronov помогает проектировать, внедрять и поддерживать компьютерные сети, серверное оборудование
-            и прикладное ПО. Работаем аккуратно, системно и с фокусом на устойчивость вашей инфраструктуры.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn" href="#request-form">Оставить задачу</a>
-            <a class="btn btn-secondary" href="#services">Посмотреть услуги</a>
-          </div>
-          <p style="margin:.9rem 0 0;font-size:.82rem;color:#64748b;">💡 <a href="#tasks" style="color:#38bdf8;text-decoration:none;">Составьте список задач</a> и отправьте одним кликом</p>
-
-          <ul class="hero-points" aria-label="Ключевые преимущества">
-            <li>Проектирование и сопровождение LAN/WAN‑сетей</li>
-            <li>Настройка серверов, маршрутизаторов и коммутаторов</li>
-            <li>Разработка и внедрение программных решений</li>
-            <li>Онлайн-заявка за 1 минуту с быстрым ответом</li>
-          </ul>
-        </div>
-
-        <aside class="hero-panel" aria-label="Краткая информация">
-          <div class="panel-card">
-            <p class="panel-label">Формат работы</p>
-            <p class="panel-value">Удалённо и с выездом</p>
-          </div>
-          <div class="panel-card">
-            <p class="panel-label">Основные направления</p>
-            <p class="panel-value">Сети, оборудование, IT‑поддержка, разработка ПО</p>
-          </div>
-          <div class="panel-card">
-            <p class="panel-label">Локация</p>
-            <p class="panel-value">Краматорск</p>
-          </div>
-          <div class="panel-card highlight-card">
-            <p class="panel-label">Быстрый контакт</p>
-            <a href="tel:+380505235040">+380 (50) 523‑5040</a>
-            <a href="mailto:comprw@gmail.com">comprw@gmail.com</a>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section" id="services">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-kicker">Услуги</p>
-          <h2>Комплексная техническая поддержка и развитие IT‑среды</h2>
-          <p>
-            Подбираем решения под реальную инфраструктуру и бизнес‑процессы: от настройки сетей и оборудования
-            до автоматизации внутренних операций и сопровождения систем.
-          </p>
-        </div>
-
-        <div class="cards services-grid">
-          <article class="card service-card">
-            <div class="card-icon" aria-hidden="true">01</div>
-            <h3>Управление и мониторинг сетей</h3>
-            <p>
-              Проектирование LAN/WAN, настройка маршрутизации, VLAN, контроль стабильности соединений,
-              мониторинг и сопровождение критичных узлов инфраструктуры.
-            </p>
-            <div class="service-actions">
-              <a class="btn btn-service" href="#request-form" data-service="Управление и мониторинг сетей">Оставить заявку</a>
-            </div>
-          </article>
-
-          <article class="card service-card">
-            <div class="card-icon" aria-hidden="true">02</div>
-            <h3>Поддержка серверов и оборудования</h3>
-            <p>
-              Настройка серверов, коммутаторов, маршрутизаторов и рабочих станций, обновление ПО,
-              резервирование, профилактика сбоев и техническое обслуживание.
-            </p>
-            <div class="service-actions">
-              <a class="btn btn-service" href="#request-form" data-service="Поддержка серверов и оборудования">Оставить заявку</a>
-            </div>
-          </article>
-
-          <article class="card service-card">
-            <div class="card-icon" aria-hidden="true">03</div>
-            <h3>Разработка программного обеспечения</h3>
-            <p>
-              Создание прикладных решений для автоматизации бизнес‑процессов, интеграции с существующими
-              системами и разработки внутренних сервисов под конкретные задачи.
-            </p>
-            <div class="service-actions">
-              <a class="btn btn-service" href="#request-form" data-service="Разработка программного обеспечения">Оставить заявку</a>
-            </div>
-          </article>
-
-          <article class="card service-card">
-            <div class="card-icon" aria-hidden="true">04</div>
-            <h3>Аудит и IT‑консалтинг</h3>
-            <p>
-              Анализ текущей инфраструктуры, оценка рисков, рекомендации по безопасности,
-              масштабированию и оптимизации затрат на поддержку IT‑среды.
-            </p>
-            <div class="service-actions">
-              <a class="btn btn-service" href="#request-form" data-service="Аудит и IT-консалтинг">Оставить заявку</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-muted" id="advantages">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-kicker">Почему выбирают нас</p>
-          <h2>Практичный подход без лишней сложности</h2>
-        </div>
-
-        <div class="cards advantage-grid">
-          <article class="card info-card">
-            <h3>Системный подход</h3>
-            <p>Сначала анализируем инфраструктуру и задачи, затем предлагаем решение, которое действительно подходит по масштабу и бюджету.</p>
-          </article>
-          <article class="card info-card">
-            <h3>Фокус на надёжность</h3>
-            <p>Приоритет — стабильность работы сети, оборудования и сервисов, чтобы минимизировать простои и потери времени.</p>
-          </article>
-          <article class="card info-card">
-            <h3>Индивидуальные решения</h3>
-            <p>Подбираем инструменты и архитектуру под конкретные процессы компании, а не используем шаблонный подход.</p>
-          </article>
-          <article class="card info-card">
-            <h3>Понятная коммуникация</h3>
-            <p>Объясняем технические решения простым языком, согласовываем этапы работ и держим связь на протяжении проекта.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="container split-layout">
-        <div>
-          <div class="section-heading left-aligned">
-            <p class="section-kicker">О компании</p>
-            <h2>PC Voronov — частная IT‑практика</h2>
-          </div>
-          <p>
-            PC Voronov — частная компания (ИП), специализирующаяся на сетевой инфраструктуре,
-            техническом сопровождении оборудования и разработке программного обеспечения.
-            Руководитель — ИП Воронов Владимир Геннадиевич.
-          </p>
-          <p>
-            Мы работаем с задачами разного уровня сложности: от настройки отдельных узлов и рабочих мест
-            до комплексного сопровождения IT‑среды и разработки специализированных приложений.
-          </p>
-        </div>
-
-        <div class="card checklist-card">
-          <h3>Ключевые компетенции</h3>
-          <ul class="check-list">
-            <li>Проектирование, развёртывание и сопровождение сетевых решений</li>
-            <li>Поддержка серверного и сетевого оборудования</li>
-            <li>Автоматизация процессов и разработка прикладного ПО</li>
-            <li>Аудит, рекомендации и планирование модернизации инфраструктуры</li>
-            <li>Конфиденциальность и аккуратная работа с корпоративными данными</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-muted" id="process">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-kicker">Как работаем</p>
-          <h2>Прозрачный процесс взаимодействия</h2>
-        </div>
-
-        <div class="timeline">
-          <article class="timeline-item">
-            <span class="timeline-step">1</span>
-            <div>
-              <h3>Первичный запрос</h3>
-              <p>Вы описываете задачу, текущую ситуацию и ожидаемый результат. Мы уточняем детали и определяем формат работы.</p>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <span class="timeline-step">2</span>
-            <div>
-              <h3>Анализ и предложение решения</h3>
-              <p>Оцениваем инфраструктуру, выявляем риски и подготавливаем понятный план действий с приоритетами.</p>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <span class="timeline-step">3</span>
-            <div>
-              <h3>Выполнение работ</h3>
-              <p>Настраиваем, внедряем, модернизируем и тестируем решения, уделяя внимание безопасности и отказоустойчивости.</p>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <span class="timeline-step">4</span>
-            <div>
-              <h3>Поддержка и развитие</h3>
-              <p>При необходимости сопровождаем систему после внедрения и помогаем планировать дальнейшее развитие инфраструктуры.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-muted" id="diagnosis">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-kicker">Диагностика</p>
-          <h2>Узнайте, какая IT‑помощь вам нужна</h2>
-          <p>Ответьте на 3 вопроса — мы подберём нужные услуги и сразу добавим задачи в ваш список.</p>
+<body>
+  <a class="skip-link" href="#main" data-uk="Перейти до вмісту" data-de="Zum Inhalt springen">Перейти до вмісту</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#hero" data-aria-label-uk="PC Voronov — на головну" data-aria-label-de="PC Voronov — zur Startseite" aria-label="PC Voronov — на головну">
+        <img src="n.png" alt="Логотип PC Voronov" data-alt-uk="Логотип PC Voronov" data-alt-de="Logo von PC Voronov" class="logo" />
+        <span class="brand-text">
+          <span class="brand-title">PC Voronov</span>
+          <span class="tagline" data-uk="IT-послуги, мережі, сервери та розробка ПЗ" data-de="IT-Services, Netzwerke, Server und Softwareentwicklung">IT-послуги, мережі, сервери та розробка ПЗ</span>
+        </span>
+      </a>
+
+      <div class="header-controls">
+        <nav class="main-nav" data-aria-label-uk="Головне меню" data-aria-label-de="Hauptmenü" aria-label="Головне меню">
+          <a href="#services" data-uk="Послуги" data-de="Leistungen">Послуги</a>
+          <a href="#advantages" data-uk="Переваги" data-de="Vorteile">Переваги</a>
+          <a href="#about" data-uk="Про нас" data-de="Über uns">Про нас</a>
+          <a href="#process" data-uk="Як працюємо" data-de="Ablauf">Як працюємо</a>
+          <a href="#prices" data-uk="Ціни" data-de="Preise">Ціни</a>
+          <a href="#tasks" data-uk="Мої завдання" data-de="Meine Aufgaben">Мої завдання</a>
+          <a href="#contacts" data-uk="Контакти" data-de="Kontakt">Контакти</a>
+          <a href="investors.html" data-uk="Інвесторам" data-de="Für Investoren">Інвесторам</a>
+          <a href="bank-details.html" data-uk="Реквізити" data-de="Bankdaten">Реквізити</a>
+        </nav>
+
+        <div class="language-switcher" aria-label="Language switcher">
+          <button type="button" class="lang-btn is-active" id="lang-uk-btn" data-lang="uk" aria-pressed="true">UK</button>
+          <button type="button" class="lang-btn" id="lang-de-btn" data-lang="de" aria-pressed="false">DE</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow" data-uk="ФОП Воронов Володимир Геннадійович · IT-послуги для бізнесу та приватних клієнтів" data-de="Einzelunternehmer Voronov Wolodymyr Gennadijovytsch · IT-Services für Unternehmen und Privatkunden">ФОП Воронов Володимир Геннадійович · IT-послуги для бізнесу та приватних клієнтів</p>
+          <h1 data-uk="PC Voronov — надійна IT-інфраструктура, стабільні мережі та програмні рішення під ваші завдання" data-de="PC Voronov — zuverlässige IT-Infrastruktur, stabile Netzwerke und Softwarelösungen für Ihre Aufgaben">PC Voronov — надійна IT-інфраструктура, стабільні мережі та програмні рішення під ваші завдання</h1>
+          <p class="hero-lead" data-uk="PC Voronov проєктує, впроваджує та супроводжує мережі, сервери, обладнання й прикладне програмне забезпечення. Працюємо дистанційно по Україні та Європі, а також з виїздом у м. Краматорськ і Донецькій області." data-de="PC Voronov plant, implementiert und betreut Netzwerke, Server, Hardware und Anwendungssoftware. Wir arbeiten remote in der Ukraine und Europa sowie vor Ort in Kramatorsk und der Oblast Donezk.">PC Voronov проєктує, впроваджує та супроводжує мережі, сервери, обладнання й прикладне програмне забезпечення. Працюємо дистанційно по Україні та Європі, а також з виїздом у м. Краматорськ і Донецькій області.</p>
+
+          <div class="hero-actions">
+            <a class="btn" href="#request-form" data-uk="Залишити заявку" data-de="Anfrage senden">Залишити заявку</a>
+            <a class="btn btn-secondary" href="#prices" data-uk="Переглянути ціни" data-de="Preise ansehen">Переглянути ціни</a>
+          </div>
+
+          <ul class="hero-points" data-aria-label-uk="Ключові переваги" data-aria-label-de="Wichtige Vorteile" aria-label="Ключові переваги">
+            <li data-uk="Проєктування та супровід LAN/WAN-мереж" data-de="Planung und Betreuung von LAN/WAN-Netzwerken">Проєктування та супровід LAN/WAN-мереж</li>
+            <li data-uk="Налаштування серверів, маршрутизаторів, комутаторів і VPN" data-de="Konfiguration von Servern, Routern, Switches und VPN">Налаштування серверів, маршрутизаторів, комутаторів і VPN</li>
+            <li data-uk="Розробка ПЗ, автоматизація процесів та інтеграції" data-de="Softwareentwicklung, Prozessautomatisierung und Integrationen">Розробка ПЗ, автоматизація процесів та інтеграції</li>
+            <li data-uk="Швидкий зв'язок, підтвердження на email і прозорі умови оплати" data-de="Schnelle Rückmeldung, E-Mail-Bestätigung und transparente Zahlungsbedingungen">Швидкий зв'язок, підтвердження на email і прозорі умови оплати</li>
+          </ul>
         </div>
 
-        <div class="wizard-card" id="it-wizard">
-          <!-- Step indicator -->
-          <div class="wizard-steps" aria-label="Шаги мастера">
-            <div class="wizard-step active" id="wstep-1" aria-current="step">1</div>
-            <div class="wizard-divider" aria-hidden="true"></div>
-            <div class="wizard-step" id="wstep-2">2</div>
-            <div class="wizard-divider" aria-hidden="true"></div>
-            <div class="wizard-step" id="wstep-3">3</div>
+        <aside class="hero-panel" data-aria-label-uk="Коротка інформація" data-aria-label-de="Kurzinformation" aria-label="Коротка інформація">
+          <div class="panel-card">
+            <p class="panel-label" data-uk="Формат роботи" data-de="Arbeitsformat">Формат роботи</p>
+            <p class="panel-value" data-uk="Дистанційно та з виїздом" data-de="Remote und vor Ort">Дистанційно та з виїздом</p>
           </div>
+          <div class="panel-card">
+            <p class="panel-label" data-uk="Основні напрями" data-de="Schwerpunkte">Основні напрями</p>
+            <p class="panel-value" data-uk="Мережі, сервери, обладнання, IT-консалтинг, розробка ПЗ" data-de="Netzwerke, Server, Hardware, IT-Beratung, Softwareentwicklung">Мережі, сервери, обладнання, IT-консалтинг, розробка ПЗ</p>
+          </div>
+          <div class="panel-card">
+            <p class="panel-label" data-uk="Адреса" data-de="Adresse">Адреса</p>
+            <p class="panel-value" data-uk="м. Краматорськ, Донецька обл., Україна" data-de="Kramatorsk, Oblast Donezk, Ukraine">м. Краматорськ, Донецька обл., Україна</p>
+          </div>
+          <div class="panel-card highlight-card">
+            <p class="panel-label" data-uk="Швидкий контакт" data-de="Schnellkontakt">Швидкий контакт</p>
+            <a href="tel:+380505235040">+380 (50) 523‑5040</a>
+            <a href="mailto:comprw@gmail.com">comprw@gmail.com</a>
+          </div>
+        </aside>
+      </div>
 
-          <!-- Step 1: Category -->
-          <div class="wizard-panel active" id="wpanel-1">
-            <h3 class="wizard-question">Что вас интересует?</h3>
-            <p class="wizard-hint">Выберите основное направление</p>
-            <div class="wizard-options">
-              <button type="button" class="wizard-option" data-step="1" data-value="networks">
-                <span class="wo-icon">🌐</span><span class="wo-text">Сети / Интернет</span>
-              </button>
-              <button type="button" class="wizard-option" data-step="1" data-value="servers">
-                <span class="wo-icon">🖥️</span><span class="wo-text">Серверы / Оборудование</span>
-              </button>
-              <button type="button" class="wizard-option" data-step="1" data-value="software">
-                <span class="wo-icon">💻</span><span class="wo-text">Разработка ПО</span>
-              </button>
-              <button type="button" class="wizard-option" data-step="1" data-value="audit">
-                <span class="wo-icon">🔍</span><span class="wo-text">Аудит / Безопасность</span>
-              </button>
+      <div class="container business-strip">
+        <div class="info-pill">
+          <span data-uk="Власник" data-de="Inhaber">Власник</span>
+          <strong data-uk="ФОП Воронов Володимир Геннадійович" data-de="Einzelunternehmer Voronov Wolodymyr Gennadijovytsch">ФОП Воронов Володимир Геннадійович</strong>
+        </div>
+        <div class="info-pill">
+          <span data-uk="Приймання замовлень" data-de="Auftragsannahme">Приймання замовлень</span>
+          <strong data-uk="Email, телефон, форма на сайті" data-de="E-Mail, Telefon, Formular auf der Website">Email, телефон, форма на сайті</strong>
+        </div>
+        <div class="info-pill">
+          <span data-uk="Способи оплати" data-de="Zahlungsarten">Способи оплати</span>
+          <strong data-uk="LiqPay, банківський переказ, за домовленістю" data-de="LiqPay, Banküberweisung, nach Vereinbarung">LiqPay, банківський переказ, за домовленістю</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker" data-uk="Послуги" data-de="Leistungen">Послуги</p>
+          <h2 data-uk="Комплексна технічна підтримка та розвиток IT-середовища" data-de="Ganzheitliche technische Unterstützung und Weiterentwicklung Ihrer IT-Umgebung">Комплексна технічна підтримка та розвиток IT-середовища</h2>
+          <p data-uk="Підбираємо рішення під реальну інфраструктуру та бізнес-процеси: від мереж і серверів до автоматизації внутрішніх операцій, AI-підтримки та супроводу систем." data-de="Wir wählen Lösungen passend zu Ihrer realen Infrastruktur und Ihren Geschäftsprozessen: von Netzwerken und Servern bis zu Prozessautomatisierung, KI-Support und Systembetreuung.">Підбираємо рішення під реальну інфраструктуру та бізнес-процеси: від мереж і серверів до автоматизації внутрішніх операцій, AI-підтримки та супроводу систем.</p>
+        </div>
+
+        <div class="cards services-grid">
+          <article class="card service-card">
+            <div class="card-icon" aria-hidden="true">01</div>
+            <h3 data-uk="Управління та моніторинг мереж" data-de="Netzwerk-Management und Monitoring">Управління та моніторинг мереж</h3>
+            <p data-uk="Проєктування LAN/WAN, маршрутизація, VLAN, VPN, моніторинг, усунення збоїв та підтримка критичних вузлів інфраструктури." data-de="LAN/WAN-Planung, Routing, VLAN, VPN, Monitoring, Fehlerbehebung und Betreuung kritischer Infrastrukturknoten.">Проєктування LAN/WAN, маршрутизація, VLAN, VPN, моніторинг, усунення збоїв та підтримка критичних вузлів інфраструктури.</p>
+            <div class="service-actions">
+              <a class="btn btn-service" href="#request-form" data-service="Управління та моніторинг мереж" data-uk="Замовити послугу" data-de="Leistung bestellen">Замовити послугу</a>
             </div>
-          </div>
+          </article>
 
-          <!-- Step 2: Specific tasks (populated by JS) -->
-          <div class="wizard-panel" id="wpanel-2">
-            <h3 class="wizard-question">Какие задачи нужно решить?</h3>
-            <p class="wizard-hint">Выберите одну или несколько</p>
-            <div class="wizard-options wizard-multi" id="wizard-tasks-options"></div>
-            <button type="button" class="btn wizard-next-btn" id="wizard-step2-next" disabled>Далее →</button>
-          </div>
-
-          <!-- Step 3: Urgency -->
-          <div class="wizard-panel" id="wpanel-3">
-            <h3 class="wizard-question">Как срочно нужна помощь?</h3>
-            <p class="wizard-hint">Выберите подходящий вариант</p>
-            <div class="wizard-options wizard-urgency">
-              <button type="button" class="wizard-option" data-step="3" data-value="urgent">
-                <span class="wo-icon">🔴</span><span class="wo-text">Срочно (сегодня‑завтра)</span>
-              </button>
-              <button type="button" class="wizard-option" data-step="3" data-value="week">
-                <span class="wo-icon">🟡</span><span class="wo-text">На этой неделе</span>
-              </button>
-              <button type="button" class="wizard-option" data-step="3" data-value="flexible">
-                <span class="wo-icon">🟢</span><span class="wo-text">Не срочно — планирую заранее</span>
-              </button>
+          <article class="card service-card">
+            <div class="card-icon" aria-hidden="true">02</div>
+            <h3 data-uk="Підтримка серверів та обладнання" data-de="Server-Support und Hardware-Betreuung">Підтримка серверів та обладнання</h3>
+            <p data-uk="Налаштування серверів, комутаторів, маршрутизаторів, резервне копіювання, оновлення, діагностика та профілактичне обслуговування." data-de="Einrichtung von Servern, Switches, Routern, Backups, Updates, Diagnose und vorbeugende Wartung.">Налаштування серверів, комутаторів, маршрутизаторів, резервне копіювання, оновлення, діагностика та профілактичне обслуговування.</p>
+            <div class="service-actions">
+              <a class="btn btn-service" href="#request-form" data-service="Підтримка серверів та обладнання" data-uk="Замовити послугу" data-de="Leistung bestellen">Замовити послугу</a>
             </div>
-          </div>
+          </article>
 
-          <!-- Result panel -->
-          <div class="wizard-panel" id="wpanel-result">
-            <div class="wizard-result">
-              <div class="wr-icon">✅</div>
-              <h3 class="wr-title">Подобрали подходящие задачи!</h3>
-              <p class="wr-subtitle" id="wr-subtitle"></p>
-              <ul class="wr-tasks" id="wr-task-list"></ul>
-              <div class="wr-actions">
-                <button type="button" class="btn" id="wizard-add-btn">+ Добавить задачи в список</button>
-                <a class="btn btn-secondary" href="#contacts">Оставить заявку</a>
+          <article class="card service-card">
+            <div class="card-icon" aria-hidden="true">03</div>
+            <h3 data-uk="Розробка програмного забезпечення" data-de="Softwareentwicklung">Розробка програмного забезпечення</h3>
+            <p data-uk="Створення прикладних рішень, внутрішніх сервісів, API, інтеграцій та інструментів автоматизації під конкретні потреби бізнесу." data-de="Entwicklung von Anwendungen, internen Services, APIs, Integrationen und Automatisierungstools für konkrete Geschäftsanforderungen.">Створення прикладних рішень, внутрішніх сервісів, API, інтеграцій та інструментів автоматизації під конкретні потреби бізнесу.</p>
+            <div class="service-actions">
+              <a class="btn btn-service" href="#request-form" data-service="Розробка програмного забезпечення" data-uk="Замовити послугу" data-de="Leistung bestellen">Замовити послугу</a>
+            </div>
+          </article>
+
+          <article class="card service-card">
+            <div class="card-icon" aria-hidden="true">04</div>
+            <h3 data-uk="Аудит та IT-консалтинг" data-de="IT-Audit und Beratung">Аудит та IT-консалтинг</h3>
+            <p data-uk="Аналіз поточної інфраструктури, оцінка ризиків, рекомендації щодо безпеки, масштабування та оптимізації IT-витрат." data-de="Analyse der aktuellen Infrastruktur, Risikobewertung sowie Empfehlungen zu Sicherheit, Skalierung und IT-Kostenoptimierung.">Аналіз поточної інфраструктури, оцінка ризиків, рекомендації щодо безпеки, масштабування та оптимізації IT-витрат.</p>
+            <div class="service-actions">
+              <a class="btn btn-service" href="#request-form" data-service="Аудит та IT-консалтинг" data-uk="Замовити послугу" data-de="Leistung bestellen">Замовити послугу</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="advantages">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker" data-uk="Чому обирають нас" data-de="Warum Kunden uns wählen">Чому обирають нас</p>
+          <h2 data-uk="Практичний підхід без зайвої складності" data-de="Pragmatischer Ansatz ohne unnötige Komplexität">Практичний підхід без зайвої складності</h2>
+        </div>
+
+        <div class="cards advantage-grid">
+          <article class="card info-card">
+            <h3 data-uk="Системний підхід" data-de="Systematischer Ansatz">Системний підхід</h3>
+            <p data-uk="Спочатку аналізуємо інфраструктуру та завдання, а вже потім пропонуємо рішення, яке реально відповідає масштабу, ризикам і бюджету." data-de="Wir analysieren zuerst Infrastruktur und Aufgaben und schlagen dann eine Lösung vor, die wirklich zu Umfang, Risiken und Budget passt.">Спочатку аналізуємо інфраструктуру та завдання, а вже потім пропонуємо рішення, яке реально відповідає масштабу, ризикам і бюджету.</p>
+          </article>
+          <article class="card info-card">
+            <h3 data-uk="Фокус на надійність" data-de="Fokus auf Zuverlässigkeit">Фокус на надійність</h3>
+            <p data-uk="Пріоритет — стабільна робота мережі, серверів, обладнання та сервісів, щоб зменшити простої та втрати часу." data-de="Priorität hat der stabile Betrieb von Netzwerken, Servern, Hardware und Diensten, um Ausfallzeiten zu minimieren.">Пріоритет — стабільна робота мережі, серверів, обладнання та сервісів, щоб зменшити простої та втрати часу.</p>
+          </article>
+          <article class="card info-card">
+            <h3 data-uk="Індивідуальні рішення" data-de="Individuelle Lösungen">Індивідуальні рішення</h3>
+            <p data-uk="Підбираємо інструменти й архітектуру під конкретні процеси клієнта, а не застосовуємо шаблонний набір послуг." data-de="Wir wählen Werkzeuge und Architektur passend zu den konkreten Prozessen des Kunden statt standardisierter Pakete.">Підбираємо інструменти й архітектуру під конкретні процеси клієнта, а не застосовуємо шаблонний набір послуг.</p>
+          </article>
+          <article class="card info-card">
+            <h3 data-uk="Зрозуміла комунікація" data-de="Klare Kommunikation">Зрозуміла комунікація</h3>
+            <p data-uk="Пояснюємо технічні рішення простою мовою, погоджуємо етапи робіт і підтверджуємо домовленості через email." data-de="Wir erklären technische Entscheidungen verständlich, stimmen Arbeitsschritte ab und bestätigen Vereinbarungen per E-Mail.">Пояснюємо технічні рішення простою мовою, погоджуємо етапи робіт і підтверджуємо домовленості через email.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container split-layout">
+        <div>
+          <div class="section-heading left-aligned">
+            <p class="section-kicker" data-uk="Про компанію" data-de="Über das Unternehmen">Про компанію</p>
+            <h2 data-uk="PC Voronov — приватна IT-практика та сервісний партнер" data-de="PC Voronov — private IT-Praxis und Servicepartner">PC Voronov — приватна IT-практика та сервісний партнер</h2>
+          </div>
+          <p data-uk="PC Voronov — це IT-послуги ФОП Воронова Володимира Геннадійовича. Ми спеціалізуємося на мережевій інфраструктурі, технічному супроводі серверів та обладнання, розробці програмного забезпечення і консалтингу." data-de="PC Voronov ist der IT-Service von Einzelunternehmer Voronov Wolodymyr Gennadijovytsch. Wir sind auf Netzwerkinfrastruktur, Server- und Hardware-Support, Softwareentwicklung und Beratung spezialisiert.">PC Voronov — це IT-послуги ФОП Воронова Володимира Геннадійовича. Ми спеціалізуємося на мережевій інфраструктурі, технічному супроводі серверів та обладнання, розробці програмного забезпечення і консалтингу.</p>
+          <p data-uk="Працюємо із завданнями різного рівня складності: від налаштування окремих робочих місць і VPN до комплексного супроводу IT-середовища, аудиту безпеки та впровадження нових цифрових рішень." data-de="Wir übernehmen Aufgaben unterschiedlicher Komplexität: von der Einrichtung einzelner Arbeitsplätze und VPN bis zur umfassenden Betreuung von IT-Umgebungen, Sicherheitsaudits und Einführung neuer digitaler Lösungen.">Працюємо із завданнями різного рівня складності: від налаштування окремих робочих місць і VPN до комплексного супроводу IT-середовища, аудиту безпеки та впровадження нових цифрових рішень.</p>
+        </div>
+
+        <div class="card checklist-card">
+          <h3 data-uk="Ключові компетенції" data-de="Kernkompetenzen">Ключові компетенції</h3>
+          <ul class="check-list">
+            <li data-uk="Проєктування, розгортання та супровід мережевих рішень" data-de="Planung, Implementierung und Betreuung von Netzwerklösungen">Проєктування, розгортання та супровід мережевих рішень</li>
+            <li data-uk="Підтримка серверного, мережевого та користувацького обладнання" data-de="Support für Server-, Netzwerk- und Endbenutzer-Hardware">Підтримка серверного, мережевого та користувацького обладнання</li>
+            <li data-uk="Автоматизація процесів, інтеграції та розробка прикладного ПЗ" data-de="Prozessautomatisierung, Integrationen und Entwicklung von Anwendungssoftware">Автоматизація процесів, інтеграції та розробка прикладного ПЗ</li>
+            <li data-uk="IT-аудит, рекомендації та планування модернізації інфраструктури" data-de="IT-Audits, Empfehlungen und Planung der Infrastrukturmodernisierung">IT-аудит, рекомендації та планування модернізації інфраструктури</li>
+            <li data-uk="Конфіденційність, відповідальність та робота за узгодженими умовами" data-de="Vertraulichkeit, Verantwortung und Arbeit nach abgestimmten Bedingungen">Конфіденційність, відповідальність та робота за узгодженими умовами</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="process">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker" data-uk="Як працюємо" data-de="So arbeiten wir">Як працюємо</p>
+          <h2 data-uk="Прозорий процес взаємодії" data-de="Transparenter Ablauf der Zusammenarbeit">Прозорий процес взаємодії</h2>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <span class="timeline-step">1</span>
+            <div>
+              <h3 data-uk="Первинний запит" data-de="Erstanfrage">Первинний запит</h3>
+              <p data-uk="Ви описуєте завдання, поточну ситуацію та бажаний результат. Ми уточнюємо деталі та визначаємо формат роботи." data-de="Sie beschreiben Aufgabe, aktuelle Situation und gewünschtes Ergebnis. Wir klären Details und bestimmen das passende Arbeitsformat.">Ви описуєте завдання, поточну ситуацію та бажаний результат. Ми уточнюємо деталі та визначаємо формат роботи.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-step">2</span>
+            <div>
+              <h3 data-uk="Аналіз і пропозиція рішення" data-de="Analyse und Lösungsvorschlag">Аналіз і пропозиція рішення</h3>
+              <p data-uk="Оцінюємо інфраструктуру, ризики та строки, після чого надсилаємо зрозумілий план дій із підтвердженням на email." data-de="Wir bewerten Infrastruktur, Risiken und Zeitrahmen und senden anschließend einen klaren Maßnahmenplan mit E-Mail-Bestätigung.">Оцінюємо інфраструктуру, ризики та строки, після чого надсилаємо зрозумілий план дій із підтвердженням на email.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-step">3</span>
+            <div>
+              <h3 data-uk="Виконання робіт" data-de="Umsetzung">Виконання робіт</h3>
+              <p data-uk="Налаштовуємо, модернізуємо, тестуємо й документуємо рішення, приділяючи увагу безпеці, надійності та безперервності сервісів." data-de="Wir konfigurieren, modernisieren, testen und dokumentieren die Lösung mit Fokus auf Sicherheit, Zuverlässigkeit und Servicekontinuität.">Налаштовуємо, модернізуємо, тестуємо й документуємо рішення, приділяючи увагу безпеці, надійності та безперервності сервісів.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-step">4</span>
+            <div>
+              <h3 data-uk="Підтримка та розвиток" data-de="Support und Weiterentwicklung">Підтримка та розвиток</h3>
+              <p data-uk="За потреби супроводжуємо систему після впровадження, допомагаємо з новими завданнями, масштабуванням і подальшим розвитком інфраструктури." data-de="Bei Bedarf betreuen wir das System nach der Einführung weiter und unterstützen bei neuen Aufgaben, Skalierung und Weiterentwicklung der Infrastruktur.">За потреби супроводжуємо систему після впровадження, допомагаємо з новими завданнями, масштабуванням і подальшим розвитком інфраструктури.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tasks">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker" data-uk="Мої завдання" data-de="Meine Aufgaben">Мої завдання</p>
+          <h2 data-uk="Складіть перелік завдань — ми візьмемо їх у роботу" data-de="Erstellen Sie eine Aufgabenliste — wir übernehmen die Bearbeitung">Складіть перелік завдань — ми візьмемо їх у роботу</h2>
+          <p data-uk="Додайте все, що потрібно вирішити: налаштування, розробка, аудит, підтримка. Потім одним кліком передайте перелік у форму заявки." data-de="Fügen Sie alles hinzu, was gelöst werden soll: Konfiguration, Entwicklung, Audit oder Support. Anschließend können Sie die Liste mit einem Klick in das Anfrageformular übernehmen.">Додайте все, що потрібно вирішити: налаштування, розробка, аудит, підтримка. Потім одним кліком передайте перелік у форму заявки.</p>
+        </div>
+
+        <div class="task-board">
+          <div class="quick-check" id="quick-check">
+            <h3 class="quick-check-title" data-uk="⚡ Швидкий вибір — натисніть на потрібні завдання" data-de="⚡ Schnellauswahl — klicken Sie auf passende Aufgaben">⚡ Швидкий вибір — натисніть на потрібні завдання</h3>
+            <p class="quick-check-hint" data-uk="Натисніть на завдання — воно одразу додасться до списку. Або введіть власне завдання вручну нижче." data-de="Klicken Sie auf eine Aufgabe — sie wird sofort zur Liste hinzugefügt. Oder geben Sie unten eine eigene Aufgabe ein.">Натисніть на завдання — воно одразу додасться до списку. Або введіть власне завдання вручну нижче.</p>
+            <div class="quick-chips-wrap">
+
+              <div class="quick-chips-group">
+                <span class="chip-category" data-uk="🌐 Мережі" data-de="🌐 Netzwerke">🌐 Мережі</span>
+                <div class="quick-chips">
+                  <button type="button" class="chip" data-task-id="chip-vpn" data-service="Управління та моніторинг мереж" data-text-uk="Налаштування VPN-з'єднання" data-text-de="VPN-Verbindung einrichten" data-uk="Налаштування VPN" data-de="VPN einrichten">Налаштування VPN</button>
+                  <button type="button" class="chip" data-task-id="chip-vlan" data-service="Управління та моніторинг мереж" data-text-uk="Налаштування VLAN і сегментації мережі" data-text-de="VLAN und Netzwerksegmentierung einrichten" data-uk="VLAN / сегментація" data-de="VLAN / Segmentierung">VLAN / сегментація</button>
+                  <button type="button" class="chip" data-task-id="chip-monitor" data-service="Управління та моніторинг мереж" data-text-uk="Моніторинг і діагностика мережі" data-text-de="Netzwerk-Monitoring und Diagnose" data-uk="Моніторинг мережі" data-de="Netzwerk-Monitoring">Моніторинг мережі</button>
+                  <button type="button" class="chip" data-task-id="chip-project" data-service="Управління та моніторинг мереж" data-text-uk="Проєктування нової LAN/WAN-мережі" data-text-de="Neue LAN/WAN-Infrastruktur planen" data-uk="Проєкт мережі" data-de="Netzwerkprojekt">Проєкт мережі</button>
+                  <button type="button" class="chip" data-task-id="chip-internet" data-service="Управління та моніторинг мереж" data-text-uk="Усунення проблем з інтернет-з'єднанням" data-text-de="Probleme mit der Internetverbindung beheben" data-uk="Немає інтернету" data-de="Kein Internet">Немає інтернету</button>
+                  <button type="button" class="chip" data-task-id="chip-wifi" data-service="Управління та моніторинг мереж" data-text-uk="Налаштування Wi‑Fi та точок доступу" data-text-de="WLAN und Access Points konfigurieren" data-uk="Wi‑Fi / точки доступу" data-de="WLAN / Access Points">Wi‑Fi / точки доступу</button>
+                </div>
               </div>
-              <button type="button" class="wizard-restart-btn" id="wizard-restart">← Пройти заново</button>
+
+              <div class="quick-chips-group">
+                <span class="chip-category" data-uk="🖥️ Сервери та обладнання" data-de="🖥️ Server und Hardware">🖥️ Сервери та обладнання</span>
+                <div class="quick-chips">
+                  <button type="button" class="chip" data-task-id="chip-server-update" data-service="Підтримка серверів та обладнання" data-text-uk="Оновлення ОС і серверного програмного забезпечення" data-text-de="Betriebssystem und Server-Software aktualisieren" data-uk="Оновлення сервера" data-de="Server aktualisieren">Оновлення сервера</button>
+                  <button type="button" class="chip" data-task-id="chip-backup" data-service="Підтримка серверів та обладнання" data-text-uk="Налаштування резервного копіювання даних" data-text-de="Datensicherung einrichten" data-uk="Резервне копіювання" data-de="Datensicherung">Резервне копіювання</button>
+                  <button type="button" class="chip" data-task-id="chip-hardware" data-service="Підтримка серверів та обладнання" data-text-uk="Діагностика та заміна обладнання" data-text-de="Hardware diagnostizieren und austauschen" data-uk="Діагностика обладнання" data-de="Hardware-Diagnose">Діагностика обладнання</button>
+                  <button type="button" class="chip" data-task-id="chip-workplace" data-service="Підтримка серверів та обладнання" data-text-uk="Налаштування нового робочого місця або ПК" data-text-de="Neuen Arbeitsplatz oder PC einrichten" data-uk="Нове робоче місце" data-de="Neuer Arbeitsplatz">Нове робоче місце</button>
+                  <button type="button" class="chip" data-task-id="chip-maintenance" data-service="Підтримка серверів та обладнання" data-text-uk="Профілактичне технічне обслуговування серверів" data-text-de="Vorbeugende Serverwartung durchführen" data-uk="Профілактика ТО" data-de="Wartung">Профілактика ТО</button>
+                  <button type="button" class="chip" data-task-id="chip-mail" data-service="Підтримка серверів та обладнання" data-text-uk="Налаштування поштового сервера" data-text-de="Mailserver konfigurieren" data-uk="Поштовий сервер" data-de="Mailserver">Поштовий сервер</button>
+                </div>
+              </div>
+
+              <div class="quick-chips-group">
+                <span class="chip-category" data-uk="💻 Розробка ПЗ" data-de="💻 Softwareentwicklung">💻 Розробка ПЗ</span>
+                <div class="quick-chips">
+                  <button type="button" class="chip" data-task-id="chip-business-app" data-service="Розробка програмного забезпечення" data-text-uk="Розробка внутрішнього бізнес-застосунку" data-text-de="Internes Business-Tool entwickeln" data-uk="Бізнес-застосунок" data-de="Business-Anwendung">Бізнес-застосунок</button>
+                  <button type="button" class="chip" data-task-id="chip-automation" data-service="Розробка програмного забезпечення" data-text-uk="Автоматизація бізнес-процесів" data-text-de="Geschäftsprozesse automatisieren" data-uk="Автоматизація процесів" data-de="Prozessautomatisierung">Автоматизація процесів</button>
+                  <button type="button" class="chip" data-task-id="chip-integration" data-service="Розробка програмного забезпечення" data-text-uk="Інтеграція з наявними системами" data-text-de="Integration mit bestehenden Systemen" data-uk="Інтеграція систем" data-de="Systemintegration">Інтеграція систем</button>
+                  <button type="button" class="chip" data-task-id="chip-scripts" data-service="Розробка програмного забезпечення" data-text-uk="Створення скриптів та утиліт для адміністрування" data-text-de="Skripte und Admin-Tools erstellen" data-uk="Скрипти / утиліти" data-de="Skripte / Tools">Скрипти / утиліти</button>
+                  <button type="button" class="chip" data-task-id="chip-webapi" data-service="Розробка програмного забезпечення" data-text-uk="Розробка вебзастосунку або API" data-text-de="Webanwendung oder API entwickeln" data-uk="Вебзастосунок / API" data-de="Webanwendung / API">Вебзастосунок / API</button>
+                </div>
+              </div>
+
+              <div class="quick-chips-group">
+                <span class="chip-category" data-uk="🔍 Аудит та консалтинг" data-de="🔍 Audit und Beratung">🔍 Аудит та консалтинг</span>
+                <div class="quick-chips">
+                  <button type="button" class="chip" data-task-id="chip-security" data-service="Аудит та IT-консалтинг" data-text-uk="Аудит IT-інфраструктури та безпеки" data-text-de="IT-Infrastruktur- und Sicherheitsaudit" data-uk="Аудит безпеки" data-de="Sicherheitsaudit">Аудит безпеки</button>
+                  <button type="button" class="chip" data-task-id="chip-costs" data-service="Аудит та IT-консалтинг" data-text-uk="Оцінка ризиків та оптимізація IT-витрат" data-text-de="Risiken bewerten und IT-Kosten optimieren" data-uk="Оптимізація витрат" data-de="Kostenoptimierung">Оптимізація витрат</button>
+                  <button type="button" class="chip" data-task-id="chip-consulting" data-service="Аудит та IT-консалтинг" data-text-uk="IT-консультація щодо розвитку інфраструктури" data-text-de="IT-Beratung zur Weiterentwicklung der Infrastruktur" data-uk="IT-консультація" data-de="IT-Beratung">IT-консультація</button>
+                  <button type="button" class="chip" data-task-id="chip-strategy" data-service="Аудит та IT-консалтинг" data-text-uk="Розробка IT-стратегії та дорожньої карти" data-text-de="IT-Strategie und Roadmap entwickeln" data-uk="IT-стратегія" data-de="IT-Strategie">IT-стратегія</button>
+                </div>
+              </div>
+
             </div>
+            <p class="quick-check-footer"><span data-uk="Обрано завдань:" data-de="Ausgewählte Aufgaben:">Обрано завдань:</span> <strong id="chip-count">0</strong></p>
+          </div>
+
+          <div class="card task-input-card">
+            <h3 data-uk="Додати завдання" data-de="Aufgabe hinzufügen">Додати завдання</h3>
+            <form id="task-form" class="task-form" novalidate>
+              <div class="form-group">
+                <label for="task-text" data-uk="Опис завдання *" data-de="Aufgabenbeschreibung *">Опис завдання *</label>
+                <input type="text" id="task-text" autocomplete="off" data-placeholder-uk="Наприклад: налаштувати VPN, оновити сервер, створити API..." data-placeholder-de="Zum Beispiel: VPN einrichten, Server aktualisieren, API entwickeln..." placeholder="Наприклад: налаштувати VPN, оновити сервер, створити API..." />
+              </div>
+              <div class="task-form-row">
+                <div class="form-group">
+                  <label for="task-service-sel" data-uk="Напрям" data-de="Bereich">Напрям</label>
+                  <select id="task-service-sel">
+                    <option value="" data-uk="— Не вказано —" data-de="— Nicht angegeben —">— Не вказано —</option>
+                    <option value="Управління та моніторинг мереж" data-uk="Мережі" data-de="Netzwerke">Мережі</option>
+                    <option value="Підтримка серверів та обладнання" data-uk="Сервери та обладнання" data-de="Server und Hardware">Сервери та обладнання</option>
+                    <option value="Розробка програмного забезпечення" data-uk="Розробка ПЗ" data-de="Softwareentwicklung">Розробка ПЗ</option>
+                    <option value="Аудит та IT-консалтинг" data-uk="IT-консалтинг" data-de="IT-Beratung">IT-консалтинг</option>
+                    <option value="KI-Unterstützung" data-uk="KI-підтримка" data-de="KI-Unterstützung">KI-підтримка</option>
+                    <option value="Інше" data-uk="Інше" data-de="Andere">Інше</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="task-priority-sel" data-uk="Пріоритет" data-de="Priorität">Пріоритет</label>
+                  <select id="task-priority-sel">
+                    <option value="normal" data-uk="Звичайний" data-de="Normal">Звичайний</option>
+                    <option value="high" data-uk="Високий" data-de="Hoch">Високий</option>
+                    <option value="low" data-uk="Низький" data-de="Niedrig">Низький</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-add-task" data-uk="+ Додати завдання" data-de="+ Aufgabe hinzufügen">+ Додати завдання</button>
+            </form>
+          </div>
+
+          <div class="task-list-wrap">
+            <div class="task-list-header">
+              <h3><span data-uk="Список завдань" data-de="Aufgabenliste">Список завдань</span> <span class="task-count" id="task-count">0</span></h3>
+              <div class="task-header-actions">
+                <button class="btn btn-secondary btn-clear-tasks" id="clear-tasks-btn" data-aria-label-uk="Очистити всі завдання" data-aria-label-de="Alle Aufgaben löschen" data-title-uk="Очистити все" data-title-de="Alles löschen" title="Очистити все" aria-label="Очистити всі завдання"><span data-uk="Очистити" data-de="Leeren">Очистити</span></button>
+                <a class="btn btn-send-tasks" id="send-tasks-btn" href="#request-form" data-aria-label-uk="Передати завдання у форму заявки" data-aria-label-de="Aufgaben in das Anfrageformular übernehmen" aria-label="Передати завдання у форму заявки"><span data-uk="Передати в заявку →" data-de="In Anfrage übernehmen →">Передати в заявку →</span></a>
+              </div>
+            </div>
+            <ul class="task-list" id="task-list" data-aria-label-uk="Список завдань" data-aria-label-de="Aufgabenliste" aria-label="Список завдань">
+              <li class="task-empty" id="task-empty" data-uk="Завдання ще не додано. Додайте перше завдання вище!" data-de="Noch keine Aufgaben vorhanden. Fügen Sie oben die erste Aufgabe hinzu!">Завдання ще не додано. Додайте перше завдання вище!</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="tasks">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-kicker">Мои задачи</p>
-          <h2>Составьте список задач — мы возьмём их в работу</h2>
-          <p>Добавьте всё, что нужно решить: настройка, разработка, обслуживание. Затем одним кликом отправьте список через форму заявки.</p>
-        </div>
-
-        <div class="task-board">
-          <!-- ── Quick-Check: click to add tasks ──────────────── -->
-          <div class="quick-check" id="quick-check">
-            <h3 class="quick-check-title">⚡ Быстрый выбор — нажмите на нужные задачи</h3>
-            <p class="quick-check-hint">Кликните по задаче — она сразу добавится в список. Или введите свою задачу вручную ниже.</p>
-            <div class="quick-chips-wrap">
+    <section class="section section-muted" id="prices">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker" data-uk="Ціни та послуги" data-de="Preise und Leistungen">Ціни та послуги</p>
+          <h2 data-uk="Опис послуг із початковою вартістю" data-de="Leistungsbeschreibung mit Startpreisen">Опис послуг із початковою вартістю</h2>
+          <p data-uk="Нижче наведено базові напрямки робіт і стартові тарифи. Остаточна вартість залежить від складності, обсягу та формату надання послуги." data-de="Nachfolgend finden Sie die wichtigsten Leistungsbereiche und Startpreise. Der endgültige Preis hängt von Komplexität, Umfang und Leistungsformat ab.">Нижче наведено базові напрямки робіт і стартові тарифи. Остаточна вартість залежить від складності, обсягу та формату надання послуги.</p>
+        </div>
 
-              <div class="quick-chips-group">
-                <span class="chip-category">🌐 Сети</span>
-                <div class="quick-chips">
-                  <button type="button" class="chip" data-service="Управление и мониторинг сетей" data-text="Настройка VPN-соединения">Настройка VPN</button>
-                  <button type="button" class="chip" data-service="Управление и мониторинг сетей" data-text="Настройка VLAN и сегментации сети">VLAN / сегментация</button>
-                  <button type="button" class="chip" data-service="Управление и мониторинг сетей" data-text="Мониторинг и диагностика сети">Мониторинг сети</button>
-                  <button type="button" class="chip" data-service="Управление и мониторинг сетей" data-text="Проектирование новой LAN/WAN">Проект сети</button>
-                  <button type="button" class="chip" data-service="Управление и мониторинг сетей" data-text="Устранение неполадок с интернет-соединением">Нет интернета</button>
-                  <button type="button" class="chip" data-service="Управление и мониторинг сетей" data-text="Настройка Wi-Fi точек доступа">Wi-Fi / точки доступа</button>
-                </div>
-              </div>
-
-              <div class="quick-chips-group">
-                <span class="chip-category">🖥️ Серверы и оборудование</span>
-                <div class="quick-chips">
-                  <button type="button" class="chip" data-service="Поддержка серверов и оборудования" data-text="Обновление ОС и программного обеспечения сервера">Обновление сервера</button>
-                  <button type="button" class="chip" data-service="Поддержка серверов и оборудования" data-text="Настройка резервного копирования данных">Резервное копирование</button>
-                  <button type="button" class="chip" data-service="Поддержка серверов и оборудования" data-text="Диагностика и замена оборудования">Диагностика железа</button>
-                  <button type="button" class="chip" data-service="Поддержка серверов и оборудования" data-text="Настройка нового рабочего места / ПК">Новое рабочее место</button>
-                  <button type="button" class="chip" data-service="Поддержка серверов и оборудования" data-text="Профилактическое обслуживание серверов">Профилактика ТО</button>
-                  <button type="button" class="chip" data-service="Поддержка серверов и оборудования" data-text="Настройка почтового сервера">Почтовый сервер</button>
-                </div>
-              </div>
-
-              <div class="quick-chips-group">
-                <span class="chip-category">💻 Разработка ПО</span>
-                <div class="quick-chips">
-                  <button type="button" class="chip" data-service="Разработка программного обеспечения" data-text="Разработка внутреннего бизнес-приложения">Бизнес-приложение</button>
-                  <button type="button" class="chip" data-service="Разработка программного обеспечения" data-text="Автоматизация бизнес-процессов">Автоматизация процессов</button>
-                  <button type="button" class="chip" data-service="Разработка программного обеспечения" data-text="Интеграция с существующими системами">Интеграция систем</button>
-                  <button type="button" class="chip" data-service="Разработка программного обеспечения" data-text="Создание скриптов и утилит для администрирования">Скрипты / утилиты</button>
-                  <button type="button" class="chip" data-service="Разработка программного обеспечения" data-text="Разработка веб-приложения или API">Веб-приложение / API</button>
-                </div>
-              </div>
-
-              <div class="quick-chips-group">
-                <span class="chip-category">🔍 Аудит и консалтинг</span>
-                <div class="quick-chips">
-                  <button type="button" class="chip" data-service="Аудит и IT-консалтинг" data-text="Аудит IT-инфраструктуры и безопасности">Аудит безопасности</button>
-                  <button type="button" class="chip" data-service="Аудит и IT-консалтинг" data-text="Оценка рисков и оптимизация IT-затрат">Оптимизация затрат</button>
-                  <button type="button" class="chip" data-service="Аудит и IT-консалтинг" data-text="IT-консультация по развитию инфраструктуры">IT-консультация</button>
-                  <button type="button" class="chip" data-service="Аудит и IT-консалтинг" data-text="Разработка IT-стратегии и дорожной карты">IT-стратегия</button>
-                </div>
-              </div>
-
+        <div class="price-grid">
+          <article class="card pricing-card">
+            <h3 data-uk="Управління та моніторинг мереж" data-de="Netzwerk-Management">Управління та моніторинг мереж</h3>
+            <strong class="price-amount" data-uk="від $50" data-de="ab $50">від $50</strong>
+            <p data-uk="Побудова, налаштування та моніторинг LAN/WAN, VPN, VLAN і мережевої безпеки для стабільної роботи офісу або віддалених команд." data-de="Planung, Konfiguration und Monitoring von LAN/WAN, VPN, VLAN und Netzwerksicherheit für einen stabilen Betrieb im Büro oder für Remote-Teams.">Побудова, налаштування та моніторинг LAN/WAN, VPN, VLAN і мережевої безпеки для стабільної роботи офісу або віддалених команд.</p>
+            <div class="service-actions">
+              <a class="btn btn-service" href="#contacts" data-service="Управління та моніторинг мереж" data-uk="Замовити" data-de="Bestellen">Замовити</a>
             </div>
-            <p class="quick-check-footer">Выбрано задач: <strong id="chip-count">0</strong></p>
+          </article>
+
+          <article class="card pricing-card">
+            <h3 data-uk="Підтримка серверів та обладнання" data-de="Server-Support">Підтримка серверів та обладнання</h3>
+            <strong class="price-amount" data-uk="від $40" data-de="ab $40">від $40</strong>
+            <p data-uk="Налаштування серверів, резервне копіювання, оновлення, профілактика та усунення несправностей серверного й мережевого обладнання." data-de="Serverkonfiguration, Datensicherung, Updates, Wartung und Störungsbehebung für Server- und Netzwerktechnik.">Налаштування серверів, резервне копіювання, оновлення, профілактика та усунення несправностей серверного й мережевого обладнання.</p>
+            <div class="service-actions">
+              <a class="btn btn-service" href="#contacts" data-service="Підтримка серверів та обладнання" data-uk="Замовити" data-de="Bestellen">Замовити</a>
+            </div>
+          </article>
+
+          <article class="card pricing-card">
+            <h3 data-uk="Розробка програмного забезпечення" data-de="Softwareentwicklung">Розробка програмного забезпечення</h3>
+            <strong class="price-amount" data-uk="від $100" data-de="ab $100">від $100</strong>
+            <p data-uk="Розробка вебзастосунків, API, внутрішніх сервісів, скриптів автоматизації та інтеграцій для бізнес-процесів." data-de="Entwicklung von Webanwendungen, APIs, internen Services, Automatisierungsskripten und Integrationen für Geschäftsprozesse.">Розробка вебзастосунків, API, внутрішніх сервісів, скриптів автоматизації та інтеграцій для бізнес-процесів.</p>
+            <div class="service-actions">
+              <a class="btn btn-service" href="#contacts" data-service="Розробка програмного забезпечення" data-uk="Замовити" data-de="Bestellen">Замовити</a>
+            </div>
+          </article>
+
+          <article class="card pricing-card">
+            <h3 data-uk="Аудит та IT-консалтинг" data-de="IT-Beratung">Аудит та IT-консалтинг</h3>
+            <strong class="price-amount" data-uk="від $60" data-de="ab $60">від $60</strong>
+            <p data-uk="Оцінка інфраструктури, аналіз ризиків, перевірка безпеки, рекомендації щодо модернізації та оптимізації IT-витрат." data-de="Infrastrukturbewertung, Risikoanalyse, Sicherheitsprüfung sowie Empfehlungen zur Modernisierung und Optimierung von IT-Kosten.">Оцінка інфраструктури, аналіз ризиків, перевірка безпеки, рекомендації щодо модернізації та оптимізації IT-витрат.</p>
+            <div class="service-actions">
+              <a class="btn btn-service" href="#contacts" data-service="Аудит та IT-консалтинг" data-uk="Замовити" data-de="Bestellen">Замовити</a>
+            </div>
+          </article>
+
+          <article class="card pricing-card">
+            <h3 data-uk="KI-підтримка (AI Chat, 30 хв)" data-de="KI-Unterstützung (30 Min)">KI-підтримка (AI Chat, 30 хв)</h3>
+            <strong class="price-amount">$9.90</strong>
+            <p data-uk="Швидка платна AI-сесія для запитань щодо мереж, серверів, програмного забезпечення та ІТ-процесів з кнопки KI-Unterstützung на сайті." data-de="Schnelle kostenpflichtige KI-Session für Fragen zu Netzwerken, Servern, Software und IT-Prozessen über die KI-Unterstützung-Schaltfläche auf der Website.">Швидка платна AI-сесія для запитань щодо мереж, серверів, програмного забезпечення та ІТ-процесів з кнопки KI-Unterstützung на сайті.</p>
+            <div class="service-actions">
+              <a class="btn btn-service" href="#contacts" data-service="KI-Unterstützung" data-uk="Замовити" data-de="Bestellen">Замовити</a>
+            </div>
+          </article>
+        </div>
+        <p class="price-note" data-uk="* Усі ціни є стартовими та можуть змінюватися залежно від обсягу робіт, терміновості та формату виконання." data-de="* Alle Preise sind Startpreise und können je nach Umfang, Dringlichkeit und Ausführungsformat variieren.">* Усі ціни є стартовими та можуть змінюватися залежно від обсягу робіт, терміновості та формату виконання.</p>
+      </div>
+    </section>
+
+    <section class="section" id="terms">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker" data-uk="Умови надання послуг" data-de="Leistungsbedingungen">Умови надання послуг</p>
+          <h2 data-uk="Доставка та отримання послуги" data-de="Bereitstellung und Erhalt der Leistung">Доставка та отримання послуги</h2>
+        </div>
+        <div class="policy-grid">
+          <article class="card policy-card">
+            <h3 data-uk="Формат надання" data-de="Leistungsformat">Формат надання</h3>
+            <ul class="info-list">
+              <li data-uk="Послуги надаються дистанційно (TeamViewer, SSH, VPN) або з виїздом у м. Краматорськ та Донецькій області." data-de="Leistungen werden remote (TeamViewer, SSH, VPN) oder vor Ort in Kramatorsk und in der Oblast Donezk erbracht.">Послуги надаються дистанційно (TeamViewer, SSH, VPN) або з виїздом у м. Краматорськ та Донецькій області.</li>
+              <li data-uk="Формат виконання погоджується перед початком робіт залежно від типу завдання та доступу до інфраструктури." data-de="Das Ausführungsformat wird vor Arbeitsbeginn abhängig von Aufgabe und Infrastrukturzugang abgestimmt.">Формат виконання погоджується перед початком робіт залежно від типу завдання та доступу до інфраструктури.</li>
+            </ul>
+          </article>
+          <article class="card policy-card">
+            <h3 data-uk="Строки виконання" data-de="Bearbeitungszeit">Строки виконання</h3>
+            <ul class="info-list">
+              <li data-uk="Строки виконання — від 1 робочого дня залежно від складності завдання." data-de="Die Bearbeitungszeit beginnt ab 1 Arbeitstag und hängt von der Komplexität der Aufgabe ab.">Строки виконання — від 1 робочого дня залежно від складності завдання.</li>
+              <li data-uk="Після узгодження завдання клієнт отримує підтвердження на email із погодженим планом робіт." data-de="Nach Abstimmung der Aufgabe erhält der Kunde eine E-Mail-Bestätigung mit dem vereinbarten Arbeitsplan.">Після узгодження завдання клієнт отримує підтвердження на email із погодженим планом робіт.</li>
+            </ul>
+          </article>
+          <article class="card policy-card">
+            <h3 data-uk="Оплата" data-de="Zahlung">Оплата</h3>
+            <ul class="info-list">
+              <li data-uk="Оплата здійснюється до або після виконання робіт — за попередньою домовленістю." data-de="Die Zahlung erfolgt vor oder nach der Leistungserbringung nach vorheriger Vereinbarung.">Оплата здійснюється до або після виконання робіт — за попередньою домовленістю.</li>
+              <li data-uk="Доступні способи оплати: LiqPay, банківський переказ." data-de="Verfügbare Zahlungsarten: LiqPay, Banküberweisung.">Доступні способи оплати: LiqPay, банківський переказ.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="refund">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker" data-uk="Повернення коштів" data-de="Rückerstattung">Повернення коштів</p>
+          <h2 data-uk="Політика повернення / refund policy" data-de="Rückerstattungsrichtlinie">Політика повернення / refund policy</h2>
+        </div>
+        <div class="policy-grid">
+          <article class="card policy-card">
+            <h3 data-uk="Загальні умови" data-de="Allgemeine Bedingungen">Загальні умови</h3>
+            <ul class="info-list">
+              <li data-uk="Повернення коштів можливе протягом 7 днів з моменту оплати, якщо послугу не було надано." data-de="Eine Rückerstattung ist innerhalb von 7 Tagen nach der Zahlung möglich, wenn die Leistung nicht erbracht wurde.">Повернення коштів можливе протягом 7 днів з моменту оплати, якщо послугу не було надано.</li>
+              <li data-uk="У разі часткового виконання робіт можливе часткове повернення коштів за домовленістю сторін." data-de="Bei teilweiser Leistungserbringung ist eine teilweise Rückerstattung nach Vereinbarung möglich.">У разі часткового виконання робіт можливе часткове повернення коштів за домовленістю сторін.</li>
+            </ul>
+          </article>
+          <article class="card policy-card">
+            <h3 data-uk="Як подати запит" data-de="So stellen Sie eine Anfrage">Як подати запит</h3>
+            <ul class="info-list">
+              <li data-uk="Для повернення коштів необхідно написати на comprw@gmail.com та вказати номер замовлення, дату оплати та причину звернення." data-de="Für eine Rückerstattung schreiben Sie bitte an comprw@gmail.com und geben Sie Bestellnummer, Zahlungsdatum und Grund an.">Для повернення коштів необхідно написати на comprw@gmail.com та вказати номер замовлення, дату оплати та причину звернення.</li>
+              <li data-uk="Ми підтвердимо отримання звернення та повідомимо про рішення після перевірки деталей замовлення." data-de="Wir bestätigen den Eingang Ihrer Anfrage und teilen Ihnen nach Prüfung der Bestelldetails die Entscheidung mit.">Ми підтвердимо отримання звернення та повідомимо про рішення після перевірки деталей замовлення.</li>
+            </ul>
+          </article>
+          <article class="card policy-card">
+            <h3 data-uk="KI-підтримка" data-de="KI-Unterstützung">KI-підтримка</h3>
+            <ul class="info-list">
+              <li data-uk="Для KI-підтримки (AI-сесія) повернення можливе лише до початку сесії." data-de="Für die KI-Unterstützung (AI-Session) ist eine Rückerstattung nur vor Beginn der Session möglich.">Для KI-підтримки (AI-сесія) повернення можливе лише до початку сесії.</li>
+              <li data-uk="Після початку AI-сесії послуга вважається розпочатою, тому повернення погоджується індивідуально." data-de="Nach Beginn der AI-Session gilt die Leistung als gestartet; Rückerstattungen werden dann individuell geprüft.">Після початку AI-сесії послуга вважається розпочатою, тому повернення погоджується індивідуально.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="owner">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker" data-uk="Інформація про власника" data-de="Informationen zum Inhaber">Інформація про власника</p>
+          <h2 data-uk="Відомості про ФОП / власника" data-de="Angaben zum Einzelunternehmer / Inhaber">Відомості про ФОП / власника</h2>
+        </div>
+        <div class="owner-grid">
+          <article class="card owner-card">
+            <h3 data-uk="Реєстраційні дані" data-de="Registrierungsdaten">Реєстраційні дані</h3>
+            <dl class="owner-list">
+              <div>
+                <dt data-uk="Форма власності" data-de="Rechtsform">Форма власності</dt>
+                <dd data-uk="ФОП (фізична особа-підприємець)" data-de="Einzelunternehmer">ФОП (фізична особа-підприємець)</dd>
+              </div>
+              <div>
+                <dt data-uk="Найменування" data-de="Name">Найменування</dt>
+                <dd data-uk="ФОП Воронов Володимир Геннадійович" data-de="Einzelunternehmer Voronov Wolodymyr Gennadijovytsch">ФОП Воронов Володимир Геннадійович</dd>
+              </div>
+              <div>
+                <dt data-uk="ЄДРПОУ / ІПН" data-de="EDRPOU / Steuer-ID">ЄДРПОУ / ІПН</dt>
+                <dd data-uk="Буде додано пізніше" data-de="Wird ergänzt">Буде додано пізніше</dd>
+              </div>
+            </dl>
+          </article>
+          <article class="card owner-card">
+            <h3 data-uk="Контактні дані" data-de="Kontaktdaten">Контактні дані</h3>
+            <dl class="owner-list">
+              <div>
+                <dt data-uk="Адреса" data-de="Adresse">Адреса</dt>
+                <dd data-uk="м. Краматорськ, Донецька обл., Україна" data-de="Kramatorsk, Oblast Donezk, Ukraine">м. Краматорськ, Донецька обл., Україна</dd>
+              </div>
+              <div>
+                <dt>Email</dt>
+                <dd>comprw@gmail.com</dd>
+              </div>
+              <div>
+                <dt data-uk="Телефон" data-de="Telefon">Телефон</dt>
+                <dd>+380 (50) 523‑5040</dd>
+              </div>
+            </dl>
+          </article>
+          <article class="card owner-card">
+            <h3 data-uk="Додаткова інформація" data-de="Zusätzliche Informationen">Додаткова інформація</h3>
+            <p data-uk="Власник приймає замовлення через email, телефон, форму на сайті та через платний модуль KI-Unterstützung. Підтвердження замовлення надсилається на email після погодження деталей." data-de="Der Inhaber nimmt Bestellungen per E-Mail, Telefon, Website-Formular und über das kostenpflichtige KI-Unterstützung-Modul entgegen. Die Auftragsbestätigung wird nach Abstimmung der Details per E-Mail gesendet.">Власник приймає замовлення через email, телефон, форму на сайті та через платний модуль KI-Unterstützung. Підтвердження замовлення надсилається на email після погодження деталей.</p>
+            <p class="muted-line" data-uk="Вебсайт: https://vvoronov1981.github.io/pcvoronov.github.io/Indexp.html" data-de="Website: https://vvoronov1981.github.io/pcvoronov.github.io/Indexp.html">Вебсайт: https://vvoronov1981.github.io/pcvoronov.github.io/Indexp.html</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacts">
+      <div class="container contact-shell">
+        <div class="contact-intro">
+          <p class="section-kicker" data-uk="Контакти" data-de="Kontakt">Контакти</p>
+          <h2 data-uk="Обговорімо завдання та підберемо оптимальний варіант рішення" data-de="Lassen Sie uns Ihre Aufgabe besprechen und die passende Lösung auswählen">Обговорімо завдання та підберемо оптимальний варіант рішення</h2>
+          <p data-uk="Якщо вам потрібна консультація, модернізація мережі, обслуговування обладнання, розробка ПЗ або KI-підтримка, зв'яжіться з нами зручним для вас способом." data-de="Wenn Sie Beratung, Netzwerkmodernisierung, Hardware-Support, Softwareentwicklung oder KI-Unterstützung benötigen, kontaktieren Sie uns auf dem für Sie bequemsten Weg.">Якщо вам потрібна консультація, модернізація мережі, обслуговування обладнання, розробка ПЗ або KI-підтримка, зв'яжіться з нами зручним для вас способом.</p>
+
+          <div class="request-benefits" data-aria-label-uk="Переваги заявки через сайт" data-aria-label-de="Vorteile einer Anfrage über die Website" aria-label="Переваги заявки через сайт">
+            <div class="request-benefit">
+              <strong data-uk="1 хвилина" data-de="1 Minute">1 хвилина</strong>
+              <span data-uk="щоб надіслати завдання через сайт" data-de="um eine Aufgabe über die Website zu senden">щоб надіслати завдання через сайт</span>
+            </div>
+            <div class="request-benefit">
+              <strong data-uk="від 1 робочого дня" data-de="ab 1 Arbeitstag">від 1 робочого дня</strong>
+              <span data-uk="на зворотний зв'язок і погодження плану робіт" data-de="für Rückmeldung und Abstimmung des Arbeitsplans">на зворотний зв'язок і погодження плану робіт</span>
+            </div>
           </div>
-          <!-- ── /Quick-Check ──────────────────────────────────── -->
-          <div class="card task-input-card">
-            <h3>Добавить задачу</h3>
-            <form id="task-form" class="task-form" novalidate>
-              <div class="form-group">
-                <label for="task-text">Описание задачи *</label>
-                <input type="text" id="task-text" placeholder="Например: настроить VPN, обновить сервер..." autocomplete="off" />
-              </div>
-              <div class="task-form-row">
-                <div class="form-group">
-                  <label for="task-service-sel">Направление</label>
-                  <select id="task-service-sel">
-                    <option value="">— Не указано —</option>
-                    <option value="Управление и мониторинг сетей">Сети</option>
-                    <option value="Поддержка серверов и оборудования">Серверы</option>
-                    <option value="Разработка программного обеспечения">Разработка ПО</option>
-                    <option value="Аудит и IT-консалтинг">IT-консалтинг</option>
-                    <option value="Другое">Другое</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="task-priority-sel">Приоритет</label>
-                  <select id="task-priority-sel">
-                    <option value="normal">Обычный</option>
-                    <option value="high">Высокий</option>
-                    <option value="low">Низкий</option>
-                  </select>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-add-task">+ Добавить задачу</button>
-            </form>
-          </div>
-
-          <div class="task-list-wrap">
-            <div class="task-list-header">
-              <h3>Список задач <span class="task-count" id="task-count">0</span></h3>
-              <div class="task-header-actions">
-                <button class="btn btn-secondary btn-clear-tasks" id="clear-tasks-btn" title="Удалить всё" aria-label="Удалить все задачи">Очистить</button>
-                <a class="btn btn-send-tasks" id="send-tasks-btn" href="#request-form" aria-label="Отправить задачи в форму заявки">Отправить заявку →</a>
-              </div>
-            </div>
-            <ul class="task-list" id="task-list" aria-label="Список задач">
-              <li class="task-empty" id="task-empty">Задачи пока не добавлены. Добавьте первую задачу выше!</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contacts">
-      <div class="container contact-shell">
-        <div class="contact-intro">
-          <p class="section-kicker">Контакты</p>
-          <h2>Обсудим задачу и предложим оптимальный вариант решения</h2>
-          <p>
-            Если вам нужна консультация, модернизация сети, обслуживание оборудования или разработка программного решения,
-            свяжитесь с нами удобным способом.
-          </p>
-
-          <div class="request-benefits" aria-label="Преимущества заявки через сайт">
-            <div class="request-benefit">
-              <strong>1 минута</strong>
-              <span>чтобы отправить задачу через сайт</span>
-            </div>
-            <div class="request-benefit">
-              <strong>1 рабочий день</strong>
-              <span>на обратную связь и план работ</span>
-            </div>
-          </div>
-
-          <div class="card request-checklist-card">
-            <h3>Что удобно указать в заявке</h3>
-            <ul class="check-list request-checklist">
-              <li>какая проблема возникла или какой результат нужен</li>
-              <li>какое оборудование, сеть или программа участвует в задаче</li>
-              <li>желаемый срок и, при наличии, ориентировочный бюджет</li>
-            </ul>
-          </div>
-
-          <div class="contact-list">
-            <a class="contact-item" href="tel:+380505235040">
-              <span>Телефон</span>
-              <strong>+380 (50) 523&#x2011;5040</strong>
-            </a>
-            <a class="contact-item" href="mailto:comprw@gmail.com">
-              <span>Email</span>
-              <strong>comprw@gmail.com</strong>
-            </a>
-            <div class="contact-item">
-              <span>Руководитель</span>
-              <strong>ИП Воронов Владимир Геннадиевич</strong>
-            </div>
-            <div class="contact-item">
-              <span>Локация</span>
-              <strong>Краматорск</strong>
-            </div>
-          </div>
-        </div>
-
-        <div class="card contact-form-card" id="request-form">
-          <h3>Оставить задачу</h3>
-          <p>Заполните форму — мы свяжемся с вами в течение рабочего дня и предложим план выполнения.</p>
-          <form id="contact-form" class="request-form" action="https://formsubmit.co/comprw@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Новая заявка с сайта PC Voronov" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="source" value="indexp-main-site" />
-
-            <div class="form-group">
-              <label for="req-name">Ваше имя *</label>
-              <input type="text" id="req-name" name="name" required placeholder="Иван Иванов" autocomplete="name" />
-            </div>
-
-            <div class="form-group">
-              <label for="req-company">Компания</label>
-              <input type="text" id="req-company" name="company" placeholder="Название компании (если есть)" autocomplete="organization" />
-            </div>
-
-            <div class="form-group">
-              <label for="req-contact">Email или телефон *</label>
-              <input type="text" id="req-contact" name="contact" required placeholder="email@example.com или +380..." />
-            </div>
-
-            <div class="form-group">
-              <label for="req-service">Направление</label>
-              <select id="req-service" name="service">
-                <option value="">— Выберите направление —</option>
-                <option value="Управление и мониторинг сетей">Управление и мониторинг сетей</option>
-                <option value="Поддержка серверов и оборудования">Поддержка серверов и оборудования</option>
-                <option value="Разработка программного обеспечения">Разработка программного обеспечения</option>
-                <option value="Аудит и IT-консалтинг">Аудит и IT-консалтинг</option>
-                <option value="Другое">Другое</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="req-task">Описание задачи *</label>
-              <textarea id="req-task" name="task" required rows="4" placeholder="Опишите вашу задачу или проблему..."></textarea>
-            </div>
-
-            <div class="form-group">
-              <label for="req-deadline">Желаемый срок</label>
-              <input type="text" id="req-deadline" name="deadline" placeholder="Например: до 30.06 или в течение 2 недель" />
-            </div>
-
-            <div class="form-group">
-              <label for="req-budget">Ориентировочный бюджет</label>
-              <input type="text" id="req-budget" name="budget" placeholder="По желанию: например 500–1000 USD" />
-            </div>
-
-            <div class="form-group">
-              <label for="req-consent">Подтверждение *</label>
-              <select id="req-consent" name="consent" required>
-                <option value="">— Выберите —</option>
-                <option value="Да, согласен(а) на обработку заявки">Да, согласен(а) на обработку заявки</option>
-              </select>
-            </div>
-
-            <button type="submit" class="btn btn-submit">Отправить заявку</button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>
-        <p class="footer-brand">© PC Voronov — ИП Воронов Владимир Геннадиевич</p>
-        <p class="footer-text">Сетевые решения, обслуживание оборудования и разработка программного обеспечения.</p>
-        <p class="footer-text">Краматорск</p>
-      </div>
-
-      <nav class="footer-nav" aria-label="Навигация в подвале">
-        <a href="#services">Услуги</a>
-        <a href="#advantages">Преимущества</a>
-        <a href="#about">О компании</a>
-        <a href="#contacts">Контакты</a>
-      </nav>
-    </div>
-  </footer>
-  <!-- Tidio Chat -->
-  <script src="//code.tidio.co/b11psn3qwvf4bxdsmvydlwpeklm0lx6o.js" async></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10993663020">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-10993663020');
-</script>
-
-  <!-- Task List Script -->
-  <script>
-  (function () {
-    var STORAGE_KEY = 'pcvoronov_tasks';
-    var taskForm = document.getElementById('task-form');
-    var taskTextInput = document.getElementById('task-text');
-    var taskServiceSel = document.getElementById('task-service-sel');
-    var taskPrioritySel = document.getElementById('task-priority-sel');
-    var taskList = document.getElementById('task-list');
-    var taskEmpty = document.getElementById('task-empty');
-    var taskCount = document.getElementById('task-count');
-    var sendTasksBtn = document.getElementById('send-tasks-btn');
-    var clearTasksBtn = document.getElementById('clear-tasks-btn');
-
-    var PRIORITY_LABELS = { high: 'Высокий', normal: 'Обычный', low: 'Низкий' };
-    var PRIORITY_CLASS = { high: 'task-priority-high', normal: 'task-priority-normal', low: 'task-priority-low' };
-
-    function loadTasks() {
-      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch (e) { return []; }
-    }
-
-    function saveTasks(tasks) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
-    }
-
-    function renderTasks() {
-      var tasks = loadTasks();
-      taskList.innerHTML = '';
-      taskCount.textContent = tasks.length;
-      if (tasks.length === 0) {
-        var empty = document.createElement('li');
-        empty.className = 'task-empty';
-        empty.textContent = 'Задачи пока не добавлены. Добавьте первую задачу выше!';
-        taskList.appendChild(empty);
-        if (sendTasksBtn) sendTasksBtn.setAttribute('aria-disabled', 'true');
-        if (clearTasksBtn) clearTasksBtn.disabled = true;
-        return;
-      }
-      if (sendTasksBtn) sendTasksBtn.removeAttribute('aria-disabled');
-      if (clearTasksBtn) clearTasksBtn.disabled = false;
-      tasks.forEach(function (task, idx) {
-        var li = document.createElement('li');
-        li.className = 'task-item' + (task.done ? ' task-done' : '');
-
-        var checkBtn = document.createElement('button');
-        checkBtn.className = 'task-check-btn';
-        checkBtn.setAttribute('aria-label', task.done ? 'Снять отметку' : 'Отметить выполненной');
-        checkBtn.innerHTML = task.done ? '&#10003;' : '';
-        checkBtn.title = task.done ? 'Снять отметку' : 'Отметить выполненной';
-        checkBtn.addEventListener('click', function () { toggleTask(idx); });
-
-        var body = document.createElement('div');
-        body.className = 'task-body';
-
-        var text = document.createElement('span');
-        text.className = 'task-text';
-        text.textContent = task.text;
-
-        var meta = document.createElement('div');
-        meta.className = 'task-meta';
-
-        if (task.service) {
-          var svcTag = document.createElement('span');
-          svcTag.className = 'task-tag task-tag-service';
-          svcTag.textContent = task.service;
-          meta.appendChild(svcTag);
-        }
-
-        var priTag = document.createElement('span');
-        priTag.className = 'task-tag ' + (PRIORITY_CLASS[task.priority] || 'task-priority-normal');
-        priTag.textContent = PRIORITY_LABELS[task.priority] || 'Обычный';
-        meta.appendChild(priTag);
-
-        body.appendChild(text);
-        body.appendChild(meta);
-
-        var delBtn = document.createElement('button');
-        delBtn.className = 'task-del-btn';
-        delBtn.setAttribute('aria-label', 'Удалить задачу');
-        delBtn.innerHTML = '&times;';
-        delBtn.addEventListener('click', function () { deleteTask(idx); });
-
-        li.appendChild(checkBtn);
-        li.appendChild(body);
-        li.appendChild(delBtn);
-        taskList.appendChild(li);
-      });
-    }
-
-    function addTask(text, service, priority) {
-      var tasks = loadTasks();
-      tasks.push({ text: text, service: service, priority: priority, done: false });
-      saveTasks(tasks);
-      renderTasks();
+
+          <div class="card request-checklist-card">
+            <h3 data-uk="Що зручно вказати в заявці" data-de="Was Sie in der Anfrage angeben sollten">Що зручно вказати в заявці</h3>
+            <ul class="check-list request-checklist">
+              <li data-uk="яка проблема виникла або який результат потрібен" data-de="welches Problem aufgetreten ist oder welches Ergebnis benötigt wird">яка проблема виникла або який результат потрібен</li>
+              <li data-uk="яке обладнання, мережа або програма бере участь у завданні" data-de="welche Hardware, welches Netzwerk oder welche Software betroffen ist">яке обладнання, мережа або програма бере участь у завданні</li>
+              <li data-uk="бажаний строк та, за наявності, орієнтовний бюджет" data-de="gewünschten Termin und falls vorhanden das ungefähre Budget">бажаний строк та, за наявності, орієнтовний бюджет</li>
+            </ul>
+          </div>
+
+          <div class="contact-list">
+            <a class="contact-item" href="tel:+380505235040">
+              <span data-uk="Телефон" data-de="Telefon">Телефон</span>
+              <strong>+380 (50) 523‑5040</strong>
+            </a>
+            <a class="contact-item" href="mailto:comprw@gmail.com">
+              <span>Email</span>
+              <strong>comprw@gmail.com</strong>
+            </a>
+            <div class="contact-item">
+              <span data-uk="Власник / ФОП" data-de="Inhaber / Einzelunternehmer">Власник / ФОП</span>
+              <strong data-uk="ФОП Воронов Володимир Геннадійович" data-de="Einzelunternehmer Voronov Wolodymyr Gennadijovytsch">ФОП Воронов Володимир Геннадійович</strong>
+            </div>
+            <div class="contact-item">
+              <span data-uk="Адреса" data-de="Adresse">Адреса</span>
+              <strong data-uk="м. Краматорськ, Донецька обл., Україна" data-de="Kramatorsk, Oblast Donezk, Ukraine">м. Краматорськ, Донецька обл., Україна</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="card contact-form-card" id="request-form">
+          <h3 data-uk="Залишити завдання" data-de="Aufgabe senden">Залишити завдання</h3>
+          <p data-uk="Заповніть форму — ми зв'яжемося з вами протягом робочого дня та запропонуємо план виконання." data-de="Füllen Sie das Formular aus — wir melden uns innerhalb eines Arbeitstages mit einem Umsetzungsvorschlag bei Ihnen.">Заповніть форму — ми зв'яжемося з вами протягом робочого дня та запропонуємо план виконання.</p>
+          <form id="contact-form" class="request-form" action="https://formsubmit.co/comprw@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Нова заявка з сайту PC Voronov" data-value-uk="Нова заявка з сайту PC Voronov" data-value-de="Neue Anfrage von der PC Voronov Website" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="source" value="indexp-main-site" />
+
+            <div class="form-group">
+              <label for="req-name" data-uk="Ваше ім'я *" data-de="Ihr Name *">Ваше ім'я *</label>
+              <input type="text" id="req-name" name="name" required autocomplete="name" data-placeholder-uk="Ім'я та прізвище" data-placeholder-de="Vor- und Nachname" placeholder="Ім'я та прізвище" />
+            </div>
+
+            <div class="form-group">
+              <label for="req-company" data-uk="Компанія" data-de="Unternehmen">Компанія</label>
+              <input type="text" id="req-company" name="company" autocomplete="organization" data-placeholder-uk="Назва компанії (за наявності)" data-placeholder-de="Unternehmensname (falls vorhanden)" placeholder="Назва компанії (за наявності)" />
+            </div>
+
+            <div class="form-group">
+              <label for="req-contact" data-uk="Email або телефон *" data-de="E-Mail oder Telefon *">Email або телефон *</label>
+              <input type="text" id="req-contact" name="contact" required data-placeholder-uk="email@example.com або +380..." data-placeholder-de="email@example.com oder +380..." placeholder="email@example.com або +380..." />
+            </div>
+
+            <div class="form-group">
+              <label for="req-service" data-uk="Напрям" data-de="Bereich">Напрям</label>
+              <select id="req-service" name="service">
+                <option value="" data-uk="— Оберіть напрям —" data-de="— Bereich auswählen —">— Оберіть напрям —</option>
+                <option value="Управління та моніторинг мереж" data-uk="Управління та моніторинг мереж" data-de="Netzwerk-Management">Управління та моніторинг мереж</option>
+                <option value="Підтримка серверів та обладнання" data-uk="Підтримка серверів та обладнання" data-de="Server-Support">Підтримка серверів та обладнання</option>
+                <option value="Розробка програмного забезпечення" data-uk="Розробка програмного забезпечення" data-de="Softwareentwicklung">Розробка програмного забезпечення</option>
+                <option value="Аудит та IT-консалтинг" data-uk="Аудит та IT-консалтинг" data-de="IT-Beratung">Аудит та IT-консалтинг</option>
+                <option value="KI-Unterstützung" data-uk="KI-підтримка (30 хв)" data-de="KI-Unterstützung (30 Min)">KI-підтримка (30 хв)</option>
+                <option value="Інше" data-uk="Інше" data-de="Andere">Інше</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="req-task" data-uk="Опис завдання *" data-de="Aufgabenbeschreibung *">Опис завдання *</label>
+              <textarea id="req-task" name="task" required rows="4" data-placeholder-uk="Опишіть ваше завдання, проблему або бажаний результат..." data-placeholder-de="Beschreiben Sie Ihre Aufgabe, das Problem oder das gewünschte Ergebnis..." placeholder="Опишіть ваше завдання, проблему або бажаний результат..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="req-deadline" data-uk="Бажаний строк" data-de="Gewünschter Termin">Бажаний строк</label>
+              <input type="text" id="req-deadline" name="deadline" data-placeholder-uk="Наприклад: до 30.06 або протягом 2 тижнів" data-placeholder-de="Zum Beispiel: bis 30.06 oder innerhalb von 2 Wochen" placeholder="Наприклад: до 30.06 або протягом 2 тижнів" />
+            </div>
+
+            <div class="form-group">
+              <label for="req-budget" data-uk="Орієнтовний бюджет" data-de="Ungefähres Budget">Орієнтовний бюджет</label>
+              <input type="text" id="req-budget" name="budget" data-placeholder-uk="За бажанням: наприклад 500–1000 USD" data-placeholder-de="Optional: zum Beispiel 500–1000 USD" placeholder="За бажанням: наприклад 500–1000 USD" />
+            </div>
+
+            <div class="form-group">
+              <label for="req-consent" data-uk="Підтвердження *" data-de="Bestätigung *">Підтвердження *</label>
+              <select id="req-consent" name="consent" required>
+                <option value="" data-uk="— Оберіть —" data-de="— Bitte wählen —">— Оберіть —</option>
+                <option value="Так, погоджуюся на обробку заявки" data-uk="Так, погоджуюся на обробку заявки" data-de="Ja, ich stimme der Bearbeitung meiner Anfrage zu">Так, погоджуюся на обробку заявки</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-submit" data-uk="Надіслати заявку" data-de="Anfrage senden">Надіслати заявку</button>
+          </form>
+
+          <ul class="contact-note-list">
+            <li data-uk="Контакти для зв'язку: comprw@gmail.com, +380 (50) 523-5040" data-de="Kontakt: comprw@gmail.com, +380 (50) 523-5040">Контакти для зв'язку: comprw@gmail.com, +380 (50) 523-5040</li>
+            <li data-uk="Адреса для профілю мерчанта: м. Краматорськ, Донецька обл., Україна" data-de="Adresse für das Händlerprofil: Kramatorsk, Oblast Donezk, Ukraine">Адреса для профілю мерчанта: м. Краматорськ, Донецька обл., Україна</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-brand" data-uk="© PC Voronov — ФОП Воронов Володимир Геннадійович" data-de="© PC Voronov — Einzelunternehmer Voronov Wolodymyr Gennadijovytsch">© PC Voronov — ФОП Воронов Володимир Геннадійович</p>
+        <p class="footer-text" data-uk="IT-послуги: мережеві рішення, підтримка серверів та обладнання, розробка ПЗ, аудит і консалтинг." data-de="IT-Services: Netzwerklösungen, Server- und Hardware-Support, Softwareentwicklung, Audit und Beratung.">IT-послуги: мережеві рішення, підтримка серверів та обладнання, розробка ПЗ, аудит і консалтинг.</p>
+        <p class="footer-text" data-uk="м. Краматорськ, Донецька обл., Україна" data-de="Kramatorsk, Oblast Donezk, Ukraine">м. Краматорськ, Донецька обл., Україна</p>
+      </div>
+
+      <nav class="footer-nav" data-aria-label-uk="Навігація в підвалі" data-aria-label-de="Fußnavigation" aria-label="Навігація в підвалі">
+        <a href="#services" data-uk="Послуги" data-de="Leistungen">Послуги</a>
+        <a href="#prices" data-uk="Ціни" data-de="Preise">Ціни</a>
+        <a href="#refund" data-uk="Повернення" data-de="Rückerstattung">Повернення</a>
+        <a href="#owner" data-uk="Власник" data-de="Inhaber">Власник</a>
+        <a href="#contacts" data-uk="Контакти" data-de="Kontakt">Контакти</a>
+      </nav>
+    </div>
+  </footer>
+  <!-- Tidio Chat -->
+  <script src="//code.tidio.co/b11psn3qwvf4bxdsmvydlwpeklm0lx6o.js" async></script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10993663020"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-10993663020');
+  </script>
+
+  <script>
+  (function () {
+    var STORAGE_KEY = 'pcvoronov_lang';
+    var defaultLang = 'uk';
+    var titles = {
+      uk: 'PC Voronov — IT-послуги, мережі, сервери та розробка ПЗ',
+      de: 'PC Voronov — IT-Services, Netzwerke, Server und Softwareentwicklung'
+    };
+    var descriptions = {
+      uk: 'PC Voronov — IT-послуги для бізнесу та приватних клієнтів: мережі, сервери, обладнання, програмне забезпечення, аудит, консалтинг та KI-підтримка.',
+      de: 'PC Voronov — IT-Services für Unternehmen und Privatkunden: Netzwerke, Server, Hardware, Softwareentwicklung, Audit, Beratung und KI-Unterstützung.'
+    };
+
+    function setText(el, lang) {
+      if (el.dataset[lang] != null) el.textContent = el.dataset[lang];
+      if (el.dataset['ariaLabel' + lang.charAt(0).toUpperCase() + lang.slice(1)] != null) {
+        el.setAttribute('aria-label', el.dataset['ariaLabel' + lang.charAt(0).toUpperCase() + lang.slice(1)]);
+      }
+      if (el.dataset['title' + lang.charAt(0).toUpperCase() + lang.slice(1)] != null) {
+        el.setAttribute('title', el.dataset['title' + lang.charAt(0).toUpperCase() + lang.slice(1)]);
+      }
+      if (el.dataset['placeholder' + lang.charAt(0).toUpperCase() + lang.slice(1)] != null) {
+        el.setAttribute('placeholder', el.dataset['placeholder' + lang.charAt(0).toUpperCase() + lang.slice(1)]);
+      }
+      if (el.dataset['alt' + lang.charAt(0).toUpperCase() + lang.slice(1)] != null) {
+        el.setAttribute('alt', el.dataset['alt' + lang.charAt(0).toUpperCase() + lang.slice(1)]);
+      }
+      if (el.dataset['value' + lang.charAt(0).toUpperCase() + lang.slice(1)] != null) {
+        el.value = el.dataset['value' + lang.charAt(0).toUpperCase() + lang.slice(1)];
+      }
+    }
+
+    function applyLanguage(lang) {
+      var current = lang === 'de' ? 'de' : 'uk';
+      document.documentElement.lang = current;
+      localStorage.setItem(STORAGE_KEY, current);
+      document.title = titles[current];
+      var metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) metaDescription.setAttribute('content', descriptions[current]);
+
+      document.querySelectorAll('[data-uk][data-de]').forEach(function (el) { setText(el, current); });
+      document.querySelectorAll('[data-aria-label-uk][data-aria-label-de], [data-title-uk][data-title-de], [data-placeholder-uk][data-placeholder-de], [data-alt-uk][data-alt-de], [data-value-uk][data-value-de]').forEach(function (el) { setText(el, current); });
+
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        var active = btn.getAttribute('data-lang') === current;
+        btn.classList.toggle('is-active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+
+      window.pcvCurrentLang = current;
+      document.dispatchEvent(new CustomEvent('pcv-language-changed', { detail: { lang: current } }));
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        applyLanguage(btn.getAttribute('data-lang'));
+      });
+    });
+
+    window.pcvApplyLanguage = applyLanguage;
+    window.pcvCurrentLang = localStorage.getItem(STORAGE_KEY) || defaultLang;
+    applyLanguage(window.pcvCurrentLang);
+  })();
+  </script>
+
+  <script>
+  (function () {
+    var STORAGE_KEY = 'pcvoronov_tasks';
+    var taskForm = document.getElementById('task-form');
+    var taskTextInput = document.getElementById('task-text');
+    var taskServiceSel = document.getElementById('task-service-sel');
+    var taskPrioritySel = document.getElementById('task-priority-sel');
+    var taskList = document.getElementById('task-list');
+    var taskCount = document.getElementById('task-count');
+    var sendTasksBtn = document.getElementById('send-tasks-btn');
+    var clearTasksBtn = document.getElementById('clear-tasks-btn');
+
+    var PRIORITY_LABELS = {
+      high: { uk: 'Високий', de: 'Hoch' },
+      normal: { uk: 'Звичайний', de: 'Normal' },
+      low: { uk: 'Низький', de: 'Niedrig' }
+    };
+    var PRIORITY_CLASS = { high: 'task-priority-high', normal: 'task-priority-normal', low: 'task-priority-low' };
+    var SERVICE_LABELS = {
+      'Управління та моніторинг мереж': { uk: 'Управління та моніторинг мереж', de: 'Netzwerk-Management' },
+      'Підтримка серверів та обладнання': { uk: 'Підтримка серверів та обладнання', de: 'Server-Support' },
+      'Розробка програмного забезпечення': { uk: 'Розробка програмного забезпечення', de: 'Softwareentwicklung' },
+      'Аудит та IT-консалтинг': { uk: 'Аудит та IT-консалтинг', de: 'IT-Beratung' },
+      'KI-Unterstützung': { uk: 'KI-підтримка', de: 'KI-Unterstützung' },
+      'Інше': { uk: 'Інше', de: 'Andere' }
+    };
+    var UI = {
+      empty: {
+        uk: 'Завдання ще не додано. Додайте перше завдання вище!',
+        de: 'Noch keine Aufgaben vorhanden. Fügen Sie oben die erste Aufgabe hinzu!'
+      },
+      markDone: { uk: 'Позначити виконаним', de: 'Als erledigt markieren' },
+      unmarkDone: { uk: 'Зняти позначку', de: 'Markierung entfernen' },
+      deleteTask: { uk: 'Видалити завдання', de: 'Aufgabe löschen' },
+      clearConfirm: { uk: 'Очистити всі завдання?', de: 'Alle Aufgaben löschen?' },
+      summaryTitle: { uk: 'Перелік завдань:', de: 'Aufgabenliste:' },
+      completed: { uk: '[виконано] ', de: '[erledigt] ' },
+      prioritySuffix: { uk: ' пріоритет', de: ' Priorität' }
+    };
+
+    function currentLang() {
+      return window.pcvCurrentLang === 'de' ? 'de' : 'uk';
+    }
+
+    function loadTasks() {
+      try {
+        return (JSON.parse(localStorage.getItem(STORAGE_KEY)) || []).map(function (task, idx) {
+          return {
+            id: task.id || ('manual-' + idx + '-' + (task.text || 'task')),
+            text: task.text || '',
+            service: task.service || '',
+            priority: task.priority || 'normal',
+            done: !!task.done
+          };
+        });
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveTasks(tasks) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+      document.dispatchEvent(new CustomEvent('pcv-tasks-updated', { detail: { tasks: tasks } }));
+    }
+
+    function serviceLabel(service) {
+      var lang = currentLang();
+      return SERVICE_LABELS[service] ? SERVICE_LABELS[service][lang] : service;
+    }
+
+    function renderTasks() {
+      var tasks = loadTasks();
+      taskList.innerHTML = '';
+      taskCount.textContent = tasks.length;
+      if (tasks.length === 0) {
+        var empty = document.createElement('li');
+        empty.className = 'task-empty';
+        empty.textContent = UI.empty[currentLang()];
+        taskList.appendChild(empty);
+        if (sendTasksBtn) sendTasksBtn.setAttribute('aria-disabled', 'true');
+        if (clearTasksBtn) clearTasksBtn.disabled = true;
+        return;
+      }
+      if (sendTasksBtn) sendTasksBtn.removeAttribute('aria-disabled');
+      if (clearTasksBtn) clearTasksBtn.disabled = false;
+
+      tasks.forEach(function (task, idx) {
+        var li = document.createElement('li');
+        li.className = 'task-item' + (task.done ? ' task-done' : '');
+
+        var checkBtn = document.createElement('button');
+        checkBtn.className = 'task-check-btn';
+        checkBtn.setAttribute('aria-label', task.done ? UI.unmarkDone[currentLang()] : UI.markDone[currentLang()]);
+        checkBtn.title = task.done ? UI.unmarkDone[currentLang()] : UI.markDone[currentLang()];
+        checkBtn.innerHTML = task.done ? '&#10003;' : '';
+        checkBtn.addEventListener('click', function () { toggleTask(idx); });
+
+        var body = document.createElement('div');
+        body.className = 'task-body';
+
+        var text = document.createElement('span');
+        text.className = 'task-text';
+        text.textContent = task.text;
+
+        var meta = document.createElement('div');
+        meta.className = 'task-meta';
+
+        if (task.service) {
+          var svcTag = document.createElement('span');
+          svcTag.className = 'task-tag task-tag-service';
+          svcTag.textContent = serviceLabel(task.service);
+          meta.appendChild(svcTag);
+        }
+
+        var priTag = document.createElement('span');
+        priTag.className = 'task-tag ' + (PRIORITY_CLASS[task.priority] || 'task-priority-normal');
+        priTag.textContent = (PRIORITY_LABELS[task.priority] || PRIORITY_LABELS.normal)[currentLang()];
+        meta.appendChild(priTag);
+
+        body.appendChild(text);
+        body.appendChild(meta);
+
+        var delBtn = document.createElement('button');
+        delBtn.className = 'task-del-btn';
+        delBtn.setAttribute('aria-label', UI.deleteTask[currentLang()]);
+        delBtn.innerHTML = '&times;';
+        delBtn.addEventListener('click', function () { deleteTask(idx); });
+
+        li.appendChild(checkBtn);
+        li.appendChild(body);
+        li.appendChild(delBtn);
+        taskList.appendChild(li);
+      });
+    }
+
+    function addTask(text, service, priority, id) {
+      var tasks = loadTasks();
+      if (id && tasks.some(function (task) { return task.id === id; })) return;
+      tasks.push({ id: id || ('manual-' + Date.now()), text: text, service: service, priority: priority, done: false });
+      saveTasks(tasks);
+      renderTasks();
       var items = taskList.querySelectorAll('.task-item');
       var last = items[items.length - 1];
-      if (last) { last.classList.add('task-item-new'); }
+      if (last) last.classList.add('task-item-new');
     }
 
-    function removeTaskByText(text) {
-      var tasks = loadTasks();
-      var idx = -1;
-      for (var i = 0; i < tasks.length; i++) {
-        if (tasks[i].text === text) { idx = i; break; }
-      }
-      if (idx !== -1) { tasks.splice(idx, 1); saveTasks(tasks); renderTasks(); }
+    function removeTaskById(id) {
+      var tasks = loadTasks().filter(function (task) { return task.id !== id; });
+      saveTasks(tasks);
+      renderTasks();
     }
-
-    function deleteTask(idx) {
-      var tasks = loadTasks();
-      tasks.splice(idx, 1);
-      saveTasks(tasks);
-      renderTasks();
-    }
-
-    function toggleTask(idx) {
-      var tasks = loadTasks();
-      tasks[idx].done = !tasks[idx].done;
-      saveTasks(tasks);
-      renderTasks();
-    }
-
-    function clearAllTasks() {
-      saveTasks([]);
-      renderTasks();
-    }
-
-    function buildTasksSummary() {
-      var tasks = loadTasks();
-      if (tasks.length === 0) return '';
-      var lines = tasks.map(function (t, i) {
-        var prefix = (i + 1) + '. ' + (t.done ? '[выполнено] ' : '');
-        var svc = t.service ? ' [' + t.service + ']' : '';
-        var pri = t.priority !== 'normal' ? ' (' + (PRIORITY_LABELS[t.priority] || t.priority) + ' приоритет)' : '';
-        return prefix + t.text + svc + pri;
-      });
-      return 'Список задач:\n' + lines.join('\n');
-    }
-
-    if (taskForm) {
-      taskForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var text = taskTextInput.value.trim();
-        if (!text) { taskTextInput.focus(); return; }
-        var service = taskServiceSel ? taskServiceSel.value : '';
-        var priority = taskPrioritySel ? taskPrioritySel.value : 'normal';
-        addTask(text, service, priority);
-        taskTextInput.value = '';
-        if (taskServiceSel) taskServiceSel.value = '';
-        if (taskPrioritySel) taskPrioritySel.value = 'normal';
-        taskTextInput.focus();
-      });
-    }
-
-    if (clearTasksBtn) {
-      clearTasksBtn.addEventListener('click', function () {
-        if (confirm('Удалить все задачи?')) clearAllTasks();
-      });
-    }
-
-    if (sendTasksBtn) {
-      sendTasksBtn.addEventListener('click', function (e) {
-        var summary = buildTasksSummary();
-        if (!summary) return;
-        var reqTask = document.getElementById('req-task');
-        if (reqTask) {
-          reqTask.value = summary;
+
+    function deleteTask(idx) {
+      var tasks = loadTasks();
+      tasks.splice(idx, 1);
+      saveTasks(tasks);
+      renderTasks();
+    }
+
+    function toggleTask(idx) {
+      var tasks = loadTasks();
+      tasks[idx].done = !tasks[idx].done;
+      saveTasks(tasks);
+      renderTasks();
+    }
+
+    function clearAllTasks() {
+      saveTasks([]);
+      renderTasks();
+      document.dispatchEvent(new CustomEvent('pcv-tasks-cleared'));
+    }
+
+    function buildTasksSummary() {
+      var tasks = loadTasks();
+      if (tasks.length === 0) return '';
+      var lang = currentLang();
+      var lines = tasks.map(function (task, index) {
+        var prefix = (index + 1) + '. ' + (task.done ? UI.completed[lang] : '');
+        var service = task.service ? ' [' + serviceLabel(task.service) + ']' : '';
+        var priority = task.priority !== 'normal' ? ' (' + (PRIORITY_LABELS[task.priority] || PRIORITY_LABELS.normal)[lang] + UI.prioritySuffix[lang] + ')' : '';
+        return prefix + task.text + service + priority;
+      });
+      return UI.summaryTitle[lang] + '\n' + lines.join('\n');
+    }
+
+    if (taskForm) {
+      taskForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var text = taskTextInput.value.trim();
+        if (!text) { taskTextInput.focus(); return; }
+        var service = taskServiceSel ? taskServiceSel.value : '';
+        var priority = taskPrioritySel ? taskPrioritySel.value : 'normal';
+        addTask(text, service, priority);
+        taskTextInput.value = '';
+        if (taskServiceSel) taskServiceSel.value = '';
+        if (taskPrioritySel) taskPrioritySel.value = 'normal';
+        taskTextInput.focus();
+      });
+    }
+
+    if (clearTasksBtn) {
+      clearTasksBtn.addEventListener('click', function () {
+        if (confirm(UI.clearConfirm[currentLang()])) clearAllTasks();
+      });
+    }
+
+    if (sendTasksBtn) {
+      sendTasksBtn.addEventListener('click', function () {
+        var summary = buildTasksSummary();
+        if (!summary) return;
+        var reqTask = document.getElementById('req-task');
+        if (reqTask) {
+          reqTask.value = summary;
           var requestForm = document.getElementById('request-form');
           window.setTimeout(function () {
             if (requestForm) {
@@ -821,89 +1021,128 @@
         }
       });
     }
-
-    renderTasks();
+
+    document.addEventListener('pcv-language-changed', renderTasks);
+    renderTasks();
     window.pcvAddTask = addTask;
-    window.pcvRemoveTaskByText = removeTaskByText;
+    window.pcvRemoveTaskById = removeTaskById;
+    window.pcvGetTasks = loadTasks;
   })();
-  </script>
-
-  <script>
-  (function () {
-    var form = document.getElementById('contact-form');
-    var serviceField = document.getElementById('req-service');
-    var taskField = document.getElementById('req-task');
-    var serviceLinks = document.querySelectorAll('.btn-service[data-service]');
-    if (serviceLinks.length && serviceField) {
-      serviceLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
-          serviceField.value = link.getAttribute('data-service') || '';
-          if (taskField) {
-            window.setTimeout(function () {
-              taskField.focus();
-            }, 150);
-          }
-        });
-      });
-    }
-    if (!form) return;
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var btn = form.querySelector('.btn-submit');
-      var origText = btn.textContent;
-      btn.textContent = 'Отправка...';
-      btn.disabled = true;
-      fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' }
-      })
-        .then(function (r) {
-          if (r.ok) {
-            form.innerHTML = '<div class="form-success"><p class="form-success-icon">&#10003;</p><p>Заявка отправлена! Мы свяжемся с вами в ближайшее время.</p></div>';
-          } else { throw new Error(); }
-        })
-        .catch(function () {
-          btn.textContent = origText;
-          btn.disabled = false;
-          alert('Ошибка при отправке. Напишите нам напрямую: comprw@gmail.com');
-        });
-    });
-  })();
   </script>
 
-  <!-- Quick-Check Chip Script -->
+  <script>
+  (function () {
+    var form = document.getElementById('contact-form');
+    var serviceField = document.getElementById('req-service');
+    var taskField = document.getElementById('req-task');
+    var serviceLinks = document.querySelectorAll('.btn-service[data-service]');
+    var ui = {
+      sending: { uk: 'Надсилання...', de: 'Wird gesendet...' },
+      success: {
+        uk: '<div class="form-success"><p class="form-success-icon">&#10003;</p><p>Заявку надіслано! Ми зв\'яжемося з вами найближчим часом.</p></div>',
+        de: '<div class="form-success"><p class="form-success-icon">&#10003;</p><p>Die Anfrage wurde gesendet! Wir melden uns in Kürze bei Ihnen.</p></div>'
+      },
+      error: {
+        uk: 'Помилка під час надсилання. Напишіть нам напряму: comprw@gmail.com',
+        de: 'Fehler beim Senden. Schreiben Sie uns direkt: comprw@gmail.com'
+      }
+    };
+
+    function currentLang() {
+      return window.pcvCurrentLang === 'de' ? 'de' : 'uk';
+    }
+
+    if (serviceLinks.length && serviceField) {
+      serviceLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          serviceField.value = link.getAttribute('data-service') || '';
+          if (taskField) {
+            window.setTimeout(function () { taskField.focus(); }, 150);
+          }
+        });
+      });
+    }
+
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('.btn-submit');
+      var origText = btn.textContent;
+      btn.textContent = ui.sending[currentLang()];
+      btn.disabled = true;
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      })
+        .then(function (response) {
+          if (response.ok) {
+            form.innerHTML = ui.success[currentLang()];
+          } else {
+            throw new Error();
+          }
+        })
+        .catch(function () {
+          btn.textContent = origText;
+          btn.disabled = false;
+          alert(ui.error[currentLang()]);
+        });
+    });
+  })();
+  </script>
+
   <script>
   (function () {
     var chipCount = document.getElementById('chip-count');
 
-    function updateChipCount() {
-      var n = document.querySelectorAll('.chip.chip-selected').length;
-      if (chipCount) chipCount.textContent = n;
+    function currentLang() {
+      return window.pcvCurrentLang === 'de' ? 'de' : 'uk';
     }
 
-    document.querySelectorAll('.chip[data-text]').forEach(function (chip) {
+    function updateChipCount() {
+      var count = document.querySelectorAll('.chip.chip-selected').length;
+      if (chipCount) chipCount.textContent = count;
+    }
+
+    function syncChipsWithTasks() {
+      var tasks = typeof window.pcvGetTasks === 'function' ? window.pcvGetTasks() : [];
+      var ids = tasks.map(function (task) { return task.id; });
+      document.querySelectorAll('.chip[data-task-id]').forEach(function (chip) {
+        chip.classList.toggle('chip-selected', ids.indexOf(chip.getAttribute('data-task-id')) !== -1);
+      });
+      updateChipCount();
+    }
+
+    document.querySelectorAll('.chip[data-task-id]').forEach(function (chip) {
       chip.addEventListener('click', function () {
-        var isSelected = chip.classList.contains('chip-selected');
-        var text = chip.getAttribute('data-text');
+        var id = chip.getAttribute('data-task-id');
+        var selected = chip.classList.contains('chip-selected');
+        var text = chip.getAttribute(currentLang() === 'de' ? 'data-text-de' : 'data-text-uk');
         var service = chip.getAttribute('data-service') || '';
 
-        if (!isSelected) {
+        if (!selected) {
           chip.classList.add('chip-selected');
           if (typeof window.pcvAddTask === 'function') {
-            window.pcvAddTask(text, service, 'normal');
+            window.pcvAddTask(text, service, 'normal', id);
           }
         } else {
           chip.classList.remove('chip-selected');
-          if (typeof window.pcvRemoveTaskByText === 'function') {
-            window.pcvRemoveTaskByText(text);
+          if (typeof window.pcvRemoveTaskById === 'function') {
+            window.pcvRemoveTaskById(id);
           }
         }
         updateChipCount();
       });
     });
+
+    document.addEventListener('pcv-tasks-updated', syncChipsWithTasks);
+    document.addEventListener('pcv-tasks-cleared', syncChipsWithTasks);
+    document.addEventListener('pcv-language-changed', syncChipsWithTasks);
+    syncChipsWithTasks();
   })();
-  </script><!-- ════════════════════════════════════════════════
+  </script>
+
+<!-- ════════════════════════════════════════════════
      KI-Unterstützung  –  Paid AI Support Button
      Insert this block just before </body>
      ════════════════════════════════════════════════ -->
@@ -1193,231 +1432,5 @@
 })();
 </script>
 <!-- ══ End KI-Unterstützung ════════════════════════ -->
-  <!-- IT Diagnosis Wizard Script -->
-  <script>
-  (function () {
-    var WIZARD_TASKS = {
-      networks: [
-        {text:'Настройка VPN-соединения', service:'Управление и мониторинг сетей'},
-        {text:'Настройка VLAN и сегментации сети', service:'Управление и мониторинг сетей'},
-        {text:'Мониторинг и диагностика сети', service:'Управление и мониторинг сетей'},
-        {text:'Проектирование новой LAN/WAN', service:'Управление и мониторинг сетей'},
-        {text:'Устранение неполадок с интернет-соединением', service:'Управление и мониторинг сетей'},
-        {text:'Настройка Wi-Fi точек доступа', service:'Управление и мониторинг сетей'}
-      ],
-      servers: [
-        {text:'Обновление ОС и программного обеспечения сервера', service:'Поддержка серверов и оборудования'},
-        {text:'Настройка резервного копирования данных', service:'Поддержка серверов и оборудования'},
-        {text:'Диагностика и замена оборудования', service:'Поддержка серверов и оборудования'},
-        {text:'Настройка нового рабочего места / ПК', service:'Поддержка серверов и оборудования'},
-        {text:'Профилактическое обслуживание серверов', service:'Поддержка серверов и оборудования'},
-        {text:'Настройка почтового сервера', service:'Поддержка серверов и оборудования'}
-      ],
-      software: [
-        {text:'Разработка внутреннего бизнес-приложения', service:'Разработка программного обеспечения'},
-        {text:'Автоматизация бизнес-процессов', service:'Разработка программного обеспечения'},
-        {text:'Интеграция с существующими системами', service:'Разработка программного обеспечения'},
-        {text:'Создание скриптов и утилит для администрирования', service:'Разработка программного обеспечения'},
-        {text:'Разработка веб-приложения или API', service:'Разработка программного обеспечения'}
-      ],
-      audit: [
-        {text:'Аудит IT-инфраструктуры и безопасности', service:'Аудит и IT-консалтинг'},
-        {text:'Оценка рисков и оптимизация IT-затрат', service:'Аудит и IT-консалтинг'},
-        {text:'IT-консультация по развитию инфраструктуры', service:'Аудит и IT-консалтинг'},
-        {text:'Разработка IT-стратегии и дорожной карты', service:'Аудит и IT-консалтинг'}
-      ]
-    };
-
-    var URGENCY_PRIORITY = { urgent: 'high', week: 'high', flexible: 'normal' };
-    var URGENCY_LABEL = { urgent: 'Срочно', week: 'На этой неделе', flexible: 'Не срочно' };
-    var state = { category: null, tasks: [], urgency: null };
-
-    var wizard = document.getElementById('it-wizard');
-    if (!wizard) return;
-
-    function showPanel(num) {
-      wizard.querySelectorAll('.wizard-panel').forEach(function (p) { p.classList.remove('active'); });
-      var panel = num === 'result' ? document.getElementById('wpanel-result') : document.getElementById('wpanel-' + num);
-      if (panel) panel.classList.add('active');
-      for (var i = 1; i <= 3; i++) {
-        var step = document.getElementById('wstep-' + i);
-        if (!step) continue;
-        step.classList.remove('active', 'done');
-        if (num === 'result') { step.classList.add('done'); }
-        else if (i < num) { step.classList.add('done'); }
-        else if (i === num) { step.classList.add('active'); }
-      }
-    }
-
-    wizard.querySelectorAll('.wizard-option[data-step="1"]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        state.category = btn.getAttribute('data-value');
-        state.tasks = [];
-        buildStep2();
-        showPanel(2);
-      });
-    });
-
-    function buildStep2() {
-      var container = document.getElementById('wizard-tasks-options');
-      container.innerHTML = '';
-      var nextBtn = document.getElementById('wizard-step2-next');
-      nextBtn.disabled = true;
-      (WIZARD_TASKS[state.category] || []).forEach(function (task) {
-        var btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'wizard-option';
-        btn.innerHTML = '<span class="wo-text">' + task.text + '</span>';
-        btn.dataset.taskText = task.text;
-        btn.dataset.taskService = task.service;
-        btn.addEventListener('click', function () {
-          btn.classList.toggle('selected');
-          nextBtn.disabled = container.querySelectorAll('.wizard-option.selected').length === 0;
-        });
-        container.appendChild(btn);
-      });
-    }
-
-    document.getElementById('wizard-step2-next').addEventListener('click', function () {
-      var selected = document.getElementById('wizard-tasks-options').querySelectorAll('.wizard-option.selected');
-      state.tasks = [];
-      selected.forEach(function (btn) {
-        state.tasks.push({ text: btn.dataset.taskText, service: btn.dataset.taskService });
-      });
-      showPanel(3);
-    });
-
-    wizard.querySelectorAll('.wizard-option[data-step="3"]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        state.urgency = btn.getAttribute('data-value');
-        showResult();
-      });
-    });
-
-    function showResult() {
-      document.getElementById('wr-subtitle').textContent =
-        'Приоритет: ' + (URGENCY_LABEL[state.urgency] || '') + ' · Задач выбрано: ' + state.tasks.length;
-      var taskList = document.getElementById('wr-task-list');
-      taskList.innerHTML = '';
-      state.tasks.forEach(function (task) {
-        var li = document.createElement('li');
-        li.textContent = task.text;
-        taskList.appendChild(li);
-      });
-      showPanel('result');
-    }
-
-    document.getElementById('wizard-add-btn').addEventListener('click', function () {
-      var priority = URGENCY_PRIORITY[state.urgency] || 'normal';
-      if (typeof window.pcvAddTask === 'function') {
-        state.tasks.forEach(function (task) {
-          window.pcvAddTask(task.text, task.service, priority);
-        });
-      }
-      this.textContent = '✓ Задачи добавлены!';
-      this.disabled = true;
-      var tasksSection = document.getElementById('tasks');
-      if (tasksSection) {
-        window.setTimeout(function () {
-          tasksSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 300);
-      }
-    });
-
-    document.getElementById('wizard-restart').addEventListener('click', function () {
-      state = { category: null, tasks: [], urgency: null };
-      var addBtn = document.getElementById('wizard-add-btn');
-      addBtn.textContent = '+ Добавить задачи в список';
-      addBtn.disabled = false;
-      showPanel(1);
-    });
-  })();
-  </script>
-
-<!-- ── Floating Task FAB & Toast ──────────────────────── -->
-<style>
-#task-fab{position:fixed;bottom:2rem;left:2rem;z-index:8000;display:flex;align-items:center;gap:.5rem;padding:.65rem 1.25rem;background:#1e293b;border:2px solid rgba(56,189,248,.3);color:#e2e8f0;font-size:.88rem;font-weight:600;border-radius:2.5rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.45);transition:transform .15s,box-shadow .15s,border-color .15s;text-decoration:none;white-space:nowrap}
-#task-fab:hover{transform:translateY(-2px);border-color:#38bdf8;box-shadow:0 6px 28px rgba(56,189,248,.3);color:#38bdf8}
-#task-fab.has-tasks{border-color:#38bdf8;background:linear-gradient(135deg,#0a1e35,#0f2843)}
-.task-fab-badge{background:#38bdf8;color:#0f172a;font-size:.72rem;font-weight:800;min-width:1.4rem;height:1.4rem;border-radius:1rem;display:inline-flex;align-items:center;justify-content:center;padding:0 .38rem;flex-shrink:0}
-.task-toast{position:fixed;bottom:5.8rem;left:2rem;z-index:9500;background:#1e293b;border:1.5px solid #38bdf8;color:#e2e8f0;padding:.7rem 1.1rem;border-radius:.9rem;font-size:.87rem;font-weight:500;box-shadow:0 6px 24px rgba(0,0,0,.55);pointer-events:none;transform:translateY(14px);opacity:0;transition:transform .28s,opacity .28s;max-width:300px;line-height:1.4}
-.task-toast.visible{transform:translateY(0);opacity:1}
-@media(max-width:480px){#task-fab{bottom:1.25rem;left:1rem;padding:.55rem 1rem;font-size:.82rem}.task-toast{left:1rem;bottom:5rem;max-width:calc(100vw - 2rem)}}
-</style>
-
-<a id="task-fab" href="#tasks" aria-label="Перейти к списку задач">
-  <span aria-hidden="true">📋</span>
-  <span id="task-fab-label">Мои задачи</span>
-  <span class="task-fab-badge" id="task-fab-badge" style="display:none" aria-label="задач в списке">0</span>
-</a>
-<div id="task-toast" class="task-toast" aria-live="polite" role="status"></div>
-
-<script>
-(function () {
-  var fab      = document.getElementById('task-fab');
-  var fabBadge = document.getElementById('task-fab-badge');
-  var toast    = document.getElementById('task-toast');
-  var toastTimer;
-  var STORAGE_KEY = 'pcvoronov_tasks';
-
-  function getTaskCount() {
-    try { return (JSON.parse(localStorage.getItem(STORAGE_KEY)) || []).length; } catch(e){ return 0; }
-  }
-
-  function updateFab() {
-    var n = getTaskCount();
-    if (n > 0) {
-      fabBadge.textContent = n;
-      fabBadge.style.display = 'inline-flex';
-      fab.classList.add('has-tasks');
-    } else {
-      fabBadge.style.display = 'none';
-      fab.classList.remove('has-tasks');
-    }
-  }
-
-  function showToast(msg) {
-    clearTimeout(toastTimer);
-    toast.textContent = msg;
-    toast.classList.add('visible');
-    toastTimer = setTimeout(function () { toast.classList.remove('visible'); }, 3200);
-  }
-
-  function patchTasks() {
-    var origAdd = window.pcvAddTask;
-    var origRemove = window.pcvRemoveTaskByText;
-    if (origAdd && !origAdd._fabPatched) {
-      window.pcvAddTask = function (text, service, priority) {
-        origAdd(text, service, priority);
-        updateFab();
-        var n = getTaskCount();
-        var plural = n === 1 ? 'задача' : (n < 5 ? 'задачи' : 'задач');
-        showToast('✓ Задача добавлена! В списке: ' + n + ' ' + plural);
-      };
-      window.pcvAddTask._fabPatched = true;
-    }
-    if (origRemove && !origRemove._fabPatched) {
-      window.pcvRemoveTaskByText = function (text) {
-        origRemove(text);
-        updateFab();
-      };
-      window.pcvRemoveTaskByText._fabPatched = true;
-    }
-  }
-
-  updateFab();
-  /* Patch functions as soon as they are available */
-  [100, 300, 600].forEach(function(ms){ setTimeout(patchTasks, ms); });
-  window.addEventListener('load', function () { patchTasks(); updateFab(); });
-
-  /* Keep badge in sync when localStorage changes in another tab */
-  window.addEventListener('storage', function (e) {
-    if (e.key === STORAGE_KEY) updateFab();
-  });
-})();
-</script>
-<!-- ══ End Floating Task FAB ════════════════════════ -->
 </body>
 </html>
-
-
