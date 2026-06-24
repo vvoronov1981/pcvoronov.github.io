@@ -789,6 +789,20 @@
         updateChipCount();
       });
     });
+
+    // Restore chip selected states from localStorage on page load
+    (function restoreChipStates() {
+      try {
+        var tasks = JSON.parse(localStorage.getItem('pcvoronov_tasks')) || [];
+        var taskTexts = tasks.map(function (t) { return t.text; });
+        document.querySelectorAll('.chip[data-text]').forEach(function (chip) {
+          if (taskTexts.indexOf(chip.getAttribute('data-text')) !== -1) {
+            chip.classList.add('chip-selected');
+          }
+        });
+        updateChipCount();
+      } catch (e) {}
+    })();
   })();
   </script></body>
 </html>
