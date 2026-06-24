@@ -69,6 +69,28 @@
   /* disable btn-send-tasks visually when aria-disabled */
   .btn-send-tasks[aria-disabled="true"]{opacity:.4;pointer-events:none;cursor:not-allowed}
 
+  /* ── Nav task badge ─────────────────────────────── */
+  .nav-task-badge{display:inline-flex;align-items:center;justify-content:center;min-width:1.2rem;height:1.2rem;padding:0 .3rem;background:#38bdf8;color:#0f172a;border-radius:999px;font-size:.7rem;font-weight:800;margin-left:.35rem;vertical-align:middle;opacity:0;transform:scale(0);transition:opacity .2s,transform .2s}
+  .nav-task-badge.visible{opacity:1;transform:scale(1)}
+
+  /* ── Floating task cart ─────────────────────────── */
+  .task-fab{position:fixed;bottom:5.5rem;right:1.5rem;z-index:900;display:flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;background:linear-gradient(135deg,#1e40af,#0284c7);color:#fff;border:none;border-radius:2rem;font-weight:700;font-size:.88rem;cursor:pointer;box-shadow:0 4px 20px rgba(2,132,199,.45);transition:opacity .3s,transform .3s,box-shadow .15s;opacity:0;transform:translateY(12px) scale(.9);pointer-events:none}
+  .task-fab.visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+  .task-fab:hover{box-shadow:0 6px 28px rgba(2,132,199,.6);transform:translateY(-2px) scale(1)}
+  .task-fab-icon{font-size:1.05rem}
+  .task-fab-count{display:inline-flex;align-items:center;justify-content:center;min-width:1.35rem;height:1.35rem;padding:0 .3rem;background:#fff;color:#0284c7;border-radius:999px;font-size:.75rem;font-weight:900}
+  @media(max-width:480px){.task-fab{bottom:1.2rem;right:1rem;padding:.55rem .9rem;font-size:.82rem}}
+
+  /* ── Customer welcome banner ──────────────────── */
+  .customer-welcome{margin-bottom:2rem;padding:1.5rem 1.75rem;background:linear-gradient(135deg,rgba(56,189,248,.1),rgba(99,102,241,.07));border:1.5px solid rgba(56,189,248,.3);border-radius:1.25rem;display:flex;align-items:flex-start;gap:1.1rem;flex-wrap:wrap}
+  .customer-welcome-icon{font-size:2.2rem;flex-shrink:0;line-height:1}
+  .customer-welcome-body{flex:1;min-width:200px}
+  .customer-welcome-title{margin:0 0 .35rem;font-size:1rem;font-weight:800;color:#e2e8f0}
+  .customer-welcome-text{margin:0 0 1rem;font-size:.88rem;color:#94a3b8;line-height:1.55}
+  .customer-welcome-steps{display:flex;flex-wrap:wrap;gap:.5rem;margin:0}
+  .welcome-step{display:flex;align-items:center;gap:.4rem;padding:.35rem .75rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:2rem;font-size:.8rem;color:#cbd5e1}
+  .welcome-step-num{display:inline-flex;align-items:center;justify-content:center;width:1.35rem;height:1.35rem;background:#38bdf8;color:#0f172a;border-radius:50%;font-weight:900;font-size:.7rem;flex-shrink:0}
+
   /* ── IT Diagnostic Wizard ──────────────────────── */
   .it-wizard-card{margin-bottom:1.5rem;padding:1.25rem 1.5rem;background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(56,189,248,.08));border:1.5px solid rgba(99,102,241,.3);border-radius:1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
   .it-wizard-icon{font-size:2rem;flex-shrink:0}
@@ -130,7 +152,7 @@
           <a href="#about" data-uk="Про нас" data-de="Über uns">Про нас</a>
           <a href="#process" data-uk="Як працюємо" data-de="Ablauf">Як працюємо</a>
           <a href="#prices" data-uk="Ціни" data-de="Preise">Ціни</a>
-          <a href="#tasks" data-uk="Мої завдання" data-de="Meine Aufgaben">Мої завдання</a>
+          <a href="#tasks" data-uk="Мої завдання" data-de="Meine Aufgaben">Мої завдання<span class="nav-task-badge" id="nav-task-badge" aria-live="polite" aria-label="tasks count">0</span></a>
           <a href="#contacts" data-uk="Контакти" data-de="Kontakt">Контакти</a>
           <a href="investors.html" data-uk="Інвесторам" data-de="Für Investoren">Інвесторам</a>
           <a href="bank-details.html" data-uk="Реквізити" data-de="Bankdaten">Реквізити</a>
@@ -354,6 +376,20 @@
         </div>
 
         <div class="task-board">
+
+          <!-- ── Customer Welcome Banner ──────────────── -->
+          <div class="customer-welcome" id="customer-welcome">
+            <span class="customer-welcome-icon">👋</span>
+            <div class="customer-welcome-body">
+              <h3 class="customer-welcome-title" data-uk="Як замовити послугу — 3 простих кроки" data-de="So beauftragen Sie uns — 3 einfache Schritte">Як замовити послугу — 3 простих кроки</h3>
+              <p class="customer-welcome-text" data-uk="Додайте ваші завдання у список нижче, а потім натисніть «Передати в заявку» — ми зв'яжемося з вами найближчим часом." data-de="Fügen Sie Ihre Aufgaben zur Liste unten hinzu und klicken Sie dann auf «In Anfrage übernehmen» — wir melden uns in Kürze bei Ihnen.">Додайте ваші завдання у список нижче, а потім натисніть «Передати в заявку» — ми зв'яжемося з вами найближчим часом.</p>
+              <div class="customer-welcome-steps">
+                <span class="welcome-step"><span class="welcome-step-num">1</span><span data-uk="Оберіть завдання або введіть своє" data-de="Aufgabe auswählen oder eigene eingeben">Оберіть завдання або введіть своє</span></span>
+                <span class="welcome-step"><span class="welcome-step-num">2</span><span data-uk="Перевірте список завдань" data-de="Aufgabenliste prüfen">Перевірте список завдань</span></span>
+                <span class="welcome-step"><span class="welcome-step-num">3</span><span data-uk="Надішліть заявку — ми передзвонимо" data-de="Anfrage senden — wir rufen zurück">Надішліть заявку — ми передзвонимо</span></span>
+              </div>
+            </div>
+          </div>
 
           <!-- ── IT Diagnostic Wizard Card ───────────────── -->
           <div class="it-wizard-card" id="it-wizard-card">
@@ -1162,6 +1198,33 @@
     window.pcvAddTask = addTask;
     window.pcvRemoveTaskById = removeTaskById;
     window.pcvGetTasks = loadTasks;
+
+    /* ── Update nav badge + floating button ─────── */
+    function updateTaskUI() {
+      var tasks = loadTasks();
+      var count = tasks.length;
+      var badge = document.getElementById('nav-task-badge');
+      var fab = document.getElementById('task-fab');
+      var fabCount = document.getElementById('task-fab-count');
+      if (badge) {
+        badge.textContent = count;
+        if (count > 0) badge.classList.add('visible');
+        else badge.classList.remove('visible');
+      }
+      if (fab) {
+        if (count > 0) fab.classList.add('visible');
+        else fab.classList.remove('visible');
+      }
+      if (fabCount) fabCount.textContent = count;
+    }
+    document.addEventListener('pcv-tasks-updated', updateTaskUI);
+    document.addEventListener('pcv-tasks-cleared', updateTaskUI);
+    document.addEventListener('pcv-language-changed', function () {
+      var lang = window.pcvCurrentLang === 'de' ? 'de' : 'uk';
+      var fabLabel = document.getElementById('task-fab-label');
+      if (fabLabel) fabLabel.textContent = lang === 'de' ? 'Aufgaben' : 'Завдання';
+    });
+    updateTaskUI();
   })();
   </script>
 
@@ -1614,6 +1677,13 @@
   <span style="font-size:1.15rem">🤖</span>
   <span>KI-Unterstützung</span>
   <span class="ki-badge">Paid</span>
+</button>
+
+<!-- ── Floating Task Button ──────────────────── -->
+<button class="task-fab" id="task-fab" aria-label="Мої завдання" onclick="document.getElementById('tasks').scrollIntoView({behavior:'smooth'})">
+  <span class="task-fab-icon">📋</span>
+  <span id="task-fab-label" data-uk="Завдання" data-de="Aufgaben">Завдання</span>
+  <span class="task-fab-count" id="task-fab-count">0</span>
 </button>
 
 <!-- ── Modal ───────────────────────────────────── -->
