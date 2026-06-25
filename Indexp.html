@@ -131,6 +131,38 @@
   .wizard-confirm .btn-secondary{background:transparent;border:1.5px solid rgba(255,255,255,.18)}
   .wizard-confirm .btn-secondary:hover{border-color:#38bdf8;color:#38bdf8}
   .wizard-added-toast{margin-top:.85rem;padding:.6rem 1rem;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.3);border-radius:.65rem;font-size:.85rem;color:#38bdf8;display:none}
+
+  /* ── First-visit toast ──────────────────────── */
+  .visit-toast{position:fixed;bottom:2rem;left:1.5rem;z-index:850;max-width:320px;padding:1.1rem 1.25rem;background:#1e293b;border:1.5px solid rgba(56,189,248,.4);border-radius:1rem;box-shadow:0 8px 32px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:.55rem;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .35s,transform .35s}
+  .visit-toast.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+  .visit-toast-title{font-weight:800;font-size:.95rem;color:#e2e8f0;display:flex;align-items:center;gap:.5rem}
+  .visit-toast-text{font-size:.82rem;color:#94a3b8;line-height:1.5;margin:0}
+  .visit-toast-actions{display:flex;gap:.5rem;margin-top:.2rem;flex-wrap:wrap}
+  .visit-toast-cta{padding:.4rem .95rem;background:#38bdf8;color:#0f172a;border-radius:2rem;font-weight:700;font-size:.83rem;text-decoration:none;white-space:nowrap;border:none;cursor:pointer;transition:opacity .15s}
+  .visit-toast-cta:hover{opacity:.85}
+  .visit-toast-dismiss{padding:.4rem .75rem;background:transparent;border:1.5px solid rgba(255,255,255,.15);color:#94a3b8;border-radius:2rem;font-size:.82rem;cursor:pointer;transition:border-color .15s,color .15s}
+  .visit-toast-dismiss:hover{border-color:#38bdf8;color:#38bdf8}
+  @media(max-width:480px){.visit-toast{left:1rem;right:1rem;max-width:none}}
+
+  /* ── Customer Journey Tracker ───────────────── */
+  .journey-tracker{display:flex;align-items:stretch;gap:.5rem;margin-bottom:1.75rem;padding:1rem 1.25rem;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:1rem;flex-wrap:wrap}
+  .journey-step{display:flex;align-items:center;gap:.6rem;flex:1;min-width:120px;padding:.6rem .8rem;border:1.5px solid rgba(255,255,255,.08);border-radius:.75rem;transition:border-color .3s,background .3s}
+  .journey-step.jdone{border-color:rgba(56,189,248,.4);background:rgba(56,189,248,.07)}
+  .journey-step.jactive{border-color:#38bdf8;background:rgba(56,189,248,.1)}
+  .jstep-num{display:flex;align-items:center;justify-content:center;width:1.85rem;height:1.85rem;border-radius:50%;background:rgba(255,255,255,.07);font-weight:800;font-size:.82rem;flex-shrink:0;transition:background .3s,color .3s}
+  .journey-step.jdone .jstep-num{background:#38bdf8;color:#0f172a}
+  .journey-step.jactive .jstep-num{background:rgba(56,189,248,.25);color:#38bdf8}
+  .jstep-info{display:flex;flex-direction:column;gap:.1rem;min-width:0}
+  .jstep-label{font-weight:700;font-size:.84rem;color:#e2e8f0;white-space:nowrap}
+  .journey-step.jdone .jstep-label::after{content:" ✓";color:#38bdf8}
+  .jstep-hint{font-size:.74rem;color:#475569;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .journey-step.jdone .jstep-hint,.journey-step.jactive .jstep-hint{color:#64748b}
+  .journey-arrow{color:#334155;font-size:1.1rem;flex-shrink:0;align-self:center;padding:0 .1rem}
+  @media(max-width:600px){.journey-arrow{display:none}.journey-step{min-width:90px}}
+
+  /* ── Send button pulse when tasks ready ─────── */
+  @keyframes send-pulse{0%,100%{box-shadow:0 0 0 0 rgba(56,189,248,.55)}60%{box-shadow:0 0 0 9px rgba(56,189,248,0)}}
+  .btn-send-tasks.pulse-active{animation:send-pulse 2.2s infinite}
 </style>
 <body>
   <a class="skip-link" href="#main" data-uk="Перейти до вмісту" data-de="Zum Inhalt springen">Перейти до вмісту</a>
@@ -376,6 +408,33 @@
         </div>
 
         <div class="task-board">
+
+          <!-- ── Customer Journey Tracker ─────────────── -->
+          <div class="journey-tracker" id="journey-tracker" aria-label="Ваш прогрес">
+            <div class="journey-step" id="jstep-1">
+              <div class="jstep-num">1</div>
+              <div class="jstep-info">
+                <span class="jstep-label" data-uk="Діагностика" data-de="Diagnose">Діагностика</span>
+                <span class="jstep-hint" data-uk="Визначте послугу" data-de="Service ermitteln">Визначте послугу</span>
+              </div>
+            </div>
+            <span class="journey-arrow" aria-hidden="true">›</span>
+            <div class="journey-step" id="jstep-2">
+              <div class="jstep-num">2</div>
+              <div class="jstep-info">
+                <span class="jstep-label" data-uk="Завдання" data-de="Aufgaben">Завдання</span>
+                <span class="jstep-hint" data-uk="Додайте завдання" data-de="Aufgaben hinzufügen">Додайте завдання</span>
+              </div>
+            </div>
+            <span class="journey-arrow" aria-hidden="true">›</span>
+            <div class="journey-step" id="jstep-3">
+              <div class="jstep-num">3</div>
+              <div class="jstep-info">
+                <span class="jstep-label" data-uk="Заявка" data-de="Anfrage">Заявка</span>
+                <span class="jstep-hint" data-uk="Надішліть запит" data-de="Anfrage senden">Надішліть запит</span>
+              </div>
+            </div>
+          </div>
 
           <!-- ── Customer Welcome Banner ──────────────── -->
           <div class="customer-welcome" id="customer-welcome">
@@ -1841,6 +1900,108 @@
 })();
 </script>
 <!-- ══ End KI-Unterstützung ════════════════════════ -->
+
+<!-- ── First-visit toast ───────────────────────── -->
+<div id="visit-toast" class="visit-toast" role="alert" aria-live="polite">
+  <div class="visit-toast-title">
+    <span>👋</span>
+    <span data-uk="Ласкаво просимо!" data-de="Herzlich willkommen!">Ласкаво просимо!</span>
+  </div>
+  <p class="visit-toast-text" data-uk="Опишіть ваше IT-завдання за 3 кроки і ми зв'яжемося з вами протягом робочого дня." data-de="Beschreiben Sie Ihre IT-Aufgabe in 3 Schritten — wir melden uns noch am selben Werktag.">Опишіть ваше IT-завдання за 3 кроки і ми зв'яжемося з вами протягом робочого дня.</p>
+  <div class="visit-toast-actions">
+    <a href="#tasks" class="visit-toast-cta" id="visit-toast-cta" data-uk="Почати →" data-de="Starten →">Почати →</a>
+    <button class="visit-toast-dismiss" id="visit-toast-dismiss" data-uk="Пізніше" data-de="Später">Пізніше</button>
+  </div>
+</div>
+
+<script>
+/* ── Customer Journey Tracker + First-visit Toast ── */
+(function () {
+  var WIZARD_KEY  = 'pcv_wizard_done';
+  var TASKS_KEY   = 'pcvoronov_tasks';
+  var FORM_KEY    = 'pcv_form_sent';
+  var TOAST_KEY   = 'pcv_toast_seen';
+
+  /* ── Journey tracker ─────────────────────────── */
+  function updateJourney() {
+    var wizardDone = !!localStorage.getItem(WIZARD_KEY);
+    var tasks = [];
+    try { tasks = JSON.parse(localStorage.getItem(TASKS_KEY)) || []; } catch (e) {}
+    var hasTasks  = tasks.length > 0;
+    var formSent  = !!localStorage.getItem(FORM_KEY);
+
+    var s1 = document.getElementById('jstep-1');
+    var s2 = document.getElementById('jstep-2');
+    var s3 = document.getElementById('jstep-3');
+    if (!s1) return;
+
+    function setStep(el, done, active) {
+      el.classList.toggle('jdone',   done);
+      el.classList.toggle('jactive', !done && active);
+    }
+    setStep(s1, wizardDone,                    true);
+    setStep(s2, hasTasks,                      wizardDone);
+    setStep(s3, formSent,                      hasTasks);
+
+    /* pulse the "send" button when there are tasks but form not yet sent */
+    var sendBtn = document.getElementById('send-tasks-btn');
+    if (sendBtn) {
+      sendBtn.classList.toggle('pulse-active', hasTasks && !formSent);
+    }
+  }
+
+  /* track wizard completion */
+  var wizAddBtn = document.getElementById('wizard-add-btn');
+  if (wizAddBtn) {
+    wizAddBtn.addEventListener('click', function () {
+      localStorage.setItem(WIZARD_KEY, '1');
+      setTimeout(updateJourney, 100);
+    });
+  }
+
+  /* track quick-chip clicks (any chip selection counts as diagnosis done) */
+  document.querySelectorAll('.chip').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      localStorage.setItem(WIZARD_KEY, '1');
+      setTimeout(updateJourney, 150);
+    });
+  });
+
+  /* track tasks changes */
+  document.addEventListener('pcv-tasks-updated', updateJourney);
+
+  /* track form submission */
+  var contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function () {
+      localStorage.setItem(FORM_KEY, '1');
+      setTimeout(updateJourney, 100);
+    });
+  }
+
+  /* language change: re-render text */
+  document.addEventListener('pcv-language-changed', updateJourney);
+
+  /* initial render */
+  updateJourney();
+
+  /* ── First-visit toast ───────────────────────── */
+  var toast   = document.getElementById('visit-toast');
+  var cta     = document.getElementById('visit-toast-cta');
+  var dismiss = document.getElementById('visit-toast-dismiss');
+  if (toast && !localStorage.getItem(TOAST_KEY)) {
+    /* delay 1.8 s so the page has settled */
+    setTimeout(function () { toast.classList.add('visible'); }, 1800);
+
+    function hideToast() {
+      toast.classList.remove('visible');
+      localStorage.setItem(TOAST_KEY, '1');
+    }
+    if (cta)     cta.addEventListener('click',    hideToast);
+    if (dismiss) dismiss.addEventListener('click', hideToast);
+  }
+})();
+</script>
 </body>
 </html>
 
