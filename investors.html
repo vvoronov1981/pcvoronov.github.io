@@ -1,418 +1,177 @@
 <!doctype html>
-<html lang="ru">
+<html lang="uk">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Инвесторам - PC Voronov | Инвестиции под 25% годовых</title>
-  <meta name="description" content="Предложение для инвесторов от PC Voronov. Договор займа под 25% годовых в гривне. Минимальная сумма 10 000 грн, срок 12 месяцев. Официальное оформление." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Інвесторам — PC Voronov</title>
+  <meta name="description" content="Пропозиція для інвесторів від PC Voronov: 25% річних у гривні, мінімум 10 000 грн, строк 12 місяців, офіційне оформлення." />
   <link rel="stylesheet" href="stylesp.css" />
   <style>
-    .investors-hero {
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
-      color: #fff;
-      padding: 60px 0;
-      text-align: center;
-    }
-    .investors-hero h2 {
-      color: #fff;
-      font-size: 32px;
-      margin: 0 0 16px;
-    }
-    .investors-hero .highlight {
-      font-size: 40px;
-      font-weight: 700;
-      display: block;
-      margin: 12px 0;
-    }
-    .section-investors {
-      padding: 40px 0;
-    }
-    .section-investors h3 {
-      color: #0b2b53;
-      font-size: 26px;
-      margin-bottom: 20px;
-      border-bottom: 3px solid var(--accent);
-      padding-bottom: 10px;
-      display: inline-block;
-    }
-    .terms-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin: 20px 0;
-    }
-    .term-card {
-      background: var(--card);
-      padding: 24px;
-      border-radius: var(--radius);
-      box-shadow: 0 8px 20px rgba(11,38,69,0.08);
-      border-left: 4px solid var(--accent);
-    }
-    .term-card h4 {
-      color: var(--accent-2);
-      margin: 0 0 8px;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .term-card .value {
-      font-size: 24px;
-      font-weight: 700;
-      color: #0b2b53;
-    }
-    .steps-list {
-      counter-reset: step-counter;
-      list-style: none;
-      padding: 0;
-    }
-    .steps-list li {
-      counter-increment: step-counter;
-      margin-bottom: 20px;
-      padding-left: 60px;
-      position: relative;
-    }
-    .steps-list li::before {
-      content: counter(step-counter);
-      position: absolute;
-      left: 0;
-      top: 0;
-      background: var(--accent);
-      color: #fff;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 18px;
-    }
-    .investment-form {
-      background: var(--card);
-      padding: 30px;
-      border-radius: var(--radius);
-      box-shadow: 0 10px 30px rgba(11,38,69,0.1);
-      max-width: 600px;
-      margin: 20px auto;
-    }
-    .investment-form label {
-      display: block;
-      margin-bottom: 16px;
-      color: #222;
-      font-weight: 600;
-    }
-    .investment-form input,
-    .investment-form textarea {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: 2px solid #ddd;
-      font-size: 16px;
-      margin-top: 6px;
-      transition: border-color 0.3s;
-    }
-    .investment-form input:focus,
-    .investment-form textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
-    .investment-form .required::after {
-      content: " *";
-      color: #e74c3c;
-    }
-    .form-submit-btn {
-      width: 100%;
-      padding: 16px;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-size: 18px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .form-submit-btn:hover {
-      background: var(--accent-2);
-    }
-    .warning-box {
-      background: #fff3cd;
-      border-left: 4px solid #ffc107;
-      padding: 16px;
-      border-radius: 8px;
-      margin: 20px 0;
-    }
-    .info-box {
-      background: #d1ecf1;
-      border-left: 4px solid #17a2b8;
-      padding: 16px;
-      border-radius: 8px;
-      margin: 20px 0;
-    }
-    .nav-active {
-      background: rgba(255,255,255,0.2);
-      padding: 8px 12px;
-      border-radius: 6px;
-    }
-    @media (max-width: 768px) {
-      .investors-hero h2 {
-        font-size: 24px;
-      }
-      .investors-hero .highlight {
-        font-size: 32px;
-      }
-      .terms-grid {
-        grid-template-columns: 1fr;
-      }
-      .investment-form {
-        padding: 20px;
-      }
-    }
+    body{margin:0;background:radial-gradient(circle at top left,rgba(56,189,248,.14),transparent 28%),radial-gradient(circle at top right,rgba(56,189,248,.08),transparent 24%),#0f172a;color:#e2e8f0}
+    .site-shell{min-height:100vh;display:flex;flex-direction:column}.header-controls{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:flex-end}.main-nav{align-items:center}.main-nav .is-current{color:#38bdf8}.page-main{flex:1;padding:0 0 72px}
+    .investors-hero{padding:64px 0 52px;background:linear-gradient(135deg,rgba(56,189,248,.18),rgba(15,23,42,.86));border-bottom:1px solid rgba(148,163,184,.12);margin-bottom:26px}.hero-shell{background:rgba(255,255,255,.04);border:1px solid rgba(148,163,184,.16);border-radius:28px;padding:42px;box-shadow:0 24px 60px rgba(2,8,23,.28);text-align:center}
+    .eyebrow{margin:0 0 12px;color:#38bdf8;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.82rem}.investors-hero h2{margin:0 0 12px;font-size:clamp(2rem,4vw,3rem);line-height:1.15;color:#f8fafc}.hero-subtitle{margin:0;font-size:1.08rem;color:#cbd5e1}.hero-highlight{display:inline-block;margin:18px 0 10px;padding:12px 20px;border-radius:999px;background:rgba(56,189,248,.16);color:#bae6fd;font-size:clamp(1.4rem,3vw,2rem);font-weight:800}
+    .section-block{padding:18px 0}.section-card,.term-card,.card,.info-box,.warning-box,.investment-form,.cta-card,.success-message{background:rgba(255,255,255,.04);border:1px solid rgba(148,163,184,.16);box-shadow:0 24px 60px rgba(2,8,23,.22);border-radius:24px}.section-block h3{margin:0 0 20px;font-size:1.65rem;color:#f8fafc}.section-card,.info-box,.warning-box,.investment-form,.cta-card,.success-message{padding:28px}.section-card p,.section-card ul,.card p,.info-box p,.warning-box p,.form-intro,.cta-card p,.success-message p{margin:0;color:#cbd5e1}.section-card ul,.calc-list{margin:16px 0 0;padding-left:22px}
+    .cards,.terms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}.card,.term-card{padding:24px}.card h4,.term-card h4{margin:0 0 10px;color:#f8fafc;font-size:1.05rem}.term-card .value{font-size:1.9rem;font-weight:800;color:#7dd3fc}.term-note,.calculation-note,.form-note{color:#94a3b8;font-size:.95rem}.info-box h4,.warning-box h4{margin:0 0 10px;color:#f8fafc;font-size:1.05rem}
+    .steps-list{counter-reset:step-counter;list-style:none;padding:0;margin:0;display:grid;gap:16px}.steps-list li{counter-increment:step-counter;position:relative;padding:22px 22px 22px 78px;background:rgba(255,255,255,.04);border:1px solid rgba(148,163,184,.16);border-radius:22px;box-shadow:0 20px 50px rgba(2,8,23,.18);color:#cbd5e1}.steps-list li::before{content:counter(step-counter);position:absolute;left:22px;top:20px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#38bdf8,#0ea5e9);color:#04111f;font-weight:800}.steps-list strong{color:#f8fafc;display:inline-block;margin-bottom:6px}
+    .investment-form{max-width:720px;margin:0 auto}.investment-form label{display:block;margin-bottom:16px;color:#e2e8f0;font-weight:600}.label-text{display:block;margin-bottom:6px}.investment-form input,.investment-form textarea{width:100%;padding:13px 14px;border-radius:14px;border:1px solid rgba(148,163,184,.24);background:rgba(15,23,42,.72);color:#f8fafc;font-size:1rem}.investment-form input:focus,.investment-form textarea:focus{outline:none;border-color:#38bdf8;box-shadow:0 0 0 4px rgba(56,189,248,.18)}.required::after{content:' *';color:#f87171}.form-submit-btn{width:100%;min-height:52px;border:none;border-radius:14px;cursor:pointer;font-weight:800;font-size:1rem;color:#04111f;background:linear-gradient(135deg,#38bdf8,#0ea5e9);box-shadow:0 16px 32px rgba(14,165,233,.24)}.success-message{display:none;margin-top:18px;text-align:center}.success-message h4{margin:0 0 8px;color:#86efac}.cta-card{margin-top:12px;text-align:center}.cta-card a{color:#7dd3fc;text-decoration:none}
+    @media (max-width:820px){.page-main{padding-bottom:56px}.investors-hero{padding:36px 0 30px}.hero-shell,.section-card,.info-box,.warning-box,.investment-form,.cta-card,.success-message,.card,.term-card,.steps-list li{padding:22px;border-radius:20px}.steps-list li{padding-left:72px}.steps-list li::before{left:18px;top:18px}}
   </style>
 </head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <img src="n.png" alt="PC Voronov" class="logo" />
+<body data-title-uk="Інвесторам — PC Voronov" data-title-de="Für Investoren — PC Voronov" data-subject-uk="Нова заявка на інвестування від PC Voronov" data-subject-de="Neue Investitionsanfrage von PC Voronov" data-success-title-uk="✓ Заявку успішно надіслано!" data-success-title-de="✓ Anfrage erfolgreich gesendet!" data-success-text-uk="Дякуємо за інтерес. Ми зв'яжемося з вами найближчим часом." data-success-text-de="Vielen Dank für Ihr Interesse. Wir melden uns in Kürze bei Ihnen.">
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="Indexp.html" aria-label="PC Voronov — на головну">
+          <img src="n.png" alt="Логотип PC Voronov" class="logo" />
+          <span class="brand-text">
+            <span class="brand-title">PC Voronov</span>
+            <span class="tagline" data-uk="IT-послуги, мережі, сервери та розробка ПЗ" data-de="IT-Services, Netzwerke, Server und Softwareentwicklung">IT-послуги, мережі, сервери та розробка ПЗ</span>
+          </span>
+        </a>
+        <div class="header-controls">
+          <nav class="main-nav" aria-label="Головне меню">
+            <a href="Indexp.html" data-uk="Головна" data-de="Startseite">Головна</a>
+            <a href="Indexp.html#services" data-uk="Послуги" data-de="Leistungen">Послуги</a>
+            <a href="Indexp.html#about" data-uk="Про нас" data-de="Über uns">Про нас</a>
+            <a href="Indexp.html#contacts" data-uk="Контакти" data-de="Kontakt">Контакти</a>
+            <a href="investors.html" class="is-current" data-uk="Інвесторам" data-de="Für Investoren">Інвесторам</a>
+            <a href="bank-details.html" data-uk="Реквізити" data-de="Bankverbindung">Реквізити</a>
+            <button id="lang-toggle" class="btn btn-secondary" style="padding:.4rem .9rem;font-size:.8rem" onclick="toggleLang()">DE</button>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main class="page-main">
+      <section class="investors-hero">
+        <div class="container">
+          <div class="hero-shell">
+            <p class="eyebrow" data-uk="Пропозиція для приватних інвесторів" data-de="Angebot für private Investoren">Пропозиція для приватних інвесторів</p>
+            <h2 data-uk="Інвестуйте в розвиток PC Voronov" data-de="Investieren Sie in die Entwicklung von PC Voronov">Інвестуйте в розвиток PC Voronov</h2>
+            <p class="hero-subtitle" data-uk="Надійне фінансування розвитку IT-бізнесу з офіційним оформленням договору позики." data-de="Verlässliche Finanzierung des IT-Geschäftswachstums mit offizieller Darlehensvereinbarung.">Надійне фінансування розвитку IT-бізнесу з офіційним оформленням договору позики.</p>
+            <span class="hero-highlight" data-uk="25% річних у гривні" data-de="25% Rendite pro Jahr in UAH">25% річних у гривні</span>
+            <p class="hero-subtitle" data-uk="Мінімальна сума — 10 000 грн · строк — 12 місяців" data-de="Mindestbetrag — 10.000 UAH · Laufzeit — 12 Monate">Мінімальна сума — 10 000 грн · строк — 12 місяців</p>
+          </div>
+        </div>
+      </section>
+      <section class="section-block container">
+        <h3 data-uk="Про PC Voronov" data-de="Über PC Voronov">Про PC Voronov</h3>
+        <div class="section-card">
+          <p><strong>PC Voronov</strong> <span data-uk="— надійний IT-партнер із багаторічним досвідом роботи на українському ринку. Ми спеціалізуємося на:" data-de="ist ein verlässlicher IT-Partner mit langjähriger Erfahrung auf dem ukrainischen Markt. Wir sind spezialisiert auf:">— надійний IT-партнер із багаторічним досвідом роботи на українському ринку. Ми спеціалізуємося на:</span></p>
+          <ul>
+            <li data-uk="Ремонті та обслуговуванні комп'ютерів — діагностика, модернізація, заміна комплектуючих" data-de="Reparatur und Wartung von Computern — Diagnose, Modernisierung, Austausch von Komponenten">Ремонті та обслуговуванні комп'ютерів — діагностика, модернізація, заміна комплектуючих</li>
+            <li data-uk="Налаштуванні комп'ютерних мереж — проєктування, розгортання та адміністрування LAN/WAN" data-de="Einrichtung von Computernetzwerken — Planung, Aufbau und Administration von LAN/WAN">Налаштуванні комп'ютерних мереж — проєктування, розгортання та адміністрування LAN/WAN</li>
+            <li data-uk="IT-консалтингу — аудит безпеки, оптимізація інфраструктури, підбір рішень" data-de="IT-Beratung — Sicherheitsaudits, Infrastruktur-Optimierung und Auswahl passender Lösungen">IT-консалтингу — аудит безпеки, оптимізація інфраструктури, підбір рішень</li>
+            <li data-uk="Розробці програмного забезпечення — корпоративні застосунки та автоматизація процесів" data-de="Softwareentwicklung — Unternehmensanwendungen und Prozessautomatisierung">Розробці програмного забезпечення — корпоративні застосунки та автоматизація процесів</li>
+          </ul>
+          <p style="margin-top:16px"><span data-uk="Діяльність ведеться офіційно як ФОП, є постійна клієнтська база та стабільний грошовий потік. Власник — ФОП Воронов Володимир Геннадійович. Адреса: вул. Беленківська, 117-8, м. Краматорськ, 84320." data-de="Die Tätigkeit wird offiziell als Einzelunternehmen geführt, mit stabilem Kundenstamm und konstantem Cashflow. Inhaber ist Einzelunternehmer Voronov Wolodymyr Gennadijovytsch. Adresse: vul. Belenkivska 117-8, Kramatorsk, 84320.">Діяльність ведеться офіційно як ФОП, є постійна клієнтська база та стабільний грошовий потік. Власник — ФОП Воронов Володимир Геннадійович. Адреса: вул. Беленківська, 117-8, м. Краматорськ, 84320.</span></p>
+        </div>
+      </section>
+      <section class="section-block container">
+        <h3 data-uk="Навіщо потрібні інвестиції" data-de="Wofür werden die Investitionen benötigt">Навіщо потрібні інвестиції</h3>
+        <div class="cards">
+          <article class="card"><h4 data-uk="Розширення оборотних коштів" data-de="Erweiterung des Umlaufkapitals">Розширення оборотних коштів</h4><p data-uk="Збільшення доступних ресурсів для швидкого реагування на запити клієнтів і виконання великих проєктів." data-de="Mehr verfügbare Mittel, um schnell auf Kundenanfragen zu reagieren und größere Projekte umzusetzen.">Збільшення доступних ресурсів для швидкого реагування на запити клієнтів і виконання великих проєктів.</p></article>
+          <article class="card"><h4 data-uk="Закупівля обладнання та комплектуючих" data-de="Beschaffung von Hardware und Komponenten">Закупівля обладнання та комплектуючих</h4><p data-uk="Формування запасу популярних комплектуючих та обладнання для скорочення строків виконання замовлень." data-de="Aufbau eines Bestands an gefragten Komponenten und Geräten zur Verkürzung der Auftragslaufzeiten.">Формування запасу популярних комплектуючих та обладнання для скорочення строків виконання замовлень.</p></article>
+          <article class="card"><h4 data-uk="Розвиток напряму IT-консалтингу" data-de="Ausbau des IT-Beratungsbereichs">Розвиток напряму IT-консалтингу</h4><p data-uk="Інвестиції в маркетинг, навчання та розширення спектра консультаційних послуг." data-de="Investitionen in Marketing, Weiterbildung und den Ausbau des Beratungsangebots.">Інвестиції в маркетинг, навчання та розширення спектра консультаційних послуг.</p></article>
+          <article class="card"><h4 data-uk="Масштабування бізнесу" data-de="Skalierung des Geschäfts">Масштабування бізнесу</h4><p data-uk="Відкриття нових напрямів, залучення додаткових спеціалістів і вихід на нові ринки." data-de="Erschließung neuer Geschäftsfelder, Einbindung zusätzlicher Fachkräfte und Eintritt in neue Märkte.">Відкриття нових напрямів, залучення додаткових спеціалістів і вихід на нові ринки.</p></article>
+        </div>
+      </section>
+      <section class="section-block container">
+        <h3 data-uk="Умови інвестування" data-de="Investitionsbedingungen">Умови інвестування</h3>
+        <div class="terms-grid">
+          <div class="term-card"><h4 data-uk="Дохідність" data-de="Rendite">Дохідність</h4><div class="value">25%</div><p class="term-note" data-uk="річних у гривні" data-de="pro Jahr in UAH">річних у гривні</p></div>
+          <div class="term-card"><h4 data-uk="Мінімальна сума" data-de="Mindestbetrag">Мінімальна сума</h4><div class="value">10 000 грн</div><p class="term-note" data-uk="або більше" data-de="oder mehr">або більше</p></div>
+          <div class="term-card"><h4 data-uk="Строк" data-de="Laufzeit">Строк</h4><div class="value" data-uk="12 місяців" data-de="12 Monate">12 місяців</div><p class="term-note" data-uk="фіксований період" data-de="fester Zeitraum">фіксований період</p></div>
+          <div class="term-card"><h4 data-uk="Виплата" data-de="Auszahlung">Виплата</h4><div class="value" data-uk="Наприкінці строку" data-de="Am Laufzeitende">Наприкінці строку</div><p class="term-note" data-uk="сума позики + 25%" data-de="Darlehen + 25%">сума позики + 25%</p></div>
+        </div>
+        <div class="info-box" style="margin-top:20px">
+          <h4 data-uk="Юридичне оформлення" data-de="Rechtliche Ausgestaltung">Юридичне оформлення</h4>
+          <p data-uk="Договір позики між фізичними особами укладається відповідно до Цивільного кодексу України (статті 1046–1053). За бажанням інвестора договір може бути нотаріально посвідчений для додаткового юридичного захисту." data-de="Der Darlehensvertrag zwischen Privatpersonen wird gemäß dem Zivilgesetzbuch der Ukraine (Artikel 1046–1053) abgeschlossen. Auf Wunsch des Investors kann der Vertrag für zusätzlichen Rechtsschutz notariell beglaubigt werden.">Договір позики між фізичними особами укладається відповідно до Цивільного кодексу України (статті 1046–1053). За бажанням інвестора договір може бути нотаріально посвідчений для додаткового юридичного захисту.</p>
+        </div>
+        <div class="section-card" style="margin-top:20px">
+          <h4 data-uk="Приклад розрахунку" data-de="Berechnungsbeispiel">Приклад розрахунку</h4>
+          <p style="margin-top:12px" data-uk="При інвестуванні 50 000 грн на 12 місяців:" data-de="Bei einer Investition von 50.000 UAH für 12 Monate:">При інвестуванні 50 000 грн на 12 місяців:</p>
+          <ul class="calc-list">
+            <li data-uk="Сума позики: 50 000 грн" data-de="Darlehensbetrag: 50.000 UAH">Сума позики: 50 000 грн</li>
+            <li data-uk="Процентний дохід: 50 000 × 25% = 12 500 грн" data-de="Zinsertrag: 50.000 × 25% = 12.500 UAH">Процентний дохід: 50 000 × 25% = 12 500 грн</li>
+            <li data-uk="Разом до повернення: 62 500 грн" data-de="Gesamtrückzahlung: 62.500 UAH">Разом до повернення: 62 500 грн</li>
+          </ul>
+          <p class="calculation-note" style="margin-top:12px" data-uk="Виплата здійснюється одноразово наприкінці строку дії договору." data-de="Die Auszahlung erfolgt einmalig am Ende der Vertragslaufzeit.">Виплата здійснюється одноразово наприкінці строку дії договору.</p>
+        </div>
+      </section>
+      <section class="section-block container">
+        <h3 data-uk="Гарантії та безпека" data-de="Garantien und Sicherheit">Гарантії та безпека</h3>
+        <div class="cards">
+          <article class="card"><h4 data-uk="Офіційне оформлення" data-de="Offizielle Dokumentation">Офіційне оформлення</h4><p data-uk="Договір позики укладається письмово із зазначенням усіх умов, реквізитів сторін і підписів. Можливе нотаріальне посвідчення." data-de="Der Darlehensvertrag wird schriftlich mit allen Bedingungen, Parteidaten und Unterschriften abgeschlossen. Eine notarielle Beglaubigung ist möglich.">Договір позики укладається письмово із зазначенням усіх умов, реквізитів сторін і підписів. Можливе нотаріальне посвідчення.</p></article>
+          <article class="card"><h4 data-uk="Легальна діяльність" data-de="Legale Tätigkeit">Легальна діяльність</h4><p data-uk="ФОП Воронов Володимир Геннадійович офіційно зареєстрований, веде діяльність легально та сплачує податки." data-de="Einzelunternehmer Voronov Wolodymyr Gennadijovytsch ist offiziell registriert, arbeitet legal und zahlt Steuern.">ФОП Воронов Володимир Геннадійович офіційно зареєстрований, веде діяльність легально та сплачує податки.</p></article>
+          <article class="card"><h4 data-uk="Прозорість умов" data-de="Transparente Bedingungen">Прозорість умов</h4><p data-uk="Усі умови позики, строки, суми та порядок виплат чітко фіксуються в договорі. Жодних прихованих комісій." data-de="Alle Konditionen des Darlehens, Fristen, Beträge und Auszahlungsmodalitäten werden klar im Vertrag festgehalten. Keine versteckten Gebühren.">Усі умови позики, строки, суми та порядок виплат чітко фіксуються в договорі. Жодних прихованих комісій.</p></article>
+          <article class="card"><h4 data-uk="Прямий контакт" data-de="Direkter Kontakt">Прямий контакт</h4><p data-uk="Ви можете напряму зв'язатися з власником, поставити будь-які запитання та отримати вичерпні відповіді." data-de="Sie können den Inhaber direkt kontaktieren, Fragen stellen und umfassende Antworten erhalten.">Ви можете напряму зв'язатися з власником, поставити будь-які запитання та отримати вичерпні відповіді.</p></article>
+        </div>
+        <div class="warning-box" style="margin-top:20px">
+          <h4 data-uk="Важлива інформація про оподаткування" data-de="Wichtige Informationen zur Besteuerung">Важлива інформація про оподаткування</h4>
+          <p data-uk="Відповідно до податкового законодавства України інвестор (фізична особа) самостійно сплачує податок на доходи фізичних осіб із отриманих процентів. Ставка становить 18% + 1,5% військового збору від суми процентного доходу. Позичальник не є податковим агентом за цим видом доходу." data-de="Nach ukrainischem Steuerrecht ist der Investor (Privatperson) verpflichtet, die Einkommensteuer auf erhaltene Zinsen selbst zu entrichten. Der Satz beträgt 18% plus 1,5% Militärabgabe auf den Zinsertrag. Der Darlehensnehmer ist für diese Einkunftsart kein Steueragent.">Відповідно до податкового законодавства України інвестор (фізична особа) самостійно сплачує податок на доходи фізичних осіб із отриманих процентів. Ставка становить 18% + 1,5% військового збору від суми процентного доходу. Позичальник не є податковим агентом за цим видом доходу.</p>
+        </div>
+      </section>
+      <section class="section-block container">
+        <h3 data-uk="Процес співпраці" data-de="Ablauf der Zusammenarbeit">Процес співпраці</h3>
+        <ul class="steps-list">
+          <li><strong data-uk="Заповнення заявки на сайті" data-de="Anfrage über die Website">Заповнення заявки на сайті</strong><span data-uk="Ви заповнюєте форму нижче, вказуючи свої контактні дані та бажану суму інвестицій." data-de="Sie füllen das untenstehende Formular aus und geben Ihre Kontaktdaten sowie den gewünschten Investitionsbetrag an.">Ви заповнюєте форму нижче, вказуючи свої контактні дані та бажану суму інвестицій.</span></li>
+          <li><strong data-uk="Отримання заявки на email" data-de="Eingang der Anfrage per E-Mail">Отримання заявки на email</strong><span data-uk="Ваша заявка автоматично надсилається на email власника компанії." data-de="Ihre Anfrage wird automatisch an die E-Mail-Adresse des Inhabers gesendet.">Ваша заявка автоматично надсилається на email власника компанії.</span></li>
+          <li><strong data-uk="Зв'язок з інвестором" data-de="Kontakt mit dem Investor">Зв'язок з інвестором</strong><span data-uk="Протягом 1–2 робочих днів ми зв'яжемося з вами телефоном або email для уточнення деталей." data-de="Innerhalb von 1–2 Arbeitstagen kontaktieren wir Sie telefonisch oder per E-Mail, um die Details zu besprechen.">Протягом 1–2 робочих днів ми зв'яжемося з вами телефоном або email для уточнення деталей.</span></li>
+          <li><strong data-uk="Підписання договору позики" data-de="Unterzeichnung des Darlehensvertrags">Підписання договору позики</strong><span data-uk="Готується і підписується договір із зазначенням усіх умов. Можлива зустріч у Краматорську або надсилання договору поштою." data-de="Es wird ein Vertrag mit allen Bedingungen vorbereitet und unterzeichnet. Ein Treffen in Kramatorsk oder der Versand per Post ist möglich.">Готується і підписується договір із зазначенням усіх умов. Можлива зустріч у Краматорську або надсилання договору поштою.</span></li>
+          <li><strong data-uk="Переказ коштів інвестором" data-de="Überweisung durch den Investor">Переказ коштів інвестором</strong><span data-uk="Після підписання договору ви переказуєте кошти на узгоджені реквізити ФОП." data-de="Nach Vertragsunterzeichnung überweisen Sie die Mittel auf die vereinbarten Kontodaten des Einzelunternehmers.">Після підписання договору ви переказуєте кошти на узгоджені реквізити ФОП.</span></li>
+          <li><strong data-uk="Виплата після завершення строку" data-de="Auszahlung nach Laufzeitende">Виплата після завершення строку</strong><span data-uk="Після 12 місяців ми повертаємо суму позики та 25% доходу одним платежем." data-de="Nach 12 Monaten erhalten Sie den Darlehensbetrag und 25% Ertrag in einer Zahlung zurück.">Після 12 місяців ми повертаємо суму позики та 25% доходу одним платежем.</span></li>
+        </ul>
+      </section>
+      <section class="section-block container">
+        <h3 data-uk="Заявка на інвестування" data-de="Investitionsanfrage">Заявка на інвестування</h3>
+        <p class="form-intro" style="text-align:center;margin-bottom:24px" data-uk="Заповніть форму нижче, і ми зв'яжемося з вами найближчим часом для обговорення деталей співпраці." data-de="Füllen Sie das Formular aus, und wir melden uns in Kürze, um die Details der Zusammenarbeit zu besprechen.">Заповніть форму нижче, і ми зв'яжемося з вами найближчим часом для обговорення деталей співпраці.</p>
+        <form class="investment-form" action="https://formsubmit.co/comprw@gmail.com" method="POST">
+          <input type="hidden" id="subject-field" name="_subject" value="Нова заявка на інвестування від PC Voronov" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="investors.html?success=true" />
+          <label><span class="label-text required" data-uk="Повне ім'я (ПІБ)" data-de="Vollständiger Name">Повне ім'я (ПІБ)</span><input type="text" name="name" required data-placeholder-uk="Іваненко Іван Іванович" data-placeholder-de="Max Mustermann" placeholder="Іваненко Іван Іванович" /></label>
+          <label><span class="label-text required" data-uk="Email" data-de="E-Mail">Email</span><input type="email" name="email" required data-placeholder-uk="your.email@example.com" data-placeholder-de="ihre.email@beispiel.de" placeholder="your.email@example.com" /></label>
+          <label><span class="label-text required" data-uk="Телефон" data-de="Telefon">Телефон</span><input type="tel" name="phone" required data-placeholder-uk="+380 (50) 123-45-67" data-placeholder-de="+49 170 1234567" placeholder="+380 (50) 123-45-67" /></label>
+          <label><span class="label-text required" data-uk="Сума інвестицій (грн)" data-de="Investitionsbetrag (UAH)">Сума інвестицій (грн)</span><input type="number" name="amount" required min="10000" max="10000000" step="1000" data-placeholder-uk="50000" data-placeholder-de="50000" placeholder="50000" /></label>
+          <label><span class="label-text" data-uk="Коментар або запитання" data-de="Kommentar oder Fragen">Коментар або запитання</span><textarea name="message" rows="4" data-placeholder-uk="Ваші запитання або додаткова інформація..." data-placeholder-de="Ihre Fragen oder zusätzliche Informationen..." placeholder="Ваші запитання або додаткова інформація..."></textarea></label>
+          <button type="submit" class="form-submit-btn" data-uk="Надіслати заявку" data-de="Anfrage senden">Надіслати заявку</button>
+          <p class="form-note" style="margin-top:16px;text-align:center" data-uk="Натискаючи кнопку, ви погоджуєтеся на обробку персональних даних." data-de="Mit dem Klick auf die Schaltfläche stimmen Sie der Verarbeitung personenbezogener Daten zu.">Натискаючи кнопку, ви погоджуєтеся на обробку персональних даних.</p>
+        </form>
+        <div id="success-message" class="success-message" aria-live="polite">
+          <h4 id="success-title">✓ Заявку успішно надіслано!</h4>
+          <p id="success-text">Дякуємо за інтерес. Ми зв'яжемося з вами найближчим часом.</p>
+        </div>
+      </section>
+      <section class="section-block container">
+        <div class="cta-card">
+          <p><strong data-uk="Є запитання?" data-de="Haben Sie Fragen?">Є запитання?</strong> <span data-uk="Зв'яжіться з нами напряму:" data-de="Kontaktieren Sie uns direkt:">Зв'яжіться з нами напряму:</span></p>
+          <p style="margin-top:10px"><span data-uk="Телефон:" data-de="Telefon:">Телефон:</span> <a href="tel:+380505235040">+380 (50) 523-5040</a> | Email: <a href="mailto:comprw@gmail.com">comprw@gmail.com</a></p>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
         <div>
-          <h1>PC Voronov</h1>
-          <p class="tagline">Управление сетями, обслуживание оборудования и разработка ПО — Краматорск</p>
+          <p class="footer-brand">© PC Voronov</p>
+          <p class="footer-text" data-uk="ФОП Воронов Володимир Геннадійович · вул. Беленківська, 117-8, м. Краматорськ, 84320" data-de="Einzelunternehmer Voronov Wolodymyr Gennadijovytsch · vul. Belenkivska 117-8, Kramatorsk, 84320">ФОП Воронов Володимир Геннадійович · вул. Беленківська, 117-8, м. Краматорськ, 84320</p>
         </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="Indexp.html" data-uk="Головна" data-de="Startseite">Головна</a>
+          <a href="Indexp.html#services" data-uk="Послуги" data-de="Leistungen">Послуги</a>
+          <a href="bank-details.html" data-uk="Реквізити" data-de="Bankverbindung">Реквізити</a>
+          <a href="Indexp.html#contacts" data-uk="Контакти" data-de="Kontakt">Контакти</a>
+        </nav>
       </div>
-      <nav class="main-nav" aria-label="Главное меню">
-        <a href="Indexp.html">Главная</a>
-        <a href="Indexp.html#services">Услуги</a>
-        <a href="Indexp.html#about">О компании</a>
-        <a href="Indexp.html#contacts">Контакты</a>
-        <a href="investors.html" class="nav-active">Инвесторам</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="investors-hero">
-      <div class="container">
-        <h2>Предложение для инвесторов</h2>
-        <p>Надежные инвестиции в развитие IT-бизнеса</p>
-        <span class="highlight">25% годовых в гривне</span>
-        <p style="margin-top: 16px; font-size: 18px;">Официальное оформление договора займа</p>
-      </div>
-    </section>
-
-    <section class="section-investors container">
-      <h3>О компании PC Voronov</h3>
-      <div class="card" style="margin-bottom: 30px;">
-        <p><strong>PC Voronov</strong> — надёжная IT-компания с многолетним опытом работы на рынке Украины. Мы специализируемся на:</p>
-        <ul style="margin: 16px 0;">
-          <li><strong>Ремонте и обслуживании компьютеров</strong> — диагностика, модернизация, замена комплектующих</li>
-          <li><strong>Настройке компьютерных сетей</strong> — проектирование, развертывание и администрирование LAN/WAN</li>
-          <li><strong>IT-консультациях</strong> — аудит безопасности, оптимизация инфраструктуры, подбор решений</li>
-          <li><strong>Разработке программного обеспечения</strong> — корпоративные приложения, автоматизация процессов</li>
-        </ul>
-        <p>Компания работает официально как ИП (индивидуальный предприниматель), имеет постоянную клиентскую базу и стабильный денежный поток. Руководитель — ИП Воронов Владимир Геннадиевич, Краматорск.</p>
-      </div>
-    </section>
-
-    <section class="section-investors container">
-      <h3>Зачем нужны инвестиции</h3>
-      <div class="cards">
-        <article class="card">
-          <h4>Расширение оборотных средств</h4>
-          <p>Увеличение доступных средств для быстрого реагирования на заказы клиентов и выполнения крупных проектов.</p>
-        </article>
-        <article class="card">
-          <h4>Закупка оборудования и комплектующих</h4>
-          <p>Создание запаса популярных комплектующих и оборудования для сокращения времени выполнения заказов.</p>
-        </article>
-        <article class="card">
-          <h4>Развитие направления IT-консультаций</h4>
-          <p>Инвестиции в маркетинг, обучение персонала и расширение спектра консультационных услуг.</p>
-        </article>
-        <article class="card">
-          <h4>Масштабирование бизнеса</h4>
-          <p>Открытие новых направлений деятельности, привлечение дополнительных специалистов, выход на новые рынки.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section-investors container">
-      <h3>Условия инвестирования</h3>
-      <div class="terms-grid">
-        <div class="term-card">
-          <h4>Процентная ставка</h4>
-          <div class="value">25% годовых</div>
-          <p style="margin-top: 8px; font-size: 14px;">в гривне</p>
-        </div>
-        <div class="term-card">
-          <h4>Минимальная сумма</h4>
-          <div class="value">10 000 грн</div>
-          <p style="margin-top: 8px; font-size: 14px;">и больше</p>
-        </div>
-        <div class="term-card">
-          <h4>Срок</h4>
-          <div class="value">12 месяцев</div>
-          <p style="margin-top: 8px; font-size: 14px;">фиксированный период</p>
-        </div>
-        <div class="term-card">
-          <h4>Выплата</h4>
-          <div class="value">В конце срока</div>
-          <p style="margin-top: 8px; font-size: 14px;">сумма займа + 25%</p>
-        </div>
-      </div>
-
-      <div class="info-box">
-        <h4 style="margin-top: 0; color: #0c5460;">Юридическое оформление</h4>
-        <p style="margin: 0;"><strong>Договор займа между физическими лицами</strong> согласно Гражданскому кодексу Украины (статьи 1046-1053). Договор может быть заверен нотариально по желанию инвестора для дополнительной юридической защиты.</p>
-      </div>
-
-      <div class="card" style="margin-top: 20px;">
-        <h4 style="color: var(--accent-2);">Пример расчёта</h4>
-        <p style="margin: 12px 0;">При инвестировании <strong>50 000 грн</strong> на 12 месяцев:</p>
-        <ul style="margin: 8px 0 8px 20px;">
-          <li>Сумма займа: 50 000 грн</li>
-          <li>Процентный доход: 50 000 × 25% = 12 500 грн</li>
-          <li><strong>Итого к возврату: 62 500 грн</strong></li>
-        </ul>
-        <p style="margin-top: 12px; font-size: 14px; color: var(--muted);">Выплата производится единовременно в конце срока действия договора.</p>
-      </div>
-    </section>
-
-    <section class="section-investors container">
-      <h3>Гарантии и безопасность</h3>
-      <div class="cards">
-        <article class="card">
-          <h4>Официальное оформление</h4>
-          <p>Договор займа заключается в письменной форме с указанием всех условий, реквизитов сторон и подписями. Возможно нотариальное заверение.</p>
-        </article>
-        <article class="card">
-          <h4>Легальная деятельность</h4>
-          <p>ИП Воронов Владимир Геннадиевич официально зарегистрирован, ведёт деятельность легально, платит налоги.</p>
-        </article>
-        <article class="card">
-          <h4>Прозрачность условий</h4>
-          <p>Все условия займа, сроки, суммы и порядок выплат чётко прописываются в договоре. Никаких скрытых комиссий.</p>
-        </article>
-        <article class="card">
-          <h4>Возможность контакта</h4>
-          <p>Вы можете связаться с руководителем компании напрямую, задать любые вопросы и получить исчерпывающие ответы.</p>
-        </article>
-      </div>
-
-      <div class="warning-box">
-        <h4 style="margin-top: 0; color: #856404;"><strong>Важная информация о налогообложении</strong></h4>
-        <p style="margin: 0;">Согласно налоговому законодательству Украины, инвестор (физическое лицо) обязан самостоятельно уплатить налог на доходы физических лиц (НДФЛ) с полученных процентов. Ставка налога составляет <strong>18% + 1,5% военный сбор</strong> от суммы процентного дохода. Заёмщик не является налоговым агентом по данному виду дохода.</p>
-      </div>
-    </section>
-
-    <section class="section-investors container">
-      <h3>Процесс сотрудничества</h3>
-      <ul class="steps-list">
-        <li>
-          <strong>Заполнение заявки на сайте</strong><br>
-          Вы заполняете форму ниже, указывая свои контактные данные и желаемую сумму инвестиций.
-        </li>
-        <li>
-          <strong>Получение заявки на email</strong><br>
-          Ваша заявка автоматически отправляется на email руководителя компании.
-        </li>
-        <li>
-          <strong>Связь с инвестором</strong><br>
-          В течение 1-2 рабочих дней мы свяжемся с вами по указанному телефону или email для обсуждения деталей.
-        </li>
-        <li>
-          <strong>Подписание договора займа</strong><br>
-          Подготовка и подписание договора займа с указанием всех условий. Возможна встреча в Краматорске или отправка договора почтой.
-        </li>
-        <li>
-          <strong>Перевод средств инвестором</strong><br>
-          После подписания договора вы переводите средства на указанные реквизиты ИП.
-        </li>
-        <li>
-          <strong>Выплата по окончании срока</strong><br>
-          По истечении 12 месяцев мы переводим вам сумму займа + 25% процентов единым платежом.
-        </li>
-      </ul>
-    </section>
-
-    <section class="section-investors container">
-      <h3>Заявка на инвестирование</h3>
-      <p style="text-align: center; margin-bottom: 30px;">Заполните форму ниже, и мы свяжемся с вами в ближайшее время для обсуждения всех деталей сотрудничества.</p>
-      
-      <form class="investment-form" action="https://formsubmit.co/comprw@gmail.com" method="POST">
-        <!-- FormSubmit Configuration -->
-        <input type="hidden" name="_subject" value="Новая заявка на инвестирование от PC Voronov" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_next" value="investors.html?success=true" />
-        
-        <label class="required">
-          Полное имя (ФИО)
-          <input type="text" name="name" required placeholder="Иванов Иван Иванович" />
-        </label>
-
-        <label class="required">
-          Email
-          <input type="email" name="email" required placeholder="your.email@example.com" />
-        </label>
-
-        <label class="required">
-          Телефон
-          <input type="tel" name="phone" required placeholder="+380 (50) 123-45-67" />
-        </label>
-
-        <label class="required">
-          Сумма инвестиций (грн)
-          <input type="number" name="amount" required min="10000" max="10000000" step="1000" placeholder="50000" />
-        </label>
-
-        <label>
-          Комментарий или вопросы
-          <textarea name="message" rows="4" placeholder="Ваши вопросы или дополнительная информация..."></textarea>
-        </label>
-
-        <button type="submit" class="form-submit-btn">Отправить заявку</button>
-
-        <p style="margin-top: 16px; font-size: 13px; color: var(--muted); text-align: center;">
-          Нажимая кнопку, вы соглашаетесь на обработку персональных данных
-        </p>
-      </form>
-
-      <div id="success-message" style="display: none; background: #d4edda; border-left: 4px solid #28a745; padding: 16px; border-radius: 8px; margin-top: 20px; text-align: center;">
-        <h4 style="color: #155724; margin-top: 0;">✓ Заявка успешно отправлена!</h4>
-        <p style="color: #155724; margin: 0;">Спасибо за ваш интерес. Мы свяжемся с вами в ближайшее время.</p>
-      </div>
-    </section>
-
-    <section class="container footer-cta">
-      <p><strong>Есть вопросы?</strong> Свяжитесь с нами напрямую:</p>
-      <p>Телефон: <a href="tel:+380505235040">+380 (50) 523-5040</a> | Email: <a href="mailto:comprw@gmail.com">comprw@gmail.com</a></p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>
-        <p>&copy; PC Voronov — ИП Воронов Владимир Геннадиевич</p>
-        <p>Краматорск</p>
-      </div>
-      <nav class="footer-nav">
-        <a href="Indexp.html">Главная</a>
-        <a href="Indexp.html#services">Услуги</a>
-        <a href="Indexp.html#about">О компании</a>
-        <a href="Indexp.html#contacts">Контакты</a>
-        <a href="investors.html">Инвесторам</a>
-      </nav>
-    </div>
-  </footer>
-
+    </footer>
+  </div>
   <script>
-    // Show success message if redirected with success parameter
-    if (window.location.search.includes('success=true')) {
-      document.getElementById('success-message').style.display = 'block';
-      // Scroll to success message
-      document.getElementById('success-message').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+    var currentLang='uk';
+    function toggleLang(){currentLang=currentLang==='uk'?'de':'uk';document.documentElement.lang=currentLang;document.getElementById('lang-toggle').textContent=currentLang==='uk'?'DE':'UA';document.querySelectorAll('[data-uk]').forEach(function(el){el.textContent=el.getAttribute('data-'+currentLang)});applyLangAttrs()}
+    function applyLangAttrs(){document.title=document.body.getAttribute('data-title-'+currentLang);document.querySelectorAll('[data-placeholder-uk]').forEach(function(el){el.setAttribute('placeholder',el.getAttribute('data-placeholder-'+currentLang))});var subjectField=document.getElementById('subject-field');if(subjectField){subjectField.value=document.body.getAttribute('data-subject-'+currentLang)}var successTitle=document.getElementById('success-title');var successText=document.getElementById('success-text');if(successTitle){successTitle.textContent=document.body.getAttribute('data-success-title-'+currentLang)}if(successText){successText.textContent=document.body.getAttribute('data-success-text-'+currentLang)}}
+    applyLangAttrs();
+    if(window.location.search.includes('success=true')){var successBox=document.getElementById('success-message');successBox.style.display='block';successBox.scrollIntoView({behavior:'smooth',block:'center'})}
   </script>
 </body>
 </html>
