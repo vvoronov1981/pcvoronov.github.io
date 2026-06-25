@@ -56,6 +56,17 @@
   .owner-list dd{margin:.35rem 0 0;color:#e2e8f0}
   .muted-line{color:#94a3b8}
   .contact-form-card .contact-note-list{margin-top:1.25rem}
+  .hero-microflow{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem;margin:1.1rem 0 1.4rem}
+  .hero-microstep{padding:.85rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:1rem}
+  .hero-microstep strong{display:block;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:#38bdf8;margin-bottom:.25rem}
+  .hero-microstep span{display:block;font-size:.88rem;color:#cbd5e1;line-height:1.45}
+  .request-preset-panel{margin:1rem 0 1.1rem;padding:1rem 1.1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:1rem}
+  .request-preset-panel h4{margin:0 0 .4rem;font-size:.95rem;color:#e2e8f0}
+  .request-preset-panel p{margin:0 0 .85rem;font-size:.82rem;color:#94a3b8}
+  .request-presets{display:flex;flex-wrap:wrap;gap:.55rem}
+  .request-preset{padding:.5rem .9rem;border:1.5px solid rgba(56,189,248,.28);border-radius:2rem;background:transparent;color:#cbd5e1;font-size:.84rem;font-weight:600;cursor:pointer;transition:background .15s,border-color .15s,color .15s,transform .1s}
+  .request-preset:hover{background:rgba(56,189,248,.12);border-color:#38bdf8;color:#38bdf8;transform:translateY(-1px)}
+  .request-helper{margin-top:.8rem;font-size:.8rem;color:#94a3b8}
   @media(max-width:960px){
     .header-controls{width:100%;justify-content:space-between}
   }
@@ -207,8 +218,24 @@
           <p class="hero-lead" data-uk="PC Voronov проєктує, впроваджує та супроводжує мережі, сервери, обладнання й прикладне програмне забезпечення. Працюємо дистанційно по Україні та Європі, а також з виїздом у м. Краматорськ і Донецькій області." data-de="PC Voronov plant, implementiert und betreut Netzwerke, Server, Hardware und Anwendungssoftware. Wir arbeiten remote in der Ukraine und Europa sowie vor Ort in Kramatorsk und der Oblast Donezk.">PC Voronov проєктує, впроваджує та супроводжує мережі, сервери, обладнання й прикладне програмне забезпечення. Працюємо дистанційно по Україні та Європі, а також з виїздом у м. Краматорськ і Донецькій області.</p>
 
           <div class="hero-actions">
-            <a class="btn" href="#request-form" data-uk="Залишити заявку" data-de="Anfrage senden">Залишити заявку</a>
+            <a class="btn" href="#tasks" data-uk="Створити список завдань" data-de="Aufgabenliste starten">Створити список завдань</a>
+            <a class="btn btn-secondary" href="#request-form" data-uk="Надіслати заявку" data-de="Anfrage senden">Надіслати заявку</a>
             <a class="btn btn-secondary" href="#prices" data-uk="Переглянути ціни" data-de="Preise ansehen">Переглянути ціни</a>
+          </div>
+
+          <div class="hero-microflow">
+            <div class="hero-microstep">
+              <strong data-uk="Крок 1" data-de="Schritt 1">Крок 1</strong>
+              <span data-uk="Оберіть готові завдання або додайте власне у розділі «Мої завдання»" data-de="Wählen Sie fertige Aufgaben oder fügen Sie im Bereich „Meine Aufgaben“ Ihre eigene hinzu">Оберіть готові завдання або додайте власне у розділі «Мої завдання»</span>
+            </div>
+            <div class="hero-microstep">
+              <strong data-uk="Крок 2" data-de="Schritt 2">Крок 2</strong>
+              <span data-uk="Передайте список у форму заявки або надішліть запит одразу з сайту" data-de="Übernehmen Sie die Liste in das Anfrageformular oder senden Sie Ihre Anfrage direkt über die Website">Передайте список у форму заявки або надішліть запит одразу з сайту</span>
+            </div>
+            <div class="hero-microstep">
+              <strong data-uk="Крок 3" data-de="Schritt 3">Крок 3</strong>
+              <span data-uk="Отримайте зворотний зв'язок, уточнення та план виконання по вашому завданню" data-de="Erhalten Sie Rückmeldung, Klärung und einen Umsetzungsplan für Ihre Aufgabe">Отримайте зворотний зв'язок, уточнення та план виконання по вашому завданню</span>
+            </div>
           </div>
 
           <ul class="hero-points" data-aria-label-uk="Ключові переваги" data-aria-label-de="Wichtige Vorteile" aria-label="Ключові переваги">
@@ -845,6 +872,16 @@
         <div class="card contact-form-card" id="request-form">
           <h3 data-uk="Залишити завдання" data-de="Aufgabe senden">Залишити завдання</h3>
           <p data-uk="Заповніть форму — ми зв'яжемося з вами протягом робочого дня та запропонуємо план виконання." data-de="Füllen Sie das Formular aus — wir melden uns innerhalb eines Arbeitstages mit einem Umsetzungsvorschlag bei Ihnen.">Заповніть форму — ми зв'яжемося з вами протягом робочого дня та запропонуємо план виконання.</p>
+          <div class="request-preset-panel">
+            <h4 data-uk="Швидкий старт заявки" data-de="Schnellstart für Ihre Anfrage">Швидкий старт заявки</h4>
+            <p data-uk="Якщо не хочете писати все з нуля, оберіть шаблон — ми одразу заповнимо напрям і приклад опису." data-de="Wenn Sie nicht bei null anfangen möchten, wählen Sie eine Vorlage — wir füllen Bereich und Beispielbeschreibung sofort aus.">Якщо не хочете писати все з нуля, оберіть шаблон — ми одразу заповнимо напрям і приклад опису.</p>
+            <div class="request-presets">
+              <button type="button" class="request-preset" data-service="Підтримка серверів та обладнання" data-task-uk="Потрібна термінова діагностика та відновлення роботи серверу, мережі або робочого місця." data-task-de="Ich brauche eine dringende Diagnose und Wiederherstellung von Server, Netzwerk oder Arbeitsplatz." data-deadline-uk="Якнайшвидше / сьогодні" data-deadline-de="So schnell wie möglich / heute" data-uk="Термінова допомога" data-de="Dringende Hilfe">Термінова допомога</button>
+              <button type="button" class="request-preset" data-service="Аудит та IT-консалтинг" data-task-uk="Потрібно обговорити модернізацію інфраструктури, аудит або план розвитку IT-середовища." data-task-de="Ich möchte die Modernisierung der Infrastruktur, ein Audit oder einen Entwicklungsplan für die IT-Umgebung besprechen." data-deadline-uk="Потрібна оцінка строків" data-deadline-de="Terminabschätzung benötigt" data-uk="Проєкт / аудит" data-de="Projekt / Audit">Проєкт / аудит</button>
+              <button type="button" class="request-preset" data-service="Розробка програмного забезпечення" data-task-uk="Потрібно розробити або доопрацювати вебзастосунок, API, інтеграцію чи автоматизацію процесів." data-task-de="Ich möchte eine Webanwendung, API, Integration oder Prozessautomatisierung entwickeln oder erweitern lassen." data-deadline-uk="Після узгодження ТЗ" data-deadline-de="Nach Abstimmung der Anforderungen" data-uk="ПЗ / автоматизація" data-de="Software / Automatisierung">ПЗ / автоматизація</button>
+            </div>
+            <p class="request-helper" data-uk="Або спочатку зберіть список у розділі «Мої завдання», а потім перенесіть його у форму одним кліком." data-de="Oder stellen Sie zuerst im Bereich „Meine Aufgaben“ eine Liste zusammen und übernehmen Sie sie dann mit einem Klick in das Formular.">Або спочатку зберіть список у розділі «Мої завдання», а потім перенесіть його у форму одним кліком.</p>
+          </div>
           <form id="contact-form" class="request-form" action="https://formsubmit.co/comprw@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="Нова заявка з сайту PC Voronov" data-value-uk="Нова заявка з сайту PC Voronov" data-value-de="Neue Anfrage von der PC Voronov Website" />
             <input type="hidden" name="_captcha" value="false" />
@@ -1302,7 +1339,9 @@
     var form = document.getElementById('contact-form');
     var serviceField = document.getElementById('req-service');
     var taskField = document.getElementById('req-task');
+    var deadlineField = document.getElementById('req-deadline');
     var serviceLinks = document.querySelectorAll('.btn-service[data-service]');
+    var presetButtons = document.querySelectorAll('.request-preset');
     var ui = {
       sending: { uk: 'Надсилання...', de: 'Wird gesendet...' },
       success: {
@@ -1325,6 +1364,25 @@
           serviceField.value = link.getAttribute('data-service') || '';
           if (taskField) {
             window.setTimeout(function () { taskField.focus(); }, 150);
+          }
+        });
+      });
+    }
+
+    if (presetButtons.length) {
+      presetButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          var lang = currentLang();
+          if (serviceField) serviceField.value = button.getAttribute('data-service') || '';
+          if (taskField) {
+            taskField.value = button.getAttribute(lang === 'de' ? 'data-task-de' : 'data-task-uk') || '';
+          }
+          if (deadlineField) {
+            deadlineField.value = button.getAttribute(lang === 'de' ? 'data-deadline-de' : 'data-deadline-uk') || '';
+          }
+          if (taskField) {
+            taskField.focus();
+            taskField.setSelectionRange(taskField.value.length, taskField.value.length);
           }
         });
       });
@@ -2014,4 +2072,3 @@
 </script>
 </body>
 </html>
-
