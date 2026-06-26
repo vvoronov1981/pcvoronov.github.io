@@ -610,7 +610,7 @@ function createTaskMarkup(task) {
         `;
     }
 
-    const overdueLabel = overdue ? ` <span class="visitor-task-overdue-badge">${escapeHtml(translate('tasks.planner.overdue', 'Overdue'))}</span>` : '';
+    const overdueLabel = overdue ? ` <span class="visitor-task-overdue-badge">${escapeHtml(translate('tasks.overdue', 'Overdue'))}</span>` : '';
     const deadlineMarkup = task.deadline
         ? `<span class="visitor-task-deadline${overdue ? ' visitor-task-deadline--overdue' : ''}"><i class="fas fa-calendar-alt"></i> ${escapeHtml(translate('tasks.planner.deadline_prefix', 'Due'))}: ${escapeHtml(formatTaskDate(task.deadline))}${overdueLabel}</span>`
         : `<span class="visitor-task-deadline visitor-task-deadline-empty">${escapeHtml(translate('tasks.planner.no_deadline', 'No deadline'))}</span>`;
