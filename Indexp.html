@@ -174,6 +174,33 @@
   /* ── Send button pulse when tasks ready ─────── */
   @keyframes send-pulse{0%,100%{box-shadow:0 0 0 0 rgba(56,189,248,.55)}60%{box-shadow:0 0 0 9px rgba(56,189,248,0)}}
   .btn-send-tasks.pulse-active{animation:send-pulse 2.2s infinite}
+
+  /* ── Visitor Challenge ─────────────────────────────── */
+  .visitor-challenge{margin-bottom:1.5rem;padding:1.25rem 1.5rem;background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(56,189,248,.07));border:1.5px solid rgba(99,102,241,.28);border-radius:1.1rem}
+  .vc-header{display:flex;align-items:center;gap:.85rem;cursor:pointer;user-select:none;flex-wrap:wrap;list-style:none;padding:0;margin:0;border:none;background:transparent;width:100%;text-align:left;color:inherit;font:inherit}
+  .vc-icon{font-size:1.6rem;flex-shrink:0}
+  .vc-title{margin:0;font-size:1rem;font-weight:700;color:#e2e8f0;flex:1}
+  .vc-badge{padding:.25rem .65rem;background:rgba(56,189,248,.15);border:1px solid rgba(56,189,248,.35);border-radius:999px;font-size:.78rem;font-weight:700;color:#38bdf8;white-space:nowrap}
+  .vc-progress-bar-wrap{height:5px;background:rgba(255,255,255,.07);border-radius:3px;margin:.85rem 0 .65rem;overflow:hidden}
+  .vc-progress-bar{height:100%;background:linear-gradient(90deg,#6366f1,#38bdf8);border-radius:3px;transition:width .4s ease}
+  .vc-tasks{display:flex;flex-direction:column;gap:.55rem;margin-top:.1rem}
+  .vc-task{display:flex;align-items:center;gap:.7rem;padding:.6rem .85rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:.7rem;transition:border-color .2s,background .2s}
+  .vc-task.vc-done{border-color:rgba(56,189,248,.3);background:rgba(56,189,248,.06)}
+  .vc-task-check{display:flex;align-items:center;justify-content:center;width:1.55rem;height:1.55rem;border-radius:50%;border:2px solid rgba(255,255,255,.2);flex-shrink:0;font-size:.8rem;font-weight:900;color:transparent;transition:background .2s,border-color .2s,color .2s}
+  .vc-task.vc-done .vc-task-check{background:#38bdf8;border-color:#38bdf8;color:#0f172a}
+  .vc-task-info{flex:1;min-width:0}
+  .vc-task-title{font-weight:600;font-size:.88rem;color:#e2e8f0}
+  .vc-task.vc-done .vc-task-title{color:#94a3b8;text-decoration:line-through}
+  .vc-task-hint{font-size:.76rem;color:#475569;margin-top:.1rem}
+  .vc-reward{display:none;margin-top:1rem;padding:1rem 1.1rem;background:rgba(56,189,248,.1);border:1.5px solid rgba(56,189,248,.4);border-radius:.85rem;text-align:center}
+  .vc-reward.visible{display:block;animation:vc-reward-in .4s ease}
+  @keyframes vc-reward-in{0%{transform:scale(.9);opacity:0}100%{transform:scale(1);opacity:1}}
+  .vc-reward-icon{font-size:2rem;margin-bottom:.5rem}
+  .vc-reward-title{font-weight:800;font-size:1rem;color:#38bdf8;margin:0 0 .3rem}
+  .vc-reward-code{display:inline-block;margin:.55rem auto 0;padding:.35rem .85rem;background:#38bdf8;color:#0f172a;border-radius:.5rem;font-weight:900;font-size:1rem;letter-spacing:.08em;cursor:default}
+  .vc-toggle-icon{flex-shrink:0;font-size:.9rem;color:#64748b;transition:transform .25s}
+  .visitor-challenge.collapsed .vc-toggle-icon{transform:rotate(-90deg)}
+  .visitor-challenge.collapsed .vc-body{display:none}
 </style>
 <body>
   <a class="skip-link" href="#main" data-uk="Перейти до вмісту" data-de="Zum Inhalt springen">Перейти до вмісту</a>
@@ -473,6 +500,70 @@
                 <span class="welcome-step"><span class="welcome-step-num">1</span><span data-uk="Оберіть завдання або введіть своє" data-de="Aufgabe auswählen oder eigene eingeben">Оберіть завдання або введіть своє</span></span>
                 <span class="welcome-step"><span class="welcome-step-num">2</span><span data-uk="Перевірте список завдань" data-de="Aufgabenliste prüfen">Перевірте список завдань</span></span>
                 <span class="welcome-step"><span class="welcome-step-num">3</span><span data-uk="Надішліть заявку — ми передзвонимо" data-de="Anfrage senden — wir rufen zurück">Надішліть заявку — ми передзвонимо</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Visitor Challenge ─────────────────────── -->
+          <div class="visitor-challenge" id="visitor-challenge">
+            <button class="vc-header" id="vc-header" aria-expanded="true" aria-controls="vc-body">
+              <span class="vc-icon" aria-hidden="true">🏆</span>
+              <h3 class="vc-title" data-uk="Гід для відвідувача — виконайте 5 кроків" data-de="Besucher-Leitfaden — 5 Schritte erfüllen">Гід для відвідувача — виконайте 5 кроків</h3>
+              <span class="vc-badge" id="vc-badge">0 / 5</span>
+              <span class="vc-toggle-icon" aria-hidden="true">▾</span>
+            </button>
+            <div class="vc-body" id="vc-body">
+              <div class="vc-progress-bar-wrap" aria-hidden="true">
+                <div class="vc-progress-bar" id="vc-progress-bar" style="width:0%"></div>
+              </div>
+              <div class="vc-tasks" role="list">
+
+                <div class="vc-task" id="vc-task-1" role="listitem">
+                  <div class="vc-task-check" aria-hidden="true">✓</div>
+                  <div class="vc-task-info">
+                    <div class="vc-task-title" data-uk="📋 Ознайомтеся з послугами" data-de="📋 Leistungen anschauen">📋 Ознайомтеся з послугами</div>
+                    <div class="vc-task-hint" data-uk="Перейдіть до розділу «Послуги»" data-de="Gehen Sie zum Abschnitt «Leistungen»">Перейдіть до розділу «Послуги»</div>
+                  </div>
+                </div>
+
+                <div class="vc-task" id="vc-task-2" role="listitem">
+                  <div class="vc-task-check" aria-hidden="true">✓</div>
+                  <div class="vc-task-info">
+                    <div class="vc-task-title" data-uk="🔍 Запустіть IT-діагностику" data-de="🔍 IT-Diagnose starten">🔍 Запустіть IT-діагностику</div>
+                    <div class="vc-task-hint" data-uk="Натисніть «Почати діагностику» нижче" data-de="Klicken Sie unten auf «Diagnose starten»">Натисніть «Почати діагностику» нижче</div>
+                  </div>
+                </div>
+
+                <div class="vc-task" id="vc-task-3" role="listitem">
+                  <div class="vc-task-check" aria-hidden="true">✓</div>
+                  <div class="vc-task-info">
+                    <div class="vc-task-title" data-uk="⚡ Оберіть Quick-Check завдання" data-de="⚡ Quick-Check-Aufgabe auswählen">⚡ Оберіть Quick-Check завдання</div>
+                    <div class="vc-task-hint" data-uk="Натисніть на будь-який чіп з переліку нижче" data-de="Klicken Sie auf einen Chip aus der Liste unten">Натисніть на будь-який чіп з переліку нижче</div>
+                  </div>
+                </div>
+
+                <div class="vc-task" id="vc-task-4" role="listitem">
+                  <div class="vc-task-check" aria-hidden="true">✓</div>
+                  <div class="vc-task-info">
+                    <div class="vc-task-title" data-uk="📝 Складіть список завдань" data-de="📝 Aufgabenliste erstellen">📝 Складіть список завдань</div>
+                    <div class="vc-task-hint" data-uk="Додайте принаймні одне завдання до списку" data-de="Fügen Sie mindestens eine Aufgabe zur Liste hinzu">Додайте принаймні одне завдання до списку</div>
+                  </div>
+                </div>
+
+                <div class="vc-task" id="vc-task-5" role="listitem">
+                  <div class="vc-task-check" aria-hidden="true">✓</div>
+                  <div class="vc-task-info">
+                    <div class="vc-task-title" data-uk="📨 Надішліть заявку" data-de="📨 Anfrage senden">📨 Надішліть заявку</div>
+                    <div class="vc-task-hint" data-uk="Натисніть «Передати в заявку» або заповніть форму" data-de="Klicken Sie auf «In Anfrage übernehmen» oder füllen Sie das Formular aus">Натисніть «Передати в заявку» або заповніть форму</div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="vc-reward" id="vc-reward" role="status" aria-live="polite">
+                <div class="vc-reward-icon">🎁</div>
+                <p class="vc-reward-title" data-uk="Всі кроки виконано! Ваш бонус — безкоштовна 30-хв консультація" data-de="Alle Schritte erledigt! Ihr Bonus: 30 Min. Gratis-Beratung">Всі кроки виконано! Ваш бонус — безкоштовна 30-хв консультація</p>
+                <p style="font-size:.83rem;color:#94a3b8;margin:.35rem 0 0" data-uk="Вкажіть цей код у заявці — і ми проведемо безкоштовну 30-хвилинну консультацію" data-de="Geben Sie diesen Code in Ihrer Anfrage an — und wir schenken Ihnen eine kostenlose 30-Minuten-Beratung">Вкажіть цей код у заявці — і ми проведемо безкоштовну 30-хвилинну консультацію</p>
+                <div class="vc-reward-code">PCVIP30</div>
               </div>
             </div>
           </div>
@@ -2068,6 +2159,97 @@
     if (cta)     cta.addEventListener('click',    hideToast);
     if (dismiss) dismiss.addEventListener('click', hideToast);
   }
+})();
+</script>
+
+<script>
+/* ── Visitor Challenge Tracker ──────────────────────── */
+(function () {
+  var VC_KEY = 'pcv_vc_state';
+  var TOTAL  = 5;
+
+  function loadState() {
+    try { return JSON.parse(localStorage.getItem(VC_KEY)) || {}; } catch (e) { return {}; }
+  }
+  function saveState(s) { localStorage.setItem(VC_KEY, JSON.stringify(s)); }
+  function countDone(s) {
+    var n = 0;
+    for (var i = 1; i <= TOTAL; i++) { if (s[i]) n++; }
+    return n;
+  }
+  function markDone(num) {
+    var s = loadState();
+    if (!s[num]) { s[num] = true; saveState(s); updateUI(s); }
+  }
+  function updateUI(s) {
+    var done  = countDone(s);
+    var badge = document.getElementById('vc-badge');
+    if (badge) badge.textContent = done + ' / ' + TOTAL;
+    var bar = document.getElementById('vc-progress-bar');
+    if (bar) bar.style.width = Math.round(done / TOTAL * 100) + '%';
+    for (var i = 1; i <= TOTAL; i++) {
+      var el = document.getElementById('vc-task-' + i);
+      if (el) el.classList.toggle('vc-done', !!s[i]);
+    }
+    var reward = document.getElementById('vc-reward');
+    if (reward && done >= TOTAL) reward.classList.add('visible');
+  }
+
+  /* Task 1 — Services section visited */
+  document.querySelectorAll('a[href="#services"]').forEach(function (a) {
+    a.addEventListener('click', function () { markDone(1); });
+  });
+  var servicesEl = document.getElementById('services');
+  if (servicesEl && 'IntersectionObserver' in window) {
+    var sObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { markDone(1); sObs.disconnect(); } });
+    }, { threshold: 0.15 });
+    sObs.observe(servicesEl);
+  }
+
+  /* Task 2 — IT Wizard started */
+  var wizBtn = document.getElementById('wizard-start-btn');
+  if (wizBtn) wizBtn.addEventListener('click', function () { markDone(2); });
+
+  /* Task 3 — Quick-Check chip selected */
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.classList.contains('chip')) markDone(3);
+  });
+
+  /* Task 4 — Task added to list */
+  document.addEventListener('pcv-tasks-updated', function (e) {
+    if (e.detail && e.detail.tasks && e.detail.tasks.length > 0) markDone(4);
+  });
+
+  /* Task 5 — Request sent */
+  var sendBtn = document.getElementById('send-tasks-btn');
+  if (sendBtn) sendBtn.addEventListener('click', function () { markDone(5); });
+  var cForm = document.getElementById('contact-form');
+  if (cForm) cForm.addEventListener('submit', function () { markDone(5); });
+
+  /* Collapsible header */
+  var vcHeader    = document.getElementById('vc-header');
+  var vcChallenge = document.getElementById('visitor-challenge');
+  if (vcHeader && vcChallenge) {
+    vcHeader.addEventListener('click', function () {
+      var c = vcChallenge.classList.toggle('collapsed');
+      vcHeader.setAttribute('aria-expanded', c ? 'false' : 'true');
+    });
+    vcHeader.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); vcHeader.click(); }
+    });
+  }
+
+  /* Language change — re-apply translated text */
+  document.addEventListener('pcv-language-changed', function (e) {
+    var lang = (e.detail && e.detail.lang === 'de') ? 'de' : 'uk';
+    document.querySelectorAll('.visitor-challenge [data-uk][data-de]').forEach(function (el) {
+      el.textContent = el.getAttribute('data-' + lang) || el.textContent;
+    });
+  });
+
+  /* Init */
+  updateUI(loadState());
 })();
 </script>
 </body>
