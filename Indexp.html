@@ -209,9 +209,39 @@
   /* ── Challenge complete pulse on reward ─────────────── */
   @keyframes vc-pulse{0%,100%{box-shadow:0 0 0 0 rgba(56,189,248,.5)}60%{box-shadow:0 0 0 12px rgba(56,189,248,0)}}
   .vc-reward.pulse{animation:vc-pulse 2s 3}
+
+  /* ── Task action links ──────────────────────────────── */
+  .vc-task-action{display:inline-flex;align-items:center;padding:.28rem .7rem;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.28);color:#38bdf8;border-radius:2rem;font-size:.76rem;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background .15s,border-color .15s,transform .1s;margin-left:auto}
+  .vc-task-action:hover{background:rgba(56,189,248,.22);border-color:#38bdf8;transform:translateX(2px)}
+  .vc-task.vc-done .vc-task-action{display:none}
+
+  /* ── Sticky challenge progress bar ─────────────────── */
+  #vc-sticky-bar{position:fixed;top:0;left:0;right:0;z-index:8500;display:flex;align-items:center;gap:.65rem;padding:.55rem 1.25rem;background:#0f172a;border-bottom:1px solid rgba(56,189,248,.25);box-shadow:0 2px 16px rgba(0,0,0,.4);transform:translateY(-100%);transition:transform .3s ease;flex-wrap:wrap}
+  #vc-sticky-bar.visible{transform:translateY(0)}
+  .vc-sticky-icon{font-size:1.1rem;flex-shrink:0}
+  .vc-sticky-label{font-size:.82rem;font-weight:700;color:#e2e8f0;white-space:nowrap}
+  .vc-sticky-prog-wrap{flex:1;min-width:60px;height:5px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+  .vc-sticky-prog{height:100%;background:linear-gradient(90deg,#6366f1,#38bdf8);border-radius:3px;transition:width .4s ease}
+  .vc-sticky-count{font-size:.8rem;font-weight:800;color:#38bdf8;white-space:nowrap}
+  .vc-sticky-cta{padding:.3rem .8rem;background:#38bdf8;color:#0f172a;border-radius:2rem;font-weight:700;font-size:.78rem;text-decoration:none;white-space:nowrap;transition:opacity .15s}
+  .vc-sticky-cta:hover{opacity:.85}
+  .vc-sticky-done{font-size:.8rem;color:#10b981;font-weight:700;white-space:nowrap}
+  @media(max-width:480px){#vc-sticky-bar{padding:.45rem .9rem;gap:.4rem}.vc-sticky-label{display:none}}
 </style>
 <body>
-  <a class="skip-link" href="#main" data-uk="Перейти до вмісту" data-de="Zum Inhalt springen">Перейти до вмісту</a>
+  <!-- ── Sticky Challenge Progress Bar ──────────────── -->
+  <div id="vc-sticky-bar" role="status" aria-live="polite" aria-label="Challenge Fortschritt">
+    <span class="vc-sticky-icon" aria-hidden="true">🏆</span>
+    <span class="vc-sticky-label" data-uk="Ваш прогрес:" data-de="Ihr Fortschritt:">Ваш прогрес:</span>
+    <div class="vc-sticky-prog-wrap" aria-hidden="true">
+      <div class="vc-sticky-prog" id="vc-sticky-prog" style="width:0%"></div>
+    </div>
+    <span class="vc-sticky-count" id="vc-sticky-count">0 / 6</span>
+    <span class="vc-sticky-done" id="vc-sticky-done" style="display:none" data-uk="🎁 Бонус розблоковано!" data-de="🎁 Bonus freigeschaltet!">🎁 Бонус розблоковано!</span>
+    <a href="#tasks" class="vc-sticky-cta" id="vc-sticky-cta" data-uk="Виконати завдання →" data-de="Aufgaben erfüllen →">Виконати завдання →</a>
+  </div>
+
+  <a class="skip-link" href="#main" data-uk="Перейти до вмісту" data-de="Zum Inhalt springen">Перейти до вмісту</a>
 
   <header class="site-header">
     <div class="container header-inner">
@@ -532,7 +562,8 @@
                     <div class="vc-task-title" data-uk="📋 Ознайомтеся з послугами" data-de="📋 Leistungen anschauen">📋 Ознайомтеся з послугами</div>
                     <div class="vc-task-hint" data-uk="Перейдіть до розділу «Послуги»" data-de="Gehen Sie zum Abschnitt «Leistungen»">Перейдіть до розділу «Послуги»</div>
                   </div>
-                </div>
+                  <a href="#services" class="vc-task-action" data-uk="Перейти →" data-de="Gehen →">Перейти →</a>
+                </div>
 
                 <div class="vc-task" id="vc-task-2" role="listitem">
                   <div class="vc-task-check" aria-hidden="true">✓</div>
@@ -540,7 +571,8 @@
                     <div class="vc-task-title" data-uk="🔍 Запустіть IT-діагностику" data-de="🔍 IT-Diagnose starten">🔍 Запустіть IT-діагностику</div>
                     <div class="vc-task-hint" data-uk="Натисніть «Почати діагностику» нижче" data-de="Klicken Sie unten auf «Diagnose starten»">Натисніть «Почати діагностику» нижче</div>
                   </div>
-                </div>
+                  <button type="button" class="vc-task-action" id="vc-task-2-action" data-uk="Почати →" data-de="Starten →" onclick="document.getElementById('wizard-start-btn').click()">Почати →</button>
+                </div>
 
                 <div class="vc-task" id="vc-task-3" role="listitem">
                   <div class="vc-task-check" aria-hidden="true">✓</div>
@@ -548,7 +580,8 @@
                     <div class="vc-task-title" data-uk="⚡ Оберіть Quick-Check завдання" data-de="⚡ Quick-Check-Aufgabe auswählen">⚡ Оберіть Quick-Check завдання</div>
                     <div class="vc-task-hint" data-uk="Натисніть на будь-який чіп з переліку нижче" data-de="Klicken Sie auf einen Chip aus der Liste unten">Натисніть на будь-який чіп з переліку нижче</div>
                   </div>
-                </div>
+                  <a href="#tasks" class="vc-task-action" data-uk="До чіпів →" data-de="Zu Chips →" onclick="setTimeout(function(){document.querySelector('.chip')&&document.querySelector('.chip').scrollIntoView({behavior:'smooth',block:'center'})},400)">До чіпів →</a>
+                </div>
 
                 <div class="vc-task" id="vc-task-4" role="listitem">
                   <div class="vc-task-check" aria-hidden="true">✓</div>
@@ -556,7 +589,8 @@
                     <div class="vc-task-title" data-uk="📝 Складіть список завдань" data-de="📝 Aufgabenliste erstellen">📝 Складіть список завдань</div>
                     <div class="vc-task-hint" data-uk="Додайте принаймні одне завдання до списку" data-de="Fügen Sie mindestens eine Aufgabe zur Liste hinzu">Додайте принаймні одне завдання до списку</div>
                   </div>
-                </div>
+                  <a href="#tasks" class="vc-task-action" data-uk="Додати →" data-de="Hinzufügen →">Додати →</a>
+                </div>
 
                 <div class="vc-task" id="vc-task-5" role="listitem">
                   <div class="vc-task-check" aria-hidden="true">✓</div>
@@ -564,7 +598,8 @@
                     <div class="vc-task-title" data-uk="📨 Надішліть заявку" data-de="📨 Anfrage senden">📨 Надішліть заявку</div>
                     <div class="vc-task-hint" data-uk="Натисніть «Передати в заявку» або заповніть форму" data-de="Klicken Sie auf «In Anfrage übernehmen» oder füllen Sie das Formular aus">Натисніть «Передати в заявку» або заповніть форму</div>
                   </div>
-                </div>
+                  <a href="#request-form" class="vc-task-action" data-uk="До форми →" data-de="Zum Formular →">До форми →</a>
+                </div>
 
                 <div class="vc-task" id="vc-task-6" role="listitem">
                   <div class="vc-task-check" aria-hidden="true">✓</div>
@@ -572,6 +607,7 @@
                     <div class="vc-task-title" data-uk="💰 Ознайомтеся з цінами" data-de="💰 Preise ansehen">💰 Ознайомтеся з цінами</div>
                     <div class="vc-task-hint" data-uk="Перейдіть до розділу «Ціни»" data-de="Gehen Sie zum Abschnitt «Preise»">Перейдіть до розділу «Ціни»</div>
                   </div>
+                  <a href="#prices" class="vc-task-action" data-uk="Переглянути →" data-de="Ansehen →">Переглянути →</a>
                 </div>
 
               </div>
@@ -2327,7 +2363,49 @@
     document.querySelectorAll('.visitor-challenge [data-uk][data-de]').forEach(function (el) {
       el.textContent = el.getAttribute('data-' + lang) || el.textContent;
     });
+    /* update sticky bar lang */
+    document.querySelectorAll('#vc-sticky-bar [data-uk][data-de]').forEach(function (el) {
+      el.textContent = el.getAttribute('data-' + lang) || el.textContent;
+    });
+    /* update action links */
+    document.querySelectorAll('.vc-task-action[data-uk][data-de]').forEach(function (el) {
+      el.textContent = el.getAttribute('data-' + lang) || el.textContent;
+    });
   });
+
+  /* ── Sticky bar update ─────────────────────────── */
+  function updateStickyBar(s) {
+    var done  = countDone(s);
+    var prog  = document.getElementById('vc-sticky-prog');
+    var count = document.getElementById('vc-sticky-count');
+    var doneEl = document.getElementById('vc-sticky-done');
+    var cta   = document.getElementById('vc-sticky-cta');
+    if (prog)  prog.style.width  = Math.round(done / TOTAL * 100) + '%';
+    if (count) count.textContent = done + ' / ' + TOTAL;
+    if (done >= TOTAL) {
+      if (doneEl) doneEl.style.display = '';
+      if (cta)    cta.style.display    = 'none';
+    } else {
+      if (doneEl) doneEl.style.display = 'none';
+      if (cta)    cta.style.display    = '';
+    }
+  }
+
+  /* extend updateUI to also refresh sticky bar */
+  var _origUpdateUI = updateUI;
+  updateUI = function (s) { _origUpdateUI(s); updateStickyBar(s); };
+
+  /* show sticky bar after scrolling past hero */
+  var heroEl = document.querySelector('.hero');
+  var stickyBar = document.getElementById('vc-sticky-bar');
+  if (stickyBar && 'IntersectionObserver' in window) {
+    var heroObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        stickyBar.classList.toggle('visible', !e.isIntersecting);
+      });
+    }, { threshold: 0.05 });
+    if (heroEl) heroObs.observe(heroEl);
+  }
 
   /* Init */
   updateUI(loadState());
