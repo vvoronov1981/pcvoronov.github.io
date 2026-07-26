@@ -1,13 +1,3909 @@
 <!doctype html>
+
 <html lang="uk">
+
 <head>
+
   <meta charset="utf-8" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>PC Voronov — IT-послуги, мережі, сервери та розробка ПЗ</title>
-  <meta name="description" content="PC Voronov — IT-послуги для бізнесу та приватних клієнтів: мережі, сервери, обладнання, програмна розробка, консалтинг." />
-</head>
+
+  <meta name="description" content="PC Voronov — IT-послуги для бізнесу та приватних клієнтів: мережі, сервери, обладнання, програмне забезпечення, аудит, консалтинг та KI-підтримка." />
+
+  <meta name="theme-color" content="#0f172a" />
+
+  <meta name="format-detection" content="telephone=no" />
+
+  <meta property="og:type" content="website" />
+
+  <meta property="og:title" content="PC Voronov — IT-послуги, мережі, сервери та розробка ПЗ" />
+
+  <meta property="og:description" content="Надійна IT-підтримка, мережеві рішення, серверний супровід, розробка ПЗ та консалтинг для клієнтів в Україні та Європі." />
+
+  <meta property="og:image" content="n.png" />
+
+  <meta property="og:locale" content="uk_UA" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="stylesp.css" />
+
+  <style>
+
+  /* ── Quick-Check Chips ─────────────────────────────── */
+
+  .quick-check{margin-bottom:2rem;padding:1.5rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:1rem}
+
+  .quick-check-title{font-size:1.05rem;font-weight:700;margin:0 0 .4rem}
+
+  .quick-check-hint{font-size:.85rem;color:#94a3b8;margin:0 0 1.25rem}
+
+  .quick-chips-wrap{display:flex;flex-direction:column;gap:1rem}
+
+  .chip-category{display:block;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#38bdf8;margin-bottom:.45rem}
+
+  .quick-chips{display:flex;flex-wrap:wrap;gap:.45rem}
+
+  .chip{padding:.38rem .8rem;border:1.5px solid rgba(255,255,255,.18);border-radius:2rem;background:transparent;color:inherit;font-size:.82rem;cursor:pointer;transition:background .15s,border-color .15s,color .15s,transform .1s}
+
+  .chip:hover{background:rgba(56,189,248,.12);border-color:#38bdf8;color:#38bdf8;transform:translateY(-1px)}
+
+  .chip.chip-selected{background:#38bdf8;border-color:#38bdf8;color:#0f172a;font-weight:700}
+
+  .chip.chip-selected::before{content:"✓ "}
+
+  .quick-check-footer{margin-top:1rem;font-size:.8rem;color:#64748b}
+
+  .quick-check-footer strong{color:#38bdf8}
+
+  /* ── Task item flash animation ─────────────────────── */
+
+  @keyframes task-flash{0%{background:rgba(56,189,248,.25)}100%{background:transparent}}
+
+  .task-item-new{animation:task-flash .7s ease-out}
+
+
+
+  .header-controls{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+
+  .language-switcher{display:inline-flex;align-items:center;gap:.35rem;padding:.28rem;background:rgba(15,23,42,.08);border:1px solid rgba(148,163,184,.28);border-radius:999px}
+
+  .lang-btn{border:none;background:transparent;color:inherit;font-weight:700;font-size:.8rem;padding:.45rem .8rem;border-radius:999px;cursor:pointer;transition:background .15s,color .15s}
+
+  .lang-btn.is-active{background:#38bdf8;color:#0f172a}
+
+  .business-strip,.policy-grid,.price-grid,.owner-grid{display:grid;gap:1rem}
+
+  .business-strip{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:1.5rem}
+
+  .info-pill{padding:1rem 1.1rem;border:1px solid rgba(255,255,255,.09);border-radius:1rem;background:rgba(255,255,255,.03)}
+
+  .info-pill strong,.price-amount{display:block;font-size:1.05rem;color:#38bdf8;margin-top:.35rem}
+
+  .price-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+
+  .pricing-card{display:flex;flex-direction:column;gap:1rem}
+
+  .pricing-card p{margin:0}
+
+  .pricing-card .service-actions{margin-top:auto}
+
+  .price-note{font-size:.85rem;color:#94a3b8}
+
+  .policy-grid,.owner-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+
+  .policy-card,.owner-card{height:100%}
+
+  .info-list,.contact-note-list{margin:0;padding-left:1.2rem;display:grid;gap:.65rem}
+
+  .owner-list{display:grid;gap:.8rem;margin:0}
+
+  .owner-list div{padding:.95rem 1rem;border-radius:1rem;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03)}
+
+  .owner-list dt{font-weight:700;color:#cbd5e1}
+
+  .owner-list dd{margin:.35rem 0 0;color:#e2e8f0}
+
+  .muted-line{color:#94a3b8}
+
+  .contact-form-card .contact-note-list{margin-top:1.25rem}
+
+  .hero-microflow{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem;margin:1.1rem 0 1.4rem}
+
+  .hero-microstep{padding:.85rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:1rem}
+
+  .hero-microstep strong{display:block;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:#38bdf8;margin-bottom:.25rem}
+
+  .hero-microstep span{display:block;font-size:.88rem;color:#cbd5e1;line-height:1.45}
+
+  .request-preset-panel{margin:1rem 0 1.1rem;padding:1rem 1.1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:1rem}
+
+  .request-preset-panel h4{margin:0 0 .4rem;font-size:.95rem;color:#e2e8f0}
+
+  .request-preset-panel p{margin:0 0 .85rem;font-size:.82rem;color:#94a3b8}
+
+  .request-presets{display:flex;flex-wrap:wrap;gap:.55rem}
+
+  .request-preset{padding:.5rem .9rem;border:1.5px solid rgba(56,189,248,.28);border-radius:2rem;background:transparent;color:#cbd5e1;font-size:.84rem;font-weight:600;cursor:pointer;transition:background .15s,border-color .15s,color .15s,transform .1s}
+
+  .request-preset:hover{background:rgba(56,189,248,.12);border-color:#38bdf8;color:#38bdf8;transform:translateY(-1px)}
+
+  .request-helper{margin-top:.8rem;font-size:.8rem;color:#94a3b8}
+
+  @media(max-width:960px){
+
+    .header-controls{width:100%;justify-content:space-between}
+
+  }
+
+  @media(max-width:640px){
+
+    .language-switcher{width:100%;justify-content:center}
+
+  }
+
+  .task-email-alt{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-top:.85rem;padding:.75rem 1rem;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.12);border-radius:.75rem}
+
+  .task-email-sep{font-size:.82rem;color:#94a3b8}
+
+  .btn-mailto{padding:.4rem .95rem;font-size:.85rem;background:transparent;border:1.5px solid rgba(56,189,248,.45);color:#38bdf8;border-radius:2rem;text-decoration:none;transition:background .15s,border-color .15s}
+
+  .btn-mailto:hover{background:rgba(56,189,248,.12);border-color:#38bdf8}
+
+  /* disable btn-send-tasks visually when aria-disabled */
+
+  .btn-send-tasks[aria-disabled="true"]{opacity:.4;pointer-events:none;cursor:not-allowed}
+
+
+
+  /* ── Nav task badge ─────────────────────────────── */
+
+  .nav-task-badge{display:inline-flex;align-items:center;justify-content:center;min-width:1.2rem;height:1.2rem;padding:0 .3rem;background:#38bdf8;color:#0f172a;border-radius:999px;font-size:.7rem;font-weight:800;margin-left:.35rem;vertical-align:middle;opacity:0;transform:scale(0);transition:opacity .2s,transform .2s}
+
+  .nav-task-badge.visible{opacity:1;transform:scale(1)}
+
+
+
+  /* ── Floating task cart ─────────────────────────── */
+
+  .task-fab{position:fixed;bottom:5.5rem;right:1.5rem;z-index:900;display:flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;background:linear-gradient(135deg,#1e40af,#0284c7);color:#fff;border:none;border-radius:2rem;font-weight:700;font-size:.88rem;cursor:pointer;box-shadow:0 4px 20px rgba(2,132,199,.45);transition:opacity .3s,transform .3s,box-shadow .15s;opacity:0;transform:translateY(12px) scale(.9);pointer-events:none}
+
+  .task-fab.visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+
+  .task-fab:hover{box-shadow:0 6px 28px rgba(2,132,199,.6);transform:translateY(-2px) scale(1)}
+
+  .task-fab-icon{font-size:1.05rem}
+
+  .task-fab-count{display:inline-flex;align-items:center;justify-content:center;min-width:1.35rem;height:1.35rem;padding:0 .3rem;background:#fff;color:#0284c7;border-radius:999px;font-size:.75rem;font-weight:900}
+
+  @media(max-width:480px){.task-fab{bottom:1.2rem;right:1rem;padding:.55rem .9rem;font-size:.82rem}}
+
+
+
+  /* ── Customer welcome banner ──────────────────── */
+
+  .customer-welcome{margin-bottom:2rem;padding:1.5rem 1.75rem;background:linear-gradient(135deg,rgba(56,189,248,.1),rgba(99,102,241,.07));border:1.5px solid rgba(56,189,248,.3);border-radius:1.25rem;display:flex;align-items:flex-start;gap:1.1rem;flex-wrap:wrap}
+
+  .customer-welcome-icon{font-size:2.2rem;flex-shrink:0;line-height:1}
+
+  .customer-welcome-body{flex:1;min-width:200px}
+
+  .customer-welcome-title{margin:0 0 .35rem;font-size:1rem;font-weight:800;color:#e2e8f0}
+
+  .customer-welcome-text{margin:0 0 1rem;font-size:.88rem;color:#94a3b8;line-height:1.55}
+
+  .customer-welcome-steps{display:flex;flex-wrap:wrap;gap:.5rem;margin:0}
+
+  .welcome-step{display:flex;align-items:center;gap:.4rem;padding:.35rem .75rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:2rem;font-size:.8rem;color:#cbd5e1}
+
+  .welcome-step-num{display:inline-flex;align-items:center;justify-content:center;width:1.35rem;height:1.35rem;background:#38bdf8;color:#0f172a;border-radius:50%;font-weight:900;font-size:.7rem;flex-shrink:0}
+
+
+
+  /* ── IT Diagnostic Wizard ──────────────────────── */
+
+  .it-wizard-card{margin-bottom:1.5rem;padding:1.25rem 1.5rem;background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(56,189,248,.08));border:1.5px solid rgba(99,102,241,.3);border-radius:1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+
+  .it-wizard-icon{font-size:2rem;flex-shrink:0}
+
+  .it-wizard-header{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;width:100%}
+
+  .it-wizard-title{margin:0;font-size:1rem;font-weight:700;color:#e2e8f0}
+
+  .it-wizard-sub{margin:.2rem 0 0;font-size:.83rem;color:#94a3b8}
+
+  .btn-wizard-start{margin-left:auto;white-space:nowrap;background:linear-gradient(135deg,#6366f1,#38bdf8);border:none;color:#fff;padding:.55rem 1.25rem;border-radius:2rem;font-weight:700;font-size:.9rem;cursor:pointer;transition:opacity .15s,transform .1s}
+
+  .btn-wizard-start:hover{opacity:.88;transform:translateY(-1px)}
+
+  @media(max-width:640px){.btn-wizard-start{margin-left:0;width:100%}}
+
+
+
+  /* Overlay */
+
+  .wizard-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:8000;align-items:center;justify-content:center;padding:1rem}
+
+  .wizard-overlay.open{display:flex}
+
+
+
+  /* Modal */
+
+  .wizard-modal{background:#1e293b;border:1px solid rgba(255,255,255,.1);border-radius:1.25rem;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;padding:1.75rem;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.55)}
+
+  .wizard-close{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,.1);border:none;color:#e2e8f0;width:2rem;height:2rem;border-radius:50%;cursor:pointer;font-size:1rem}
+
+  .wizard-close:hover{background:rgba(255,255,255,.2)}
+
+
+
+  /* Progress */
+
+  .wizard-progress{height:4px;background:rgba(255,255,255,.08);border-radius:2px;margin-bottom:1.5rem;overflow:hidden}
+
+  .wizard-progress-bar{height:100%;background:linear-gradient(90deg,#6366f1,#38bdf8);border-radius:2px;transition:width .3s ease}
+
+
+
+  /* Step */
+
+  .wizard-step-title{font-size:1.05rem;font-weight:700;margin:0 0 1.25rem;color:#e2e8f0}
+
+  .wizard-options{display:flex;flex-direction:column;gap:.65rem}
+
+  .wizard-option{padding:.85rem 1.1rem;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.12);border-radius:.75rem;color:#e2e8f0;font-size:.9rem;text-align:left;cursor:pointer;transition:background .15s,border-color .15s,transform .1s}
+
+  .wizard-option:hover{background:rgba(56,189,248,.1);border-color:#38bdf8;color:#38bdf8;transform:translateX(3px)}
+
+  .wizard-back{margin-top:1rem;background:transparent;border:none;color:#94a3b8;font-size:.85rem;cursor:pointer;padding:0}
+
+  .wizard-back:hover{color:#e2e8f0}
+
+
+
+  /* Step 3 confirm */
+
+  .wizard-confirm{text-align:center}
+
+  .wizard-confirm-icon{width:3rem;height:3rem;background:#38bdf8;color:#0f172a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;margin:0 auto 1rem}
+
+  .wizard-confirm-task{margin:1rem 0 1.5rem;padding:1rem;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.25);border-radius:.75rem;font-size:.9rem;color:#cbd5e1;text-align:left}
+
+  .wizard-confirm-task strong{display:block;color:#38bdf8;margin-bottom:.35rem;font-size:.82rem;text-transform:uppercase;letter-spacing:.05em}
+
+  .wizard-confirm .btn{width:100%;margin-bottom:.65rem}
+
+  .wizard-confirm .btn-secondary{background:transparent;border:1.5px solid rgba(255,255,255,.18)}
+
+  .wizard-confirm .btn-secondary:hover{border-color:#38bdf8;color:#38bdf8}
+
+  .wizard-added-toast{margin-top:.85rem;padding:.6rem 1rem;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.3);border-radius:.65rem;font-size:.85rem;color:#38bdf8;display:none}
+
+
+
+  /* ── First-visit toast ──────────────────────── */
+
+  .visit-toast{position:fixed;bottom:2rem;left:1.5rem;z-index:850;max-width:320px;padding:1.1rem 1.25rem;background:#1e293b;border:1.5px solid rgba(56,189,248,.4);border-radius:1rem;box-shadow:0 8px 32px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:.55rem;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .35s,transform .35s}
+
+  .visit-toast.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+
+  .visit-toast-title{font-weight:800;font-size:.95rem;color:#e2e8f0;display:flex;align-items:center;gap:.5rem}
+
+  .visit-toast-text{font-size:.82rem;color:#94a3b8;line-height:1.5;margin:0}
+
+  .visit-toast-actions{display:flex;gap:.5rem;margin-top:.2rem;flex-wrap:wrap}
+
+  .visit-toast-cta{padding:.4rem .95rem;background:#38bdf8;color:#0f172a;border-radius:2rem;font-weight:700;font-size:.83rem;text-decoration:none;white-space:nowrap;border:none;cursor:pointer;transition:opacity .15s}
+
+  .visit-toast-cta:hover{opacity:.85}
+
+  .visit-toast-dismiss{padding:.4rem .75rem;background:transparent;border:1.5px solid rgba(255,255,255,.15);color:#94a3b8;border-radius:2rem;font-size:.82rem;cursor:pointer;transition:border-color .15s,color .15s}
+
+  .visit-toast-dismiss:hover{border-color:#38bdf8;color:#38bdf8}
+
+  @media(max-width:480px){.visit-toast{left:1rem;right:1rem;max-width:none}}
+
+
+
+  /* ── Customer Journey Tracker ───────────────── */
+
+  .journey-tracker{display:flex;align-items:stretch;gap:.5rem;margin-bottom:1.75rem;padding:1rem 1.25rem;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:1rem;flex-wrap:wrap}
+
+  .journey-step{display:flex;align-items:center;gap:.6rem;flex:1;min-width:120px;padding:.6rem .8rem;border:1.5px solid rgba(255,255,255,.08);border-radius:.75rem;transition:border-color .3s,background .3s}
+
+  .journey-step.jdone{border-color:rgba(56,189,248,.4);background:rgba(56,189,248,.07)}
+
+  .journey-step.jactive{border-color:#38bdf8;background:rgba(56,189,248,.1)}
+
+  .jstep-num{display:flex;align-items:center;justify-content:center;width:1.85rem;height:1.85rem;border-radius:50%;background:rgba(255,255,255,.07);font-weight:800;font-size:.82rem;flex-shrink:0;transition:background .3s,color .3s}
+
+  .journey-step.jdone .jstep-num{background:#38bdf8;color:#0f172a}
+
+  .journey-step.jactive .jstep-num{background:rgba(56,189,248,.25);color:#38bdf8}
+
+  .jstep-info{display:flex;flex-direction:column;gap:.1rem;min-width:0}
+
+  .jstep-label{font-weight:700;font-size:.84rem;color:#e2e8f0;white-space:nowrap}
+
+  .journey-step.jdone .jstep-label::after{content:" ✓";color:#38bdf8}
+
+  .jstep-hint{font-size:.74rem;color:#475569;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  .journey-step.jdone .jstep-hint,.journey-step.jactive .jstep-hint{color:#64748b}
+
+  .journey-arrow{color:#334155;font-size:1.1rem;flex-shrink:0;align-self:center;padding:0 .1rem}
+
+  @media(max-width:600px){.journey-arrow{display:none}.journey-step{min-width:90px}}
+
+
+
+  /* ── Send button pulse when tasks ready ─────── */
+
+  @keyframes send-pulse{0%,100%{box-shadow:0 0 0 0 rgba(56,189,248,.55)}60%{box-shadow:0 0 0 9px rgba(56,189,248,0)}}
+
+  .btn-send-tasks.pulse-active{animation:send-pulse 2.2s infinite}
+
+
+
+  /* ── Visitor Challenge ─────────────────────────────── */
+
+  .visitor-challenge{margin-bottom:1.5rem;padding:1.25rem 1.5rem;background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(56,189,248,.07));border:1.5px solid rgba(99,102,241,.28);border-radius:1.1rem}
+
+  .vc-header{display:flex;align-items:center;gap:.85rem;cursor:pointer;user-select:none;flex-wrap:wrap;list-style:none;padding:0;margin:0;border:none;background:transparent;width:100%;text-align:left;color:inherit;font:inherit}
+
+  .vc-icon{font-size:1.6rem;flex-shrink:0}
+
+  .vc-title{margin:0;font-size:1rem;font-weight:700;color:#e2e8f0;flex:1}
+
+  .vc-badge{padding:.25rem .65rem;background:rgba(56,189,248,.15);border:1px solid rgba(56,189,248,.35);border-radius:999px;font-size:.78rem;font-weight:700;color:#38bdf8;white-space:nowrap}
+
+  .vc-progress-bar-wrap{height:5px;background:rgba(255,255,255,.07);border-radius:3px;margin:.85rem 0 .65rem;overflow:hidden}
+
+  .vc-progress-bar{height:100%;background:linear-gradient(90deg,#6366f1,#38bdf8);border-radius:3px;transition:width .4s ease}
+
+  .vc-tasks{display:flex;flex-direction:column;gap:.55rem;margin-top:.1rem}
+
+  .vc-task{display:flex;align-items:center;gap:.7rem;padding:.6rem .85rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:.7rem;transition:border-color .2s,background .2s}
+
+  .vc-task.vc-done{border-color:rgba(56,189,248,.3);background:rgba(56,189,248,.06)}
+
+  .vc-task-check{display:flex;align-items:center;justify-content:center;width:1.55rem;height:1.55rem;border-radius:50%;border:2px solid rgba(255,255,255,.2);flex-shrink:0;font-size:.8rem;font-weight:900;color:transparent;transition:background .2s,border-color .2s,color .2s}
+
+  .vc-task.vc-done .vc-task-check{background:#38bdf8;border-color:#38bdf8;color:#0f172a}
+
+  .vc-task-info{flex:1;min-width:0}
+
+  .vc-task-title{font-weight:600;font-size:.88rem;color:#e2e8f0}
+
+  .vc-task.vc-done .vc-task-title{color:#94a3b8;text-decoration:line-through}
+
+  .vc-task-hint{font-size:.76rem;color:#475569;margin-top:.1rem}
+
+  .vc-reward{display:none;margin-top:1rem;padding:1rem 1.1rem;background:rgba(56,189,248,.1);border:1.5px solid rgba(56,189,248,.4);border-radius:.85rem;text-align:center}
+
+  .vc-reward.visible{display:block;animation:vc-reward-in .4s ease}
+
+  @keyframes vc-reward-in{0%{transform:scale(.9);opacity:0}100%{transform:scale(1);opacity:1}}
+
+  .vc-reward-icon{font-size:2rem;margin-bottom:.5rem}
+
+  .vc-reward-title{font-weight:800;font-size:1rem;color:#38bdf8;margin:0 0 .3rem}
+
+  .vc-reward-code{display:inline-block;margin:.55rem auto 0;padding:.35rem .85rem;background:#38bdf8;color:#0f172a;border-radius:.5rem;font-weight:900;font-size:1rem;letter-spacing:.08em;cursor:default}
+
+  .vc-toggle-icon{flex-shrink:0;font-size:.9rem;color:#64748b;transition:transform .25s}
+
+  .visitor-challenge.collapsed .vc-toggle-icon{transform:rotate(-90deg)}
+
+  .visitor-challenge.collapsed .vc-body{display:none}
+
+
+  /* ── Confetti canvas ─────────────────────────────────── */
+  #vc-confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;opacity:0;transition:opacity .6s}
+  #vc-confetti.active{opacity:1}
+
+  /* ── Challenge complete pulse on reward ─────────────── */
+  @keyframes vc-pulse{0%,100%{box-shadow:0 0 0 0 rgba(56,189,248,.5)}60%{box-shadow:0 0 0 12px rgba(56,189,248,0)}}
+  .vc-reward.pulse{animation:vc-pulse 2s 3}
+
+  /* ── Task action links ──────────────────────────────── */
+  .vc-task-action{display:inline-flex;align-items:center;padding:.28rem .7rem;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.28);color:#38bdf8;border-radius:2rem;font-size:.76rem;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background .15s,border-color .15s,transform .1s;margin-left:auto}
+  .vc-task-action:hover{background:rgba(56,189,248,.22);border-color:#38bdf8;transform:translateX(2px)}
+  .vc-task.vc-done .vc-task-action{display:none}
+
+  /* ── Sticky challenge progress bar ─────────────────── */
+  #vc-sticky-bar{position:fixed;top:0;left:0;right:0;z-index:8500;display:flex;align-items:center;gap:.65rem;padding:.55rem 1.25rem;background:#0f172a;border-bottom:1px solid rgba(56,189,248,.25);box-shadow:0 2px 16px rgba(0,0,0,.4);transform:translateY(-100%);transition:transform .3s ease;flex-wrap:wrap}
+  #vc-sticky-bar.visible{transform:translateY(0)}
+  .vc-sticky-icon{font-size:1.1rem;flex-shrink:0}
+  .vc-sticky-label{font-size:.82rem;font-weight:700;color:#e2e8f0;white-space:nowrap}
+  .vc-sticky-prog-wrap{flex:1;min-width:60px;height:5px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+  .vc-sticky-prog{height:100%;background:linear-gradient(90deg,#6366f1,#38bdf8);border-radius:3px;transition:width .4s ease}
+  .vc-sticky-count{font-size:.8rem;font-weight:800;color:#38bdf8;white-space:nowrap}
+  .vc-sticky-cta{padding:.3rem .8rem;background:#38bdf8;color:#0f172a;border-radius:2rem;font-weight:700;font-size:.78rem;text-decoration:none;white-space:nowrap;transition:opacity .15s}
+  .vc-sticky-cta:hover{opacity:.85}
+  .vc-sticky-done{font-size:.8rem;color:#10b981;font-weight:700;white-space:nowrap}
+  @media(max-width:480px){#vc-sticky-bar{padding:.45rem .9rem;gap:.4rem}.vc-sticky-label{display:none}}
+</style>
 <body>
-  <section id="contacts">
+
+  <!-- ── Sticky Challenge Progress Bar ──────────────── -->
+  <div id="vc-sticky-bar" role="status" aria-live="polite" aria-label="Challenge Fortschritt">
+    <span class="vc-sticky-icon" aria-hidden="true">🏆</span>
+    <span class="vc-sticky-label" data-uk="Ваш прогрес:" data-de="Ihr Fortschritt:">Ваш прогрес:</span>
+    <div class="vc-sticky-prog-wrap" aria-hidden="true">
+      <div class="vc-sticky-prog" id="vc-sticky-prog" style="width:0%"></div>
+    </div>
+    <span class="vc-sticky-count" id="vc-sticky-count">0 / 6</span>
+    <span class="vc-sticky-done" id="vc-sticky-done" style="display:none" data-uk="🎁 Бонус розблоковано!" data-de="🎁 Bonus freigeschaltet!">🎁 Бонус розблоковано!</span>
+    <a href="#tasks" class="vc-sticky-cta" id="vc-sticky-cta" data-uk="Виконати завдання →" data-de="Aufgaben erfüllen →">Виконати завдання →</a>
+  </div>
+
+  <a class="skip-link" href="#main" data-uk="Перейти до вмісту" data-de="Zum Inhalt springen">Перейти до вмісту</a>
+
+
+  <header class="site-header">
+
+    <div class="container header-inner">
+
+      <a class="brand" href="#hero" data-aria-label-uk="PC Voronov — на головну" data-aria-label-de="PC Voronov — zur Startseite" aria-label="PC Voronov — на головну">
+
+        <img src="n.png" alt="Логотип PC Voronov" data-alt-uk="Логотип PC Voronov" data-alt-de="Logo von PC Voronov" class="logo" />
+
+        <span class="brand-text">
+
+          <span class="brand-title">PC Voronov</span>
+
+          <span class="tagline" data-uk="IT-послуги, мережі, сервери та розробка ПЗ" data-de="IT-Services, Netzwerke, Server und Softwareentwicklung">IT-послуги, мережі, сервери та розробка ПЗ</span>
+
+        </span>
+
+      </a>
+
+
+
+      <div class="header-controls">
+
+        <nav class="main-nav" data-aria-label-uk="Головне меню" data-aria-label-de="Hauptmenü" aria-label="Головне меню">
+
+          <a href="#services" data-uk="Послуги" data-de="Leistungen">Послуги</a>
+
+          <a href="#advantages" data-uk="Переваги" data-de="Vorteile">Переваги</a>
+
+          <a href="#about" data-uk="Про нас" data-de="Über uns">Про нас</a>
+
+          <a href="#process" data-uk="Як працюємо" data-de="Ablauf">Як працюємо</a>
+
+          <a href="#prices" data-uk="Ціни" data-de="Preise">Ціни</a>
+
+          <a href="#tasks" data-uk="Мої завдання" data-de="Meine Aufgaben">Мої завдання<span class="nav-task-badge" id="nav-task-badge" aria-live="polite" aria-label="tasks count">0</span></a>
+
+          <a href="#contacts" data-uk="Контакти" data-de="Kontakt">Контакти</a>
+
+          <a href="investors.html" data-uk="Інвесторам" data-de="Für Investoren">Інвесторам</a>
+
+          <a href="bank-details.html" data-uk="Реквізити" data-de="Bankdaten">Реквізити</a>
+
+        </nav>
+
+
+
+        <div class="language-switcher" aria-label="Language switcher">
+
+          <button type="button" class="lang-btn is-active" id="lang-uk-btn" data-lang="uk" aria-pressed="true">UK</button>
+
+          <button type="button" class="lang-btn" id="lang-de-btn" data-lang="de" aria-pressed="false">DE</button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+  <main id="main">
+
+    <section class="hero" id="hero">
+
+      <div class="container hero-grid">
+
+        <div class="hero-copy">
+
+          <p class="eyebrow" data-uk="ФОП Воронов Володимир Геннадійович · IT-послуги для бізнесу та приватних клієнтів" data-de="Einzelunternehmer Voronov Wolodymyr Gennadijovytsch · IT-Services für Unternehmen und Privatkunden">ФОП Воронов Володимир Геннадійович · IT-послуги для бізнесу та приватних клієнтів</p>
+
+          <h1 data-uk="PC Voronov — надійна IT-інфраструктура, стабільні мережі та програмні рішення під ваші завдання" data-de="PC Voronov — zuverlässige IT-Infrastruktur, stabile Netzwerke und Softwarelösungen für Ihre Aufgaben">PC Voronov — надійна IT-інфраструктура, стабільні мережі та програмні рішення під ваші завдання</h1>
+
+          <p class="hero-lead" data-uk="PC Voronov проєктує, впроваджує та супроводжує мережі, сервери, обладнання й прикладне програмне забезпечення. Працюємо дистанційно по Україні та Європі, а також з виїздом у м. Краматорськ і Донецькій області." data-de="PC Voronov plant, implementiert und betreut Netzwerke, Server, Hardware und Anwendungssoftware. Wir arbeiten remote in der Ukraine und Europa sowie vor Ort in Kramatorsk und der Oblast Donezk.">PC Voronov проєктує, впроваджує та супроводжує мережі, сервери, обладнання й прикладне програмне забезпечення. Працюємо дистанційно по Україні та Європі, а також з виїздом у м. Краматорськ і Донецькій області.</p>
+
+
+
+          <div class="hero-actions">
+
+            <a class="btn" href="#tasks" data-uk="Створити список завдань" data-de="Aufgabenliste starten">Створити список завдань</a>
+
+            <a class="btn btn-secondary" href="#request-form" data-uk="Надіслати заявку" data-de="Anfrage senden">Надіслати заявку</a>
+
+            <a class="btn btn-secondary" href="#prices" data-uk="Переглянути ціни" data-de="Preise ansehen">Переглянути ціни</a>
+
+          </div>
+
+
+
+          <div class="hero-microflow">
+
+            <div class="hero-microstep">
+
+              <strong data-uk="Крок 1" data-de="Schritt 1">Крок 1</strong>
+
+              <span data-uk="Оберіть готові завдання або додайте власне у розділі «Мої завдання»" data-de="Wählen Sie fertige Aufgaben oder fügen Sie im Bereich „Meine Aufgaben“ Ihre eigene hinzu">Оберіть готові завдання або додайте власне у розділі «Мої завдання»</span>
+
+            </div>
+
+            <div class="hero-microstep">
+
+              <strong data-uk="Крок 2" data-de="Schritt 2">Крок 2</strong>
+
+              <span data-uk="Передайте список у форму заявки або надішліть запит одразу з сайту" data-de="Übernehmen Sie die Liste in das Anfrageformular oder senden Sie Ihre Anfrage direkt über die Website">Передайте список у форму заявки або надішліть запит одразу з сайту</span>
+
+            </div>
+
+            <div class="hero-microstep">
+
+              <strong data-uk="Крок 3" data-de="Schritt 3">Крок 3</strong>
+
+              <span data-uk="Отримайте зворотний зв'язок, уточнення та план виконання по вашому завданню" data-de="Erhalten Sie Rückmeldung, Klärung und einen Umsetzungsplan für Ihre Aufgabe">Отримайте зворотний зв'язок, уточнення та план виконання по вашому завданню</span>
+
+            </div>
+
+          </div>
+
+
+
+          <ul class="hero-points" data-aria-label-uk="Ключові переваги" data-aria-label-de="Wichtige Vorteile" aria-label="Ключові переваги">
+
+            <li data-uk="Проєктування та супровід LAN/WAN-мереж" data-de="Planung und Betreuung von LAN/WAN-Netzwerken">Проєктування та супровід LAN/WAN-мереж</li>
+
+            <li data-uk="Налаштування серверів, маршрутизаторів, комутаторів і VPN" data-de="Konfiguration von Servern, Routern, Switches und VPN">Налаштування серверів, маршрутизаторів, комутаторів і VPN</li>
+
+            <li data-uk="Розробка ПЗ, автоматизація процесів та інтеграції" data-de="Softwareentwicklung, Prozessautomatisierung und Integrationen">Розробка ПЗ, автоматизація процесів та інтеграції</li>
+
+            <li data-uk="Швидкий зв'язок, підтвердження на email і прозорі умови оплати" data-de="Schnelle Rückmeldung, E-Mail-Bestätigung und transparente Zahlungsbedingungen">Швидкий зв'язок, підтвердження на email і прозорі умови оплати</li>
+
+          </ul>
+
+        </div>
+
+
+
+        <aside class="hero-panel" data-aria-label-uk="Коротка інформація" data-aria-label-de="Kurzinformation" aria-label="Коротка інформація">
+
+          <div class="panel-card">
+
+            <p class="panel-label" data-uk="Формат роботи" data-de="Arbeitsformat">Формат роботи</p>
+
+            <p class="panel-value" data-uk="Дистанційно та з виїздом" data-de="Remote und vor Ort">Дистанційно та з виїздом</p>
+
+          </div>
+
+          <div class="panel-card">
+
+            <p class="panel-label" data-uk="Основні напрями" data-de="Schwerpunkte">Основні напрями</p>
+
+            <p class="panel-value" data-uk="Мережі, сервери, обладнання, IT-консалтинг, розробка ПЗ" data-de="Netzwerke, Server, Hardware, IT-Beratung, Softwareentwicklung">Мережі, сервери, обладнання, IT-консалтинг, розробка ПЗ</p>
+
+          </div>
+
+          <div class="panel-card">
+
+            <p class="panel-label" data-uk="Адреса" data-de="Adresse">Адреса</p>
+
+            <p class="panel-value" data-uk="вул. Беленківська, 117-8, м. Краматорськ, 84320, Донецька обл., Україна" data-de="Kramatorsk, Oblast Donezk, Ukraine">вул. Беленківська, 117-8, м. Краматорськ, 84320, Донецька обл., Україна</p>
+
+          </div>
+
+          <div class="panel-card highlight-card">
+
+            <p class="panel-label" data-uk="Швидкий контакт" data-de="Schnellkontakt">Швидкий контакт</p>
+
+            <a href="tel:+380505235040">+380 (50) 523‑5040</a>
+
+            <a href="mailto:comprw@gmail.com">comprw@gmail.com</a>
+
+          </div>
+
+        </aside>
+
+      </div>
+
+
+
+      <div class="container business-strip">
+
+        <div class="info-pill">
+
+          <span data-uk="Власник" data-de="Inhaber">Власник</span>
+
+          <strong data-uk="ФОП Воронов Володимир Геннадійович" data-de="Einzelunternehmer Voronov Wolodymyr Gennadijovytsch">ФОП Воронов Володимир Геннадійович</strong>
+
+        </div>
+
+        <div class="info-pill">
+
+          <span data-uk="Приймання замовлень" data-de="Auftragsannahme">Приймання замовлень</span>
+
+          <strong data-uk="Email, телефон, форма на сайті" data-de="E-Mail, Telefon, Formular auf der Website">Email, телефон, форма на сайті</strong>
+
+        </div>
+
+        <div class="info-pill">
+
+          <span data-uk="Способи оплати" data-de="Zahlungsarten">Способи оплати</span>
+
+          <strong data-uk="LiqPay, банківський переказ, за домовленістю" data-de="LiqPay, Banküberweisung, nach Vereinbarung">LiqPay, банківський переказ, за домовленістю</strong>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="section" id="services">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="section-kicker" data-uk="Послуги" data-de="Leistungen">Послуги</p>
+
+          <h2 data-uk="Комплексна технічна підтримка та розвиток IT-середовища" data-de="Ganzheitliche technische Unterstützung und Weiterentwicklung Ihrer IT-Umgebung">Комплексна технічна підтримка та розвиток IT-середовища</h2>
+
+          <p data-uk="Підбираємо рішення під реальну інфраструктуру та бізнес-процеси: від мереж і серверів до автоматизації внутрішніх операцій, AI-підтримки та супроводу систем." data-de="Wir wählen Lösungen passend zu Ihrer realen Infrastruktur und Ihren Geschäftsprozessen: von Netzwerken und Servern bis zu Prozessautomatisierung, KI-Support und Systembetreuung.">Підбираємо рішення під реальну інфраструктуру та бізнес-процеси: від мереж і серверів до автоматизації внутрішніх операцій, AI-підтримки та супроводу систем.</p>
+
+        </div>
+
+
+
+        <div class="cards services-grid">
+
+          <article class="card service-card">
+
+            <div class="card-icon" aria-hidden="true">01</div>
+
+            <h3 data-uk="Управління та моніторинг мереж" data-de="Netzwerk-Management und Monitoring">Управління та моніторинг мереж</h3>
+
+            <p data-uk="Проєктування LAN/WAN, маршрутизація, VLAN, VPN, моніторинг, усунення збоїв та підтримка критичних вузлів інфраструктури." data-de="LAN/WAN-Planung, Routing, VLAN, VPN, Monitoring, Fehlerbehebung und Betreuung kritischer Infrastrukturknoten.">Проєктування LAN/WAN, маршрутизація, VLAN, VPN, моніторинг, усунення збоїв та підтримка критичних вузлів інфраструктури.</p>
+
+            <div class="service-actions">
+
+              <a class="btn btn-service" href="#request-form" data-service="Управління та моніторинг мереж" data-uk="Замовити послугу" data-de="Leistung bestellen">Замовити послугу</a>
+
+            </div>
+
+          </article>
+
+
+
+          <article class="card service-card">
+
+            <div class="card-icon" aria-hidden="true">02</div>
+
+            <h3 data-uk="Підтримка серверів та обладнання" data-de="Server-Support und Hardware-Betreuung">Підтримка серверів та обладнання</h3>
+
+            <p data-uk="Налаштування серверів, комутаторів, маршрутизаторів, резервне копіювання, оновлення, діагностика та профілактичне обслуговування." data-de="Einrichtung von Servern, Switches, Routern, Backups, Updates, Diagnose und vorbeugende Wartung.">Налаштування серверів, комутаторів, маршрутизаторів, резервне копіювання, оновлення, діагностика та профілактичне обслуговування.</p>
+
+            <div class="service-actions">
+
+              <a class="btn btn-service" href="#request-form" data-service="Підтримка серверів та обладнання" data-uk="Замовити послугу" data-de="Leistung bestellen">Замовити послугу</a>
+
+            </div>
+
+          </article>
+
+
+
+          <article class="card service-card">
+
+            <div class="card-icon" aria-hidden="true">03</div>
+
+            <h3 data-uk="Розробка програмного забезпечення" data-de="Softwareentwicklung">Розробка програмного забезпечення</h3>
+
+            <p data-uk="Створення прикладних рішень, внутрішніх сервісів, API, інтеграцій та інструментів автоматизації під конкретні потреби бізнесу." data-de="Entwicklung von Anwendungen, internen Services, APIs, Integrationen und Automatisierungstools für konkrete Geschäftsanforderungen.">Створення прикладних рішень, внутрішніх сервісів, API, інтеграцій та інструментів автоматизації під конкретні потреби бізнесу.</p>
+
+            <div class="service-actions">
+
+              <a class="btn btn-service" href="#request-form" data-service="Розробка програмного забезпечення" data-uk="Замовити послугу" data-de="Leistung bestellen">Замовити послугу</a>
+
+            </div>
+
+          </article>
+
+
+
+          <article class="card service-card">
+
+            <div class="card-icon" aria-hidden="true">04</div>
+
+            <h3 data-uk="Аудит та IT-консалтинг" data-de="IT-Audit und Beratung">Аудит та IT-консалтинг</h3>
+
+            <p data-uk="Аналіз поточної інфраструктури, оцінка ризиків, рекомендації щодо безпеки, масштабування та оптимізації IT-витрат." data-de="Analyse der aktuellen Infrastruktur, Risikobewertung sowie Empfehlungen zu Sicherheit, Skalierung und IT-Kostenoptimierung.">Аналіз поточної інфраструктури, оцінка ризиків, рекомендації щодо безпеки, масштабування та оптимізації IT-витрат.</p>
+
+            <div class="service-actions">
+
+              <a class="btn btn-service" href="#request-form" data-service="Аудит та IT-консалтинг" data-uk="Замовити послугу" data-de="Leistung bestellen">Замовити послугу</a>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="section section-muted" id="advantages">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="section-kicker" data-uk="Чому обирають нас" data-de="Warum Kunden uns wählen">Чому обирають нас</p>
+
+          <h2 data-uk="Практичний підхід без зайвої складності" data-de="Pragmatischer Ansatz ohne unnötige Komplexität">Практичний підхід без зайвої складності</h2>
+
+        </div>
+
+
+
+        <div class="cards advantage-grid">
+
+          <article class="card info-card">
+
+            <h3 data-uk="Системний підхід" data-de="Systematischer Ansatz">Системний підхід</h3>
+
+            <p data-uk="Спочатку аналізуємо інфраструктуру та завдання, а вже потім пропонуємо рішення, яке реально відповідає масштабу, ризикам і бюджету." data-de="Wir analysieren zuerst Infrastruktur und Aufgaben und schlagen dann eine Lösung vor, die wirklich zu Umfang, Risiken und Budget passt.">Спочатку аналізуємо інфраструктуру та завдання, а вже потім пропонуємо рішення, яке реально відповідає масштабу, ризикам і бюджету.</p>
+
+          </article>
+
+          <article class="card info-card">
+
+            <h3 data-uk="Фокус на надійність" data-de="Fokus auf Zuverlässigkeit">Фокус на надійність</h3>
+
+            <p data-uk="Пріоритет — стабільна робота мережі, серверів, обладнання та сервісів, щоб зменшити простої та втрати часу." data-de="Priorität hat der stabile Betrieb von Netzwerken, Servern, Hardware und Diensten, um Ausfallzeiten zu minimieren.">Пріоритет — стабільна робота мережі, серверів, обладнання та сервісів, щоб зменшити простої та втрати часу.</p>
+
+          </article>
+
+          <article class="card info-card">
+
+            <h3 data-uk="Індивідуальні рішення" data-de="Individuelle Lösungen">Індивідуальні рішення</h3>
+
+            <p data-uk="Підбираємо інструменти й архітектуру під конкретні процеси клієнта, а не застосовуємо шаблонний набір послуг." data-de="Wir wählen Werkzeuge und Architektur passend zu den konkreten Prozessen des Kunden statt standardisierter Pakete.">Підбираємо інструменти й архітектуру під конкретні процеси клієнта, а не застосовуємо шаблонний набір послуг.</p>
+
+          </article>
+
+          <article class="card info-card">
+
+            <h3 data-uk="Зрозуміла комунікація" data-de="Klare Kommunikation">Зрозуміла комунікація</h3>
+
+            <p data-uk="Пояснюємо технічні рішення простою мовою, погоджуємо етапи робіт і підтверджуємо домовленості через email." data-de="Wir erklären technische Entscheidungen verständlich, stimmen Arbeitsschritte ab und bestätigen Vereinbarungen per E-Mail.">Пояснюємо технічні рішення простою мовою, погоджуємо етапи робіт і підтверджуємо домовленості через email.</p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="section" id="about">
+
+      <div class="container split-layout">
+
+        <div>
+
+          <div class="section-heading left-aligned">
+
+            <p class="section-kicker" data-uk="Про компанію" data-de="Über das Unternehmen">Про компанію</p>
+
+            <h2 data-uk="PC Voronov — приватна IT-практика та сервісний партнер" data-de="PC Voronov — private IT-Praxis und Servicepartner">PC Voronov — приватна IT-практика та сервісний партнер</h2>
+
+          </div>
+
+          <p data-uk="PC Voronov — це IT-послуги ФОП Воронова Володимира Геннадійовича. Ми спеціалізуємося на мережевій інфраструктурі, технічному супроводі серверів та обладнання, розробці програмного забезпечення і консалтингу." data-de="PC Voronov ist der IT-Service von Einzelunternehmer Voronov Wolodymyr Gennadijovytsch. Wir sind auf Netzwerkinfrastruktur, Server- und Hardware-Support, Softwareentwicklung und Beratung spezialisiert.">PC Voronov — це IT-послуги ФОП Воронова Володимира Геннадійовича. Ми спеціалізуємося на мережевій інфраструктурі, технічному супроводі серверів та обладнання, розробці програмного забезпечення і консалтингу.</p>
+
+          <p data-uk="Працюємо із завданнями різного рівня складності: від налаштування окремих робочих місць і VPN до комплексного супроводу IT-середовища, аудиту безпеки та впровадження нових цифрових рішень." data-de="Wir übernehmen Aufgaben unterschiedlicher Komplexität: von der Einrichtung einzelner Arbeitsplätze und VPN bis zur umfassenden Betreuung von IT-Umgebungen, Sicherheitsaudits und Einführung neuer digitaler Lösungen.">Працюємо із завданнями різного рівня складності: від налаштування окремих робочих місць і VPN до комплексного супроводу IT-середовища, аудиту безпеки та впровадження нових цифрових рішень.</p>
+
+        </div>
+
+
+
+        <div class="card checklist-card">
+
+          <h3 data-uk="Ключові компетенції" data-de="Kernkompetenzen">Ключові компетенції</h3>
+
+          <ul class="check-list">
+
+            <li data-uk="Проєктування, розгортання та супровід мережевих рішень" data-de="Planung, Implementierung und Betreuung von Netzwerklösungen">Проєктування, розгортання та супровід мережевих рішень</li>
+
+            <li data-uk="Підтримка серверного, мережевого та користувацького обладнання" data-de="Support für Server-, Netzwerk- und Endbenutzer-Hardware">Підтримка серверного, мережевого та користувацького обладнання</li>
+
+            <li data-uk="Автоматизація процесів, інтеграції та розробка прикладного ПЗ" data-de="Prozessautomatisierung, Integrationen und Entwicklung von Anwendungssoftware">Автоматизація процесів, інтеграції та розробка прикладного ПЗ</li>
+
+            <li data-uk="IT-аудит, рекомендації та планування модернізації інфраструктури" data-de="IT-Audits, Empfehlungen und Planung der Infrastrukturmodernisierung">IT-аудит, рекомендації та планування модернізації інфраструктури</li>
+
+            <li data-uk="Конфіденційність, відповідальність та робота за узгодженими умовами" data-de="Vertraulichkeit, Verantwortung und Arbeit nach abgestimmten Bedingungen">Конфіденційність, відповідальність та робота за узгодженими умовами</li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="section section-muted" id="process">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="section-kicker" data-uk="Як працюємо" data-de="So arbeiten wir">Як працюємо</p>
+
+          <h2 data-uk="Прозорий процес взаємодії" data-de="Transparenter Ablauf der Zusammenarbeit">Прозорий процес взаємодії</h2>
+
+        </div>
+
+
+
+        <div class="timeline">
+
+          <article class="timeline-item">
+
+            <span class="timeline-step">1</span>
+
+            <div>
+
+              <h3 data-uk="Первинний запит" data-de="Erstanfrage">Первинний запит</h3>
+
+              <p data-uk="Ви описуєте завдання, поточну ситуацію та бажаний результат. Ми уточнюємо деталі та визначаємо формат роботи." data-de="Sie beschreiben Aufgabe, aktuelle Situation und gewünschtes Ergebnis. Wir klären Details und bestimmen das passende Arbeitsformat.">Ви описуєте завдання, поточну ситуацію та бажаний результат. Ми уточнюємо деталі та визначаємо формат роботи.</p>
+
+            </div>
+
+          </article>
+
+
+
+          <article class="timeline-item">
+
+            <span class="timeline-step">2</span>
+
+            <div>
+
+              <h3 data-uk="Аналіз і пропозиція рішення" data-de="Analyse und Lösungsvorschlag">Аналіз і пропозиція рішення</h3>
+
+              <p data-uk="Оцінюємо інфраструктуру, ризики та строки, після чого надсилаємо зрозумілий план дій із підтвердженням на email." data-de="Wir bewerten Infrastruktur, Risiken und Zeitrahmen und senden anschließend einen klaren Maßnahmenplan mit E-Mail-Bestätigung.">Оцінюємо інфраструктуру, ризики та строки, після чого надсилаємо зрозумілий план дій із підтвердженням на email.</p>
+
+            </div>
+
+          </article>
+
+
+
+          <article class="timeline-item">
+
+            <span class="timeline-step">3</span>
+
+            <div>
+
+              <h3 data-uk="Виконання робіт" data-de="Umsetzung">Виконання робіт</h3>
+
+              <p data-uk="Налаштовуємо, модернізуємо, тестуємо й документуємо рішення, приділяючи увагу безпеці, надійності та безперервності сервісів." data-de="Wir konfigurieren, modernisieren, testen und dokumentieren die Lösung mit Fokus auf Sicherheit, Zuverlässigkeit und Servicekontinuität.">Налаштовуємо, модернізуємо, тестуємо й документуємо рішення, приділяючи увагу безпеці, надійності та безперервності сервісів.</p>
+
+            </div>
+
+          </article>
+
+
+
+          <article class="timeline-item">
+
+            <span class="timeline-step">4</span>
+
+            <div>
+
+              <h3 data-uk="Підтримка та розвиток" data-de="Support und Weiterentwicklung">Підтримка та розвиток</h3>
+
+              <p data-uk="За потреби супроводжуємо систему після впровадження, допомагаємо з новими завданнями, масштабуванням і подальшим розвитком інфраструктури." data-de="Bei Bedarf betreuen wir das System nach der Einführung weiter und unterstützen bei neuen Aufgaben, Skalierung und Weiterentwicklung der Infrastruktur.">За потреби супроводжуємо систему після впровадження, допомагаємо з новими завданнями, масштабуванням і подальшим розвитком інфраструктури.</p>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="section" id="tasks">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="section-kicker" data-uk="Мої завдання" data-de="Meine Aufgaben">Мої завдання</p>
+
+          <h2 data-uk="Складіть перелік завдань — ми візьмемо їх у роботу" data-de="Erstellen Sie eine Aufgabenliste — wir übernehmen die Bearbeitung">Складіть перелік завдань — ми візьмемо їх у роботу</h2>
+
+          <p data-uk="Додайте все, що потрібно вирішити: налаштування, розробка, аудит, підтримка. Потім одним кліком передайте перелік у форму заявки." data-de="Fügen Sie alles hinzu, was gelöst werden soll: Konfiguration, Entwicklung, Audit oder Support. Anschließend können Sie die Liste mit einem Klick in das Anfrageformular übernehmen.">Додайте все, що потрібно вирішити: налаштування, розробка, аудит, підтримка. Потім одним кліком передайте перелік у форму заявки.</p>
+
+        </div>
+
+
+
+        <div class="task-board">
+
+
+
+          <!-- ── Customer Journey Tracker ─────────────── -->
+
+          <div class="journey-tracker" id="journey-tracker" aria-label="Ваш прогрес">
+
+            <div class="journey-step" id="jstep-1">
+
+              <div class="jstep-num">1</div>
+
+              <div class="jstep-info">
+
+                <span class="jstep-label" data-uk="Діагностика" data-de="Diagnose">Діагностика</span>
+
+                <span class="jstep-hint" data-uk="Визначте послугу" data-de="Service ermitteln">Визначте послугу</span>
+
+              </div>
+
+            </div>
+
+            <span class="journey-arrow" aria-hidden="true">›</span>
+
+            <div class="journey-step" id="jstep-2">
+
+              <div class="jstep-num">2</div>
+
+              <div class="jstep-info">
+
+                <span class="jstep-label" data-uk="Завдання" data-de="Aufgaben">Завдання</span>
+
+                <span class="jstep-hint" data-uk="Додайте завдання" data-de="Aufgaben hinzufügen">Додайте завдання</span>
+
+              </div>
+
+            </div>
+
+            <span class="journey-arrow" aria-hidden="true">›</span>
+
+            <div class="journey-step" id="jstep-3">
+
+              <div class="jstep-num">3</div>
+
+              <div class="jstep-info">
+
+                <span class="jstep-label" data-uk="Заявка" data-de="Anfrage">Заявка</span>
+
+                <span class="jstep-hint" data-uk="Надішліть запит" data-de="Anfrage senden">Надішліть запит</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- ── Customer Welcome Banner ──────────────── -->
+
+          <div class="customer-welcome" id="customer-welcome">
+
+            <span class="customer-welcome-icon">👋</span>
+
+            <div class="customer-welcome-body">
+
+              <h3 class="customer-welcome-title" data-uk="Як замовити послугу — 3 простих кроки" data-de="So beauftragen Sie uns — 3 einfache Schritte">Як замовити послугу — 3 простих кроки</h3>
+
+              <p class="customer-welcome-text" data-uk="Додайте ваші завдання у список нижче, а потім натисніть «Передати в заявку» — ми зв'яжемося з вами найближчим часом." data-de="Fügen Sie Ihre Aufgaben zur Liste unten hinzu und klicken Sie dann auf «In Anfrage übernehmen» — wir melden uns in Kürze bei Ihnen.">Додайте ваші завдання у список нижче, а потім натисніть «Передати в заявку» — ми зв'яжемося з вами найближчим часом.</p>
+
+              <div class="customer-welcome-steps">
+
+                <span class="welcome-step"><span class="welcome-step-num">1</span><span data-uk="Оберіть завдання або введіть своє" data-de="Aufgabe auswählen oder eigene eingeben">Оберіть завдання або введіть своє</span></span>
+
+                <span class="welcome-step"><span class="welcome-step-num">2</span><span data-uk="Перевірте список завдань" data-de="Aufgabenliste prüfen">Перевірте список завдань</span></span>
+
+                <span class="welcome-step"><span class="welcome-step-num">3</span><span data-uk="Надішліть заявку — ми передзвонимо" data-de="Anfrage senden — wir rufen zurück">Надішліть заявку — ми передзвонимо</span></span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- ── Visitor Challenge ─────────────────────── -->
+
+          <div class="visitor-challenge" id="visitor-challenge">
+
+            <button class="vc-header" id="vc-header" aria-expanded="true" aria-controls="vc-body">
+
+              <span class="vc-icon" aria-hidden="true">🏆</span>
+
+              <h3 class="vc-title" data-uk="Гід для відвідувача — виконайте 6 кроків" data-de="Besucher-Leitfaden — 6 Schritte erfüllen">Гід для відвідувача — виконайте 6 кроків</h3>
+              <span class="vc-badge" id="vc-badge">0 / 6</span>
+              <span class="vc-toggle-icon" aria-hidden="true">▾</span>
+
+            </button>
+
+            <div class="vc-body" id="vc-body">
+
+              <div class="vc-progress-bar-wrap" aria-hidden="true">
+
+                <div class="vc-progress-bar" id="vc-progress-bar" style="width:0%"></div>
+
+              </div>
+
+              <div class="vc-tasks" role="list">
+
+
+
+                <div class="vc-task" id="vc-task-1" role="listitem">
+
+                  <div class="vc-task-check" aria-hidden="true">✓</div>
+
+                  <div class="vc-task-info">
+
+                    <div class="vc-task-title" data-uk="📋 Ознайомтеся з послугами" data-de="📋 Leistungen anschauen">📋 Ознайомтеся з послугами</div>
+
+                    <div class="vc-task-hint" data-uk="Перейдіть до розділу «Послуги»" data-de="Gehen Sie zum Abschnitt «Leistungen»">Перейдіть до розділу «Послуги»</div>
+
+                  </div>
+
+                  <a href="#services" class="vc-task-action" data-uk="Перейти →" data-de="Gehen →">Перейти →</a>
+                </div>
+
+
+                <div class="vc-task" id="vc-task-2" role="listitem">
+
+                  <div class="vc-task-check" aria-hidden="true">✓</div>
+
+                  <div class="vc-task-info">
+
+                    <div class="vc-task-title" data-uk="🔍 Запустіть IT-діагностику" data-de="🔍 IT-Diagnose starten">🔍 Запустіть IT-діагностику</div>
+
+                    <div class="vc-task-hint" data-uk="Натисніть «Почати діагностику» нижче" data-de="Klicken Sie unten auf «Diagnose starten»">Натисніть «Почати діагностику» нижче</div>
+
+                  </div>
+
+                  <button type="button" class="vc-task-action" id="vc-task-2-action" data-uk="Почати →" data-de="Starten →" onclick="document.getElementById('wizard-start-btn').click()">Почати →</button>
+                </div>
+
+
+                <div class="vc-task" id="vc-task-3" role="listitem">
+
+                  <div class="vc-task-check" aria-hidden="true">✓</div>
+
+                  <div class="vc-task-info">
+
+                    <div class="vc-task-title" data-uk="⚡ Оберіть Quick-Check завдання" data-de="⚡ Quick-Check-Aufgabe auswählen">⚡ Оберіть Quick-Check завдання</div>
+
+                    <div class="vc-task-hint" data-uk="Натисніть на будь-який чіп з переліку нижче" data-de="Klicken Sie auf einen Chip aus der Liste unten">Натисніть на будь-який чіп з переліку нижче</div>
+
+                  </div>
+
+                  <a href="#tasks" class="vc-task-action" data-uk="До чіпів →" data-de="Zu Chips →" onclick="setTimeout(function(){document.querySelector('.chip')&&document.querySelector('.chip').scrollIntoView({behavior:'smooth',block:'center'})},400)">До чіпів →</a>
+                </div>
+
+
+                <div class="vc-task" id="vc-task-4" role="listitem">
+
+                  <div class="vc-task-check" aria-hidden="true">✓</div>
+
+                  <div class="vc-task-info">
+
+                    <div class="vc-task-title" data-uk="📝 Складіть список завдань" data-de="📝 Aufgabenliste erstellen">📝 Складіть список завдань</div>
+
+                    <div class="vc-task-hint" data-uk="Додайте принаймні одне завдання до списку" data-de="Fügen Sie mindestens eine Aufgabe zur Liste hinzu">Додайте принаймні одне завдання до списку</div>
+
+                  </div>
+
+                  <a href="#tasks" class="vc-task-action" data-uk="Додати →" data-de="Hinzufügen →">Додати →</a>
+                </div>
+
+
+                <div class="vc-task" id="vc-task-5" role="listitem">
+
+                  <div class="vc-task-check" aria-hidden="true">✓</div>
+
+                  <div class="vc-task-info">
+
+                    <div class="vc-task-title" data-uk="📨 Надішліть заявку" data-de="📨 Anfrage senden">📨 Надішліть заявку</div>
+
+                    <div class="vc-task-hint" data-uk="Натисніть «Передати в заявку» або заповніть форму" data-de="Klicken Sie auf «In Anfrage übernehmen» oder füllen Sie das Formular aus">Натисніть «Передати в заявку» або заповніть форму</div>
+
+                  </div>
+
+                  <a href="#request-form" class="vc-task-action" data-uk="До форми →" data-de="Zum Formular →">До форми →</a>
+                </div>
+
+                <div class="vc-task" id="vc-task-6" role="listitem">
+                  <div class="vc-task-check" aria-hidden="true">✓</div>
+                  <div class="vc-task-info">
+                    <div class="vc-task-title" data-uk="💰 Ознайомтеся з цінами" data-de="💰 Preise ansehen">💰 Ознайомтеся з цінами</div>
+                    <div class="vc-task-hint" data-uk="Перейдіть до розділу «Ціни»" data-de="Gehen Sie zum Abschnitt «Preise»">Перейдіть до розділу «Ціни»</div>
+                  </div>
+                  <a href="#prices" class="vc-task-action" data-uk="Переглянути →" data-de="Ansehen →">Переглянути →</a>
+                </div>
+
+              </div>
+              <div class="vc-reward" id="vc-reward" role="status" aria-live="polite">
+
+                <div class="vc-reward-icon">🎁</div>
+
+                <p class="vc-reward-title" data-uk="Всі кроки виконано! Ваш бонус — безкоштовна 30-хв консультація" data-de="Alle Schritte erledigt! Ihr Bonus: 30 Min. Gratis-Beratung">Всі кроки виконано! Ваш бонус — безкоштовна 30-хв консультація</p>
+
+                <p style="font-size:.83rem;color:#94a3b8;margin:.35rem 0 0" data-uk="Вкажіть цей код у заявці — і ми проведемо безкоштовну 30-хвилинну консультацію" data-de="Geben Sie diesen Code in Ihrer Anfrage an — und wir schenken Ihnen eine kostenlose 30-Minuten-Beratung">Вкажіть цей код у заявці — і ми проведемо безкоштовну 30-хвилинну консультацію</p>
+
+                <div class="vc-reward-code">PCVIP30</div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- ── IT Diagnostic Wizard Card ───────────────── -->
+
+          <div class="it-wizard-card" id="it-wizard-card">
+
+            <div class="it-wizard-header">
+
+              <span class="it-wizard-icon">🔍</span>
+
+              <div>
+
+                <h3 class="it-wizard-title" data-uk="Не впевнені, що вам потрібно?" data-de="Unsicher, was Sie brauchen?">Не впевнені, що вам потрібно?</h3>
+
+                <p class="it-wizard-sub" data-uk="Пройдіть швидку діагностику — за 3 кроки ми визначимо потрібну послугу" data-de="Machen Sie in 3 Schritten einen schnellen Check — wir ermitteln den passenden Service">Пройдіть швидку діагностику — за 3 кроки ми визначимо потрібну послугу</p>
+
+              </div>
+
+              <button type="button" class="btn-wizard-start" id="wizard-start-btn" data-uk="Почати діагностику →" data-de="Diagnose starten →">Почати діагностику →</button>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- ── Wizard Modal ──────────────────────────────── -->
+
+          <div id="wizard-overlay" class="wizard-overlay" role="dialog" aria-modal="true" aria-labelledby="wizard-step-title-1">
+
+            <div class="wizard-modal">
+
+              <button class="wizard-close" id="wizard-close-btn" aria-label="Закрити">✕</button>
+
+              <div class="wizard-progress"><div class="wizard-progress-bar" id="wizard-progress-bar" style="width:33%"></div></div>
+
+
+
+              <!-- Step 1 -->
+
+              <div class="wizard-step" id="wizard-step-1">
+
+                <h3 class="wizard-step-title" id="wizard-step-title-1" data-uk="Крок 1 з 3: Яка сфера потребує допомоги?" data-de="Schritt 1 von 3: Welcher Bereich braucht Hilfe?">Крок 1 з 3: Яка сфера потребує допомоги?</h3>
+
+                <div class="wizard-options">
+
+                  <button class="wizard-option" data-category="network" data-uk="🌐 Мережа або інтернет-з'єднання" data-de="🌐 Netzwerk oder Internetverbindung">🌐 Мережа або інтернет-з'єднання</button>
+
+                  <button class="wizard-option" data-category="server" data-uk="🖥️ Сервер або комп'ютерне обладнання" data-de="🖥️ Server oder Computer-Hardware">🖥️ Сервер або комп'ютерне обладнання</button>
+
+                  <button class="wizard-option" data-category="software" data-uk="💻 Програмне забезпечення або розробка" data-de="💻 Software oder Entwicklung">💻 Програмне забезпечення або розробка</button>
+
+                  <button class="wizard-option" data-category="security" data-uk="🔒 Безпека, аудит або IT-консалтинг" data-de="🔒 Sicherheit, Audit oder IT-Beratung">🔒 Безпека, аудит або IT-консалтинг</button>
+
+                </div>
+
+              </div>
+
+
+
+              <!-- Step 2 -->
+
+              <div class="wizard-step" id="wizard-step-2" style="display:none">
+
+                <h3 class="wizard-step-title" id="wizard-step2-title" data-uk="Крок 2 з 3: Уточніть завдання" data-de="Schritt 2 von 3: Aufgabe präzisieren">Крок 2 з 3: Уточніть завдання</h3>
+
+                <div class="wizard-options" id="wizard-step2-options"></div>
+
+                <button class="wizard-back" id="wizard-back-btn">← <span data-uk="Назад" data-de="Zurück">Назад</span></button>
+
+              </div>
+
+
+
+              <!-- Step 3 -->
+
+              <div class="wizard-step wizard-confirm" id="wizard-step-3" style="display:none">
+
+                <div class="wizard-confirm-icon">✓</div>
+
+                <h3 class="wizard-step-title" data-uk="Завдання визначено!" data-de="Aufgabe wurde ermittelt!">Завдання визначено!</h3>
+
+                <div class="wizard-confirm-task">
+
+                  <strong data-uk="Рекомендована послуга:" data-de="Empfohlene Leistung:">Рекомендована послуга:</strong>
+
+                  <span id="wizard-confirm-service"></span>
+
+                </div>
+
+                <div class="wizard-confirm-task" style="margin-top:-.5rem">
+
+                  <strong data-uk="Опис завдання:" data-de="Aufgabenbeschreibung:">Опис завдання:</strong>
+
+                  <span id="wizard-confirm-task-text"></span>
+
+                </div>
+
+                <button type="button" class="btn" id="wizard-add-btn"><span data-uk="+ Додати до списку завдань" data-de="+ Zur Aufgabenliste hinzufügen">+ Додати до списку завдань</span></button>
+
+                <button type="button" class="btn btn-secondary" id="wizard-restart-btn"><span data-uk="↩ Додати ще одне завдання" data-de="↩ Weitere Aufgabe hinzufügen">↩ Додати ще одне завдання</span></button>
+
+                <div class="wizard-added-toast" id="wizard-added-toast" data-uk="✓ Завдання додано до списку! Прокрутіть вниз, щоб побачити." data-de="✓ Aufgabe wurde zur Liste hinzugefügt! Scrollen Sie nach unten.">✓ Завдання додано до списку! Прокрутіть вниз, щоб побачити.</div>
+
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+          <!-- ── /Wizard Modal ─────────────────────────────── -->
+
+
+
+          <div class="quick-check" id="quick-check">
+
+            <h3 class="quick-check-title" data-uk="⚡ Швидкий вибір — натисніть на потрібні завдання" data-de="⚡ Schnellauswahl — klicken Sie auf passende Aufgaben">⚡ Швидкий вибір — натисніть на потрібні завдання</h3>
+
+            <p class="quick-check-hint" data-uk="Натисніть на завдання — воно одразу додасться до списку. Або введіть власне завдання вручну нижче." data-de="Klicken Sie auf eine Aufgabe — sie wird sofort zur Liste hinzugefügt. Oder geben Sie unten eine eigene Aufgabe ein.">Натисніть на завдання — воно одразу додасться до списку. Або введіть власне завдання вручну нижче.</p>
+
+            <div class="quick-chips-wrap">
+
+
+
+              <div class="quick-chips-group">
+
+                <span class="chip-category" data-uk="🌐 Мережі" data-de="🌐 Netzwerke">🌐 Мережі</span>
+
+                <div class="quick-chips">
+
+                  <button type="button" class="chip" data-task-id="chip-vpn" data-service="Управління та моніторинг мереж" data-text-uk="Налаштування VPN-з'єднання" data-text-de="VPN-Verbindung einrichten" data-uk="Налаштування VPN" data-de="VPN einrichten">Налаштування VPN</button>
+
+                  <button type="button" class="chip" data-task-id="chip-vlan" data-service="Управління та моніторинг мереж" data-text-uk="Налаштування VLAN і сегментації мережі" data-text-de="VLAN und Netzwerksegmentierung einrichten" data-uk="VLAN / сегментація" data-de="VLAN / Segmentierung">VLAN / сегментація</button>
+
+                  <button type="button" class="chip" data-task-id="chip-monitor" data-service="Управління та моніторинг мереж" data-text-uk="Моніторинг і діагностика мережі" data-text-de="Netzwerk-Monitoring und Diagnose" data-uk="Моніторинг мережі" data-de="Netzwerk-Monitoring">Моніторинг мережі</button>
+
+                  <button type="button" class="chip" data-task-id="chip-project" data-service="Управління та моніторинг мереж" data-text-uk="Проєктування нової LAN/WAN-мережі" data-text-de="Neue LAN/WAN-Infrastruktur planen" data-uk="Проєкт мережі" data-de="Netzwerkprojekt">Проєкт мережі</button>
+
+                  <button type="button" class="chip" data-task-id="chip-internet" data-service="Управління та моніторинг мереж" data-text-uk="Усунення проблем з інтернет-з'єднанням" data-text-de="Probleme mit der Internetverbindung beheben" data-uk="Немає інтернету" data-de="Kein Internet">Немає інтернету</button>
+
+                  <button type="button" class="chip" data-task-id="chip-wifi" data-service="Управління та моніторинг мереж" data-text-uk="Налаштування Wi‑Fi та точок доступу" data-text-de="WLAN und Access Points konfigurieren" data-uk="Wi‑Fi / точки доступу" data-de="WLAN / Access Points">Wi‑Fi / точки доступу</button>
+
+                </div>
+
+              </div>
+
+
+
+              <div class="quick-chips-group">
+
+                <span class="chip-category" data-uk="🖥️ Сервери та обладнання" data-de="🖥️ Server und Hardware">🖥️ Сервери та обладнання</span>
+
+                <div class="quick-chips">
+
+                  <button type="button" class="chip" data-task-id="chip-server-update" data-service="Підтримка серверів та обладнання" data-text-uk="Оновлення ОС і серверного програмного забезпечення" data-text-de="Betriebssystem und Server-Software aktualisieren" data-uk="Оновлення сервера" data-de="Server aktualisieren">Оновлення сервера</button>
+
+                  <button type="button" class="chip" data-task-id="chip-backup" data-service="Підтримка серверів та обладнання" data-text-uk="Налаштування резервного копіювання даних" data-text-de="Datensicherung einrichten" data-uk="Резервне копіювання" data-de="Datensicherung">Резервне копіювання</button>
+
+                  <button type="button" class="chip" data-task-id="chip-hardware" data-service="Підтримка серверів та обладнання" data-text-uk="Діагностика та заміна обладнання" data-text-de="Hardware diagnostizieren und austauschen" data-uk="Діагностика обладнання" data-de="Hardware-Diagnose">Діагностика обладнання</button>
+
+                  <button type="button" class="chip" data-task-id="chip-workplace" data-service="Підтримка серверів та обладнання" data-text-uk="Налаштування нового робочого місця або ПК" data-text-de="Neuen Arbeitsplatz oder PC einrichten" data-uk="Нове робоче місце" data-de="Neuer Arbeitsplatz">Нове робоче місце</button>
+
+                  <button type="button" class="chip" data-task-id="chip-maintenance" data-service="Підтримка серверів та обладнання" data-text-uk="Профілактичне технічне обслуговування серверів" data-text-de="Vorbeugende Serverwartung durchführen" data-uk="Профілактика ТО" data-de="Wartung">Профілактика ТО</button>
+
+                  <button type="button" class="chip" data-task-id="chip-mail" data-service="Підтримка серверів та обладнання" data-text-uk="Налаштування поштового сервера" data-text-de="Mailserver konfigurieren" data-uk="Поштовий сервер" data-de="Mailserver">Поштовий сервер</button>
+
+                </div>
+
+              </div>
+
+
+
+              <div class="quick-chips-group">
+
+                <span class="chip-category" data-uk="💻 Розробка ПЗ" data-de="💻 Softwareentwicklung">💻 Розробка ПЗ</span>
+
+                <div class="quick-chips">
+
+                  <button type="button" class="chip" data-task-id="chip-business-app" data-service="Розробка програмного забезпечення" data-text-uk="Розробка внутрішнього бізнес-застосунку" data-text-de="Internes Business-Tool entwickeln" data-uk="Бізнес-застосунок" data-de="Business-Anwendung">Бізнес-застосунок</button>
+
+                  <button type="button" class="chip" data-task-id="chip-automation" data-service="Розробка програмного забезпечення" data-text-uk="Автоматизація бізнес-процесів" data-text-de="Geschäftsprozesse automatisieren" data-uk="Автоматизація процесів" data-de="Prozessautomatisierung">Автоматизація процесів</button>
+
+                  <button type="button" class="chip" data-task-id="chip-integration" data-service="Розробка програмного забезпечення" data-text-uk="Інтеграція з наявними системами" data-text-de="Integration mit bestehenden Systemen" data-uk="Інтеграція систем" data-de="Systemintegration">Інтеграція систем</button>
+
+                  <button type="button" class="chip" data-task-id="chip-scripts" data-service="Розробка програмного забезпечення" data-text-uk="Створення скриптів та утиліт для адміністрування" data-text-de="Skripte und Admin-Tools erstellen" data-uk="Скрипти / утиліти" data-de="Skripte / Tools">Скрипти / утиліти</button>
+
+                  <button type="button" class="chip" data-task-id="chip-webapi" data-service="Розробка програмного забезпечення" data-text-uk="Розробка вебзастосунку або API" data-text-de="Webanwendung oder API entwickeln" data-uk="Вебзастосунок / API" data-de="Webanwendung / API">Вебзастосунок / API</button>
+
+                </div>
+
+              </div>
+
+
+
+              <div class="quick-chips-group">
+
+                <span class="chip-category" data-uk="🔍 Аудит та консалтинг" data-de="🔍 Audit und Beratung">🔍 Аудит та консалтинг</span>
+
+                <div class="quick-chips">
+
+                  <button type="button" class="chip" data-task-id="chip-security" data-service="Аудит та IT-консалтинг" data-text-uk="Аудит IT-інфраструктури та безпеки" data-text-de="IT-Infrastruktur- und Sicherheitsaudit" data-uk="Аудит безпеки" data-de="Sicherheitsaudit">Аудит безпеки</button>
+
+                  <button type="button" class="chip" data-task-id="chip-costs" data-service="Аудит та IT-консалтинг" data-text-uk="Оцінка ризиків та оптимізація IT-витрат" data-text-de="Risiken bewerten und IT-Kosten optimieren" data-uk="Оптимізація витрат" data-de="Kostenoptimierung">Оптимізація витрат</button>
+
+                  <button type="button" class="chip" data-task-id="chip-consulting" data-service="Аудит та IT-консалтинг" data-text-uk="IT-консультація щодо розвитку інфраструктури" data-text-de="IT-Beratung zur Weiterentwicklung der Infrastruktur" data-uk="IT-консультація" data-de="IT-Beratung">IT-консультація</button>
+
+                  <button type="button" class="chip" data-task-id="chip-strategy" data-service="Аудит та IT-консалтинг" data-text-uk="Розробка IT-стратегії та дорожньої карти" data-text-de="IT-Strategie und Roadmap entwickeln" data-uk="IT-стратегія" data-de="IT-Strategie">IT-стратегія</button>
+
+                </div>
+
+              </div>
+
+
+
+            </div>
+
+            <p class="quick-check-footer"><span data-uk="Обрано завдань:" data-de="Ausgewählte Aufgaben:">Обрано завдань:</span> <strong id="chip-count">0</strong></p>
+
+          </div>
+
+
+
+          <div class="card task-input-card">
+
+            <h3 data-uk="Додати завдання" data-de="Aufgabe hinzufügen">Додати завдання</h3>
+
+            <form id="task-form" class="task-form" novalidate>
+
+              <div class="form-group">
+
+                <label for="task-text" data-uk="Опис завдання *" data-de="Aufgabenbeschreibung *">Опис завдання *</label>
+
+                <input type="text" id="task-text" autocomplete="off" data-placeholder-uk="Наприклад: налаштувати VPN, оновити сервер, створити API..." data-placeholder-de="Zum Beispiel: VPN einrichten, Server aktualisieren, API entwickeln..." placeholder="Наприклад: налаштувати VPN, оновити сервер, створити API..." />
+
+              </div>
+
+              <div class="task-form-row">
+
+                <div class="form-group">
+
+                  <label for="task-service-sel" data-uk="Напрям" data-de="Bereich">Напрям</label>
+
+                  <select id="task-service-sel">
+
+                    <option value="" data-uk="— Не вказано —" data-de="— Nicht angegeben —">— Не вказано —</option>
+
+                    <option value="Управління та моніторинг мереж" data-uk="Мережі" data-de="Netzwerke">Мережі</option>
+
+                    <option value="Підтримка серверів та обладнання" data-uk="Сервери та обладнання" data-de="Server und Hardware">Сервери та обладнання</option>
+
+                    <option value="Розробка програмного забезпечення" data-uk="Розробка ПЗ" data-de="Softwareentwicklung">Розробка ПЗ</option>
+
+                    <option value="Аудит та IT-консалтинг" data-uk="IT-консалтинг" data-de="IT-Beratung">IT-консалтинг</option>
+
+                    <option value="KI-Unterstützung" data-uk="KI-підтримка" data-de="KI-Unterstützung">KI-підтримка</option>
+
+                    <option value="Інше" data-uk="Інше" data-de="Andere">Інше</option>
+
+                  </select>
+
+                </div>
+
+                <div class="form-group">
+
+                  <label for="task-priority-sel" data-uk="Пріоритет" data-de="Priorität">Пріоритет</label>
+
+                  <select id="task-priority-sel">
+
+                    <option value="normal" data-uk="Звичайний" data-de="Normal">Звичайний</option>
+
+                    <option value="high" data-uk="Високий" data-de="Hoch">Високий</option>
+
+                    <option value="low" data-uk="Низький" data-de="Niedrig">Низький</option>
+
+                  </select>
+
+                </div>
+
+              </div>
+
+              <button type="submit" class="btn btn-add-task" data-uk="+ Додати завдання" data-de="+ Aufgabe hinzufügen">+ Додати завдання</button>
+
+            </form>
+
+          </div>
+
+
+
+          <div class="task-list-wrap">
+
+            <div class="task-list-header">
+
+              <h3><span data-uk="Список завдань" data-de="Aufgabenliste">Список завдань</span> <span class="task-count" id="task-count">0</span></h3>
+
+              <div class="task-header-actions">
+
+                <button class="btn btn-secondary btn-clear-tasks" id="clear-tasks-btn" data-aria-label-uk="Очистити всі завдання" data-aria-label-de="Alle Aufgaben löschen" data-title-uk="Очистити все" data-title-de="Alles löschen" title="Очистити все" aria-label="Очистити всі завдання"><span data-uk="Очистити" data-de="Leeren">Очистити</span></button>
+
+                <a class="btn btn-send-tasks" id="send-tasks-btn" href="#request-form" data-aria-label-uk="Передати завдання у форму заявки" data-aria-label-de="Aufgaben in das Anfrageformular übernehmen" aria-label="Передати завдання у форму заявки"><span data-uk="Передати в заявку →" data-de="In Anfrage übernehmen →">Передати в заявку →</span></a>
+
+              </div>
+
+            </div>
+
+            <ul class="task-list" id="task-list" data-aria-label-uk="Список завдань" data-aria-label-de="Aufgabenliste" aria-label="Список завдань">
+
+              <li class="task-empty" id="task-empty" data-uk="Завдання ще не додано. Додайте перше завдання вище!" data-de="Noch keine Aufgaben vorhanden. Fügen Sie oben die erste Aufgabe hinzu!">Завдання ще не додано. Додайте перше завдання вище!</li>
+
+            </ul>
+
+          </div>
+
+          <div class="task-email-alt" id="task-email-alt" style="display:none">
+
+            <span class="task-email-sep" data-uk="або надішліть список завдань напряму:" data-de="oder senden Sie die Aufgabenliste direkt:">або надішліть список завдань напряму:</span>
+
+            <a id="task-mailto-btn" class="btn btn-mailto" href="mailto:comprw@gmail.com" data-uk="✉ Написати на email" data-de="✉ Per E-Mail senden">✉ Написати на email</a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="section section-muted" id="prices">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="section-kicker" data-uk="Ціни та послуги" data-de="Preise und Leistungen">Ціни та послуги</p>
+
+          <h2 data-uk="Опис послуг із початковою вартістю" data-de="Leistungsbeschreibung mit Startpreisen">Опис послуг із початковою вартістю</h2>
+
+          <p data-uk="Нижче наведено базові напрямки робіт і стартові тарифи. Остаточна вартість залежить від складності, обсягу та формату надання послуги." data-de="Nachfolgend finden Sie die wichtigsten Leistungsbereiche und Startpreise. Der endgültige Preis hängt von Komplexität, Umfang und Leistungsformat ab.">Нижче наведено базові напрямки робіт і стартові тарифи. Остаточна вартість залежить від складності, обсягу та формату надання послуги.</p>
+
+        </div>
+
+
+
+        <div class="price-grid">
+
+          <article class="card pricing-card">
+
+            <h3 data-uk="Управління та моніторинг мереж" data-de="Netzwerk-Management">Управління та моніторинг мереж</h3>
+
+            <strong class="price-amount" data-uk="від 2 100 грн" data-de="ab 2.100 UAH">від 2 100 грн</strong>
+
+            <p data-uk="Побудова, налаштування та моніторинг LAN/WAN, VPN, VLAN і мережевої безпеки для стабільної роботи офісу або віддалених команд." data-de="Planung, Konfiguration und Monitoring von LAN/WAN, VPN, VLAN und Netzwerksicherheit für einen stabilen Betrieb im Büro oder für Remote-Teams.">Побудова, налаштування та моніторинг LAN/WAN, VPN, VLAN і мережевої безпеки для стабільної роботи офісу або віддалених команд.</p>
+
+            <div class="service-actions">
+
+              <a class="btn btn-service" href="#contacts" data-service="Управління та моніторинг мереж" data-uk="Замовити" data-de="Bestellen">Замовити</a>
+
+            </div>
+
+          </article>
+
+
+
+          <article class="card pricing-card">
+
+            <h3 data-uk="Підтримка серверів та обладнання" data-de="Server-Support">Підтримка серверів та обладнання</h3>
+
+            <strong class="price-amount" data-uk="від 1 650 грн" data-de="ab 1.650 UAH">від 1 650 грн</strong>
+
+            <p data-uk="Налаштування серверів, резервне копіювання, оновлення, профілактика та усунення несправностей серверного й мережевого обладнання." data-de="Serverkonfiguration, Datensicherung, Updates, Wartung und Störungsbehebung für Server- und Netzwerktechnik.">Налаштування серверів, резервне копіювання, оновлення, профілактика та усунення несправностей серверного й мережевого обладнання.</p>
+
+            <div class="service-actions">
+
+              <a class="btn btn-service" href="#contacts" data-service="Підтримка серверів та обладнання" data-uk="Замовити" data-de="Bestellen">Замовити</a>
+
+            </div>
+
+          </article>
+
+
+
+          <article class="card pricing-card">
+
+            <h3 data-uk="Розробка програмного забезпечення" data-de="Softwareentwicklung">Розробка програмного забезпечення</h3>
+
+            <strong class="price-amount" data-uk="від 4 100 грн" data-de="ab 4.100 UAH">від 4 100 грн</strong>
+
+            <p data-uk="Розробка вебзастосунків, API, внутрішніх сервісів, скриптів автоматизації та інтеграцій для бізнес-процесів." data-de="Entwicklung von Webanwendungen, APIs, internen Services, Automatisierungsskripten und Integrationen für Geschäftsprozesse.">Розробка вебзастосунків, API, внутрішніх сервісів, скриптів автоматизації та інтеграцій для бізнес-процесів.</p>
+
+            <div class="service-actions">
+
+              <a class="btn btn-service" href="#contacts" data-service="Розробка програмного забезпечення" data-uk="Замовити" data-de="Bestellen">Замовити</a>
+
+            </div>
+
+          </article>
+
+
+
+          <article class="card pricing-card">
+
+            <h3 data-uk="Аудит та IT-консалтинг" data-de="IT-Beratung">Аудит та IT-консалтинг</h3>
+
+            <strong class="price-amount" data-uk="від 2 500 грн" data-de="ab 2.500 UAH">від 2 500 грн</strong>
+
+            <p data-uk="Оцінка інфраструктури, аналіз ризиків, перевірка безпеки, рекомендації щодо модернізації та оптимізації IT-витрат." data-de="Infrastrukturbewertung, Risikoanalyse, Sicherheitsprüfung sowie Empfehlungen zur Modernisierung und Optimierung von IT-Kosten.">Оцінка інфраструктури, аналіз ризиків, перевірка безпеки, рекомендації щодо модернізації та оптимізації IT-витрат.</p>
+
+            <div class="service-actions">
+
+              <a class="btn btn-service" href="#contacts" data-service="Аудит та IT-консалтинг" data-uk="Замовити" data-de="Bestellen">Замовити</a>
+
+            </div>
+
+          </article>
+
+
+
+          <article class="card pricing-card">
+
+            <h3 data-uk="KI-підтримка (AI Chat, 30 хв)" data-de="KI-Unterstützung (30 Min)">KI-підтримка (AI Chat, 30 хв)</h3>
+
+            <strong class="price-amount" data-uk="410 грн" data-de="410 UAH">410 грн</strong>
+
+            <p data-uk="Швидка платна AI-сесія для запитань щодо мереж, серверів, програмного забезпечення та ІТ-процесів з кнопки KI-Unterstützung на сайті." data-de="Schnelle kostenpflichtige KI-Session für Fragen zu Netzwerken, Servern, Software und IT-Prozessen über die KI-Unterstützung-Schaltfläche auf der Website.">Швидка платна AI-сесія для запитань щодо мереж, серверів, програмного забезпечення та ІТ-процесів з кнопки KI-Unterstützung на сайті.</p>
+
+            <div class="service-actions">
+
+              <a class="btn btn-service" href="#contacts" data-service="KI-Unterstützung" data-uk="Замовити" data-de="Bestellen">Замовити</a>
+
+            </div>
+
+          </article>
+
+        </div>
+
+        <p class="price-note" data-uk="* Усі ціни є стартовими та можуть змінюватися залежно від обсягу робіт, терміновості та формату виконання." data-de="* Alle Preise sind Startpreise und können je nach Umfang, Dringlichkeit und Ausführungsformat variieren.">* Усі ціни є стартовими та можуть змінюватися залежно від обсягу робіт, терміновості та формату виконання.</p>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="section" id="terms">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="section-kicker" data-uk="Умови надання послуг" data-de="Leistungsbedingungen">Умови надання послуг</p>
+
+          <h2 data-uk="Доставка та отримання послуги" data-de="Bereitstellung und Erhalt der Leistung">Доставка та отримання послуги</h2>
+
+        </div>
+
+        <div class="policy-grid">
+
+          <article class="card policy-card">
+
+            <h3 data-uk="Формат надання" data-de="Leistungsformat">Формат надання</h3>
+
+            <ul class="info-list">
+
+              <li data-uk="Послуги надаються дистанційно (TeamViewer, SSH, VPN) або з виїздом у м. Краматорськ та Донецькій області." data-de="Leistungen werden remote (TeamViewer, SSH, VPN) oder vor Ort in Kramatorsk und in der Oblast Donezk erbracht.">Послуги надаються дистанційно (TeamViewer, SSH, VPN) або з виїздом у м. Краматорськ та Донецькій області.</li>
+
+              <li data-uk="Формат виконання погоджується перед початком робіт залежно від типу завдання та доступу до інфраструктури." data-de="Das Ausführungsformat wird vor Arbeitsbeginn abhängig von Aufgabe und Infrastrukturzugang abgestimmt.">Формат виконання погоджується перед початком робіт залежно від типу завдання та доступу до інфраструктури.</li>
+
+            </ul>
+
+          </article>
+
+          <article class="card policy-card">
+
+            <h3 data-uk="Строки виконання" data-de="Bearbeitungszeit">Строки виконання</h3>
+
+            <ul class="info-list">
+
+              <li data-uk="Строки виконання — від 1 робочого дня залежно від складності завдання." data-de="Die Bearbeitungszeit beginnt ab 1 Arbeitstag und hängt von der Komplexität der Aufgabe ab.">Строки виконання — від 1 робочого дня залежно від складності завдання.</li>
+
+              <li data-uk="Після узгодження завдання клієнт отримує підтвердження на email із погодженим планом робіт." data-de="Nach Abstimmung der Aufgabe erhält der Kunde eine E-Mail-Bestätigung mit dem vereinbarten Arbeitsplan.">Після узгодження завдання клієнт отримує підтвердження на email із погодженим планом робіт.</li>
+
+            </ul>
+
+          </article>
+
+          <article class="card policy-card">
+
+            <h3 data-uk="Оплата" data-de="Zahlung">Оплата</h3>
+
+            <ul class="info-list">
+
+              <li data-uk="Оплата здійснюється до або після виконання робіт — за попередньою домовленістю." data-de="Die Zahlung erfolgt vor oder nach der Leistungserbringung nach vorheriger Vereinbarung.">Оплата здійснюється до або після виконання робіт — за попередньою домовленістю.</li>
+
+              <li data-uk="Доступні способи оплати: LiqPay, банківський переказ." data-de="Verfügbare Zahlungsarten: LiqPay, Banküberweisung.">Доступні способи оплати: LiqPay, банківський переказ.</li>
+
+            </ul>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="section section-muted" id="refund">
+
+      <div class="container">
+
+        <!-- Contract download banner -->
+
+        <div style="margin-top:1.5rem;padding:1.2rem 1.5rem;background:rgba(56,189,248,.08);border:1.5px solid #38bdf8;border-radius:1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+
+          <span style="font-size:1.5rem">📄</span>
+
+          <div style="flex:1">
+
+            <strong data-uk="Договір публічної оферти" data-de="Öffentliches Angebot (Vertrag)">Договір публічної оферти</strong>
+
+            <p style="margin:.25rem 0 0;font-size:.85rem;color:#94a3b8" data-uk="Офіційний договір між ФОП Воронов В.Г. та замовником. Завантажте PDF для ознайомлення." data-de="Offizieller Vertrag zwischen FOP Voronov und dem Auftraggeber. PDF herunterladen.">Офіційний договір між ФОП Воронов В.Г. та замовником. Завантажте PDF для ознайомлення.</p>
+
+          </div>
+
+          <a href="https://vvoronov1981.github.io/pcvoronov.github.io/dogovir_publichnoyi_oferty.pdf" target="_blank" rel="noopener" class="btn" style="white-space:nowrap" data-uk="📥 Завантажити PDF" data-de="📥 PDF herunterladen">📥 Завантажити PDF</a>
+
+        </div>
+
+        <div class="section-heading">
+
+          <p class="section-kicker" data-uk="Повернення коштів" data-de="Rückerstattung">Повернення коштів</p>
+
+          <h2 data-uk="Політика повернення / refund policy" data-de="Rückerstattungsrichtlinie">Політика повернення / refund policy</h2>
+
+        </div>
+
+        <div class="policy-grid">
+
+          <article class="card policy-card">
+
+            <h3 data-uk="Загальні умови" data-de="Allgemeine Bedingungen">Загальні умови</h3>
+
+            <ul class="info-list">
+
+              <li data-uk="Повернення коштів можливе протягом 7 днів з моменту оплати, якщо послугу не було надано." data-de="Eine Rückerstattung ist innerhalb von 7 Tagen nach der Zahlung möglich, wenn die Leistung nicht erbracht wurde.">Повернення коштів можливе протягом 7 днів з моменту оплати, якщо послугу не було надано.</li>
+
+              <li data-uk="У разі часткового виконання робіт можливе часткове повернення коштів за домовленістю сторін." data-de="Bei teilweiser Leistungserbringung ist eine teilweise Rückerstattung nach Vereinbarung möglich.">У разі часткового виконання робіт можливе часткове повернення коштів за домовленістю сторін.</li>
+
+            </ul>
+
+          </article>
+
+          <article class="card policy-card">
+
+            <h3 data-uk="Як подати запит" data-de="So stellen Sie eine Anfrage">Як подати запит</h3>
+
+            <ul class="info-list">
+
+              <li data-uk="Для повернення коштів необхідно написати на comprw@gmail.com та вказати номер замовлення, дату оплати та причину звернення." data-de="Für eine Rückerstattung schreiben Sie bitte an comprw@gmail.com und geben Sie Bestellnummer, Zahlungsdatum und Grund an.">Для повернення коштів необхідно написати на comprw@gmail.com та вказати номер замовлення, дату оплати та причину звернення.</li>
+
+              <li data-uk="Ми підтвердимо отримання звернення та повідомимо про рішення після перевірки деталей замовлення." data-de="Wir bestätigen den Eingang Ihrer Anfrage und teilen Ihnen nach Prüfung der Bestelldetails die Entscheidung mit.">Ми підтвердимо отримання звернення та повідомимо про рішення після перевірки деталей замовлення.</li>
+
+            </ul>
+
+          </article>
+
+          <article class="card policy-card">
+
+            <h3 data-uk="KI-підтримка" data-de="KI-Unterstützung">KI-підтримка</h3>
+
+            <ul class="info-list">
+
+              <li data-uk="Для KI-підтримки (AI-сесія) повернення можливе лише до початку сесії." data-de="Für die KI-Unterstützung (AI-Session) ist eine Rückerstattung nur vor Beginn der Session möglich.">Для KI-підтримки (AI-сесія) повернення можливе лише до початку сесії.</li>
+
+              <li data-uk="Після початку AI-сесії послуга вважається розпочатою, тому повернення погоджується індивідуально." data-de="Nach Beginn der AI-Session gilt die Leistung als gestartet; Rückerstattungen werden dann individuell geprüft.">Після початку AI-сесії послуга вважається розпочатою, тому повернення погоджується індивідуально.</li>
+
+            </ul>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="section" id="owner">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="section-kicker" data-uk="Інформація про власника" data-de="Informationen zum Inhaber">Інформація про власника</p>
+
+          <h2 data-uk="Відомості про ФОП / власника" data-de="Angaben zum Einzelunternehmer / Inhaber">Відомості про ФОП / власника</h2>
+
+        </div>
+
+        <div class="owner-grid">
+
+          <article class="card owner-card">
+
+            <h3 data-uk="Реєстраційні дані" data-de="Registrierungsdaten">Реєстраційні дані</h3>
+
+            <dl class="owner-list">
+
+              <div>
+
+                <dt data-uk="Форма власності" data-de="Rechtsform">Форма власності</dt>
+
+                <dd data-uk="ФОП (фізична особа-підприємець)" data-de="Einzelunternehmer">ФОП (фізична особа-підприємець)</dd>
+
+              </div>
+
+              <div>
+
+                <dt data-uk="Найменування" data-de="Name">Найменування</dt>
+
+                <dd data-uk="ФОП Воронов Володимир Геннадійович" data-de="Einzelunternehmer Voronov Wolodymyr Gennadijovytsch">ФОП Воронов Володимир Геннадійович</dd>
+
+              </div>
+
+              <div>
+
+                <dt data-uk="ЄДРПОУ / ІПН" data-de="EDRPOU / Steuer-ID">ЄДРПОУ / ІПН</dt>
+
+                <dd data-uk="Буде додано пізніше" data-de="2974314191">Буде додано пізніше</dd>
+
+              </div>
+
+            </dl>
+
+          </article>
+
+          <article class="card owner-card">
+
+            <h3 data-uk="Контактні дані" data-de="Kontaktdaten">Контактні дані</h3>
+
+            <dl class="owner-list">
+
+              <div>
+
+                <dt data-uk="Адреса" data-de="Adresse">Адреса</dt>
+
+                <dd data-uk="вул. Беленківська, 117-8, м. Краматорськ, 84320, Донецька обл., Україна" data-de="Kramatorsk, Oblast Donezk, Ukraine">вул. Беленківська, 117-8, м. Краматорськ, 84320, Донецька обл., Україна</dd>
+
+              </div>
+
+              <div>
+
+                <dt>Email</dt>
+
+                <dd>comprw@gmail.com</dd>
+
+              </div>
+
+              <div>
+
+                <dt data-uk="Телефон" data-de="Telefon">Телефон</dt>
+
+                <dd>+380 (50) 523‑5040</dd>
+
+              </div>
+
+            </dl>
+
+          </article>
+
+          <article class="card owner-card">
+
+            <h3 data-uk="Додаткова інформація" data-de="Zusätzliche Informationen">Додаткова інформація</h3>
+
+            <p data-uk="Власник приймає замовлення через email, телефон, форму на сайті та через платний модуль KI-Unterstützung. Підтвердження замовлення надсилається на email після погодження деталей." data-de="Der Inhaber nimmt Bestellungen per E-Mail, Telefon, Website-Formular und über das kostenpflichtige KI-Unterstützung-Modul entgegen. Die Auftragsbestätigung wird nach Abstimmung der Details per E-Mail gesendet.">Власник приймає замовлення через email, телефон, форму на сайті та через платний модуль KI-Unterstützung. Підтвердження замовлення надсилається на email після погодження деталей.</p>
+
+            <p class="muted-line" data-uk="Вебсайт: https://vvoronov1981.github.io/pcvoronov.github.io/Indexp.html" data-de="Website: https://vvoronov1981.github.io/pcvoronov.github.io/Indexp.html">Вебсайт: https://vvoronov1981.github.io/pcvoronov.github.io/Indexp.html</p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="section" id="contacts">
+
+      <div class="container contact-shell">
+
+        <div class="contact-intro">
+
+          <p class="section-kicker" data-uk="Контакти" data-de="Kontakt">Контакти</p>
+
+          <h2 data-uk="Обговорімо завдання та підберемо оптимальний варіант рішення" data-de="Lassen Sie uns Ihre Aufgabe besprechen und die passende Lösung auswählen">Обговорімо завдання та підберемо оптимальний варіант рішення</h2>
+
+          <p data-uk="Якщо вам потрібна консультація, модернізація мережі, обслуговування обладнання, розробка ПЗ або KI-підтримка, зв'яжіться з нами зручним для вас способом." data-de="Wenn Sie Beratung, Netzwerkmodernisierung, Hardware-Support, Softwareentwicklung oder KI-Unterstützung benötigen, kontaktieren Sie uns auf dem für Sie bequemsten Weg.">Якщо вам потрібна консультація, модернізація мережі, обслуговування обладнання, розробка ПЗ або KI-підтримка, зв'яжіться з нами зручним для вас способом.</p>
+
+
+
+          <div class="request-benefits" data-aria-label-uk="Переваги заявки через сайт" data-aria-label-de="Vorteile einer Anfrage über die Website" aria-label="Переваги заявки через сайт">
+
+            <div class="request-benefit">
+
+              <strong data-uk="1 хвилина" data-de="1 Minute">1 хвилина</strong>
+
+              <span data-uk="щоб надіслати завдання через сайт" data-de="um eine Aufgabe über die Website zu senden">щоб надіслати завдання через сайт</span>
+
+            </div>
+
+            <div class="request-benefit">
+
+              <strong data-uk="від 1 робочого дня" data-de="ab 1 Arbeitstag">від 1 робочого дня</strong>
+
+              <span data-uk="на зворотний зв'язок і погодження плану робіт" data-de="für Rückmeldung und Abstimmung des Arbeitsplans">на зворотний зв'язок і погодження плану робіт</span>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="card request-checklist-card">
+
+            <h3 data-uk="Що зручно вказати в заявці" data-de="Was Sie in der Anfrage angeben sollten">Що зручно вказати в заявці</h3>
+
+            <ul class="check-list request-checklist">
+
+              <li data-uk="яка проблема виникла або який результат потрібен" data-de="welches Problem aufgetreten ist oder welches Ergebnis benötigt wird">яка проблема виникла або який результат потрібен</li>
+
+              <li data-uk="яке обладнання, мережа або програма бере участь у завданні" data-de="welche Hardware, welches Netzwerk oder welche Software betroffen ist">яке обладнання, мережа або програма бере участь у завданні</li>
+
+              <li data-uk="бажаний строк та, за наявності, орієнтовний бюджет" data-de="gewünschten Termin und falls vorhanden das ungefähre Budget">бажаний строк та, за наявності, орієнтовний бюджет</li>
+
+            </ul>
+
+          </div>
+
+
+
+          <div class="contact-list">
+
+            <a class="contact-item" href="tel:+380505235040">
+
+              <span data-uk="Телефон" data-de="Telefon">Телефон</span>
+
+              <strong>+380 (50) 523‑5040</strong>
+
+            </a>
+
+            <a class="contact-item" href="mailto:comprw@gmail.com">
+
+              <span>Email</span>
+
+              <strong>comprw@gmail.com</strong>
+
+            </a>
+
+            <div class="contact-item">
+
+              <span data-uk="Власник / ФОП" data-de="Inhaber / Einzelunternehmer">Власник / ФОП</span>
+
+              <strong data-uk="ФОП Воронов Володимир Геннадійович" data-de="Einzelunternehmer Voronov Wolodymyr Gennadijovytsch">ФОП Воронов Володимир Геннадійович</strong>
+
+            </div>
+
+            <div class="contact-item">
+
+              <span data-uk="Адреса" data-de="Adresse">Адреса</span>
+
+              <strong data-uk="вул. Беленківська, 117-8, м. Краматорськ, 84320, Донецька обл., Україна" data-de="Kramatorsk, Oblast Donezk, Ukraine">вул. Беленківська, 117-8, м. Краматорськ, 84320, Донецька обл., Україна</strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="card contact-form-card" id="request-form">
+
+          <h3 data-uk="Залишити завдання" data-de="Aufgabe senden">Залишити завдання</h3>
+
+          <p data-uk="Заповніть форму — ми зв'яжемося з вами протягом робочого дня та запропонуємо план виконання." data-de="Füllen Sie das Formular aus — wir melden uns innerhalb eines Arbeitstages mit einem Umsetzungsvorschlag bei Ihnen.">Заповніть форму — ми зв'яжемося з вами протягом робочого дня та запропонуємо план виконання.</p>
+
+          <div class="request-preset-panel">
+
+            <h4 data-uk="Швидкий старт заявки" data-de="Schnellstart für Ihre Anfrage">Швидкий старт заявки</h4>
+
+            <p data-uk="Якщо не хочете писати все з нуля, оберіть шаблон — ми одразу заповнимо напрям і приклад опису." data-de="Wenn Sie nicht bei null anfangen möchten, wählen Sie eine Vorlage — wir füllen Bereich und Beispielbeschreibung sofort aus.">Якщо не хочете писати все з нуля, оберіть шаблон — ми одразу заповнимо напрям і приклад опису.</p>
+
+            <div class="request-presets">
+
+              <button type="button" class="request-preset" data-service="Підтримка серверів та обладнання" data-task-uk="Потрібна термінова діагностика та відновлення роботи серверу, мережі або робочого місця." data-task-de="Ich brauche eine dringende Diagnose und Wiederherstellung von Server, Netzwerk oder Arbeitsplatz." data-deadline-uk="Якнайшвидше / сьогодні" data-deadline-de="So schnell wie möglich / heute" data-uk="Термінова допомога" data-de="Dringende Hilfe">Термінова допомога</button>
+
+              <button type="button" class="request-preset" data-service="Аудит та IT-консалтинг" data-task-uk="Потрібно обговорити модернізацію інфраструктури, аудит або план розвитку IT-середовища." data-task-de="Ich möchte die Modernisierung der Infrastruktur, ein Audit oder einen Entwicklungsplan für die IT-Umgebung besprechen." data-deadline-uk="Потрібна оцінка строків" data-deadline-de="Terminabschätzung benötigt" data-uk="Проєкт / аудит" data-de="Projekt / Audit">Проєкт / аудит</button>
+
+              <button type="button" class="request-preset" data-service="Розробка програмного забезпечення" data-task-uk="Потрібно розробити або доопрацювати вебзастосунок, API, інтеграцію чи автоматизацію процесів." data-task-de="Ich möchte eine Webanwendung, API, Integration oder Prozessautomatisierung entwickeln oder erweitern lassen." data-deadline-uk="Після узгодження ТЗ" data-deadline-de="Nach Abstimmung der Anforderungen" data-uk="ПЗ / автоматизація" data-de="Software / Automatisierung">ПЗ / автоматизація</button>
+
+            </div>
+
+            <p class="request-helper" data-uk="Або спочатку зберіть список у розділі «Мої завдання», а потім перенесіть його у форму одним кліком." data-de="Oder stellen Sie zuerst im Bereich „Meine Aufgaben“ eine Liste zusammen und übernehmen Sie sie dann mit einem Klick in das Formular.">Або спочатку зберіть список у розділі «Мої завдання», а потім перенесіть його у форму одним кліком.</p>
+
+          </div>
+
+          <form id="contact-form" class="request-form" action="https://formsubmit.co/comprw@gmail.com" method="POST">
+
+            <input type="hidden" name="_subject" value="Нова заявка з сайту PC Voronov" data-value-uk="Нова заявка з сайту PC Voronov" data-value-de="Neue Anfrage von der PC Voronov Website" />
+
+            <input type="hidden" name="_captcha" value="false" />
+
+            <input type="hidden" name="_template" value="table" />
+
+            <input type="hidden" name="source" value="indexp-main-site" />
+
+
+
+            <div class="form-group">
+
+              <label for="req-name" data-uk="Ваше ім'я *" data-de="Ihr Name *">Ваше ім'я *</label>
+
+              <input type="text" id="req-name" name="name" required autocomplete="name" data-placeholder-uk="Ім'я та прізвище" data-placeholder-de="Vor- und Nachname" placeholder="Ім'я та прізвище" />
+
+            </div>
+
+
+
+            <div class="form-group">
+
+              <label for="req-company" data-uk="Компанія" data-de="Unternehmen">Компанія</label>
+
+              <input type="text" id="req-company" name="company" autocomplete="organization" data-placeholder-uk="Назва компанії (за наявності)" data-placeholder-de="Unternehmensname (falls vorhanden)" placeholder="Назва компанії (за наявності)" />
+
+            </div>
+
+
+
+            <div class="form-group">
+
+              <label for="req-contact" data-uk="Email або телефон *" data-de="E-Mail oder Telefon *">Email або телефон *</label>
+
+              <input type="text" id="req-contact" name="contact" required data-placeholder-uk="email@example.com або +380..." data-placeholder-de="email@example.com oder +380..." placeholder="email@example.com або +380..." />
+
+            </div>
+
+
+
+            <div class="form-group">
+
+              <label for="req-service" data-uk="Напрям" data-de="Bereich">Напрям</label>
+
+              <select id="req-service" name="service">
+
+                <option value="" data-uk="— Оберіть напрям —" data-de="— Bereich auswählen —">— Оберіть напрям —</option>
+
+                <option value="Управління та моніторинг мереж" data-uk="Управління та моніторинг мереж" data-de="Netzwerk-Management">Управління та моніторинг мереж</option>
+
+                <option value="Підтримка серверів та обладнання" data-uk="Підтримка серверів та обладнання" data-de="Server-Support">Підтримка серверів та обладнання</option>
+
+                <option value="Розробка програмного забезпечення" data-uk="Розробка програмного забезпечення" data-de="Softwareentwicklung">Розробка програмного забезпечення</option>
+
+                <option value="Аудит та IT-консалтинг" data-uk="Аудит та IT-консалтинг" data-de="IT-Beratung">Аудит та IT-консалтинг</option>
+
+                <option value="KI-Unterstützung" data-uk="KI-підтримка (30 хв)" data-de="KI-Unterstützung (30 Min)">KI-підтримка (30 хв)</option>
+
+                <option value="Інше" data-uk="Інше" data-de="Andere">Інше</option>
+
+              </select>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+              <label for="req-task" data-uk="Опис завдання *" data-de="Aufgabenbeschreibung *">Опис завдання *</label>
+
+              <textarea id="req-task" name="task" required rows="4" data-placeholder-uk="Опишіть ваше завдання, проблему або бажаний результат..." data-placeholder-de="Beschreiben Sie Ihre Aufgabe, das Problem oder das gewünschte Ergebnis..." placeholder="Опишіть ваше завдання, проблему або бажаний результат..."></textarea>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+              <label for="req-deadline" data-uk="Бажаний строк" data-de="Gewünschter Termin">Бажаний строк</label>
+
+              <input type="text" id="req-deadline" name="deadline" data-placeholder-uk="Наприклад: до 30.06 або протягом 2 тижнів" data-placeholder-de="Zum Beispiel: bis 30.06 oder innerhalb von 2 Wochen" placeholder="Наприклад: до 30.06 або протягом 2 тижнів" />
+
+            </div>
+
+
+
+            <div class="form-group">
+
+              <label for="req-budget" data-uk="Орієнтовний бюджет" data-de="Ungefähres Budget">Орієнтовний бюджет</label>
+
+              <input type="text" id="req-budget" name="budget" data-placeholder-uk="За бажанням: наприклад 500–1000 USD" data-placeholder-de="Optional: zum Beispiel 500–1000 USD" placeholder="За бажанням: наприклад 500–1000 USD" />
+
+            </div>
+
+
+
+            <div class="form-group">
+
+              <label for="req-consent" data-uk="Підтвердження *" data-de="Bestätigung *">Підтвердження *</label>
+
+              <select id="req-consent" name="consent" required>
+
+                <option value="" data-uk="— Оберіть —" data-de="— Bitte wählen —">— Оберіть —</option>
+
+                <option value="Так, погоджуюся на обробку заявки" data-uk="Так, погоджуюся на обробку заявки" data-de="Ja, ich stimme der Bearbeitung meiner Anfrage zu">Так, погоджуюся на обробку заявки</option>
+
+              </select>
+
+            </div>
+
+
+
+            <button type="submit" class="btn btn-submit" data-uk="Надіслати заявку" data-de="Anfrage senden">Надіслати заявку</button>
+
+          </form>
+
+
+
+          <ul class="contact-note-list">
+
+            <li data-uk="Контакти для зв'язку: comprw@gmail.com, +380 (50) 523-5040" data-de="Kontakt: comprw@gmail.com, +380 (50) 523-5040">Контакти для зв'язку: comprw@gmail.com, +380 (50) 523-5040</li>
+
+            <li data-uk="Адреса для профілю мерчанта: вул. Беленківська, 117-8, м. Краматорськ, 84320, Донецька обл., Україна" data-de="Adresse für das Händlerprofil: Kramatorsk, Oblast Donezk, Ukraine">Адреса для профілю мерчанта: вул. Беленківська, 117-8, м. Краматорськ, 84320, Донецька обл., Україна</li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <footer class="site-footer">
+
+    <div class="container footer-inner">
+
+      <div>
+
+        <p class="footer-brand" data-uk="© PC Voronov — ФОП Воронов Володимир Геннадійович" data-de="© PC Voronov — Einzelunternehmer Voronov Wolodymyr Gennadijovytsch">© PC Voronov — ФОП Воронов Володимир Геннадійович</p>
+
+        <p class="footer-text" data-uk="IT-послуги: мережеві рішення, підтримка серверів та обладнання, розробка ПЗ, аудит і консалтинг." data-de="IT-Services: Netzwerklösungen, Server- und Hardware-Support, Softwareentwicklung, Audit und Beratung.">IT-послуги: мережеві рішення, підтримка серверів та обладнання, розробка ПЗ, аудит і консалтинг.</p>
+
+        <p class="footer-text" data-uk="вул. Беленківська, 117-8, м. Краматорськ, 84320, Донецька обл., Україна" data-de="Kramatorsk, Oblast Donezk, Ukraine">вул. Беленківська, 117-8, м. Краматорськ, 84320, Донецька обл., Україна</p>
+
+      </div>
+
+
+
+      <nav class="footer-nav" data-aria-label-uk="Навігація в підвалі" data-aria-label-de="Fußnavigation" aria-label="Навігація в підвалі">
+
+        <a href="https://vvoronov1981.github.io/pcvoronov.github.io/dogovir_publichnoyi_oferty.pdf" target="_blank" rel="noopener" data-uk="Договір оферти" data-de="Angebotsvertrag">Договір оферти</a>
+
+        <a href="#services" data-uk="Послуги" data-de="Leistungen">Послуги</a>
+
+        <a href="#prices" data-uk="Ціни" data-de="Preise">Ціни</a>
+
+        <a href="#refund" data-uk="Повернення" data-de="Rückerstattung">Повернення</a>
+
+        <a href="#owner" data-uk="Власник" data-de="Inhaber">Власник</a>
+
+        <a href="#contacts" data-uk="Контакти" data-de="Kontakt">Контакти</a>
+
+      </nav>
+
+    </div>
+
+  </footer>
+
+  <!-- Tidio Chat -->
+
+  <script src="//code.tidio.co/b11psn3qwvf4bxdsmvydlwpeklm0lx6o.js" async></script>
+
+
+
+  <!-- Google tag (gtag.js) -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10993663020"></script>
+
+  <script>
+
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag(){dataLayer.push(arguments);}
+
+    gtag('js', new Date());
+
+    gtag('config', 'AW-10993663020');
+
+  </script>
+
+
+
+  <script>
+
+  (function () {
+
+    var STORAGE_KEY = 'pcvoronov_lang';
+
+    var defaultLang = 'uk';
+
+    var titles = {
+
+      uk: 'PC Voronov — IT-послуги, мережі, сервери та розробка ПЗ',
+
+      de: 'PC Voronov — IT-Services, Netzwerke, Server und Softwareentwicklung'
+
+    };
+
+    var descriptions = {
+
+      uk: 'PC Voronov — IT-послуги для бізнесу та приватних клієнтів: мережі, сервери, обладнання, програмне забезпечення, аудит, консалтинг та KI-підтримка.',
+
+      de: 'PC Voronov — IT-Services für Unternehmen und Privatkunden: Netzwerke, Server, Hardware, Softwareentwicklung, Audit, Beratung und KI-Unterstützung.'
+
+    };
+
+
+
+    function setText(el, lang) {
+
+      if (el.dataset[lang] != null) el.textContent = el.dataset[lang];
+
+      if (el.dataset['ariaLabel' + lang.charAt(0).toUpperCase() + lang.slice(1)] != null) {
+
+        el.setAttribute('aria-label', el.dataset['ariaLabel' + lang.charAt(0).toUpperCase() + lang.slice(1)]);
+
+      }
+
+      if (el.dataset['title' + lang.charAt(0).toUpperCase() + lang.slice(1)] != null) {
+
+        el.setAttribute('title', el.dataset['title' + lang.charAt(0).toUpperCase() + lang.slice(1)]);
+
+      }
+
+      if (el.dataset['placeholder' + lang.charAt(0).toUpperCase() + lang.slice(1)] != null) {
+
+        el.setAttribute('placeholder', el.dataset['placeholder' + lang.charAt(0).toUpperCase() + lang.slice(1)]);
+
+      }
+
+      if (el.dataset['alt' + lang.charAt(0).toUpperCase() + lang.slice(1)] != null) {
+
+        el.setAttribute('alt', el.dataset['alt' + lang.charAt(0).toUpperCase() + lang.slice(1)]);
+
+      }
+
+      if (el.dataset['value' + lang.charAt(0).toUpperCase() + lang.slice(1)] != null) {
+
+        el.value = el.dataset['value' + lang.charAt(0).toUpperCase() + lang.slice(1)];
+
+      }
+
+    }
+
+
+
+    function applyLanguage(lang) {
+
+      var current = lang === 'de' ? 'de' : 'uk';
+
+      document.documentElement.lang = current;
+
+      localStorage.setItem(STORAGE_KEY, current);
+
+      document.title = titles[current];
+
+      var metaDescription = document.querySelector('meta[name="description"]');
+
+      if (metaDescription) metaDescription.setAttribute('content', descriptions[current]);
+
+
+
+      document.querySelectorAll('[data-uk][data-de]').forEach(function (el) { setText(el, current); });
+
+      document.querySelectorAll('[data-aria-label-uk][data-aria-label-de], [data-title-uk][data-title-de], [data-placeholder-uk][data-placeholder-de], [data-alt-uk][data-alt-de], [data-value-uk][data-value-de]').forEach(function (el) { setText(el, current); });
+
+
+
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+
+        var active = btn.getAttribute('data-lang') === current;
+
+        btn.classList.toggle('is-active', active);
+
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+
+      });
+
+
+
+      window.pcvCurrentLang = current;
+
+      document.dispatchEvent(new CustomEvent('pcv-language-changed', { detail: { lang: current } }));
+
+    }
+
+
+
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+
+      btn.addEventListener('click', function () {
+
+        applyLanguage(btn.getAttribute('data-lang'));
+
+      });
+
+    });
+
+
+
+    window.pcvApplyLanguage = applyLanguage;
+
+    window.pcvCurrentLang = localStorage.getItem(STORAGE_KEY) || defaultLang;
+
+    applyLanguage(window.pcvCurrentLang);
+
+  })();
+
+  </script>
+
+
+
+  <script>
+
+  (function () {
+
+    var STORAGE_KEY = 'pcvoronov_tasks';
+
+    var taskForm = document.getElementById('task-form');
+
+    var taskTextInput = document.getElementById('task-text');
+
+    var taskServiceSel = document.getElementById('task-service-sel');
+
+    var taskPrioritySel = document.getElementById('task-priority-sel');
+
+    var taskList = document.getElementById('task-list');
+
+    var taskCount = document.getElementById('task-count');
+
+    var sendTasksBtn = document.getElementById('send-tasks-btn');
+
+    var clearTasksBtn = document.getElementById('clear-tasks-btn');
+
+
+
+    var PRIORITY_LABELS = {
+
+      high: { uk: 'Високий', de: 'Hoch' },
+
+      normal: { uk: 'Звичайний', de: 'Normal' },
+
+      low: { uk: 'Низький', de: 'Niedrig' }
+
+    };
+
+    var PRIORITY_CLASS = { high: 'task-priority-high', normal: 'task-priority-normal', low: 'task-priority-low' };
+
+    var SERVICE_LABELS = {
+
+      'Управління та моніторинг мереж': { uk: 'Управління та моніторинг мереж', de: 'Netzwerk-Management' },
+
+      'Підтримка серверів та обладнання': { uk: 'Підтримка серверів та обладнання', de: 'Server-Support' },
+
+      'Розробка програмного забезпечення': { uk: 'Розробка програмного забезпечення', de: 'Softwareentwicklung' },
+
+      'Аудит та IT-консалтинг': { uk: 'Аудит та IT-консалтинг', de: 'IT-Beratung' },
+
+      'KI-Unterstützung': { uk: 'KI-підтримка', de: 'KI-Unterstützung' },
+
+      'Інше': { uk: 'Інше', de: 'Andere' }
+
+    };
+
+    var UI = {
+
+      empty: {
+
+        uk: 'Завдання ще не додано. Додайте перше завдання вище!',
+
+        de: 'Noch keine Aufgaben vorhanden. Fügen Sie oben die erste Aufgabe hinzu!'
+
+      },
+
+      markDone: { uk: 'Позначити виконаним', de: 'Als erledigt markieren' },
+
+      unmarkDone: { uk: 'Зняти позначку', de: 'Markierung entfernen' },
+
+      deleteTask: { uk: 'Видалити завдання', de: 'Aufgabe löschen' },
+
+      clearConfirm: { uk: 'Очистити всі завдання?', de: 'Alle Aufgaben löschen?' },
+
+      summaryTitle: { uk: 'Перелік завдань:', de: 'Aufgabenliste:' },
+
+      completed: { uk: '[виконано] ', de: '[erledigt] ' },
+
+      prioritySuffix: { uk: ' пріоритет', de: ' Priorität' }
+
+    };
+
+
+
+    function currentLang() {
+
+      return window.pcvCurrentLang === 'de' ? 'de' : 'uk';
+
+    }
+
+
+
+    function loadTasks() {
+
+      try {
+
+        return (JSON.parse(localStorage.getItem(STORAGE_KEY)) || []).map(function (task, idx) {
+
+          return {
+
+            id: task.id || ('manual-' + idx + '-' + (task.text || 'task')),
+
+            text: task.text || '',
+
+            service: task.service || '',
+
+            priority: task.priority || 'normal',
+
+            done: !!task.done
+
+          };
+
+        });
+
+      } catch (e) {
+
+        return [];
+
+      }
+
+    }
+
+
+
+    function saveTasks(tasks) {
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+
+      document.dispatchEvent(new CustomEvent('pcv-tasks-updated', { detail: { tasks: tasks } }));
+
+    }
+
+
+
+    function serviceLabel(service) {
+
+      var lang = currentLang();
+
+      return SERVICE_LABELS[service] ? SERVICE_LABELS[service][lang] : service;
+
+    }
+
+
+
+    function renderTasks() {
+
+      var tasks = loadTasks();
+
+      taskList.innerHTML = '';
+
+      taskCount.textContent = tasks.length;
+
+      if (tasks.length === 0) {
+
+        var empty = document.createElement('li');
+
+        empty.className = 'task-empty';
+
+        empty.textContent = UI.empty[currentLang()];
+
+        taskList.appendChild(empty);
+
+        if (sendTasksBtn) sendTasksBtn.setAttribute('aria-disabled', 'true');
+
+        if (clearTasksBtn) clearTasksBtn.disabled = true;
+
+        var emailAltEl = document.getElementById('task-email-alt');
+
+        if (emailAltEl) emailAltEl.style.display = 'none';
+
+        return;
+
+      }
+
+      if (sendTasksBtn) sendTasksBtn.removeAttribute('aria-disabled');
+
+      if (clearTasksBtn) clearTasksBtn.disabled = false;
+
+
+
+      tasks.forEach(function (task, idx) {
+
+        var li = document.createElement('li');
+
+        li.className = 'task-item' + (task.done ? ' task-done' : '');
+
+
+
+        var checkBtn = document.createElement('button');
+
+        checkBtn.className = 'task-check-btn';
+
+        checkBtn.setAttribute('aria-label', task.done ? UI.unmarkDone[currentLang()] : UI.markDone[currentLang()]);
+
+        checkBtn.title = task.done ? UI.unmarkDone[currentLang()] : UI.markDone[currentLang()];
+
+        checkBtn.innerHTML = task.done ? '&#10003;' : '';
+
+        checkBtn.addEventListener('click', function () { toggleTask(idx); });
+
+
+
+        var body = document.createElement('div');
+
+        body.className = 'task-body';
+
+
+
+        var text = document.createElement('span');
+
+        text.className = 'task-text';
+
+        text.textContent = task.text;
+
+
+
+        var meta = document.createElement('div');
+
+        meta.className = 'task-meta';
+
+
+
+        if (task.service) {
+
+          var svcTag = document.createElement('span');
+
+          svcTag.className = 'task-tag task-tag-service';
+
+          svcTag.textContent = serviceLabel(task.service);
+
+          meta.appendChild(svcTag);
+
+        }
+
+
+
+        var priTag = document.createElement('span');
+
+        priTag.className = 'task-tag ' + (PRIORITY_CLASS[task.priority] || 'task-priority-normal');
+
+        priTag.textContent = (PRIORITY_LABELS[task.priority] || PRIORITY_LABELS.normal)[currentLang()];
+
+        meta.appendChild(priTag);
+
+
+
+        body.appendChild(text);
+
+        body.appendChild(meta);
+
+
+
+        var delBtn = document.createElement('button');
+
+        delBtn.className = 'task-del-btn';
+
+        delBtn.setAttribute('aria-label', UI.deleteTask[currentLang()]);
+
+        delBtn.innerHTML = '&times;';
+
+        delBtn.addEventListener('click', function () { deleteTask(idx); });
+
+
+
+        li.appendChild(checkBtn);
+
+        li.appendChild(body);
+
+        li.appendChild(delBtn);
+
+        taskList.appendChild(li);
+
+      });
+
+
+
+      // Update mailto button
+
+      var emailAlt = document.getElementById('task-email-alt');
+
+      var mailtoBtn = document.getElementById('task-mailto-btn');
+
+      if (emailAlt) emailAlt.style.display = '';
+
+      if (mailtoBtn) {
+
+        var lang = currentLang();
+
+        var mailLines = tasks.map(function (t, i) {
+
+          var svc = t.service ? ' [' + serviceLabel(t.service) + ']' : '';
+
+          var done = t.done ? (lang === 'de' ? '[erledigt] ' : '[виконано] ') : '';
+
+          return (i + 1) + '. ' + done + t.text + svc;
+
+        });
+
+        var mailBody = (lang === 'de' ? 'Aufgabenliste:' : 'Перелік завдань:') + '\n' + mailLines.join('\n') + '\n\n---\nPC Voronov Website';
+
+        var mailSubj = lang === 'de' ? 'Aufgaben von der PC Voronov Website' : 'Завдання з сайту PC Voronov';
+
+        mailtoBtn.href = 'mailto:comprw@gmail.com?subject=' + encodeURIComponent(mailSubj) + '&body=' + encodeURIComponent(mailBody);
+
+      }
+
+    }
+
+
+
+    function addTask(text, service, priority, id) {
+
+      var tasks = loadTasks();
+
+      if (id && tasks.some(function (task) { return task.id === id; })) return;
+
+      tasks.push({ id: id || ('manual-' + Date.now()), text: text, service: service, priority: priority, done: false });
+
+      saveTasks(tasks);
+
+      renderTasks();
+
+      var items = taskList.querySelectorAll('.task-item');
+
+      var last = items[items.length - 1];
+
+      if (last) last.classList.add('task-item-new');
+
+    }
+
+
+
+    function removeTaskById(id) {
+
+      var tasks = loadTasks().filter(function (task) { return task.id !== id; });
+
+      saveTasks(tasks);
+
+      renderTasks();
+
+    }
+
+
+
+    function deleteTask(idx) {
+
+      var tasks = loadTasks();
+
+      tasks.splice(idx, 1);
+
+      saveTasks(tasks);
+
+      renderTasks();
+
+    }
+
+
+
+    function toggleTask(idx) {
+
+      var tasks = loadTasks();
+
+      tasks[idx].done = !tasks[idx].done;
+
+      saveTasks(tasks);
+
+      renderTasks();
+
+    }
+
+
+
+    function clearAllTasks() {
+
+      saveTasks([]);
+
+      renderTasks();
+
+      document.dispatchEvent(new CustomEvent('pcv-tasks-cleared'));
+
+    }
+
+
+
+    function buildTasksSummary() {
+
+      var tasks = loadTasks();
+
+      if (tasks.length === 0) return '';
+
+      var lang = currentLang();
+
+      var lines = tasks.map(function (task, index) {
+
+        var prefix = (index + 1) + '. ' + (task.done ? UI.completed[lang] : '');
+
+        var service = task.service ? ' [' + serviceLabel(task.service) + ']' : '';
+
+        var priority = task.priority !== 'normal' ? ' (' + (PRIORITY_LABELS[task.priority] || PRIORITY_LABELS.normal)[lang] + UI.prioritySuffix[lang] + ')' : '';
+
+        return prefix + task.text + service + priority;
+
+      });
+
+      return UI.summaryTitle[lang] + '\n' + lines.join('\n');
+
+    }
+
+
+
+    if (taskForm) {
+
+      taskForm.addEventListener('submit', function (e) {
+
+        e.preventDefault();
+
+        var text = taskTextInput.value.trim();
+
+        if (!text) { taskTextInput.focus(); return; }
+
+        var service = taskServiceSel ? taskServiceSel.value : '';
+
+        var priority = taskPrioritySel ? taskPrioritySel.value : 'normal';
+
+        addTask(text, service, priority);
+
+        taskTextInput.value = '';
+
+        if (taskServiceSel) taskServiceSel.value = '';
+
+        if (taskPrioritySel) taskPrioritySel.value = 'normal';
+
+        taskTextInput.focus();
+
+      });
+
+    }
+
+
+
+    if (clearTasksBtn) {
+
+      clearTasksBtn.addEventListener('click', function () {
+
+        if (confirm(UI.clearConfirm[currentLang()])) clearAllTasks();
+
+      });
+
+    }
+
+
+
+    if (sendTasksBtn) {
+
+      sendTasksBtn.addEventListener('click', function (e) {
+
+        var summary = buildTasksSummary();
+
+        if (!summary) { e.preventDefault(); return; }
+
+        var reqTask = document.getElementById('req-task');
+
+        if (reqTask) {
+
+          reqTask.value = summary;
+
+          // Auto-fill service based on most-used task service
+
+          var tasks = loadTasks();
+
+          var reqService = document.getElementById('req-service');
+
+          if (reqService && tasks.length > 0) {
+
+            var sc = {};
+
+            tasks.forEach(function (t) { if (t.service) sc[t.service] = (sc[t.service] || 0) + 1; });
+
+            var topSvc = Object.keys(sc).sort(function (a, b) { return sc[b] - sc[a]; })[0];
+
+            if (topSvc) reqService.value = topSvc;
+
+          }
+
+          var requestForm = document.getElementById('request-form');
+
+          window.setTimeout(function () {
+
+            if (requestForm) {
+
+              requestForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+              window.setTimeout(function () { reqTask.focus(); }, 400);
+
+            } else {
+
+              reqTask.focus();
+
+            }
+
+          }, 100);
+
+        }
+
+      });
+
+    }
+
+
+
+    document.addEventListener('pcv-language-changed', renderTasks);
+
+    renderTasks();
+
+    window.pcvAddTask = addTask;
+
+    window.pcvRemoveTaskById = removeTaskById;
+
+    window.pcvGetTasks = loadTasks;
+
+
+
+    /* ── Update nav badge + floating button ─────── */
+
+    function updateTaskUI() {
+
+      var tasks = loadTasks();
+
+      var count = tasks.length;
+
+      var badge = document.getElementById('nav-task-badge');
+
+      var fab = document.getElementById('task-fab');
+
+      var fabCount = document.getElementById('task-fab-count');
+
+      if (badge) {
+
+        badge.textContent = count;
+
+        if (count > 0) badge.classList.add('visible');
+
+        else badge.classList.remove('visible');
+
+      }
+
+      if (fab) {
+
+        if (count > 0) fab.classList.add('visible');
+
+        else fab.classList.remove('visible');
+
+      }
+
+      if (fabCount) fabCount.textContent = count;
+
+    }
+
+    document.addEventListener('pcv-tasks-updated', updateTaskUI);
+
+    document.addEventListener('pcv-tasks-cleared', updateTaskUI);
+
+    document.addEventListener('pcv-language-changed', function () {
+
+      var lang = window.pcvCurrentLang === 'de' ? 'de' : 'uk';
+
+      var fabLabel = document.getElementById('task-fab-label');
+
+      if (fabLabel) fabLabel.textContent = lang === 'de' ? 'Aufgaben' : 'Завдання';
+
+    });
+
+    updateTaskUI();
+
+  })();
+
+  </script>
+
+
+
+  <script>
+
+  (function () {
+
+    var form = document.getElementById('contact-form');
+
+    var serviceField = document.getElementById('req-service');
+
+    var taskField = document.getElementById('req-task');
+
+    var deadlineField = document.getElementById('req-deadline');
+
+    var serviceLinks = document.querySelectorAll('.btn-service[data-service]');
+
+    var presetButtons = document.querySelectorAll('.request-preset');
+
+    var ui = {
+
+      sending: { uk: 'Надсилання...', de: 'Wird gesendet...' },
+
+      success: {
+
+        uk: '<div class="form-success"><p class="form-success-icon">&#10003;</p><p>Заявку надіслано! Ми зв\'яжемося з вами найближчим часом.</p></div>',
+
+        de: '<div class="form-success"><p class="form-success-icon">&#10003;</p><p>Die Anfrage wurde gesendet! Wir melden uns in Kürze bei Ihnen.</p></div>'
+
+      },
+
+      error: {
+
+        uk: 'Помилка під час надсилання. Напишіть нам напряму: comprw@gmail.com',
+
+        de: 'Fehler beim Senden. Schreiben Sie uns direkt: comprw@gmail.com'
+
+      }
+
+    };
+
+
+
+    function currentLang() {
+
+      return window.pcvCurrentLang === 'de' ? 'de' : 'uk';
+
+    }
+
+
+
+    if (serviceLinks.length && serviceField) {
+
+      serviceLinks.forEach(function (link) {
+
+        link.addEventListener('click', function () {
+
+          serviceField.value = link.getAttribute('data-service') || '';
+
+          if (taskField) {
+
+            window.setTimeout(function () { taskField.focus(); }, 150);
+
+          }
+
+        });
+
+      });
+
+    }
+
+
+
+    if (presetButtons.length) {
+
+      presetButtons.forEach(function (button) {
+
+        button.addEventListener('click', function () {
+
+          var lang = currentLang();
+
+          if (serviceField) serviceField.value = button.getAttribute('data-service') || '';
+
+          if (taskField) {
+
+            taskField.value = button.getAttribute(lang === 'de' ? 'data-task-de' : 'data-task-uk') || '';
+
+          }
+
+          if (deadlineField) {
+
+            deadlineField.value = button.getAttribute(lang === 'de' ? 'data-deadline-de' : 'data-deadline-uk') || '';
+
+          }
+
+          if (taskField) {
+
+            taskField.focus();
+
+            taskField.setSelectionRange(taskField.value.length, taskField.value.length);
+
+          }
+
+        });
+
+      });
+
+    }
+
+
+
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+
+      e.preventDefault();
+
+      var btn = form.querySelector('.btn-submit');
+
+      var origText = btn.textContent;
+
+      btn.textContent = ui.sending[currentLang()];
+
+      btn.disabled = true;
+
+      fetch(form.action, {
+
+        method: 'POST',
+
+        body: new FormData(form),
+
+        headers: { Accept: 'application/json' }
+
+      })
+
+        .then(function (response) {
+
+          if (response.ok) {
+
+            form.innerHTML = ui.success[currentLang()];
+
+          } else {
+
+            throw new Error();
+
+          }
+
+        })
+
+        .catch(function () {
+
+          btn.textContent = origText;
+
+          btn.disabled = false;
+
+          alert(ui.error[currentLang()]);
+
+        });
+
+    });
+
+  })();
+
+  </script>
+
+
+
+  <script>
+
+  (function () {
+
+    var chipCount = document.getElementById('chip-count');
+
+
+
+    function currentLang() {
+
+      return window.pcvCurrentLang === 'de' ? 'de' : 'uk';
+
+    }
+
+
+
+    function updateChipCount() {
+
+      var count = document.querySelectorAll('.chip.chip-selected').length;
+
+      if (chipCount) chipCount.textContent = count;
+
+    }
+
+
+
+    function syncChipsWithTasks() {
+
+      var tasks = typeof window.pcvGetTasks === 'function' ? window.pcvGetTasks() : [];
+
+      var ids = tasks.map(function (task) { return task.id; });
+
+      document.querySelectorAll('.chip[data-task-id]').forEach(function (chip) {
+
+        chip.classList.toggle('chip-selected', ids.indexOf(chip.getAttribute('data-task-id')) !== -1);
+
+      });
+
+      updateChipCount();
+
+    }
+
+
+
+    document.querySelectorAll('.chip[data-task-id]').forEach(function (chip) {
+
+      chip.addEventListener('click', function () {
+
+        var id = chip.getAttribute('data-task-id');
+
+        var selected = chip.classList.contains('chip-selected');
+
+        var text = chip.getAttribute(currentLang() === 'de' ? 'data-text-de' : 'data-text-uk');
+
+        var service = chip.getAttribute('data-service') || '';
+
+
+
+        if (!selected) {
+
+          chip.classList.add('chip-selected');
+
+          if (typeof window.pcvAddTask === 'function') {
+
+            window.pcvAddTask(text, service, 'normal', id);
+
+          }
+
+        } else {
+
+          chip.classList.remove('chip-selected');
+
+          if (typeof window.pcvRemoveTaskById === 'function') {
+
+            window.pcvRemoveTaskById(id);
+
+          }
+
+        }
+
+        updateChipCount();
+
+      });
+
+    });
+
+
+
+    document.addEventListener('pcv-tasks-updated', syncChipsWithTasks);
+
+    document.addEventListener('pcv-tasks-cleared', syncChipsWithTasks);
+
+    document.addEventListener('pcv-language-changed', syncChipsWithTasks);
+
+    syncChipsWithTasks();
+
+  })();
+
+  </script>
+
+
+
+<!-- ── IT Diagnostic Wizard Script ──────────────── -->
+
+<script>
+
+(function () {
+
+  var lang = document.documentElement.lang || 'uk';
+
+
+
+  function t(el, attr) {
+
+    var v = el ? el.getAttribute('data-' + lang) : null;
+
+    return v || (el ? el.textContent : '');
+
+  }
+
+
+
+  var WIZARD_DATA = {
+
+    network: {
+
+      options: [
+
+        { uk: 'Немає інтернету або нестабільне з\'єднання', de: 'Kein oder instabiles Internet', service: 'Управління та моніторинг мереж', task_uk: 'Усунення проблем з інтернет-з\'єднанням', task_de: 'Probleme mit der Internetverbindung beheben' },
+
+        { uk: 'Налаштувати VPN-з\'єднання', de: 'VPN-Verbindung einrichten', service: 'Управління та моніторинг мереж', task_uk: 'Налаштування VPN-з\'єднання для безпечного доступу', task_de: 'VPN-Verbindung für sicheren Zugriff einrichten' },
+
+        { uk: 'Проблеми з Wi-Fi або точками доступу', de: 'WLAN- oder Access-Point-Probleme', service: 'Управління та моніторинг мереж', task_uk: 'Налаштування та оптимізація Wi-Fi мережі', task_de: 'WLAN-Netzwerk konfigurieren und optimieren' },
+
+        { uk: 'Побудувати або оновити корпоративну мережу', de: 'Firmennetzwerk aufbauen oder erneuern', service: 'Управління та моніторинг мереж', task_uk: 'Проєктування та налаштування LAN/WAN-мережі', task_de: 'LAN/WAN-Netzwerk planen und konfigurieren' },
+
+        { uk: 'Налаштувати VLAN або сегментацію мережі', de: 'VLAN oder Netzwerksegmentierung einrichten', service: 'Управління та моніторинг мереж', task_uk: 'Налаштування VLAN і сегментації корпоративної мережі', task_de: 'VLAN und Netzwerksegmentierung konfigurieren' },
+
+        { uk: 'Моніторинг і діагностика мережевої інфраструктури', de: 'Netzwerk-Monitoring und Diagnose', service: 'Управління та моніторинг мереж', task_uk: 'Налаштування системи моніторингу мережевої інфраструктури', task_de: 'Netzwerk-Monitoring-System einrichten' }
+
+      ]
+
+    },
+
+    server: {
+
+      options: [
+
+        { uk: 'Налаштувати новий сервер або робоче місце', de: 'Neuen Server oder Arbeitsplatz einrichten', service: 'Підтримка серверів та обладнання', task_uk: 'Налаштування та конфігурація нового сервера або ПК', task_de: 'Neuen Server oder PC einrichten und konfigurieren' },
+
+        { uk: 'Налаштувати резервне копіювання даних', de: 'Datensicherung einrichten', service: 'Підтримка серверів та обладнання', task_uk: 'Налаштування автоматичного резервного копіювання даних', task_de: 'Automatische Datensicherung einrichten' },
+
+        { uk: 'Оновити ОС або серверне програмне забезпечення', de: 'Betriebssystem oder Server-Software aktualisieren', service: 'Підтримка серверів та обладнання', task_uk: 'Оновлення операційної системи та серверного ПЗ', task_de: 'Betriebssystem und Server-Software aktualisieren' },
+
+        { uk: 'Діагностика або заміна несправного обладнання', de: 'Defekte Hardware diagnostizieren oder ersetzen', service: 'Підтримка серверів та обладнання', task_uk: 'Діагностика та усунення несправностей обладнання', task_de: 'Hardware-Diagnose und Störungsbehebung' },
+
+        { uk: 'Налаштувати поштовий або інший корпоративний сервер', de: 'Mail- oder Unternehmensserver konfigurieren', service: 'Підтримка серверів та обладнання', task_uk: 'Налаштування та конфігурація корпоративного поштового сервера', task_de: 'Unternehmens-Mailserver konfigurieren' },
+
+        { uk: 'Профілактичне технічне обслуговування серверів', de: 'Vorbeugende Serverwartung', service: 'Підтримка серверів та обладнання', task_uk: 'Профілактичне технічне обслуговування серверного обладнання', task_de: 'Vorbeugende Wartung der Server-Hardware' }
+
+      ]
+
+    },
+
+    software: {
+
+      options: [
+
+        { uk: 'Розробити веб-застосунок або API', de: 'Webanwendung oder API entwickeln', service: 'Розробка програмного забезпечення', task_uk: 'Розробка веб-застосунку або REST API під завдання бізнесу', task_de: 'Webanwendung oder REST API für Geschäftsanforderungen entwickeln' },
+
+        { uk: 'Автоматизувати бізнес-процеси або задачі', de: 'Geschäftsprozesse automatisieren', service: 'Розробка програмного забезпечення', task_uk: 'Автоматизація повторюваних бізнес-процесів та задач', task_de: 'Wiederkehrende Geschäftsprozesse automatisieren' },
+
+        { uk: 'Розробити внутрішнє бізнес-рішення або ERP', de: 'Internes Business-Tool oder ERP entwickeln', service: 'Розробка програмного забезпечення', task_uk: 'Розробка внутрішнього бізнес-застосунку або ERP-системи', task_de: 'Internes Business-Tool oder ERP-System entwickeln' },
+
+        { uk: 'Інтегрувати зовнішні сервіси або системи', de: 'Externe Dienste oder Systeme integrieren', service: 'Розробка програмного забезпечення', task_uk: 'Інтеграція зовнішніх сервісів та API з наявними системами', task_de: 'Externe Services und APIs in bestehende Systeme integrieren' },
+
+        { uk: 'Написати скрипти або утиліти для адміністрування', de: 'Admin-Skripte oder Tools schreiben', service: 'Розробка програмного забезпечення', task_uk: 'Розробка скриптів та утиліт для автоматизації адміністрування', task_de: 'Skripte und Tools zur Verwaltungsautomatisierung entwickeln' }
+
+      ]
+
+    },
+
+    security: {
+
+      options: [
+
+        { uk: 'Провести аудит безпеки IT-інфраструктури', de: 'IT-Sicherheitsaudit durchführen', service: 'Аудит та IT-консалтинг', task_uk: 'Аудит безпеки IT-інфраструктури та виявлення вразливостей', task_de: 'IT-Sicherheitsaudit und Schwachstellenanalyse durchführen' },
+
+        { uk: 'Оцінити ризики та оптимізувати IT-витрати', de: 'Risiken bewerten und IT-Kosten optimieren', service: 'Аудит та IT-консалтинг', task_uk: 'Оцінка IT-ризиків та рекомендації щодо оптимізації витрат', task_de: 'IT-Risikobewertung und Kostenoptimierungsempfehlungen' },
+
+        { uk: 'Отримати IT-консультацію або стратегію', de: 'IT-Beratung oder Strategie erhalten', service: 'Аудит та IT-консалтинг', task_uk: 'IT-консультація та розробка стратегії розвитку інфраструктури', task_de: 'IT-Beratung und Infrastruktur-Entwicklungsstrategie' },
+
+        { uk: 'Перевірити відповідність вимогам безпеки', de: 'Sicherheitskonformität prüfen', service: 'Аудит та IT-консалтинг', task_uk: 'Перевірка відповідності IT-інфраструктури вимогам безпеки', task_de: 'Prüfung der IT-Infrastruktur auf Sicherheitskonformität' }
+
+      ]
+
+    }
+
+  };
+
+
+
+  var overlay = document.getElementById('wizard-overlay');
+
+  var step1 = document.getElementById('wizard-step-1');
+
+  var step2 = document.getElementById('wizard-step-2');
+
+  var step3 = document.getElementById('wizard-step-3');
+
+  var progressBar = document.getElementById('wizard-progress-bar');
+
+  var step2OptionsEl = document.getElementById('wizard-step2-options');
+
+  var confirmService = document.getElementById('wizard-confirm-service');
+
+  var confirmTaskText = document.getElementById('wizard-confirm-task-text');
+
+  var addedToast = document.getElementById('wizard-added-toast');
+
+  var startBtn = document.getElementById('wizard-start-btn');
+
+  var closeBtn = document.getElementById('wizard-close-btn');
+
+  var backBtn = document.getElementById('wizard-back-btn');
+
+  var addBtn = document.getElementById('wizard-add-btn');
+
+  var restartBtn = document.getElementById('wizard-restart-btn');
+
+
+
+  var currentCategory = null;
+
+  var selectedOption = null;
+
+
+
+  function getLang() {
+
+    return document.documentElement.lang === 'de' ? 'de' : 'uk';
+
+  }
+
+
+
+  function applyLang() {
+
+    /* re-apply i18n attributes in wizard */
+
+    overlay.querySelectorAll('[data-uk]').forEach(function (el) {
+
+      var l = getLang();
+
+      var val = el.getAttribute('data-' + l);
+
+      if (val && el.tagName !== 'INPUT' && el.tagName !== 'SELECT') {
+
+        if (!el.children.length) el.textContent = val;
+
+      }
+
+    });
+
+  }
+
+
+
+  function setProgress(pct) {
+
+    progressBar.style.width = pct + '%';
+
+  }
+
+
+
+  function showStep(step) {
+
+    step1.style.display = 'none';
+
+    step2.style.display = 'none';
+
+    step3.style.display = 'none';
+
+    step.style.display = '';
+
+  }
+
+
+
+  function openWizard() {
+
+    currentCategory = null;
+
+    selectedOption = null;
+
+    showStep(step1);
+
+    setProgress(33);
+
+    if (addedToast) addedToast.style.display = 'none';
+
+    applyLang();
+
+    overlay.classList.add('open');
+
+    document.body.style.overflow = 'hidden';
+
+  }
+
+
+
+  function closeWizard() {
+
+    overlay.classList.remove('open');
+
+    document.body.style.overflow = '';
+
+  }
+
+
+
+  function buildStep2(category) {
+
+    var l = getLang();
+
+    var data = WIZARD_DATA[category];
+
+    step2OptionsEl.innerHTML = '';
+
+    data.options.forEach(function (opt) {
+
+      var btn = document.createElement('button');
+
+      btn.className = 'wizard-option';
+
+      btn.textContent = opt[l] || opt.uk;
+
+      btn.addEventListener('click', function () {
+
+        selectedOption = opt;
+
+        showConfirm(opt);
+
+      });
+
+      step2OptionsEl.appendChild(btn);
+
+    });
+
+  }
+
+
+
+  function showConfirm(opt) {
+
+    var l = getLang();
+
+    confirmService.textContent = opt.service;
+
+    confirmTaskText.textContent = opt['task_' + l] || opt.task_uk;
+
+    addedToast.style.display = 'none';
+
+    addBtn.disabled = false;
+
+    var addBtnSpan = addBtn.querySelector('[data-uk]');
+
+    if (addBtnSpan) addBtnSpan.textContent = addBtnSpan.getAttribute('data-' + l) || addBtnSpan.textContent;
+
+    var restartSpan = restartBtn.querySelector('[data-uk]');
+
+    if (restartSpan) restartSpan.textContent = restartSpan.getAttribute('data-' + l) || restartSpan.textContent;
+
+    showStep(step3);
+
+    setProgress(100);
+
+  }
+
+
+
+  step1.querySelectorAll('.wizard-option').forEach(function (btn) {
+
+    btn.addEventListener('click', function () {
+
+      var l = getLang();
+
+      currentCategory = btn.getAttribute('data-category');
+
+      /* update step2 title lang */
+
+      var s2title = document.getElementById('wizard-step2-title');
+
+      if (s2title) s2title.textContent = s2title.getAttribute('data-' + l) || s2title.textContent;
+
+      buildStep2(currentCategory);
+
+      showStep(step2);
+
+      setProgress(66);
+
+    });
+
+  });
+
+
+
+  backBtn && backBtn.addEventListener('click', function () {
+
+    showStep(step1);
+
+    setProgress(33);
+
+  });
+
+
+
+  addBtn && addBtn.addEventListener('click', function () {
+
+    if (!selectedOption) return;
+
+    var l = getLang();
+
+    var taskText = selectedOption['task_' + l] || selectedOption.task_uk;
+
+    var service = selectedOption.service;
+
+    if (typeof window.pcvAddTask === 'function') {
+
+      window.pcvAddTask(taskText, service, 'normal');
+
+    }
+
+    addedToast.textContent = addedToast.getAttribute('data-' + l) || addedToast.getAttribute('data-uk');
+
+    addedToast.style.display = 'block';
+
+    addBtn.disabled = true;
+
+  });
+
+
+
+  restartBtn && restartBtn.addEventListener('click', function () {
+
+    currentCategory = null;
+
+    selectedOption = null;
+
+    addedToast.style.display = 'none';
+
+    addBtn.disabled = false;
+
+    showStep(step1);
+
+    setProgress(33);
+
+  });
+
+
+
+  startBtn && startBtn.addEventListener('click', openWizard);
+
+  closeBtn && closeBtn.addEventListener('click', closeWizard);
+
+  overlay && overlay.addEventListener('click', function (e) {
+
+    if (e.target === overlay) closeWizard();
+
+  });
+
+  document.addEventListener('keydown', function (e) {
+
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeWizard();
+
+  });
+
+
+
+  /* re-apply lang when language switches */
+
+  document.addEventListener('pcv-language-changed', function () {
+
+    var l = getLang();
+
+    var startSpan = startBtn;
+
+    if (startSpan) startSpan.textContent = startSpan.getAttribute('data-' + l) || startSpan.textContent;
+
+    var wizTitle = document.querySelector('.it-wizard-title');
+
+    if (wizTitle) wizTitle.textContent = wizTitle.getAttribute('data-' + l) || wizTitle.textContent;
+
+    var wizSub = document.querySelector('.it-wizard-sub');
+
+    if (wizSub) wizSub.textContent = wizSub.getAttribute('data-' + l) || wizSub.textContent;
+
+    if (overlay.classList.contains('open')) applyLang();
+
+  });
+
+})();
+
+</script>
+
+<!-- ── /IT Diagnostic Wizard Script ─────────────── -->
+
+
+
+<!-- ════════════════════════════════════════════════
+
+     KI-Unterstützung  –  Paid AI Support Button
+
+     Insert this block just before </body>
+
+     ════════════════════════════════════════════════ -->
+
+
+
+<style>
+
+/* ── Floating button ───────────────────────────── */
+
+#ki-support-btn{
+
+  position:fixed;bottom:2rem;right:2rem;z-index:9000;
+
+  display:flex;align-items:center;gap:.55rem;
+
+  padding:.7rem 1.3rem;
+
+  background:linear-gradient(135deg,#6366f1,#38bdf8);
+
+  color:#fff;font-size:.95rem;font-weight:700;
+
+  border:none;border-radius:2.5rem;cursor:pointer;
+
+  box-shadow:0 4px 22px rgba(99,102,241,.5);
+
+  transition:transform .15s,box-shadow .15s;
+
+}
+
+#ki-support-btn:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(99,102,241,.7);}
+
+#ki-support-btn .ki-badge{
+
+  position:absolute;top:-.45rem;right:-.35rem;
+
+  background:#f59e0b;color:#0f172a;font-size:.62rem;font-weight:800;
+
+  padding:.13rem .42rem;border-radius:1rem;text-transform:uppercase;letter-spacing:.04em;
+
+}
+
+
+
+/* ── Overlay ───────────────────────────────────── */
+
+#ki-overlay{
+
+  display:none;position:fixed;inset:0;
+
+  background:rgba(0,0,0,.65);z-index:9100;
+
+  align-items:flex-end;justify-content:flex-end;
+
+  padding:1rem 2rem 6rem 1rem;
+
+}
+
+#ki-overlay.open{display:flex;}
+
+
+
+/* ── Modal window ──────────────────────────────── */
+
+#ki-modal{
+
+  width:380px;max-height:82vh;
+
+  background:#1e293b;border:1px solid rgba(255,255,255,.1);
+
+  border-radius:1.25rem;display:flex;flex-direction:column;
+
+  overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.55);
+
+}
+
+.ki-header{
+
+  display:flex;align-items:center;gap:.75rem;
+
+  padding:1rem 1.25rem;
+
+  background:linear-gradient(135deg,#6366f1,#38bdf8);
+
+  color:#fff;flex-shrink:0;
+
+}
+
+.ki-header h3{margin:0;font-size:1rem;}
+
+.ki-header p{margin:0;font-size:.74rem;opacity:.85;}
+
+#ki-close-btn{
+
+  margin-left:auto;background:rgba(255,255,255,.2);border:none;color:#fff;
+
+  width:2rem;height:2rem;border-radius:50%;cursor:pointer;font-size:1rem;
+
+  flex-shrink:0;
+
+}
+
+#ki-close-btn:hover{background:rgba(255,255,255,.35);}
+
+
+
+/* ── Payment screen ────────────────────────────── */
+
+#ki-pay-screen{padding:1.25rem;overflow-y:auto;}
+
+.ki-price-box{
+
+  text-align:center;padding:1.1rem;
+
+  background:rgba(255,255,255,.05);border-radius:.85rem;margin-bottom:1rem;
+
+}
+
+.ki-price{font-size:2.2rem;font-weight:800;color:#38bdf8;}
+
+.ki-price-period{font-size:.78rem;color:#94a3b8;margin-top:.2rem;}
+
+.ki-features{list-style:none;padding:0;margin:0 0 1.25rem;}
+
+.ki-features li{padding:.35rem 0;font-size:.88rem;color:#cbd5e1;}
+
+.ki-features li::before{content:"✓ ";color:#38bdf8;font-weight:700;}
+
+.ki-pay-btn{
+
+  width:100%;padding:.85rem;
+
+  background:linear-gradient(135deg,#6366f1,#38bdf8);
+
+  color:#fff;font-weight:700;font-size:1rem;
+
+  border:none;border-radius:.8rem;cursor:pointer;transition:opacity .15s;
+
+}
+
+.ki-liqpay-btn{background:linear-gradient(135deg,#009966,#00c07a);display:block;text-align:center;text-decoration:none;}
+
+.ki-liqpay-btn:hover{opacity:.9;}
+
+.ki-qr-block{text-align:center;padding:.25rem 0;}
+
+.ki-qr-hint{font-size:.82rem;color:#94a3b8;margin:0 0 .75rem;}
+
+.ki-qr-img{
+
+  width:180px;height:180px;border-radius:.75rem;
+
+  border:3px solid #38bdf8;display:inline-block;
+
+  transition:transform .15s;
+
+}
+
+.ki-qr-img:hover{transform:scale(1.04);}
+
+.ki-pay-note{font-size:.72rem;color:#64748b;text-align:center;margin-top:.6rem;}
+
+
+
+/* ── Chat screen ───────────────────────────────── */
+
+#ki-chat-screen{display:none;flex-direction:column;flex:1;min-height:0;}
+
+#ki-messages{
+
+  flex:1;overflow-y:auto;padding:1rem;
+
+  display:flex;flex-direction:column;gap:.65rem;
+
+}
+
+.ki-msg{
+
+  max-width:85%;padding:.6rem .9rem;border-radius:.85rem;
+
+  font-size:.88rem;line-height:1.5;
+
+}
+
+.ki-msg.bot{
+
+  background:rgba(56,189,248,.12);color:#e2e8f0;
+
+  align-self:flex-start;border-bottom-left-radius:.2rem;
+
+}
+
+.ki-msg.user{
+
+  background:#6366f1;color:#fff;
+
+  align-self:flex-end;border-bottom-right-radius:.2rem;
+
+}
+
+.ki-msg.typing{color:#64748b;font-style:italic;}
+
+#ki-input-row{
+
+  display:flex;gap:.5rem;padding:.75rem 1rem;
+
+  border-top:1px solid rgba(255,255,255,.08);flex-shrink:0;
+
+}
+
+#ki-user-input{
+
+  flex:1;background:rgba(255,255,255,.06);
+
+  border:1px solid rgba(255,255,255,.12);
+
+  color:#e2e8f0;padding:.55rem .85rem;
+
+  border-radius:2rem;font-size:.88rem;outline:none;
+
+}
+
+#ki-user-input:focus{border-color:#38bdf8;}
+
+#ki-send-btn{
+
+  background:#6366f1;color:#fff;border:none;
+
+  padding:.55rem 1rem;border-radius:2rem;
+
+  cursor:pointer;font-weight:700;font-size:.95rem;
+
+}
+
+#ki-send-btn:hover{background:#38bdf8;}
+
+
+
+@media(max-width:480px){
+
+  #ki-overlay{padding:0;align-items:flex-end;justify-content:center;}
+
+  #ki-modal{width:100%;border-radius:1.25rem 1.25rem 0 0;max-height:90vh;}
+
+  #ki-support-btn{bottom:1.25rem;right:1.25rem;}
+
+}
+
+</style>
+
+
+
+<!-- ── Floating button ─────────────────────────── -->
+
+<button id="ki-support-btn" aria-label="KI-Unterstützung öffnen" aria-haspopup="dialog">
+
+  <span style="font-size:1.15rem">🤖</span>
+
+  <span>KI-Unterstützung</span>
+
+  <span class="ki-badge">Paid</span>
+
+</button>
+
+
+
+<!-- ── Floating Task Button ──────────────────── -->
+
+<button class="task-fab" id="task-fab" aria-label="Мої завдання" onclick="document.getElementById('tasks').scrollIntoView({behavior:'smooth'})">
+
+  <span class="task-fab-icon">📋</span>
+
+  <span id="task-fab-label" data-uk="Завдання" data-de="Aufgaben">Завдання</span>
+
+  <span class="task-fab-count" id="task-fab-count">0</span>
+
+</button>
+
+
+
+<!-- ── Modal ───────────────────────────────────── -->
+
+<div id="ki-overlay" role="dialog" aria-modal="true" aria-label="KI-Unterstützung">
+
+  <div id="ki-modal">
+
+
+
+    <div class="ki-header">
+
+      <span style="font-size:1.5rem;flex-shrink:0">🤖</span>
+
+      <div>
+
+        <h3>KI-Unterstützung</h3>
+
+        <p>AI-powered IT-Support · PC Voronov</p>
+
+      </div>
+
+      <button id="ki-close-btn" aria-label="Schließen">✕</button>
+
+    </div>
+
+
+
+    <!-- Payment screen -->
+
+    <div id="ki-pay-screen">
+
+      <div class="ki-price-box">
+
+        <div class="ki-price">$9<span style="font-size:1.1rem">.90</span></div>
+
+        <div class="ki-price-period">Einmalige Zahlung · 30&nbsp;Min. KI-Session</div>
+
+      </div>
+
+      <ul class="ki-features">
+
+        <li>Sofortige KI-Antworten auf Ihre IT-Fragen</li>
+
+        <li>Netzwerk-, Server- &amp; Software-Diagnose</li>
+
+        <li>Fachkundige Analyse in Echtzeit</li>
+
+        <li>Auf Deutsch, Russisch und Englisch</li>
+
+      </ul>
+
+      <!-- QR Code payment block -->
+
+      <section id="contacts">
     <h2>Оплата LiqPay</h2>
 
     <div class="ki-qr-block">
@@ -68,8 +3964,659 @@
       }
     });
   </script>
-  <div>
-    <a href="https://vvoronov1981.github.io/pcvoronov.github.io/n.html">Link zu Site</a>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- Chat screen -->
+
+    <div id="ki-chat-screen">
+
+      <div id="ki-messages"></div>
+
+      <div id="ki-input-row">
+
+        <input id="ki-user-input" type="text"
+
+               placeholder="Ihre IT-Frage eingeben…" autocomplete="off" />
+
+        <button id="ki-send-btn" aria-label="Senden">➤</button>
+
+      </div>
+
+    </div>
+
+
+
   </div>
+
+</div>
+
+
+
+<script>
+
+(function () {
+
+  /* ── CONFIG ─────────────────────────────────────── */
+
+  // Ihre Cloudflare Worker URL (nach dem Deploy eintragen)
+
+  var WORKER_URL = 'https://pc.comprw.workers.dev/';
+
+  /* ─────────────────────────────────────────────── */
+
+
+
+  var PAID_KEY = 'ki_paid_session';
+
+  var overlay    = document.getElementById('ki-overlay');
+
+  var payScreen  = document.getElementById('ki-pay-screen');
+
+  var chatScreen = document.getElementById('ki-chat-screen');
+
+  var messages   = document.getElementById('ki-messages');
+
+  var userInput  = document.getElementById('ki-user-input');
+
+
+
+  var history = [{
+
+    role: 'system',
+
+    content: 'Du bist ein freundlicher, kompetenter KI-IT-Assistent von PC Voronov (pcvoronov.github.io). ' +
+
+             'Du hilfst bei Netzwerk-, Server-, Software- und IT-Infrastruktur-Problemen. ' +
+
+             'Antworte in der Sprache des Nutzers (Deutsch, Russisch oder Englisch). ' +
+
+             'Sei präzise, freundlich und verweise bei komplexen Aufgaben auf PC Voronov.'
+
+  }];
+
+
+
+  /* open / close */
+
+  document.getElementById('ki-support-btn').addEventListener('click', function () {
+
+    overlay.classList.add('open');
+
+    if (sessionStorage.getItem(PAID_KEY) === '1') showChat();
+
+  });
+
+  document.getElementById('ki-close-btn').addEventListener('click', closeModal);
+
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+
+  function closeModal() { overlay.classList.remove('open'); }
+
+
+
+  /* "I have paid" confirm button → opens chat */
+
+  document.getElementById('ki-paid-confirm-btn').addEventListener('click', function () {
+
+    sessionStorage.setItem(PAID_KEY, '1');
+
+    showChat();
+
+  });
+
+
+
+  /* show chat */
+
+  function showChat() {
+
+    payScreen.style.display = 'none';
+
+    chatScreen.style.display = 'flex';
+
+    if (!messages.firstChild) {
+
+      addMsg('bot', '👋 Hallo! Ich bin Ihr KI-IT-Assistent. ' +
+
+                    'Stellen Sie mir Ihre IT-Frage – ich helfe sofort!');
+
+    }
+
+    userInput.focus();
+
+  }
+
+
+
+  /* add message bubble */
+
+  function addMsg(role, text) {
+
+    var el = document.createElement('div');
+
+    el.className = 'ki-msg ' + role;
+
+    el.textContent = text;
+
+    messages.appendChild(el);
+
+    messages.scrollTop = messages.scrollHeight;
+
+    return el;
+
+  }
+
+
+
+  /* send to OpenAI */
+
+  async function sendMessage() {
+
+    var text = userInput.value.trim();
+
+    if (!text) return;
+
+    addMsg('user', text);
+
+    userInput.value = '';
+
+    history.push({ role: 'user', content: text });
+
+
+
+    var typing = addMsg('bot typing', '…');
+
+    try {
+
+      var res = await fetch(WORKER_URL, {
+
+        method: 'POST',
+
+        headers: { 'Content-Type': 'application/json' },
+
+        body: JSON.stringify({ messages: history })
+
+      });
+
+      var data = await res.json();
+
+      var reply = (data.choices && data.choices[0])
+
+                  ? data.choices[0].message.content
+
+                  : 'Entschuldigung – keine Antwort erhalten.';
+
+      typing.className = 'ki-msg bot';
+
+      typing.textContent = reply;
+
+      history.push({ role: 'assistant', content: reply });
+
+    } catch (err) {
+
+      typing.className = 'ki-msg bot';
+
+      typing.textContent = 'Verbindungsfehler. Bitte versuchen Sie es erneut.';
+
+    }
+
+    messages.scrollTop = messages.scrollHeight;
+
+  }
+
+
+
+  document.getElementById('ki-send-btn').addEventListener('click', sendMessage);
+
+  userInput.addEventListener('keydown', function (e) {
+
+    if (e.key === 'Enter') sendMessage();
+
+  });
+
+})();
+
+</script>
+
+<!-- ══ End KI-Unterstützung ════════════════════════ -->
+
+
+
+<!-- ── First-visit toast ───────────────────────── -->
+
+<div id="visit-toast" class="visit-toast" role="alert" aria-live="polite">
+
+  <div class="visit-toast-title">
+
+    <span>👋</span>
+
+    <span data-uk="Ласкаво просимо!" data-de="Herzlich willkommen!">Ласкаво просимо!</span>
+
+  </div>
+
+  <p class="visit-toast-text" data-uk="Опишіть ваше IT-завдання за 3 кроки і ми зв'яжемося з вами протягом робочого дня." data-de="Beschreiben Sie Ihre IT-Aufgabe in 3 Schritten — wir melden uns noch am selben Werktag.">Опишіть ваше IT-завдання за 3 кроки і ми зв'яжемося з вами протягом робочого дня.</p>
+
+  <div class="visit-toast-actions">
+
+    <a href="#tasks" class="visit-toast-cta" id="visit-toast-cta" data-uk="Почати →" data-de="Starten →">Почати →</a>
+
+    <button class="visit-toast-dismiss" id="visit-toast-dismiss" data-uk="Пізніше" data-de="Später">Пізніше</button>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+/* ── Customer Journey Tracker + First-visit Toast ── */
+
+(function () {
+
+  var WIZARD_KEY  = 'pcv_wizard_done';
+
+  var TASKS_KEY   = 'pcvoronov_tasks';
+
+  var FORM_KEY    = 'pcv_form_sent';
+
+  var TOAST_KEY   = 'pcv_toast_seen';
+
+
+
+  /* ── Journey tracker ─────────────────────────── */
+
+  function updateJourney() {
+
+    var wizardDone = !!localStorage.getItem(WIZARD_KEY);
+
+    var tasks = [];
+
+    try { tasks = JSON.parse(localStorage.getItem(TASKS_KEY)) || []; } catch (e) {}
+
+    var hasTasks  = tasks.length > 0;
+
+    var formSent  = !!localStorage.getItem(FORM_KEY);
+
+
+
+    var s1 = document.getElementById('jstep-1');
+
+    var s2 = document.getElementById('jstep-2');
+
+    var s3 = document.getElementById('jstep-3');
+
+    if (!s1) return;
+
+
+
+    function setStep(el, done, active) {
+
+      el.classList.toggle('jdone',   done);
+
+      el.classList.toggle('jactive', !done && active);
+
+    }
+
+    setStep(s1, wizardDone,                    true);
+
+    setStep(s2, hasTasks,                      wizardDone);
+
+    setStep(s3, formSent,                      hasTasks);
+
+
+
+    /* pulse the "send" button when there are tasks but form not yet sent */
+
+    var sendBtn = document.getElementById('send-tasks-btn');
+
+    if (sendBtn) {
+
+      sendBtn.classList.toggle('pulse-active', hasTasks && !formSent);
+
+    }
+
+  }
+
+
+
+  /* track wizard completion */
+
+  var wizAddBtn = document.getElementById('wizard-add-btn');
+
+  if (wizAddBtn) {
+
+    wizAddBtn.addEventListener('click', function () {
+
+      localStorage.setItem(WIZARD_KEY, '1');
+
+      setTimeout(updateJourney, 100);
+
+    });
+
+  }
+
+
+
+  /* track quick-chip clicks (any chip selection counts as diagnosis done) */
+
+  document.querySelectorAll('.chip').forEach(function (chip) {
+
+    chip.addEventListener('click', function () {
+
+      localStorage.setItem(WIZARD_KEY, '1');
+
+      setTimeout(updateJourney, 150);
+
+    });
+
+  });
+
+
+
+  /* track tasks changes */
+
+  document.addEventListener('pcv-tasks-updated', updateJourney);
+
+
+
+  /* track form submission */
+
+  var contactForm = document.getElementById('contact-form');
+
+  if (contactForm) {
+
+    contactForm.addEventListener('submit', function () {
+
+      localStorage.setItem(FORM_KEY, '1');
+
+      setTimeout(updateJourney, 100);
+
+    });
+
+  }
+
+
+
+  /* language change: re-render text */
+
+  document.addEventListener('pcv-language-changed', updateJourney);
+
+
+
+  /* initial render */
+
+  updateJourney();
+
+
+
+  /* ── First-visit toast ───────────────────────── */
+
+  var toast   = document.getElementById('visit-toast');
+
+  var cta     = document.getElementById('visit-toast-cta');
+
+  var dismiss = document.getElementById('visit-toast-dismiss');
+
+  if (toast && !localStorage.getItem(TOAST_KEY)) {
+
+    /* delay 1.8 s so the page has settled */
+
+    setTimeout(function () { toast.classList.add('visible'); }, 1800);
+
+
+
+    function hideToast() {
+
+      toast.classList.remove('visible');
+
+      localStorage.setItem(TOAST_KEY, '1');
+
+    }
+
+    if (cta)     cta.addEventListener('click',    hideToast);
+
+    if (dismiss) dismiss.addEventListener('click', hideToast);
+
+  }
+
+})();
+
+</script>
+
+
+
+<script>
+
+/* ── Visitor Challenge Tracker ──────────────────────── */
+
+(function () {
+
+  var VC_KEY = 'pcv_vc_state';
+
+  var TOTAL  = 6;
+
+  function loadState() {
+
+    try { return JSON.parse(localStorage.getItem(VC_KEY)) || {}; } catch (e) { return {}; }
+
+  }
+
+  function saveState(s) { localStorage.setItem(VC_KEY, JSON.stringify(s)); }
+
+  function countDone(s) {
+
+    var n = 0;
+
+    for (var i = 1; i <= TOTAL; i++) { if (s[i]) n++; }
+
+    return n;
+
+  }
+
+  function markDone(num) {
+
+    var s = loadState();
+
+    if (!s[num]) { s[num] = true; saveState(s); updateUI(s); }
+
+  }
+
+  function updateUI(s) {
+
+    var done  = countDone(s);
+
+    var badge = document.getElementById('vc-badge');
+
+    if (badge) badge.textContent = done + ' / ' + TOTAL;
+
+    var bar = document.getElementById('vc-progress-bar');
+
+    if (bar) bar.style.width = Math.round(done / TOTAL * 100) + '%';
+
+    for (var i = 1; i <= TOTAL; i++) {
+
+      var el = document.getElementById('vc-task-' + i);
+
+      if (el) el.classList.toggle('vc-done', !!s[i]);
+
+    }
+
+    var reward = document.getElementById('vc-reward');
+
+    if (reward && done >= TOTAL) {
+      if (!reward.classList.contains('visible')) {
+        reward.classList.add('visible', 'pulse');
+        launchConfetti();
+      }
+    }
+  }
+
+  /* ── Confetti launcher ─────────────────────────── */
+  function launchConfetti() {
+    var canvas = document.getElementById('vc-confetti');
+    if (!canvas) return;
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.classList.add('active');
+    var ctx    = canvas.getContext('2d');
+    var pieces = [];
+    var colors = ['#38bdf8','#6366f1','#f59e0b','#10b981','#f43f5e','#a855f7'];
+    for (var i = 0; i < 140; i++) {
+      pieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        w: 8 + Math.random() * 8,
+        h: 5 + Math.random() * 5,
+        r: Math.random() * Math.PI * 2,
+        dr: (Math.random() - 0.5) * 0.15,
+        vy: 2 + Math.random() * 3,
+        vx: (Math.random() - 0.5) * 1.5,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      });
+    }
+    var frame = 0;
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(function (p) {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.r);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+        p.y += p.vy;
+        p.x += p.vx;
+        p.r += p.dr;
+        if (p.y > canvas.height) { p.y = -10; p.x = Math.random() * canvas.width; }
+      });
+      frame++;
+      if (frame < 200) requestAnimationFrame(draw);
+      else {
+        canvas.classList.remove('active');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+
+  /* Task 1 — Services section visited */
+  document.querySelectorAll('a[href="#services"]').forEach(function (a) {
+    a.addEventListener('click', function () { markDone(1); });
+  });
+  var servicesEl = document.getElementById('services');
+  if (servicesEl && 'IntersectionObserver' in window) {
+    var sObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { markDone(1); sObs.disconnect(); } });
+    }, { threshold: 0.15 });
+    sObs.observe(servicesEl);
+  }
+
+  /* Task 2 — IT Wizard started */
+  var wizBtn = document.getElementById('wizard-start-btn');
+  if (wizBtn) wizBtn.addEventListener('click', function () { markDone(2); });
+
+  /* Task 3 — Quick-Check chip selected */
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.classList.contains('chip')) markDone(3);
+  });
+
+  /* Task 4 — Task added to list */
+  document.addEventListener('pcv-tasks-updated', function (e) {
+    if (e.detail && e.detail.tasks && e.detail.tasks.length > 0) markDone(4);
+  });
+
+  /* Task 5 — Request sent */
+  var sendBtn = document.getElementById('send-tasks-btn');
+  if (sendBtn) sendBtn.addEventListener('click', function () { markDone(5); });
+  var cForm = document.getElementById('contact-form');
+  if (cForm) cForm.addEventListener('submit', function () { markDone(5); });
+
+  /* Task 6 — Prices section visited */
+  document.querySelectorAll('a[href="#prices"]').forEach(function (a) {
+    a.addEventListener('click', function () { markDone(6); });
+  });
+  var pricesEl = document.getElementById('prices');
+  if (pricesEl && 'IntersectionObserver' in window) {
+    var pObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { markDone(6); pObs.disconnect(); } });
+    }, { threshold: 0.15 });
+    pObs.observe(pricesEl);
+  }
+
+  /* Collapsible header */
+  var vcHeader    = document.getElementById('vc-header');
+  var vcChallenge = document.getElementById('visitor-challenge');
+  if (vcHeader && vcChallenge) {
+    vcHeader.addEventListener('click', function () {
+      var c = vcChallenge.classList.toggle('collapsed');
+      vcHeader.setAttribute('aria-expanded', c ? 'false' : 'true');
+    });
+    vcHeader.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); vcHeader.click(); }
+    });
+  }
+
+  /* Language change — re-apply translated text */
+  document.addEventListener('pcv-language-changed', function (e) {
+    var lang = (e.detail && e.detail.lang === 'de') ? 'de' : 'uk';
+    document.querySelectorAll('.visitor-challenge [data-uk][data-de]').forEach(function (el) {
+      el.textContent = el.getAttribute('data-' + lang) || el.textContent;
+    });
+    /* update sticky bar lang */
+    document.querySelectorAll('#vc-sticky-bar [data-uk][data-de]').forEach(function (el) {
+      el.textContent = el.getAttribute('data-' + lang) || el.textContent;
+    });
+    /* update action links */
+    document.querySelectorAll('.vc-task-action[data-uk][data-de]').forEach(function (el) {
+      el.textContent = el.getAttribute('data-' + lang) || el.textContent;
+    });
+  });
+
+  /* ── Sticky bar update ─────────────────────────── */
+  function updateStickyBar(s) {
+    var done  = countDone(s);
+    var prog  = document.getElementById('vc-sticky-prog');
+    var count = document.getElementById('vc-sticky-count');
+    var doneEl = document.getElementById('vc-sticky-done');
+    var cta   = document.getElementById('vc-sticky-cta');
+    if (prog)  prog.style.width  = Math.round(done / TOTAL * 100) + '%';
+    if (count) count.textContent = done + ' / ' + TOTAL;
+    if (done >= TOTAL) {
+      if (doneEl) doneEl.style.display = '';
+      if (cta)    cta.style.display    = 'none';
+    } else {
+      if (doneEl) doneEl.style.display = 'none';
+      if (cta)    cta.style.display    = '';
+    }
+  }
+
+  /* extend updateUI to also refresh sticky bar */
+  var _origUpdateUI = updateUI;
+  updateUI = function (s) { _origUpdateUI(s); updateStickyBar(s); };
+
+  /* show sticky bar after scrolling past hero */
+  var heroEl = document.querySelector('.hero');
+  var stickyBar = document.getElementById('vc-sticky-bar');
+  if (stickyBar && 'IntersectionObserver' in window) {
+    var heroObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        stickyBar.classList.toggle('visible', !e.isIntersecting);
+      });
+    }, { threshold: 0.05 });
+    if (heroEl) heroObs.observe(heroEl);
+  }
+
+  /* Init */
+  updateUI(loadState());
+})();
+</script>
+<canvas id="vc-confetti" aria-hidden="true"></canvas>
+  <div></div>
 </body>
 </html>
